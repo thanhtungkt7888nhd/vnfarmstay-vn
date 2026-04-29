@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/*",
+    "assertions": {
+      "performance": ["warn", { "minScore": 0.85 }],
+      "accessibility": ["error", { "minScore": 0.9 }],
+      "best-practices": ["warn", { "minScore": 0.9 }],
+      "seo": ["error", { "minScore": 0.9 }]
+    }
+  }
+]

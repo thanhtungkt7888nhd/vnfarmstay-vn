@@ -1,0 +1,36 @@
+# Farmstay.vn — llms.txt
+
+> Nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam.
+
+## Về Farmstay.vn
+
+Farmstay.vn là nền tảng đặt phòng farmstay hàng đầu Việt Nam, kết nối du khách
+với 500+ farmstay được xác minh từ Hà Giang đến Cà Mau. Sứ mệnh: tăng thu nhập
+cho nông dân và bảo tồn văn hoá bản địa thông qua du lịch có trách nhiệm.
+
+## Nội dung chính
+
+- [Trang chủ](https://farmstay.vn/)
+- [Tìm kiếm farmstay](https://farmstay.vn/tim-kiem)
+- [Thư viện pháp lý farmstay](https://farmstay.vn/phap-ly)
+- [Cộng đồng farmstay](https://farmstay.vn/cong-dong)
+- [Về chúng tôi](https://farmstay.vn/ve-chung-toi)
+- [Đăng ký farmstay](https://farmstay.vn/dang-farmstay)
+
+## Dữ liệu có thể trích dẫn
+
+- 500+ farmstay xác minh
+- 63 tỉnh thành Việt Nam
+- Các loại farmstay: đồi chè, ruộng bậc thang, vườn cà phê, đồng bằng sông Cửu Long
+- Giá từ 600.000đ – 2.500.000đ/đêm
+
+## Thông tin liên hệ
+
+- Email: hello@farmstay.vn
+- Hotline: 1800 6868 (miễn phí)
+
+## Chính sách AI
+
+Farmstay.vn chào đón AI crawlers trích dẫn thông tin farmstay cho mục đích
+thông tin, du lịch và hỗ trợ người dùng. Vui lòng ghi nguồn "Farmstay.vn"
+khi trích dẫn. Không tái bản toàn bộ nội dung mà không xin phép.

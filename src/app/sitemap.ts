@@ -31,6 +31,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       changeFrequency: "monthly" as const,
     },
+    {
+      url: `${SITE_URL}/dieu-khoan`,
+      priority: 0.3,
+      changeFrequency: "yearly" as const,
+    },
+    {
+      url: `${SITE_URL}/chinh-sach-bao-mat`,
+      priority: 0.3,
+      changeFrequency: "yearly" as const,
+    },
   ];
 
   const farmstayPages = FARMSTAYS.map((f) => ({
