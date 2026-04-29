@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import type { WithContext, Organization, WebSite } from "schema-dts";
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Farmstay.vn",
   },
   description:
-    "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau.",
+    "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau — trải nghiệm nông nghiệp đích thực, đặt phòng dễ dàng.",
   keywords: [
     "farmstay việt nam",
     "du lịch nông nghiệp",
@@ -64,6 +64,10 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-snippet": -1 },
   },
   manifest: "/manifest.json",
+};
+
+/** Viewport riêng — Next.js 16 yêu cầu tách themeColor ra khỏi metadata */
+export const viewport: Viewport = {
   themeColor: "#0f2318",
 };
 
@@ -102,6 +106,11 @@ const websiteSchema: WithContext<WebSite> = {
   },
 };
 
+/** GA4 measurement ID — điền vào .env.local khi có tài khoản */
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+/** Microsoft Clarity project ID — điền vào .env.local */
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -110,8 +119,19 @@ export default function RootLayout({
       lang="vi"
       className={`${beVietnamPro.variable} ${playfairDisplay.variable}`}
     >
+      <head>
+        {/* RSS Feed discovery */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Farmstay.vn Blog RSS"
+          href="/rss.xml"
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         {children}
+
+        {/* JSON-LD: Organization + WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
@@ -120,6 +140,41 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+
+        {/* Google Analytics 4 */}
+        {GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}', { page_path: window.location.pathname });
+                `,
+              }}
+            />
+          </>
+        )}
+
+        {/* Microsoft Clarity */}
+        {CLARITY_ID && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "${CLARITY_ID}");
+              `,
+            }}
+          />
+        )}
       </body>
     </html>
   );

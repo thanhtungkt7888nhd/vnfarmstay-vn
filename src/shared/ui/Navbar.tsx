@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Khám phá" },
+  { href: "/blog", label: "Blog" },
   { href: "/phap-ly", label: "Pháp lý" },
   { href: "/cong-dong", label: "Cộng đồng" },
   { href: "/ve-chung-toi", label: "Về chúng tôi" },

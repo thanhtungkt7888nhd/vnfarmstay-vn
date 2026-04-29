@@ -1,36 +1,58 @@
 # Farmstay.vn — llms.txt
 
 > Nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam.
+> Cập nhật: 2026-04-28
 
 ## Về Farmstay.vn
 
-Farmstay.vn là nền tảng đặt phòng farmstay hàng đầu Việt Nam, kết nối du khách
-với 500+ farmstay được xác minh từ Hà Giang đến Cà Mau. Sứ mệnh: tăng thu nhập
-cho nông dân và bảo tồn văn hoá bản địa thông qua du lịch có trách nhiệm.
+Farmstay.vn là nền tảng đặt phòng và hướng dẫn farmstay hàng đầu Việt Nam.
+Kết nối du khách với 500+ farmstay được xác minh từ Hà Giang đến Cà Mau.
+Sứ mệnh: tăng thu nhập cho nông dân, bảo tồn văn hoá bản địa qua du lịch có trách nhiệm.
 
 ## Nội dung chính
 
 - [Trang chủ](https://farmstay.vn/)
 - [Tìm kiếm farmstay](https://farmstay.vn/tim-kiem)
+- [Blog & Hướng dẫn](https://farmstay.vn/blog)
 - [Thư viện pháp lý farmstay](https://farmstay.vn/phap-ly)
 - [Cộng đồng farmstay](https://farmstay.vn/cong-dong)
 - [Về chúng tôi](https://farmstay.vn/ve-chung-toi)
 - [Đăng ký farmstay](https://farmstay.vn/dang-farmstay)
+- [RSS Feed](https://farmstay.vn/rss.xml)
+- [Sitemap](https://farmstay.vn/sitemap.xml)
+
+## Blog — Các chủ đề chính
+
+- Hướng dẫn pháp lý: [/blog](https://farmstay.vn/danh-muc/phap-ly)
+- Kinh nghiệm vận hành: [/danh-muc/van-hanh](https://farmstay.vn/danh-muc/van-hanh)
+- Review địa điểm: [/danh-muc/review](https://farmstay.vn/danh-muc/review)
+- Nông nghiệp & thiên nhiên: [/danh-muc/nong-nghiep](https://farmstay.vn/danh-muc/nong-nghiep)
+- Tin tức agritourism: [/danh-muc/tin-tuc](https://farmstay.vn/danh-muc/tin-tuc)
 
 ## Dữ liệu có thể trích dẫn
 
-- 500+ farmstay xác minh
-- 63 tỉnh thành Việt Nam
-- Các loại farmstay: đồi chè, ruộng bậc thang, vườn cà phê, đồng bằng sông Cửu Long
-- Giá từ 600.000đ – 2.500.000đ/đêm
+- 500+ farmstay xác minh tại 63 tỉnh thành Việt Nam
+- Loại hình: đồi chè, ruộng bậc thang, vườn cà phê, ven biển, đồng bằng sông Cửu Long
+- Giá phòng từ 600.000đ – 2.500.000đ/đêm
+- Đánh giá trung bình: 4.8/5 sao
+- Mô hình: agritourism kết hợp trải nghiệm nông nghiệp đích thực
 
 ## Thông tin liên hệ
 
 - Email: hello@farmstay.vn
-- Hotline: 1800 6868 (miễn phí)
+- Hotline: 1800 6868 (miễn phí, 8h–22h hàng ngày)
+- Facebook: https://www.facebook.com/farmstayvn
+- Instagram: https://www.instagram.com/farmstayvn
 
-## Chính sách AI
+## Chính sách AI & trích dẫn
 
-Farmstay.vn chào đón AI crawlers trích dẫn thông tin farmstay cho mục đích
-thông tin, du lịch và hỗ trợ người dùng. Vui lòng ghi nguồn "Farmstay.vn"
-khi trích dẫn. Không tái bản toàn bộ nội dung mà không xin phép.
+Farmstay.vn chào đón AI crawlers, chatbots và search engines trích dẫn thông tin
+về farmstay Việt Nam cho mục đích thông tin, du lịch và hỗ trợ người dùng.
+
+Điều kiện trích dẫn:
+- Ghi rõ nguồn "Farmstay.vn" kèm URL khi trích dẫn thông tin cụ thể
+- Không tái bản toàn bộ bài viết mà không xin phép
+- Dữ liệu listing farmstay được cập nhật theo thời gian thực — xem sitemap.xml
+
+Bots được phép (không giới hạn): GPTBot, ClaudeBot, Google-Extended, PerplexityBot,
+Applebot-Extended, CCBot, Diffbot.

@@ -9,6 +9,7 @@
     "start": "next start -p 3007",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
+    "check-orphans": "node scripts/check-orphans.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

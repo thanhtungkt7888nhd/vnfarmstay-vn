@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { Map as LeafletMap, Marker } from "leaflet";
 import type { Farmstay } from "@/shared/types/farmstay";
 import { formatPrice } from "@/shared/utils/format";
 
@@ -11,8 +12,8 @@ interface Props {
 /** Leaflet map — tích hợp từ roi-calculator.html của nhahoachdinh.vn */
 export function FarmstayMap({ farmstays }: Props) {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<any>(null);
-  const markersRef = useRef<any[]>([]);
+  const mapInstanceRef = useRef<LeafletMap | null>(null);
+  const markersRef = useRef<Marker[]>([]);
 
   useEffect(() => {
     if (!mapRef.current || typeof window === "undefined") return;
@@ -70,7 +71,7 @@ export function FarmstayMap({ farmstays }: Props) {
 
       farmstays.forEach((f) => {
         const marker = L.marker([f.lat, f.lng], { icon: goldIcon })
-          .addTo(mapInstanceRef.current)
+          .addTo(mapInstanceRef.current!)
           .bindPopup(
             `<strong style="font-size:0.9rem">${f.name}</strong><br/>${formatPrice(f.price)}/đêm &nbsp; ${f.rating}★`,
             { maxWidth: 220 }

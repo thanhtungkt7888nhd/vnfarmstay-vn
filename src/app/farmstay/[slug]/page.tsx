@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { FARMSTAYS } from "@/features/listing/data";
 import { formatPrice } from "@/shared/utils/format";
+import { farmstaySchema, breadcrumbSchema } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -17,11 +21,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const farmstay = FARMSTAYS.find((f) => f.slug === slug);
   if (!farmstay) return { title: "Không tìm thấy farmstay" };
-  return {
+  return buildMetadata({
     title: farmstay.name,
     description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}. Giá từ ${formatPrice(farmstay.price)}/đêm.`,
-    alternates: { canonical: `https://farmstay.vn/farmstay/${farmstay.slug}` },
-  };
+    canonical: `/farmstay/${farmstay.slug}`,
+    keywords: [...farmstay.tags, farmstay.location, "farmstay"],
+  });
 }
 
 export default async function FarmstayDetailPage({ params }: Props) {
@@ -29,9 +34,28 @@ export default async function FarmstayDetailPage({ params }: Props) {
   const farmstay = FARMSTAYS.find((f) => f.slug === slug);
   if (!farmstay) notFound();
 
+  const schemas = [
+    farmstaySchema({
+      name: farmstay.name,
+      description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}.`,
+      url: `https://farmstay.vn/farmstay/${farmstay.slug}`,
+      imageUrl: "https://farmstay.vn/og-image.jpg",
+      address: farmstay.location,
+      priceFrom: farmstay.price,
+      rating: farmstay.rating,
+      reviewCount: farmstay.reviewCount,
+    }),
+    breadcrumbSchema([
+      { name: "Trang chủ", url: "/" },
+      { name: "Tìm kiếm", url: "/tim-kiem" },
+      { name: farmstay.name, url: `/farmstay/${farmstay.slug}` },
+    ]),
+  ];
+
   return (
     <>
       <Navbar />
+      <JsonLd schema={schemas} />
       <main style={{ background: "var(--bg-deep)", minHeight: "80vh" }}>
         {/* Hero image area */}
         <div
@@ -94,6 +118,15 @@ export default async function FarmstayDetailPage({ params }: Props) {
         >
           {/* Main content */}
           <div>
+            <BreadcrumbNav
+              items={[
+                { name: "Tìm kiếm", href: "/tim-kiem" },
+                {
+                  name: farmstay.location,
+                  href: `/tim-kiem?q=${encodeURIComponent(farmstay.location)}`,
+                },
+              ]}
+            />
             <p
               style={{
                 fontSize: "0.78rem",

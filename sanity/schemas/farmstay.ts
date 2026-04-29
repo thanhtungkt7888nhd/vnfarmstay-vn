@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /** Schema Sanity cho mỗi farmstay listing */
 export default {
   name: "farmstay",

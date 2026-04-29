@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /** Schema Sanity cho bài viết blog/hướng dẫn */
 export default {
   name: "post",
@@ -52,6 +53,21 @@ export default {
     },
     { name: "tags", title: "Tags", type: "array", of: [{ type: "string" }] },
     { name: "author", title: "Tác giả", type: "string" },
+    {
+      name: "readTime",
+      title: "Thời gian đọc (phút)",
+      type: "number",
+      description:
+        "Ước tính số phút đọc — để trống thì tự tính từ độ dài nội dung",
+    },
+    {
+      name: "relatedPosts",
+      title: "Bài viết liên quan",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "post" }] }],
+      validation: (R: any) => R.max(4),
+      description: "Chọn tối đa 4 bài viết liên quan — hiển thị cuối bài",
+    },
     {
       name: "faq",
       title: "FAQ",
