@@ -118,13 +118,11 @@ export default function CongDongPage() {
         </section>
 
         <div
+          className="grid-sidebar-sm"
           style={{
             maxWidth: 1100,
             margin: "0 auto",
             padding: "48px 24px",
-            display: "grid",
-            gridTemplateColumns: "1fr 320px",
-            gap: 32,
           }}
         >
           {/* Feed */}

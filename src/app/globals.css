@@ -53,3 +53,49 @@ img {
   height: auto;
   display: block;
 }
+
+/* ── Responsive layout helpers ─────────────────────────────── */
+
+/* 2-column main+sidebar → stack on mobile */
+.grid-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+}
+
+/* Community page uses smaller gap */
+.grid-sidebar-sm {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+}
+
+/* Stats 4-col → 2-col on mobile */
+.grid-stats-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+/* Form 2-col → 1-col on mobile */
+.grid-form-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .grid-sidebar,
+  .grid-sidebar-sm {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-stats-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-form-2 {
+    grid-template-columns: 1fr;
+  }
+}

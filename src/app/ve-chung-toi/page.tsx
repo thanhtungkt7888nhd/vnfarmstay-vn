@@ -84,13 +84,10 @@ export default function VeChungToiPage() {
           }}
         >
           <div
+            className="grid-stats-4"
             style={{
               maxWidth: 800,
               margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: "repeat(4,1fr)",
-              gap: 24,
-              textAlign: "center",
             }}
           >
             {STATS.map(([num, label]) => (

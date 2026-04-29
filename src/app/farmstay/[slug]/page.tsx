@@ -85,13 +85,11 @@ export default async function FarmstayDetailPage({ params }: Props) {
         </div>
 
         <div
+          className="grid-sidebar"
           style={{
             maxWidth: 960,
             margin: "0 auto",
             padding: "40px 24px",
-            display: "grid",
-            gridTemplateColumns: "1fr 320px",
-            gap: 40,
           }}
         >
           {/* Main content */}

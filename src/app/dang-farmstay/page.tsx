@@ -240,13 +240,7 @@ export default function DangFarmstayPage() {
             </div>
 
             {/* Phone + Email */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 16,
-              }}
-            >
+            <div className="grid-form-2">
               <div>
                 <label
                   style={{
