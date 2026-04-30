@@ -1,9 +1,36 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import dynamic from "next/dynamic";
 import type { Farmstay } from "@/shared/types/farmstay";
 import { FarmstayCard } from "./FarmstayCard";
-import { FarmstayMap } from "./FarmstayMap";
+
+/** Lazy-load FarmstayMap — Leaflet không chạy được trên server */
+const FarmstayMap = dynamic(
+  () => import("./FarmstayMap").then((m) => ({ default: m.FarmstayMap })),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        style={{
+          height: 480,
+          background: "var(--bg-card)",
+          borderRadius: "var(--radius)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "var(--text-dim)",
+          fontSize: "0.9rem",
+          border: "1px solid var(--border)",
+        }}
+        aria-label="Đang tải bản đồ"
+        aria-busy="true"
+      >
+        🗺️ Đang tải bản đồ...
+      </div>
+    ),
+  }
+);
 
 const CHIPS = [
   { label: "🌿 Tất cả", value: "all" },

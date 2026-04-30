@@ -1,0 +1,21 @@
+{
+  "name": "Farmstay.vn",
+  "short_name": "Farmstay",
+  "description": "Nền tảng đặt phòng farmstay hàng đầu Việt Nam — 500+ farmstay xác minh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f2318",
+  "theme_color": "#0f2318",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "food"],
+  "orientation": "portrait-primary",
+  "scope": "/"
+}

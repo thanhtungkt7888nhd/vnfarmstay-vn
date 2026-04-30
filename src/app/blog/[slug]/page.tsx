@@ -10,6 +10,7 @@ import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { RelatedPosts } from "@/shared/ui/RelatedPosts";
 import { PortableTextRenderer } from "@/features/blog/ui/PortableTextRenderer";
+import { TableOfContents } from "@/shared/ui/TableOfContents";
 import { CATEGORY_LABELS } from "@/features/blog/types";
 import { buildMetadata } from "@/lib/seo";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
@@ -207,6 +208,9 @@ export default async function BlogPostPage({
             )}
             {post.readTime && <span>⏱ {post.readTime} phút đọc</span>}
           </div>
+
+          {/* Mục lục tự động (hiện khi bài có ≥ 3 heading) */}
+          <TableOfContents />
 
           {/* Content */}
           {post.content ? (

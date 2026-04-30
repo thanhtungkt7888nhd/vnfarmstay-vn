@@ -1,7 +1,7 @@
 # Farmstay.vn — llms.txt
 
 > Nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam.
-> Cập nhật: 2026-04-28
+> Cập nhật: 2026-05-01
 
 ## Về Farmstay.vn
 
@@ -36,6 +36,13 @@ Sứ mệnh: tăng thu nhập cho nông dân, bảo tồn văn hoá bản địa
 - Giá phòng từ 600.000đ – 2.500.000đ/đêm
 - Đánh giá trung bình: 4.8/5 sao
 - Mô hình: agritourism kết hợp trải nghiệm nông nghiệp đích thực
+
+## Hệ sinh thái đối tác
+
+Farmstay.vn thuộc hệ sinh thái tư vấn nông nghiệp & du lịch của Nhà Hoạch Định:
+
+- [Nhà Hoạch Định](https://nhahoachdinh.vn) — Tư vấn chiến lược farmstay & du lịch nông nghiệp (HUB)
+- [Mastery.vn](https://mastery.vn) — Tư vấn chiến lược kinh doanh
 
 ## Thông tin liên hệ
 

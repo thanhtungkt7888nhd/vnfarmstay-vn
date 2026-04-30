@@ -62,6 +62,8 @@ export default function DangNhapPage() {
 
           {/* Tabs */}
           <div
+            role="tablist"
+            aria-label="Chọn chức năng"
             style={{
               display: "flex",
               background: "rgba(255,255,255,0.04)",
@@ -73,6 +75,8 @@ export default function DangNhapPage() {
             {(["login", "register"] as const).map((t) => (
               <button
                 key={t}
+                role="tab"
+                aria-selected={tab === t}
                 onClick={() => setTab(t)}
                 style={{
                   flex: 1,
@@ -94,11 +98,15 @@ export default function DangNhapPage() {
 
           <form
             onSubmit={handleSubmit}
+            aria-label={
+              tab === "login" ? "Form đăng nhập" : "Form đăng ký tài khoản"
+            }
             style={{ display: "flex", flexDirection: "column", gap: 16 }}
           >
             {tab === "register" && (
               <div>
                 <label
+                  htmlFor="register-name"
                   style={{
                     display: "block",
                     fontSize: "0.78rem",
@@ -110,12 +118,19 @@ export default function DangNhapPage() {
                 >
                   HỌ TÊN
                 </label>
-                <input placeholder="Nguyễn Văn A" style={inputStyle} />
+                <input
+                  id="register-name"
+                  type="text"
+                  placeholder="Nguyễn Văn A"
+                  autoComplete="name"
+                  style={inputStyle}
+                />
               </div>
             )}
 
             <div>
               <label
+                htmlFor="auth-email"
                 style={{
                   display: "block",
                   fontSize: "0.78rem",
@@ -128,14 +143,17 @@ export default function DangNhapPage() {
                 EMAIL
               </label>
               <input
+                id="auth-email"
                 type="email"
                 placeholder="ban@email.com"
+                autoComplete="email"
                 style={inputStyle}
               />
             </div>
 
             <div>
               <label
+                htmlFor="auth-password"
                 style={{
                   display: "block",
                   fontSize: "0.78rem",
@@ -148,8 +166,12 @@ export default function DangNhapPage() {
                 MẬT KHẨU
               </label>
               <input
+                id="auth-password"
                 type="password"
                 placeholder="••••••••"
+                autoComplete={
+                  tab === "login" ? "current-password" : "new-password"
+                }
                 style={inputStyle}
               />
             </div>

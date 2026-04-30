@@ -53,24 +53,27 @@ function fileToRoute(filePath) {
 /** Trích xuất tất cả href từ nội dung file */
 function extractLinks(content) {
   const links = new Set();
-  // href="/..." pattern
-  const hrefRe = /href=["']([^"']+)["']/g;
+
+  /** Xử lý 1 href string: validate và thêm vào set */
+  function addLink(href) {
+    if (href && href.startsWith("/") && !href.startsWith("//")) {
+      links.add(href.split("?")[0].split("#")[0]);
+    }
+  }
+
+  // 1. JSX attribute: href="/..." hoặc href='...'
+  const hrefJsxRe = /href=["']([^"']+)["']/g;
   let m;
-  while ((m = hrefRe.exec(content)) !== null) {
-    const href = m[1];
-    if (href.startsWith("/") && !href.startsWith("//")) {
-      // Bỏ query string và hash
-      links.add(href.split("?")[0].split("#")[0]);
-    }
-  }
-  // router.push / redirect / notFound với đường dẫn tĩnh
-  const routerRe = /(?:router\.push|redirect|href)\s*\(\s*["'`]([^"'`]+)["'`]/g;
-  while ((m = routerRe.exec(content)) !== null) {
-    const href = m[1];
-    if (href.startsWith("/") && !href.startsWith("//")) {
-      links.add(href.split("?")[0].split("#")[0]);
-    }
-  }
+  while ((m = hrefJsxRe.exec(content)) !== null) addLink(m[1]);
+
+  // 2. Object literal: href: "/..." hoặc href: '...' (dùng trong data arrays)
+  const hrefObjRe = /href\s*:\s*["'`]([^"'`]+)["'`]/g;
+  while ((m = hrefObjRe.exec(content)) !== null) addLink(m[1]);
+
+  // 3. router.push / redirect / Link as string
+  const routerRe = /(?:router\.push|redirect)\s*\(\s*["'`]([^"'`]+)["'`]/g;
+  while ((m = routerRe.exec(content)) !== null) addLink(m[1]);
+
   return links;
 }
 

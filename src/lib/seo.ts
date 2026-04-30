@@ -6,7 +6,9 @@ import type { Metadata } from "next";
 
 const SITE_URL = "https://farmstay.vn";
 const SITE_NAME = "Farmstay.vn";
-const DEFAULT_OG_IMAGE = "/og-image.jpg";
+/** OG image mặc định — dùng dynamic generator /api/og khi không có ảnh bài */
+const DEFAULT_OG_IMAGE =
+  "/api/og?title=Farmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam";
 
 export interface SeoProps {
   title: string;

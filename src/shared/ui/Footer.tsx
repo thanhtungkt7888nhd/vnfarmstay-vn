@@ -8,6 +8,13 @@ const footerLinks = {
     { href: "/tim-kiem?region=mien-nam", label: "Miền Nam" },
     { href: "/cong-dong", label: "Cộng đồng" },
   ],
+  "Blog & Kiến thức": [
+    { href: "/blog", label: "Tất cả bài viết" },
+    { href: "/danh-muc/phap-ly", label: "Pháp lý farmstay" },
+    { href: "/danh-muc/van-hanh", label: "Vận hành" },
+    { href: "/danh-muc/review", label: "Review farmstay" },
+    { href: "/ve-tac-gia", label: "Về tác giả" },
+  ],
   "Chủ farmstay": [
     { href: "/dang-farmstay", label: "Đăng farmstay" },
     { href: "/phap-ly", label: "Thư viện pháp lý" },
@@ -18,9 +25,13 @@ const footerLinks = {
   "Farmstay.vn": [
     { href: "/ve-chung-toi", label: "Về chúng tôi" },
     { href: "/ve-chung-toi#su-menh", label: "Sứ mệnh" },
-    { href: "/ve-chung-toi#doi-ngu", label: "Đội ngũ" },
+    { href: "/ve-tac-gia", label: "Tác giả & Chuyên gia" },
     { href: "/ve-chung-toi#bao-chi", label: "Báo chí" },
     { href: "/ve-chung-toi#lien-he", label: "Liên hệ" },
+  ],
+  "Hệ sinh thái": [
+    { href: "https://nhahoachdinh.vn", label: "Nhà Hoạch Định" },
+    { href: "https://mastery.vn", label: "Mastery.vn" },
   ],
 };
 
@@ -34,7 +45,7 @@ export function Footer() {
       }}
       className="mt-16 px-6 pt-12 pb-6"
     >
-      <div className="mx-auto mb-10 grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-4">
+      <div className="mx-auto mb-10 grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-6">
         {/* Brand */}
         <div>
           <div
@@ -94,20 +105,29 @@ export function Footer() {
               {title}
             </h4>
             <ul className="space-y-2">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm"
-                    style={{
-                      color: "var(--text-dim)",
-                      transition: "var(--transition)",
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {links.map((link) => {
+                const isExternal = link.href.startsWith("http");
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm"
+                      style={{
+                        color: "var(--text-dim)",
+                        transition: "var(--transition)",
+                      }}
+                      {...(isExternal
+                        ? {
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                          }
+                        : {})}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}
