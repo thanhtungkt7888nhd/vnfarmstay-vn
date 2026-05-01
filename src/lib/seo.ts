@@ -15,7 +15,7 @@ export interface SeoProps {
   description: string;
   /** Đường dẫn canonical, ví dụ "/blog/ten-bai-viet" */
   canonical?: string;
-  /** Ảnh OG, mặc định /og-image.jpg */
+  /** Ảnh OG, mặc định dùng /api/og dynamic generator */
   ogImage?: string;
   /** Nếu true → noindex (draft, preview) */
   noindex?: boolean;

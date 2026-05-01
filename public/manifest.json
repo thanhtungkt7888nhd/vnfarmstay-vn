@@ -1,5 +1,5 @@
 {
-  "name": "Farmstay.vn",
+  "name": "Farmstay Update",
   "short_name": "Farmstay",
   "description": "Nền tảng đặt phòng farmstay hàng đầu Việt Nam — 500+ farmstay xác minh",
   "start_url": "/",
@@ -9,10 +9,16 @@
   "lang": "vi",
   "icons": [
     {
-      "src": "/logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["travel", "food"],

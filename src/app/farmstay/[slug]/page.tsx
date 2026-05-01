@@ -39,7 +39,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
       name: farmstay.name,
       description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}.`,
       url: `https://farmstay.vn/farmstay/${farmstay.slug}`,
-      imageUrl: "https://farmstay.vn/og-image.jpg",
+      imageUrl: `https://farmstay.vn/api/og?title=${encodeURIComponent(farmstay.name)}&subtitle=${encodeURIComponent(farmstay.location)}`,
       address: farmstay.location,
       priceFrom: farmstay.price,
       rating: farmstay.rating,

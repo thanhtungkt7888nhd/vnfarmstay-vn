@@ -94,7 +94,9 @@ export default async function BlogPostPage({
       title: post.title,
       description: post.excerpt ?? "",
       url: articleUrl,
-      imageUrl: coverImageUrl ?? "https://farmstay.vn/og-image.jpg",
+      imageUrl:
+        coverImageUrl ??
+        `https://farmstay.vn/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt ?? "Farmstay.vn")}`,
       publishedAt: post.publishedAt ?? new Date().toISOString(),
       updatedAt: post.updatedAt,
       authorName: post.author,

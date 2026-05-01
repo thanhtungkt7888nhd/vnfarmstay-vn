@@ -49,7 +49,8 @@ export const metadata: Metadata = {
       "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau.",
     images: [
       {
-        url: "/og-image.svg",
+        // Dynamic OG image — Edge function trả về PNG 1200×630 thật
+        url: `${SITE_URL}/api/og?title=Farmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
         width: 1200,
         height: 630,
         alt: "Farmstay.vn — Nền tảng farmstay Việt Nam",
@@ -61,7 +62,9 @@ export const metadata: Metadata = {
     title: "Farmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
     description:
       "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. 500+ farmstay xác minh.",
-    images: ["/og-image.svg"],
+    images: [
+      `${SITE_URL}/api/og?title=Farmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
+    ],
   },
   robots: {
     index: true,
@@ -82,7 +85,7 @@ const orgSchema: WithContext<Organization> = {
   "@type": "Organization",
   name: "Farmstay.vn",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.svg`,
+  logo: `${SITE_URL}/logo.png`,
   sameAs: [
     "https://www.facebook.com/farmstayvn",
     "https://www.instagram.com/farmstayvn",

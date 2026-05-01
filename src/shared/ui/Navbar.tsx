@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -28,23 +29,24 @@ export function Navbar() {
         }}
         aria-label="Menu chính"
       >
-        {/* Logo */}
+        {/* Logo — Farmstay Update (transparent PNG, tự động trong suốt trên nền tối) */}
         <Link
           href="/"
-          aria-label="Farmstay.vn trang chủ"
-          style={{
-            fontFamily: "var(--font-playfair), serif",
-            fontSize: "1.35rem",
-            fontWeight: 700,
-            color: "var(--gold)",
-            letterSpacing: "0.03em",
-            whiteSpace: "nowrap",
-          }}
+          aria-label="Farmstay Update — Trang chủ"
+          style={{ flexShrink: 0, display: "flex", alignItems: "center" }}
         >
-          Farmstay
-          <span style={{ color: "var(--text-primary)", fontStyle: "italic" }}>
-            .vn
-          </span>
+          <Image
+            src="/logo-horizontal.png"
+            alt="Farmstay Update"
+            width={182}
+            height={75}
+            priority
+            style={{
+              height: 36,
+              width: "auto",
+              objectFit: "contain",
+            }}
+          />
         </Link>
 
         {/* Desktop links */}
@@ -158,6 +160,17 @@ export function Navbar() {
             backdropFilter: "blur(16px)",
           }}
         >
+          {/* Mobile logo */}
+          <div style={{ padding: "8px 16px 4px" }}>
+            <Image
+              src="/logo-horizontal.png"
+              alt="Farmstay Update"
+              width={140}
+              height={58}
+              style={{ height: 30, width: "auto" }}
+            />
+          </div>
+
           {navLinks.map((link) => (
             <Link
               key={link.href}
