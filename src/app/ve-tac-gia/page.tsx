@@ -1,6 +1,6 @@
 /**
- * Trang giới thiệu đội ngũ tác giả Farmstay.vn — /ve-tac-gia.
- * Static page, không cần ISR. Giúp Google hiểu E-E-A-T (Experience, Expertise, Authority, Trust).
+ * Trang giới thiệu tác giả — Phạm Thanh Tùng, Nhà Hoạch Định, người sáng lập Farmstay.vn.
+ * E-E-A-T signal quan trọng: Google cần biết ai đứng sau nội dung.
  */
 import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
@@ -11,68 +11,43 @@ import { breadcrumbSchema } from "@/lib/schema";
 import type { WithContext, Person } from "schema-dts";
 
 export const metadata: Metadata = {
-  title: "Về tác giả | Farmstay.vn",
+  title: "Về tác giả — Phạm Thanh Tùng | Farmstay.vn",
   description:
-    "Gặp gỡ đội ngũ biên tập Farmstay.vn — những người đã đặt chân đến hàng trăm farmstay khắp Việt Nam để mang đến nội dung du lịch nông nghiệp chân thực nhất.",
+    "Phạm Thanh Tùng — Nhà Hoạch Định, người sáng lập Farmstay.vn. Chuyên gia hoạch định chiến lược nông nghiệp sinh thái và du lịch nông thôn Việt Nam.",
   openGraph: {
-    title: "Về tác giả | Farmstay.vn",
+    title: "Phạm Thanh Tùng — Nhà Hoạch Định | Farmstay.vn",
     description:
-      "Đội ngũ biên tập Farmstay.vn với hàng trăm lượt trải nghiệm farmstay thực tế khắp Việt Nam.",
-    type: "website",
+      "Người sáng lập Farmstay.vn — nền tảng du lịch nông nghiệp đích thực Việt Nam.",
+    type: "profile",
   },
 };
 
-/** Danh sách tác giả biên tập */
-const authors = [
-  {
-    slug: "ban-bien-tap",
-    name: "Ban Biên Tập Farmstay.vn",
-    title: "Đội ngũ nội dung",
-    bio: "Nhóm biên tập Farmstay.vn gồm những người yêu thích du lịch nông nghiệp, đã trực tiếp trải nghiệm và đánh giá hàng trăm farmstay khắp Việt Nam — từ núi rừng Hà Giang đến đồng bằng sông Cửu Long. Mỗi bài viết được thẩm định bởi người đã ở thực tế tại đó.",
-    expertise: ["Du lịch nông nghiệp", "Review farmstay", "Văn hoá bản địa"],
-    icon: "🌿",
-    articlesCount: 120,
-  },
-  {
-    slug: "chuyen-gia-phap-ly",
-    name: "Chuyên gia Pháp lý",
-    title: "Tư vấn pháp luật nông nghiệp",
-    bio: "Đội ngũ tư vấn pháp lý chuyên về luật đất đai, mô hình kinh doanh nông nghiệp và các quy định liên quan đến farmstay tại Việt Nam. Nội dung pháp lý được cập nhật theo từng thông tư, nghị định mới nhất.",
-    expertise: ["Luật đất đai", "Pháp lý farmstay", "Mô hình kinh doanh"],
-    icon: "⚖️",
-    articlesCount: 45,
-  },
-  {
-    slug: "chuyen-gia-van-hanh",
-    name: "Chuyên gia Vận hành",
-    title: "Tư vấn quản lý farmstay",
-    bio: "Những chuyên gia có kinh nghiệm thực tế vận hành farmstay từ 5–15 năm, chia sẻ kiến thức về quản lý đặt phòng, dịch vụ khách hàng, vận hành mùa vụ và phát triển bền vững.",
-    expertise: ["Quản lý đặt phòng", "Vận hành mùa vụ", "Phát triển bền vững"],
-    icon: "🏡",
-    articlesCount: 67,
-  },
-];
-
-const authorSchemas: WithContext<Person>[] = authors.map((author) => ({
+const founderSchema: WithContext<Person> = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: author.name,
-  jobTitle: author.title,
-  description: author.bio,
-  url: `https://farmstay.vn/tac-gia/${author.slug}`,
-  worksFor: {
-    "@type": "Organization",
-    name: "Farmstay.vn",
-    url: "https://farmstay.vn",
-  },
-}));
+  name: "Phạm Thanh Tùng",
+  alternateName: "Nhà Hoạch Định",
+  jobTitle: "Người sáng lập & Nhà Hoạch Định",
+  description:
+    "Người sáng lập Farmstay.vn — nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam. Chuyên gia hoạch định chiến lược nông nghiệp sinh thái và phát triển du lịch nông thôn bền vững.",
+  url: "https://farmstay.vn/ve-tac-gia",
+  sameAs: ["https://nhahoachdinh.vn"],
+};
 
 const schemas = [
-  ...authorSchemas,
+  founderSchema,
   breadcrumbSchema([
     { name: "Trang chủ", url: "/" },
     { name: "Về tác giả", url: "/ve-tac-gia" },
   ]),
+];
+
+const expertise = [
+  "Hoạch định chiến lược",
+  "Nông nghiệp sinh thái",
+  "Du lịch nông thôn",
+  "Phát triển bền vững",
+  "Mô hình farmstay",
 ];
 
 export default function VeTacGiaPage() {
@@ -102,24 +77,31 @@ export default function VeTacGiaPage() {
                 textTransform: "uppercase",
               }}
             >
-              Đội ngũ biên tập
+              Người sáng lập
             </p>
             <h1
               style={{
                 fontFamily: "var(--font-playfair), serif",
-                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                fontSize: "clamp(2rem, 5vw, 3rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                lineHeight: 1.2,
+                lineHeight: 1.15,
+                marginBottom: 12,
+              }}
+            >
+              Phạm Thanh Tùng
+            </h1>
+            <p
+              style={{
+                fontFamily: "var(--font-playfair), serif",
+                fontSize: "1.1rem",
+                fontStyle: "italic",
+                color: "var(--gold)",
                 marginBottom: 20,
               }}
             >
-              Những người viết về farmstay
-              <br />
-              <span style={{ color: "var(--gold)", fontStyle: "italic" }}>
-                bằng trải nghiệm thực tế
-              </span>
-            </h1>
+              Nhà Hoạch Định
+            </p>
             <p
               style={{
                 color: "var(--text-muted)",
@@ -129,182 +111,220 @@ export default function VeTacGiaPage() {
                 margin: "0 auto",
               }}
             >
-              Mỗi bài viết trên Farmstay.vn được tạo ra bởi người đã sống, ăn,
-              ngủ tại farmstay — không phải bởi AI tổng hợp hay người viết chưa
-              từng đặt chân đến.
+              Người xây dựng Farmstay.vn từ ý tưởng đến nền tảng — với niềm tin
+              rằng du lịch nông nghiệp đích thực là tương lai của du lịch Việt
+              Nam.
             </p>
           </div>
         </section>
 
         <div
-          style={{
-            maxWidth: 1000,
-            margin: "0 auto",
-            padding: "48px 24px 80px",
-          }}
+          style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px 80px" }}
         >
           <BreadcrumbNav
             items={[{ name: "Về tác giả", href: "/ve-tac-gia" }]}
           />
 
-          {/* Tác giả cards */}
-          <div
+          {/* Profile card chính */}
+          <article
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 32,
+              background: "var(--bg-card)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              padding: "48px",
               marginTop: 16,
             }}
           >
-            {authors.map((author) => (
-              <article
-                key={author.slug}
+            {/* Avatar + tên */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 28,
+                marginBottom: 36,
+                flexWrap: "wrap",
+              }}
+            >
+              <div
+                aria-hidden="true"
                 style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                  borderRadius: "var(--radius)",
-                  padding: "36px 40px",
-                  display: "grid",
-                  gridTemplateColumns: "auto 1fr",
-                  gap: 32,
-                  alignItems: "start",
+                  width: 96,
+                  height: 96,
+                  borderRadius: "50%",
+                  background: "var(--gold-dim)",
+                  border: "2px solid var(--gold-border)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "2.8rem",
+                  flexShrink: 0,
                 }}
               >
-                {/* Avatar icon */}
-                <div
-                  aria-hidden="true"
+                🌿
+              </div>
+              <div>
+                <h2
                   style={{
-                    width: 72,
-                    height: 72,
-                    borderRadius: "50%",
-                    background: "var(--gold-dim)",
-                    border: "2px solid var(--gold-border)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "2rem",
-                    flexShrink: 0,
+                    fontFamily: "var(--font-playfair), serif",
+                    fontSize: "1.6rem",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    marginBottom: 4,
                   }}
                 >
-                  {author.icon}
-                </div>
+                  Phạm Thanh Tùng
+                </h2>
+                <p
+                  style={{
+                    color: "var(--gold)",
+                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    marginBottom: 8,
+                  }}
+                >
+                  Nhà Hoạch Định · Người sáng lập Farmstay.vn
+                </p>
+                <a
+                  href="https://nhahoachdinh.vn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "var(--text-dim)",
+                    fontSize: "0.82rem",
+                    textDecoration: "underline",
+                    textUnderlineOffset: 3,
+                  }}
+                >
+                  nhahoachdinh.vn ↗
+                </a>
+              </div>
+            </div>
 
-                {/* Info */}
-                <div>
-                  <h2
-                    style={{
-                      fontFamily: "var(--font-playfair), serif",
-                      fontSize: "1.3rem",
-                      fontWeight: 700,
-                      color: "var(--text-primary)",
-                      marginBottom: 4,
-                    }}
-                  >
-                    <a
-                      href={`/tac-gia/${author.slug}`}
-                      style={{
-                        color: "inherit",
-                        textDecoration: "none",
-                        transition: "color 0.2s",
-                      }}
-                    >
-                      {author.name}
-                    </a>
-                  </h2>
-                  <p
-                    style={{
-                      color: "var(--gold)",
-                      fontSize: "0.82rem",
-                      fontWeight: 600,
-                      marginBottom: 12,
-                    }}
-                  >
-                    {author.title} · {author.articlesCount} bài viết
-                  </p>
-                  <p
-                    style={{
-                      color: "var(--text-muted)",
-                      fontSize: "0.92rem",
-                      lineHeight: 1.7,
-                      marginBottom: 16,
-                    }}
-                  >
-                    {author.bio}
-                  </p>
+            {/* Bio */}
+            <div
+              style={{
+                borderTop: "1px solid var(--border)",
+                paddingTop: 32,
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+              }}
+            >
+              <p
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.8,
+                }}
+              >
+                Phạm Thanh Tùng là người sáng lập và Nhà Hoạch Định đứng sau
+                Farmstay.vn — nền tảng kết nối du khách với farmstay xác minh
+                khắp Việt Nam. Với tư duy hoạch định chiến lược dài hạn, ông xây
+                dựng Farmstay.vn không chỉ là một trang đặt phòng, mà là hệ sinh
+                thái thông tin đáng tin cậy cho cả du khách lẫn chủ farmstay.
+              </p>
+              <p
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.8,
+                }}
+              >
+                Mọi nội dung trên Farmstay.vn — từ bài review thực tế, hướng dẫn
+                pháp lý, đến chiến lược vận hành — đều được hoạch định theo một
+                tiêu chuẩn biên tập nhất quán: chính xác, có chiều sâu, và có
+                giá trị thực cho người đọc.
+              </p>
+            </div>
 
-                  {/* Expertise tags */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                    {author.expertise.map((tag) => (
-                      <span
-                        key={tag}
-                        style={{
-                          background: "rgba(212,168,83,0.1)",
-                          border: "1px solid var(--gold-border)",
-                          color: "var(--gold)",
-                          fontSize: "0.75rem",
-                          fontWeight: 600,
-                          padding: "4px 12px",
-                          borderRadius: 20,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+            {/* Expertise tags */}
+            <div
+              style={{
+                marginTop: 28,
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 10,
+              }}
+            >
+              {expertise.map((tag) => (
+                <span
+                  key={tag}
+                  style={{
+                    background: "rgba(212,168,83,0.1)",
+                    border: "1px solid var(--gold-border)",
+                    color: "var(--gold)",
+                    fontSize: "0.78rem",
+                    fontWeight: 600,
+                    padding: "5px 14px",
+                    borderRadius: 20,
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
 
-                  <a
-                    href={`/tac-gia/${author.slug}`}
-                    style={{
-                      display: "inline-block",
-                      marginTop: 20,
-                      color: "var(--text-dim)",
-                      fontSize: "0.82rem",
-                      textDecoration: "underline",
-                      textUnderlineOffset: 3,
-                    }}
-                    aria-label={`Xem tất cả bài viết của ${author.name}`}
-                  >
-                    Xem tất cả bài viết →
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+          {/* Các tác giả khác — placeholder */}
+          <section style={{ marginTop: 56 }} aria-label="Các tác giả khác">
+            <h2
+              style={{
+                fontFamily: "var(--font-playfair), serif",
+                fontSize: "1.2rem",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 8,
+              }}
+            >
+              Các tác giả & chuyên gia cộng tác
+            </h2>
+            <p
+              style={{
+                color: "var(--text-dim)",
+                fontSize: "0.9rem",
+                lineHeight: 1.7,
+              }}
+            >
+              Ngoài người sáng lập, Farmstay.vn cộng tác với các chuyên gia pháp
+              lý, vận hành, và những chủ farmstay có kinh nghiệm thực chiến.
+              Danh sách tác giả cộng tác sẽ được cập nhật tại đây.
+            </p>
+          </section>
 
           {/* CTA */}
           <section
             style={{
-              marginTop: 64,
+              marginTop: 48,
               background: "var(--bg-deep)",
               border: "1px solid var(--gold-border)",
               borderRadius: "var(--radius)",
               padding: "40px",
               textAlign: "center",
             }}
-            aria-label="Góp ý nội dung"
+            aria-label="Liên hệ"
           >
             <h2
               style={{
                 fontFamily: "var(--font-playfair), serif",
-                fontSize: "1.4rem",
+                fontSize: "1.3rem",
                 fontWeight: 700,
                 color: "var(--text-primary)",
                 marginBottom: 12,
               }}
             >
-              Bạn muốn đóng góp nội dung?
+              Muốn cộng tác hoặc góp ý?
             </h2>
             <p
               style={{
                 color: "var(--text-muted)",
                 fontSize: "0.92rem",
-                marginBottom: 24,
-                maxWidth: 480,
+                maxWidth: 460,
                 margin: "0 auto 24px",
+                lineHeight: 1.7,
               }}
             >
-              Nếu bạn là chủ farmstay, chuyên gia nông nghiệp hoặc đam mê du
-              lịch nông thôn, chúng tôi rất muốn nghe câu chuyện của bạn.
+              Nếu bạn là chuyên gia nông nghiệp, chủ farmstay, hoặc muốn đóng
+              góp nội dung có chiều sâu — hãy liên hệ trực tiếp.
             </p>
             <a
               href="/ve-chung-toi#lien-he"
@@ -320,7 +340,7 @@ export default function VeTacGiaPage() {
                 transition: "var(--transition)",
               }}
             >
-              Liên hệ biên tập
+              Liên hệ ngay
             </a>
           </section>
         </div>
