@@ -55,15 +55,26 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
           style={{
             width: "100%",
             height: 200,
-            background: "var(--bg-deep)",
+            background:
+              "linear-gradient(135deg, var(--bg-deep), var(--border))",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "var(--text-dim)",
-            fontSize: "2rem",
+            alignItems: "flex-end",
+            justifyContent: "flex-end",
+            padding: 12,
           }}
         >
-          🌿
+          {categoryLabel && (
+            <span
+              style={{
+                color: "var(--text-dim)",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+              }}
+            >
+              {categoryLabel}
+            </span>
+          )}
         </div>
       )}
 
