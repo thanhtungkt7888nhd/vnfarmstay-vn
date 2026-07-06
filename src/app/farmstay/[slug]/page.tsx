@@ -1,3 +1,7 @@
+/**
+ * Trang chi tiết farmstay — layout giàu nội dung: hero, story, activities, reviews, booking.
+ * Thiết kế để chủ farmstay tự hào khi nhìn hồ sơ của mình, khách muốn đặt ngay.
+ */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/shared/ui/Navbar";
@@ -23,16 +27,75 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!farmstay) return { title: "Không tìm thấy farmstay" };
   return buildMetadata({
     title: farmstay.name,
-    description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}. Giá từ ${formatPrice(farmstay.price)}/đêm.`,
+    description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}. Giá từ ${formatPrice(farmstay.price)}/đêm. Đặt phòng ngay trên Farmstay.vn.`,
     canonical: `/farmstay/${farmstay.slug}`,
-    keywords: [...farmstay.tags, farmstay.location, "farmstay"],
+    keywords: [...farmstay.tags, farmstay.location, "farmstay", "đặt phòng"],
   });
+}
+
+/** Tiện nghi mẫu theo loại farmstay */
+function getAmenities(tags: string[]): string[] {
+  const base = [
+    "Wifi miễn phí",
+    "Bãi đậu xe",
+    "Bữa sáng",
+    "Hướng dẫn viên nội bộ",
+  ];
+  const extras: Record<string, string[]> = {
+    "Cắm trại": ["Lều cắm trại", "Lửa trại tối", "Thiết bị trekking"],
+    Trekking: ["Bản đồ trail", "Gậy trekking", "Cứu thương cơ bản"],
+    "Cà phê": ["Thử cà phê tươi", "Tour rang xay", "Gift bag cà phê"],
+    "Lúa nước": ["Trải nghiệm cấy lúa", "Thu hoạch theo mùa", "Bếp dã ngoại"],
+    "Trái cây": [
+      "Hái trái cây tự do",
+      "Chế biến mứt",
+      "Giỏ trái cây chào mừng",
+    ],
+    "Sông nước": ["Thuyền tham quan", "Câu cá", "Bơi lội"],
+    "Chăn nuôi": ["Chăm sóc gia súc", "Vắt sữa bò", "Làm phó mát"],
+    "Văn hoá Mông": ["Trang phục dân tộc", "Múa xòe", "Chợ phiên"],
+  };
+  const found = new Set<string>(base);
+  tags.forEach((tag) => {
+    (extras[tag] ?? []).forEach((e) => found.add(e));
+  });
+  return Array.from(found).slice(0, 8);
+}
+
+/** Mock reviews theo rating */
+function getMockReviews(rating: number) {
+  return [
+    {
+      name: "Minh Phương",
+      avatar: "🌸",
+      date: "Tháng 3/2026",
+      stars: Math.min(5, Math.round(rating)),
+      text: "Tuyệt vời! Không khí trong lành, chủ nhà nhiệt tình và thân thiện. Buổi sáng thức dậy ngắm sương mù giữa vườn — cảm giác như đang ở một thế giới khác. Chắc chắn sẽ quay lại lần nữa.",
+    },
+    {
+      name: "Gia đình anh Tuấn",
+      avatar: "👨‍👩‍👧",
+      date: "Tháng 2/2026",
+      stars: Math.min(5, Math.round(rating)),
+      text: "Đưa hai con nhỏ đến đây — các bé thích lắm! Được tự tay hái rau, cho gà ăn, tối cùng nhau ngồi bên lửa. Đây mới là du lịch có ý nghĩa thật sự, không phải ngồi khách sạn nhìn điện thoại.",
+    },
+  ];
 }
 
 export default async function FarmstayDetailPage({ params }: Props) {
   const { slug } = await params;
   const farmstay = FARMSTAYS.find((f) => f.slug === slug);
   if (!farmstay) notFound();
+
+  const amenities = getAmenities(farmstay.tags);
+  const reviews = getMockReviews(farmstay.rating);
+
+  const regionLabel =
+    farmstay.region === "north"
+      ? "Miền Bắc"
+      : farmstay.region === "central"
+        ? "Miền Trung"
+        : "Miền Nam";
 
   const schemas = [
     farmstaySchema({
@@ -56,25 +119,56 @@ export default async function FarmstayDetailPage({ params }: Props) {
     <>
       <Navbar />
       <JsonLd schema={schemas} />
-      <main style={{ background: "var(--bg-deep)", minHeight: "80vh" }}>
-        {/* Hero image area */}
-        <div
-          style={{
-            height: 360,
-            background:
-              "linear-gradient(135deg, var(--bg-main), var(--bg-card))",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "6rem",
-            position: "relative",
-          }}
-        >
-          {farmstay.emoji}
+
+      <main style={{ background: "var(--bg-deep)" }}>
+        {/* ── HERO ── */}
+        <div style={{ position: "relative", height: 480, overflow: "hidden" }}>
+          {/* Background gradient theo vùng */}
           <div
             style={{
               position: "absolute",
-              bottom: 20,
+              inset: 0,
+              background:
+                farmstay.region === "north"
+                  ? "linear-gradient(135deg, #0f3020 0%, #1a5032 50%, #0d2518 100%)"
+                  : farmstay.region === "central"
+                    ? "linear-gradient(135deg, #1a2a0f, #2d4a1a, #162208)"
+                    : "linear-gradient(135deg, #0f2a1a, #1e4a2d, #0a1f10)",
+            }}
+          />
+          {/* Emoji lớn */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "10rem",
+              opacity: 0.18,
+              userSelect: "none",
+            }}
+          >
+            {farmstay.emoji}
+          </div>
+          {/* Overlay gradient bottom */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "60%",
+              background:
+                "linear-gradient(to top, rgba(15,35,24,0.95), transparent)",
+            }}
+          />
+          {/* Badges */}
+          <div
+            style={{
+              position: "absolute",
+              top: 24,
               left: 24,
               display: "flex",
               gap: 8,
@@ -84,10 +178,11 @@ export default async function FarmstayDetailPage({ params }: Props) {
               <span
                 key={b}
                 style={{
-                  padding: "4px 12px",
+                  padding: "5px 14px",
                   borderRadius: 4,
-                  fontSize: "0.72rem",
+                  fontSize: "0.7rem",
                   fontWeight: 700,
+                  letterSpacing: "0.08em",
                   background:
                     b === "verified"
                       ? "#2563eb"
@@ -95,146 +190,379 @@ export default async function FarmstayDetailPage({ params }: Props) {
                         ? "#b45309"
                         : "#7c3aed",
                   color: "#fff",
-                  letterSpacing: "0.05em",
                 }}
               >
                 {b === "verified"
-                  ? "XÁC MINH"
+                  ? "✓ XÁC MINH"
                   : b === "new"
                     ? "MỚI"
                     : "TIÊU BIỂU"}
               </span>
             ))}
           </div>
-        </div>
-
-        <div
-          className="grid-sidebar"
-          style={{
-            maxWidth: 960,
-            margin: "0 auto",
-            padding: "40px 24px",
-          }}
-        >
-          {/* Main content */}
-          <div>
-            <BreadcrumbNav
-              items={[
-                { name: "Tìm kiếm", href: "/tim-kiem" },
-                {
-                  name: farmstay.location,
-                  href: `/tim-kiem?q=${encodeURIComponent(farmstay.location)}`,
-                },
-              ]}
-            />
+          {/* Hero text — bottom left */}
+          <div
+            style={{ position: "absolute", bottom: 32, left: 32, right: 32 }}
+          >
             <p
               style={{
-                fontSize: "0.78rem",
-                color: "var(--text-dim)",
-                letterSpacing: "0.08em",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                color: "var(--gold)",
                 marginBottom: 8,
+                textTransform: "uppercase",
               }}
             >
-              {farmstay.location.toUpperCase()}
+              {farmstay.location} · {regionLabel}
             </p>
             <h1
               style={{
                 fontFamily: "var(--font-playfair),serif",
-                fontSize: "2rem",
+                fontSize: "clamp(1.8rem,4vw,2.8rem)",
                 fontWeight: 700,
-                lineHeight: 1.25,
-                marginBottom: 16,
+                color: "#fff",
+                lineHeight: 1.15,
+                marginBottom: 12,
+                maxWidth: 680,
               }}
             >
               {farmstay.name}
             </h1>
-
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: 16,
-                marginBottom: 28,
+                flexWrap: "wrap",
               }}
             >
-              <span style={{ color: "var(--gold)", fontWeight: 600 }}>
-                {farmstay.rating}★
+              <span
+                style={{
+                  color: "var(--gold)",
+                  fontWeight: 700,
+                  fontSize: "1rem",
+                }}
+              >
+                {"★".repeat(Math.round(farmstay.rating))} {farmstay.rating}
               </span>
-              <span style={{ color: "var(--text-dim)", fontSize: "0.85rem" }}>
+              <span
+                style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}
+              >
                 {farmstay.reviewCount} đánh giá
               </span>
-              <span style={{ color: "var(--border)" }}>·</span>
-              <span style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>
-                {farmstay.region === "north"
-                  ? "Miền Bắc"
-                  : farmstay.region === "central"
-                    ? "Miền Trung"
-                    : "Miền Nam"}
-              </span>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 8,
-                marginBottom: 32,
-              }}
-            >
-              {farmstay.tags.map((tag) => (
+              {farmstay.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
                   style={{
-                    padding: "6px 14px",
+                    padding: "3px 12px",
                     borderRadius: 20,
-                    background: "var(--gold-dim)",
-                    border: "1px solid var(--gold-border)",
-                    fontSize: "0.8rem",
-                    color: "var(--text-muted)",
+                    background: "rgba(255,255,255,0.1)",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    color: "rgba(255,255,255,0.8)",
+                    fontSize: "0.75rem",
                   }}
                 >
                   {tag}
                 </span>
               ))}
             </div>
+          </div>
+        </div>
 
-            <div
-              style={{ borderTop: "1px solid var(--border)", paddingTop: 28 }}
+        {/* ── BODY: 2-col layout ── */}
+        <div
+          style={{
+            maxWidth: 1100,
+            margin: "0 auto",
+            padding: "0 24px 80px",
+            display: "grid",
+            gridTemplateColumns: "1fr 340px",
+            gap: 48,
+            alignItems: "start",
+          }}
+          className="detail-grid"
+        >
+          {/* ── LEFT COLUMN ── */}
+          <div>
+            <div style={{ paddingTop: 36 }}>
+              <BreadcrumbNav
+                items={[
+                  { name: "Tìm kiếm", href: "/tim-kiem" },
+                  {
+                    name: farmstay.location,
+                    href: `/tim-kiem?q=${encodeURIComponent(farmstay.location)}`,
+                  },
+                ]}
+              />
+            </div>
+
+            {/* Story section */}
+            <section
+              style={{
+                marginTop: 8,
+                paddingBottom: 36,
+                borderBottom: "1px solid var(--border)",
+              }}
             >
               <h2
                 style={{
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
+                  fontFamily: "var(--font-playfair),serif",
+                  fontSize: "1.3rem",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
                   marginBottom: 16,
                 }}
               >
-                Về farmstay này
+                Câu chuyện của chúng tôi
               </h2>
               <p
                 style={{
                   color: "var(--text-muted)",
-                  lineHeight: 1.8,
-                  marginBottom: 16,
+                  lineHeight: 1.85,
+                  marginBottom: 14,
+                  fontSize: "0.95rem",
                 }}
               >
-                {farmstay.name} là một trong những địa điểm farmstay nổi bật
-                nhất tại {farmstay.province}. Với phong cảnh thiên nhiên tuyệt
-                đẹp và trải nghiệm nông nghiệp đích thực, đây là điểm đến lý
-                tưởng cho những ai muốn thoát khỏi nhịp sống đô thị.
+                {farmstay.name} ra đời từ tình yêu với mảnh đất{" "}
+                {farmstay.province} và mong muốn chia sẻ cuộc sống nông nghiệp
+                đích thực với những người đến từ thành phố. Không phải resort,
+                không phải show — đây là nơi bạn thật sự sống cùng đất, cùng
+                cây, cùng nhịp thở của tự nhiên.
               </p>
-              <p style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
-                Mỗi đêm nghỉ tại đây, bạn sẽ được trải nghiệm{" "}
+              <p
+                style={{
+                  color: "var(--text-muted)",
+                  lineHeight: 1.85,
+                  fontSize: "0.95rem",
+                }}
+              >
+                Mỗi mùa tại đây mang một sắc màu riêng —{" "}
                 <strong style={{ color: "var(--text-primary)" }}>
-                  {farmstay.tags.join(", ")}
+                  {farmstay.tags.slice(0, 2).join(", ")}
                 </strong>{" "}
-                — những hoạt động gắn liền với cuộc sống của người dân địa
-                phương.
+                là những trải nghiệm không thể bỏ lỡ. Chủ nhà luôn ở đây, sẵn
+                sàng dẫn bạn khám phá từng góc của nông trại.
               </p>
-            </div>
+            </section>
+
+            {/* Activities */}
+            <section
+              style={{
+                paddingTop: 32,
+                paddingBottom: 36,
+                borderBottom: "1px solid var(--border)",
+              }}
+            >
+              <h2
+                style={{
+                  fontFamily: "var(--font-playfair),serif",
+                  fontSize: "1.3rem",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  marginBottom: 20,
+                }}
+              >
+                Bạn sẽ trải nghiệm gì?
+              </h2>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+                  gap: 12,
+                }}
+              >
+                {farmstay.tags.map((tag) => (
+                  <div
+                    key={tag}
+                    style={{
+                      background: "var(--bg-card)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                      padding: "16px 20px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                    }}
+                  >
+                    <span style={{ fontSize: "1.4rem" }}>{farmstay.emoji}</span>
+                    <span
+                      style={{
+                        fontSize: "0.85rem",
+                        color: "var(--text-muted)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Amenities */}
+            <section
+              style={{
+                paddingTop: 32,
+                paddingBottom: 36,
+                borderBottom: "1px solid var(--border)",
+              }}
+            >
+              <h2
+                style={{
+                  fontFamily: "var(--font-playfair),serif",
+                  fontSize: "1.3rem",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  marginBottom: 20,
+                }}
+              >
+                Tiện nghi & Dịch vụ
+              </h2>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+                  gap: 12,
+                }}
+              >
+                {amenities.map((item) => (
+                  <div
+                    key={item}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      color: "var(--text-muted)",
+                      fontSize: "0.88rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "var(--gold)",
+                        fontWeight: 700,
+                        fontSize: "0.8rem",
+                      }}
+                    >
+                      ✓
+                    </span>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Reviews */}
+            <section style={{ paddingTop: 32 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 16,
+                  marginBottom: 24,
+                }}
+              >
+                <h2
+                  style={{
+                    fontFamily: "var(--font-playfair),serif",
+                    fontSize: "1.3rem",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  Đánh giá từ khách
+                </h2>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span
+                    style={{
+                      color: "var(--gold)",
+                      fontWeight: 700,
+                      fontSize: "1.1rem",
+                    }}
+                  >
+                    {farmstay.rating}★
+                  </span>
+                  <span
+                    style={{ color: "var(--text-dim)", fontSize: "0.82rem" }}
+                  >
+                    ({farmstay.reviewCount} đánh giá)
+                  </span>
+                </div>
+              </div>
+              <div
+                style={{ display: "flex", flexDirection: "column", gap: 20 }}
+              >
+                {reviews.map((r, i) => (
+                  <article
+                    key={i}
+                    style={{
+                      background: "var(--bg-card)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                      padding: "24px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
+                        marginBottom: 14,
+                      }}
+                    >
+                      <div
+                        aria-hidden="true"
+                        style={{
+                          width: 40,
+                          height: 40,
+                          borderRadius: "50%",
+                          background: "var(--gold-dim)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "1.2rem",
+                          flexShrink: 0,
+                        }}
+                      >
+                        {r.avatar}
+                      </div>
+                      <div>
+                        <p
+                          style={{
+                            fontWeight: 700,
+                            fontSize: "0.88rem",
+                            color: "var(--text-primary)",
+                          }}
+                        >
+                          {r.name}
+                        </p>
+                        <p
+                          style={{
+                            fontSize: "0.75rem",
+                            color: "var(--text-dim)",
+                          }}
+                        >
+                          {"★".repeat(r.stars)} · {r.date}
+                        </p>
+                      </div>
+                    </div>
+                    <p
+                      style={{
+                        color: "var(--text-muted)",
+                        fontSize: "0.88rem",
+                        lineHeight: 1.75,
+                      }}
+                    >
+                      {r.text}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </section>
           </div>
 
-          {/* Booking card */}
-          <div>
+          {/* ── RIGHT COLUMN: Booking card ── */}
+          <div style={{ paddingTop: 36 }}>
             <div
               style={{
                 background: "var(--bg-card)",
@@ -242,79 +570,146 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 border: "1px solid var(--border)",
                 padding: "28px",
                 position: "sticky",
-                top: 80,
+                top: 82,
+                boxShadow: "var(--shadow)",
               }}
             >
+              {/* Price */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "baseline",
                   gap: 6,
-                  marginBottom: 20,
+                  marginBottom: 6,
                 }}
               >
                 <span
                   style={{
-                    fontSize: "1.6rem",
+                    fontSize: "1.8rem",
                     fontWeight: 700,
                     color: "var(--gold)",
+                    fontFamily: "var(--font-playfair),serif",
                   }}
                 >
                   {formatPrice(farmstay.price)}
                 </span>
-                <span style={{ fontSize: "0.82rem", color: "var(--text-dim)" }}>
+                <span style={{ fontSize: "0.85rem", color: "var(--text-dim)" }}>
                   /đêm
                 </span>
               </div>
-
               <div
                 style={{
                   display: "flex",
-                  flexDirection: "column",
-                  gap: 12,
-                  marginBottom: 20,
+                  alignItems: "center",
+                  gap: 8,
+                  marginBottom: 24,
+                }}
+              >
+                <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>
+                  {"★".repeat(Math.round(farmstay.rating))}
+                </span>
+                <span style={{ color: "var(--text-dim)", fontSize: "0.78rem" }}>
+                  {farmstay.reviewCount} đánh giá
+                </span>
+              </div>
+
+              {/* Date pickers */}
+              <div
+                style={{
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--radius-sm)",
+                  overflow: "hidden",
+                  marginBottom: 12,
                 }}
               >
                 {[
-                  ["Nhận phòng", ""],
-                  ["Trả phòng", ""],
-                  ["Số khách", "1 khách"],
-                ].map(([label, val]) => (
-                  <div key={label}>
-                    <div
+                  { id: "checkin", label: "NHẬN PHÒNG", type: "date" },
+                  { id: "checkout", label: "TRẢ PHÒNG", type: "date" },
+                ].map((field, i) => (
+                  <div
+                    key={field.id}
+                    style={{
+                      padding: "12px 16px",
+                      borderBottom:
+                        i === 0 ? "1px solid var(--border)" : "none",
+                    }}
+                  >
+                    <label
+                      htmlFor={field.id}
                       style={{
-                        fontSize: "0.72rem",
-                        fontWeight: 600,
+                        display: "block",
+                        fontSize: "0.68rem",
+                        fontWeight: 700,
                         color: "var(--text-dim)",
-                        letterSpacing: "0.08em",
-                        marginBottom: 6,
+                        letterSpacing: "0.1em",
+                        marginBottom: 4,
                       }}
                     >
-                      {label.toUpperCase()}
-                    </div>
+                      {field.label}
+                    </label>
                     <input
-                      type={label.includes("phòng") ? "date" : "number"}
-                      defaultValue={val || undefined}
-                      min={label === "Số khách" ? 1 : undefined}
+                      id={field.id}
+                      type={field.type}
                       style={{
-                        width: "100%",
-                        padding: "10px 14px",
-                        borderRadius: "var(--radius-sm)",
-                        background: "rgba(255,255,255,0.04)",
-                        border: "1px solid var(--border)",
+                        background: "transparent",
+                        border: "none",
                         color: "var(--text-primary)",
-                        fontSize: "0.88rem",
+                        fontSize: "0.9rem",
                         outline: "none",
+                        width: "100%",
+                        cursor: "pointer",
                       }}
                     />
                   </div>
                 ))}
               </div>
 
+              {/* Guests */}
+              <div
+                style={{
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--radius-sm)",
+                  padding: "12px 16px",
+                  marginBottom: 20,
+                }}
+              >
+                <label
+                  htmlFor="guests"
+                  style={{
+                    display: "block",
+                    fontSize: "0.68rem",
+                    fontWeight: 700,
+                    color: "var(--text-dim)",
+                    letterSpacing: "0.1em",
+                    marginBottom: 4,
+                  }}
+                >
+                  SỐ KHÁCH
+                </label>
+                <select
+                  id="guests"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem",
+                    outline: "none",
+                    width: "100%",
+                    cursor: "pointer",
+                  }}
+                >
+                  {[1, 2, 3, 4, 5, 6, 8, 10].map((n) => (
+                    <option key={n} value={n}>
+                      {n} khách
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <button
                 style={{
                   width: "100%",
-                  padding: "14px",
+                  padding: "15px",
                   borderRadius: 20,
                   background: "var(--gold)",
                   color: "var(--bg-deep)",
@@ -324,23 +719,158 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   cursor: "pointer",
                   marginBottom: 12,
                   transition: "var(--transition)",
+                  letterSpacing: "0.02em",
                 }}
               >
-                Đặt ngay
+                Đặt phòng ngay
               </button>
+
+              <button
+                style={{
+                  width: "100%",
+                  padding: "13px",
+                  borderRadius: 20,
+                  background: "transparent",
+                  color: "var(--text-muted)",
+                  fontWeight: 600,
+                  fontSize: "0.88rem",
+                  border: "1px solid var(--border)",
+                  cursor: "pointer",
+                  marginBottom: 16,
+                  transition: "var(--transition)",
+                }}
+              >
+                Liên hệ chủ farmstay
+              </button>
+
               <p
                 style={{
-                  fontSize: "0.75rem",
+                  fontSize: "0.73rem",
                   color: "var(--text-dim)",
                   textAlign: "center",
+                  marginBottom: 20,
                 }}
               >
-                Miễn phí huỷ phòng trước 48 giờ
+                Miễn phí huỷ phòng trước 48 giờ · Xác nhận trong 2h
               </p>
+
+              {/* Price breakdown hint */}
+              <div
+                style={{
+                  borderTop: "1px solid var(--border)",
+                  paddingTop: 16,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                }}
+              >
+                {[
+                  [
+                    `${formatPrice(farmstay.price)} × 2 đêm`,
+                    formatPrice(farmstay.price * 2),
+                  ],
+                  [
+                    "Phí dịch vụ",
+                    formatPrice(Math.round(farmstay.price * 0.12)),
+                  ],
+                ].map(([label, val]) => (
+                  <div
+                    key={label}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      fontSize: "0.82rem",
+                      color: "var(--text-dim)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        textDecoration: "underline",
+                        textDecorationStyle: "dotted",
+                      }}
+                    >
+                      {label}
+                    </span>
+                    <span>{val}</span>
+                  </div>
+                ))}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: "0.9rem",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    paddingTop: 8,
+                    borderTop: "1px solid var(--border)",
+                  }}
+                >
+                  <span>Tổng cộng</span>
+                  <span>
+                    {formatPrice(
+                      farmstay.price * 2 + Math.round(farmstay.price * 0.12)
+                    )}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Owner contact card */}
+            <div
+              style={{
+                marginTop: 16,
+                background: "var(--bg-card)",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius-sm)",
+                padding: "20px 24px",
+                display: "flex",
+                alignItems: "center",
+                gap: 14,
+              }}
+            >
+              <div
+                aria-hidden="true"
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: "50%",
+                  background: "var(--gold-dim)",
+                  border: "1px solid var(--gold-border)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "1.5rem",
+                  flexShrink: 0,
+                }}
+              >
+                {farmstay.emoji}
+              </div>
+              <div>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    marginBottom: 2,
+                  }}
+                >
+                  Chủ farmstay
+                </p>
+                <p style={{ fontSize: "0.75rem", color: "var(--text-dim)" }}>
+                  Tỷ lệ phản hồi 98% · Thường trả lời trong 1 giờ
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </main>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .detail-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+
       <Footer />
     </>
   );

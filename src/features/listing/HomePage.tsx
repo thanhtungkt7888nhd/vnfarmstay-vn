@@ -63,23 +63,31 @@ const AMENITIES = [
 
 interface Props {
   farmstays: Farmstay[];
+  initialQuery?: string;
 }
 
-export function HomePage({ farmstays }: Props) {
+export function HomePage({ farmstays, initialQuery = "" }: Props) {
   const [activeChip, setActiveChip] = useState("all");
   const [region, setRegion] = useState("all");
   const [maxPrice, setMaxPrice] = useState(5000000);
   const [minRating, setMinRating] = useState(4);
+  const [query, setQuery] = useState(initialQuery);
 
   const filtered = useMemo(() => {
+    const q = query.toLowerCase().trim();
     return farmstays.filter((f) => {
       if (region !== "all" && f.region !== region) return false;
       if (f.price > maxPrice) return false;
       if (f.rating < minRating) return false;
       if (activeChip === "new" && !f.badges.includes("new")) return false;
+      if (q) {
+        const hay =
+          `${f.name} ${f.location} ${f.province} ${f.tags.join(" ")}`.toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
       return true;
     });
-  }, [farmstays, region, maxPrice, minRating, activeChip]);
+  }, [farmstays, region, maxPrice, minRating, activeChip, query]);
 
   return (
     <>
@@ -147,11 +155,17 @@ export function HomePage({ farmstays }: Props) {
           role="search"
           onSubmit={(e) => {
             e.preventDefault();
-            const input = (
-              e.currentTarget.elements.namedItem("q") as HTMLInputElement
-            )?.value;
-            if (input)
-              window.location.href = `/tim-kiem?q=${encodeURIComponent(input)}`;
+            const input =
+              (e.currentTarget.elements.namedItem("q") as HTMLInputElement)
+                ?.value ?? "";
+            setQuery(input);
+            if (typeof window !== "undefined") {
+              const url = new URL(window.location.href);
+              url.searchParams.set("q", input);
+              window.history.replaceState(null, "", url.toString());
+            }
+            const el = document.getElementById("main");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
           }}
           style={{
             display: "flex",
@@ -170,6 +184,7 @@ export function HomePage({ farmstays }: Props) {
             id="searchInput"
             name="q"
             type="search"
+            defaultValue={initialQuery}
             placeholder="Tìm farmstay, vùng đất, trải nghiệm…"
             autoComplete="off"
             style={{
