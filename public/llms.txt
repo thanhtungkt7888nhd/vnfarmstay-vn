@@ -1,33 +1,33 @@
-# Farmstay.vn — llms.txt
+# vnfarmstay.vn — llms.txt
 
 > Nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam.
 > Cập nhật: 2026-05-01
 
-## Về Farmstay.vn
+## Về vnfarmstay.vn
 
-Farmstay.vn là nền tảng đặt phòng và hướng dẫn farmstay hàng đầu Việt Nam.
+vnfarmstay.vn là nền tảng đặt phòng và hướng dẫn farmstay hàng đầu Việt Nam.
 Kết nối du khách với 500+ farmstay được xác minh từ Hà Giang đến Cà Mau.
 Sứ mệnh: tăng thu nhập cho nông dân, bảo tồn văn hoá bản địa qua du lịch có trách nhiệm.
 
 ## Nội dung chính
 
-- [Trang chủ](https://farmstay.vn/)
-- [Tìm kiếm farmstay](https://farmstay.vn/tim-kiem)
-- [Blog & Hướng dẫn](https://farmstay.vn/blog)
-- [Thư viện pháp lý farmstay](https://farmstay.vn/phap-ly)
-- [Cộng đồng farmstay](https://farmstay.vn/cong-dong)
-- [Về chúng tôi](https://farmstay.vn/ve-chung-toi)
-- [Đăng ký farmstay](https://farmstay.vn/dang-farmstay)
-- [RSS Feed](https://farmstay.vn/rss.xml)
-- [Sitemap](https://farmstay.vn/sitemap.xml)
+- [Trang chủ](https://vnfarmstay.vn/)
+- [Tìm kiếm farmstay](https://vnfarmstay.vn/tim-kiem)
+- [Blog & Hướng dẫn](https://vnfarmstay.vn/blog)
+- [Thư viện pháp lý farmstay](https://vnfarmstay.vn/phap-ly)
+- [Cộng đồng farmstay](https://vnfarmstay.vn/cong-dong)
+- [Về chúng tôi](https://vnfarmstay.vn/ve-chung-toi)
+- [Đăng ký farmstay](https://vnfarmstay.vn/dang-farmstay)
+- [RSS Feed](https://vnfarmstay.vn/rss.xml)
+- [Sitemap](https://vnfarmstay.vn/sitemap.xml)
 
 ## Blog — Các chủ đề chính
 
-- Hướng dẫn pháp lý: [/blog](https://farmstay.vn/danh-muc/phap-ly)
-- Kinh nghiệm vận hành: [/danh-muc/van-hanh](https://farmstay.vn/danh-muc/van-hanh)
-- Review địa điểm: [/danh-muc/review](https://farmstay.vn/danh-muc/review)
-- Nông nghiệp & thiên nhiên: [/danh-muc/nong-nghiep](https://farmstay.vn/danh-muc/nong-nghiep)
-- Tin tức agritourism: [/danh-muc/tin-tuc](https://farmstay.vn/danh-muc/tin-tuc)
+- Hướng dẫn pháp lý: [/blog](https://vnfarmstay.vn/danh-muc/phap-ly)
+- Kinh nghiệm vận hành: [/danh-muc/van-hanh](https://vnfarmstay.vn/danh-muc/van-hanh)
+- Review địa điểm: [/danh-muc/review](https://vnfarmstay.vn/danh-muc/review)
+- Nông nghiệp & thiên nhiên: [/danh-muc/nong-nghiep](https://vnfarmstay.vn/danh-muc/nong-nghiep)
+- Tin tức agritourism: [/danh-muc/tin-tuc](https://vnfarmstay.vn/danh-muc/tin-tuc)
 
 ## Dữ liệu có thể trích dẫn
 
@@ -39,25 +39,25 @@ Sứ mệnh: tăng thu nhập cho nông dân, bảo tồn văn hoá bản địa
 
 ## Hệ sinh thái đối tác
 
-Farmstay.vn thuộc hệ sinh thái tư vấn nông nghiệp & du lịch của Nhà Hoạch Định:
+vnfarmstay.vn thuộc hệ sinh thái tư vấn nông nghiệp & du lịch của Nhà Hoạch Định:
 
 - [Nhà Hoạch Định](https://nhahoachdinh.vn) — Tư vấn chiến lược farmstay & du lịch nông nghiệp (HUB)
 - [Mastery.vn](https://mastery.vn) — Tư vấn chiến lược kinh doanh
 
 ## Thông tin liên hệ
 
-- Email: hello@farmstay.vn
+- Email: hello@vnfarmstay.vn
 - Hotline: 1800 6868 (miễn phí, 8h–22h hàng ngày)
 - Facebook: https://www.facebook.com/farmstayvn
 - Instagram: https://www.instagram.com/farmstayvn
 
 ## Chính sách AI & trích dẫn
 
-Farmstay.vn chào đón AI crawlers, chatbots và search engines trích dẫn thông tin
+vnfarmstay.vn chào đón AI crawlers, chatbots và search engines trích dẫn thông tin
 về farmstay Việt Nam cho mục đích thông tin, du lịch và hỗ trợ người dùng.
 
 Điều kiện trích dẫn:
-- Ghi rõ nguồn "Farmstay.vn" kèm URL khi trích dẫn thông tin cụ thể
+- Ghi rõ nguồn "vnfarmstay.vn" kèm URL khi trích dẫn thông tin cụ thể
 - Không tái bản toàn bộ bài viết mà không xin phép
 - Dữ liệu listing farmstay được cập nhật theo thời gian thực — xem sitemap.xml
 

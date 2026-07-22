@@ -1,4 +1,4 @@
-name: CI — Farmstay.vn
+name: CI — vnfarmstay.vn
 
 on:
   push:
@@ -70,8 +70,8 @@ jobs:
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            https://farmstay.vn/
-            https://farmstay.vn/tim-kiem
+            https://vnfarmstay.vn/
+            https://vnfarmstay.vn/tim-kiem
           budgetPath: .github/lighthouse-budget.json
           uploadArtifacts: true
         continue-on-error: true

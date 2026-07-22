@@ -1,4 +1,4 @@
-# Architecture — farmstay.vn
+# Architecture — vnfarmstay.vn
 
 ## Stack
 - **Framework:** Next.js 16 (App Router)

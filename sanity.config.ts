@@ -11,8 +11,8 @@ const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "placeholder";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
 
 export default defineConfig({
-  name: "farmstay-vn",
-  title: "Farmstay.vn CMS",
+  name: "vnfarmstay-vn",
+  title: "vnfarmstay.vn CMS",
   projectId,
   dataset,
   basePath: "/studio",

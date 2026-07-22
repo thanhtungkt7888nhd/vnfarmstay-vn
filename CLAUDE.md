@@ -1,4 +1,4 @@
-# FARMSTAY.VN — HƯỚNG DẪN CHO CLAUDE CODE
+# VNFARMSTAY.VN — HƯỚNG DẪN CHO CLAUDE CODE
 
 ## DỰ ÁN
 
@@ -79,7 +79,7 @@ REVALIDATE_SECRET=...
 SANITY_WEBHOOK_SECRET=...   # Sanity webhook HMAC signing secret
 
 # IndexNow (Bing/Yandex/CocCoc)
-INDEXNOW_KEY=farmstay2026indexnow
+INDEXNOW_KEY=vnfarmstay2026indexnow
 
 # Analytics
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
