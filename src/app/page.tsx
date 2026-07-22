@@ -5,10 +5,10 @@ import { HomePage } from "@/features/listing/HomePage";
 import { FARMSTAYS } from "@/features/listing/data";
 
 export const metadata: Metadata = {
-  title: "Farmstay.vn – Khám phá trải nghiệm nông nghiệp đích thực Việt Nam",
+  title: "vnfarmstay.vn – Khám phá trải nghiệm nông nghiệp đích thực Việt Nam",
   description:
     "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau.",
-  alternates: { canonical: "https://farmstay.vn/" },
+  alternates: { canonical: "https://vnfarmstay.vn/" },
 };
 
 export default function Home() {

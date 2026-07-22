@@ -3,22 +3,22 @@ import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 
 export const metadata: Metadata = {
-  title: "Điều khoản sử dụng – Farmstay.vn",
+  title: "Điều khoản sử dụng – vnfarmstay.vn",
   description:
-    "Điều khoản sử dụng dịch vụ Farmstay.vn — quyền và nghĩa vụ của người dùng, chủ farmstay, và nền tảng.",
-  alternates: { canonical: "https://farmstay.vn/dieu-khoan" },
+    "Điều khoản sử dụng dịch vụ vnfarmstay.vn — quyền và nghĩa vụ của người dùng, chủ farmstay, và nền tảng.",
+  alternates: { canonical: "https://vnfarmstay.vn/dieu-khoan" },
 };
 
 const SECTIONS = [
   {
     title: "1. Chấp nhận điều khoản",
     content:
-      "Bằng cách truy cập và sử dụng Farmstay.vn, bạn đồng ý tuân thủ và bị ràng buộc bởi các Điều khoản sử dụng này. Nếu bạn không đồng ý với bất kỳ phần nào, vui lòng không sử dụng dịch vụ.",
+      "Bằng cách truy cập và sử dụng vnfarmstay.vn, bạn đồng ý tuân thủ và bị ràng buộc bởi các Điều khoản sử dụng này. Nếu bạn không đồng ý với bất kỳ phần nào, vui lòng không sử dụng dịch vụ.",
   },
   {
     title: "2. Mô tả dịch vụ",
     content:
-      "Farmstay.vn là nền tảng kết nối du khách với chủ farmstay tại Việt Nam. Chúng tôi cung cấp công cụ tìm kiếm, đặt phòng, và quản lý farmstay — không trực tiếp cung cấp dịch vụ lưu trú.",
+      "vnfarmstay.vn là nền tảng kết nối du khách với chủ farmstay tại Việt Nam. Chúng tôi cung cấp công cụ tìm kiếm, đặt phòng, và quản lý farmstay — không trực tiếp cung cấp dịch vụ lưu trú.",
   },
   {
     title: "3. Tài khoản người dùng",
@@ -33,27 +33,27 @@ const SECTIONS = [
   {
     title: "5. Phí và thanh toán",
     content:
-      "Farmstay.vn thu phí hoa hồng trên mỗi đặt phòng thành công theo tỷ lệ đã thông báo. Đăng ký farmstay hoàn toàn miễn phí. Phí sẽ được khấu trừ trực tiếp từ thanh toán của khách.",
+      "vnfarmstay.vn thu phí hoa hồng trên mỗi đặt phòng thành công theo tỷ lệ đã thông báo. Đăng ký farmstay hoàn toàn miễn phí. Phí sẽ được khấu trừ trực tiếp từ thanh toán của khách.",
   },
   {
     title: "6. Chính sách huỷ phòng",
     content:
-      "Chính sách huỷ phòng do từng chủ farmstay quy định và được hiển thị rõ trên trang farmstay. Farmstay.vn hỗ trợ xử lý hoàn tiền theo chính sách đã đăng ký.",
+      "Chính sách huỷ phòng do từng chủ farmstay quy định và được hiển thị rõ trên trang farmstay. vnfarmstay.vn hỗ trợ xử lý hoàn tiền theo chính sách đã đăng ký.",
   },
   {
     title: "7. Giới hạn trách nhiệm",
     content:
-      "Farmstay.vn không chịu trách nhiệm về chất lượng dịch vụ thực tế tại farmstay, thiệt hại phát sinh từ thông tin sai lệch do chủ farmstay cung cấp, hoặc sự cố nằm ngoài tầm kiểm soát.",
+      "vnfarmstay.vn không chịu trách nhiệm về chất lượng dịch vụ thực tế tại farmstay, thiệt hại phát sinh từ thông tin sai lệch do chủ farmstay cung cấp, hoặc sự cố nằm ngoài tầm kiểm soát.",
   },
   {
     title: "8. Sở hữu trí tuệ",
     content:
-      "Toàn bộ nội dung trên Farmstay.vn (logo, hình ảnh, văn bản, code) thuộc quyền sở hữu của Farmstay.vn hoặc đối tác được cấp phép. Nghiêm cấm sao chép, phân phối khi chưa được phép.",
+      "Toàn bộ nội dung trên vnfarmstay.vn (logo, hình ảnh, văn bản, code) thuộc quyền sở hữu của vnfarmstay.vn hoặc đối tác được cấp phép. Nghiêm cấm sao chép, phân phối khi chưa được phép.",
   },
   {
     title: "9. Thay đổi điều khoản",
     content:
-      "Farmstay.vn có quyền cập nhật Điều khoản này bất kỳ lúc nào. Thay đổi quan trọng sẽ được thông báo qua email đăng ký. Tiếp tục sử dụng sau thông báo nghĩa là bạn chấp nhận điều khoản mới.",
+      "vnfarmstay.vn có quyền cập nhật Điều khoản này bất kỳ lúc nào. Thay đổi quan trọng sẽ được thông báo qua email đăng ký. Tiếp tục sử dụng sau thông báo nghĩa là bạn chấp nhận điều khoản mới.",
   },
   {
     title: "10. Luật áp dụng",

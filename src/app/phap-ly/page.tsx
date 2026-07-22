@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Thư viện Pháp lý Farmstay",
   description:
     "Hướng dẫn pháp lý đầy đủ cho chủ farmstay Việt Nam — giấy phép, quy định đất nông nghiệp, kinh doanh lưu trú.",
-  alternates: { canonical: "https://farmstay.vn/phap-ly" },
+  alternates: { canonical: "https://vnfarmstay.vn/phap-ly" },
 };
 
 const LEGAL_DOCS = [
@@ -202,8 +202,8 @@ export default function PhapLyPage() {
                 lineHeight: 1.7,
               }}
             >
-              Đội ngũ chuyên gia của Farmstay.vn sẵn sàng hỗ trợ bạn từng bước —
-              từ lập hồ sơ đến vận hành hợp pháp.
+              Đội ngũ chuyên gia của vnfarmstay.vn sẵn sàng hỗ trợ bạn từng bước
+              — từ lập hồ sơ đến vận hành hợp pháp.
             </p>
             <a
               href="/ve-chung-toi#lien-he"

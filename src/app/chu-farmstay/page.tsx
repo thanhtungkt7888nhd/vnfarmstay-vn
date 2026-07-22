@@ -12,7 +12,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Dành cho Chủ Farmstay — Đưa farm của bạn lên Farmstay.vn",
+  title: "Dành cho Chủ Farmstay — Đưa farm của bạn lên vnfarmstay.vn",
   description:
     "Nền tảng farmstay hàng đầu Việt Nam. Miễn phí đăng ký, tiếp cận 50.000+ du khách mỗi tháng. Công cụ quản lý đặt phòng, analytics và hỗ trợ 24/7 cho chủ farmstay.",
   canonical: "/chu-farmstay",
@@ -37,7 +37,7 @@ const steps = [
     num: "01",
     icon: "📋",
     title: "Đăng ký miễn phí",
-    desc: "Điền thông tin cơ bản về farmstay trong 10 phút. Đội ngũ Farmstay.vn liên hệ hỗ trợ trong 24h.",
+    desc: "Điền thông tin cơ bản về farmstay trong 10 phút. Đội ngũ vnfarmstay.vn liên hệ hỗ trợ trong 24h.",
   },
   {
     num: "02",
@@ -72,7 +72,7 @@ const benefits = [
   {
     icon: "🛡️",
     title: "Hỗ trợ pháp lý & vận hành",
-    desc: "Thư viện kiến thức về giấy phép, bảo hiểm, định giá và vận hành farmstay chuẩn — chỉ có trên Farmstay.vn.",
+    desc: "Thư viện kiến thức về giấy phép, bảo hiểm, định giá và vận hành farmstay chuẩn — chỉ có trên vnfarmstay.vn.",
   },
   {
     icon: "💬",
@@ -125,7 +125,7 @@ const pricing = [
 
 const faqs = [
   {
-    q: "Farmstay.vn lấy phí như thế nào?",
+    q: "vnfarmstay.vn lấy phí như thế nào?",
     a: "Đăng ký và tạo trang giới thiệu hoàn toàn miễn phí. Chúng tôi chỉ thu 8% hoa hồng trên mỗi đặt phòng thành công qua nền tảng. Không phí ẩn, không phí hàng tháng.",
   },
   {
@@ -134,7 +134,7 @@ const faqs = [
   },
   {
     q: "Mất bao lâu để farmstay xuất hiện trên nền tảng?",
-    a: "Sau khi đăng ký, đội ngũ Farmstay.vn liên hệ trong 24h. Sau khi xác minh thực địa (3–5 ngày), farmstay của bạn lên sóng ngay.",
+    a: "Sau khi đăng ký, đội ngũ vnfarmstay.vn liên hệ trong 24h. Sau khi xác minh thực địa (3–5 ngày), farmstay của bạn lên sóng ngay.",
   },
   {
     q: "Tôi có thể tự chỉnh sửa thông tin sau khi đăng ký không?",
@@ -142,7 +142,7 @@ const faqs = [
   },
   {
     q: "Farmstay nhỏ, chưa có nhiều tiện nghi có thể đăng ký không?",
-    a: "Hoàn toàn có thể. Farmstay.vn phù hợp với mọi quy mô — từ homestay nông trại nhỏ đến resort sinh thái lớn. Điều quan trọng là trải nghiệm đích thực, không phải tiện nghi xa xỉ.",
+    a: "Hoàn toàn có thể. vnfarmstay.vn phù hợp với mọi quy mô — từ homestay nông trại nhỏ đến resort sinh thái lớn. Điều quan trọng là trải nghiệm đích thực, không phải tiện nghi xa xỉ.",
   },
 ];
 
@@ -151,7 +151,7 @@ const testimonials = [
     avatar: "🌿",
     name: "Chị Nguyễn Hương",
     farm: "Vườn Cà Phê Robusta · Kon Tum",
-    text: "Trước khi lên Farmstay.vn, tôi chủ yếu dựa vào khách qua zalo và giới thiệu miệng. Sau 3 tháng, đặt phòng tăng gấp đôi, quan trọng hơn là khách hiểu đúng về trải nghiệm của mình ngay từ đầu.",
+    text: "Trước khi lên vnfarmstay.vn, tôi chủ yếu dựa vào khách qua zalo và giới thiệu miệng. Sau 3 tháng, đặt phòng tăng gấp đôi, quan trọng hơn là khách hiểu đúng về trải nghiệm của mình ngay từ đầu.",
     stat: "Đặt phòng tăng 2×",
   },
   {
@@ -258,9 +258,9 @@ export default function ChuFarmstayPage() {
                 margin: "0 auto 36px",
               }}
             >
-              Farmstay.vn kết nối farmstay của bạn với 50.000+ du khách đang tìm
-              kiếm trải nghiệm nông nghiệp đích thực mỗi tháng — không qua trung
-              gian, không phức tạp.
+              vnfarmstay.vn kết nối farmstay của bạn với 50.000+ du khách đang
+              tìm kiếm trải nghiệm nông nghiệp đích thực mỗi tháng — không qua
+              trung gian, không phức tạp.
             </p>
 
             <div
@@ -883,8 +883,8 @@ export default function ChuFarmstayPage() {
                 lineHeight: 1.7,
               }}
             >
-              Đăng ký miễn phí trong 10 phút. Đội ngũ Farmstay.vn liên hệ hỗ trợ
-              trong 24h.
+              Đăng ký miễn phí trong 10 phút. Đội ngũ vnfarmstay.vn liên hệ hỗ
+              trợ trong 24h.
             </p>
             <Link
               href="/dang-farmstay"

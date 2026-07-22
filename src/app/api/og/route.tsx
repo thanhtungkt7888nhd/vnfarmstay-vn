@@ -1,7 +1,7 @@
 /**
  * Dynamic OG image generator — /api/og?title=...&subtitle=...
  * Dùng @vercel/og (Next.js ImageResponse) để tạo ảnh 1200×630px.
- * Hiển thị logo + tiêu đề + nền gradient xanh đậm của Farmstay.vn.
+ * Hiển thị logo + tiêu đề + nền gradient xanh đậm của vnfarmstay.vn.
  */
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
@@ -10,7 +10,7 @@ export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const title = searchParams.get("title") ?? "Farmstay.vn";
+  const title = searchParams.get("title") ?? "vnfarmstay.vn";
   const subtitle =
     searchParams.get("subtitle") ??
     "Trải nghiệm nông nghiệp đích thực Việt Nam";
@@ -112,7 +112,7 @@ export async function GET(req: NextRequest) {
           gap: 8,
         }}
       >
-        <span style={{ color: "#c4a046", fontSize: 14 }}>farmstay.vn</span>
+        <span style={{ color: "#c4a046", fontSize: 14 }}>vnfarmstay.vn</span>
       </div>
     </div>,
     {

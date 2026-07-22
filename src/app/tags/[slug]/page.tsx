@@ -25,7 +25,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const tag = decodeURIComponent(slug);
   return buildMetadata({
-    title: `#${tag} — Blog Farmstay.vn`,
+    title: `#${tag} — Blog vnfarmstay.vn`,
     description: `Bài viết có tag "${tag}" về du lịch nông nghiệp và farmstay Việt Nam.`,
     canonical: `/tags/${slug}`,
   });

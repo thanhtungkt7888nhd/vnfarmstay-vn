@@ -28,7 +28,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const label = CATEGORY_LABELS[slug as PostCategory] ?? slug;
   return buildMetadata({
-    title: `${label} — Blog Farmstay.vn`,
+    title: `${label} — Blog vnfarmstay.vn`,
     description: `Các bài viết về ${label.toLowerCase()} dành cho chủ và khách farmstay Việt Nam.`,
     canonical: `/danh-muc/${slug}`,
   });

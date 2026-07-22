@@ -7,9 +7,9 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Đăng nhập — Farmstay.vn",
+  title: "Đăng nhập — vnfarmstay.vn",
   description:
-    "Đăng nhập vào Farmstay.vn để quản lý đặt phòng, theo dõi farmstay yêu thích và kết nối cộng đồng nông nghiệp Việt Nam.",
+    "Đăng nhập vào vnfarmstay.vn để quản lý đặt phòng, theo dõi farmstay yêu thích và kết nối cộng đồng nông nghiệp Việt Nam.",
   canonical: "/dang-nhap",
   noindex: true, // Trang auth không nên index
 });

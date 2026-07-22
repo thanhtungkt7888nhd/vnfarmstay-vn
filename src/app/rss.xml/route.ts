@@ -9,7 +9,7 @@ import { MOCK_POSTS } from "@/features/blog/mock-posts";
 
 export const revalidate = 3600;
 
-const SITE = "https://farmstay.vn";
+const SITE = "https://vnfarmstay.vn";
 
 /** Escape XML special characters */
 function escapeXml(str: string): string {
@@ -48,7 +48,7 @@ export async function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Farmstay.vn — Blog &amp; Hướng dẫn</title>
+    <title>vnfarmstay.vn — Blog &amp; Hướng dẫn</title>
     <link>${SITE}</link>
     <description>Kinh nghiệm vận hành farmstay, hướng dẫn pháp lý, review địa điểm và tin tức nông nghiệp du lịch Việt Nam.</description>
     <language>vi-VN</language>
@@ -56,7 +56,7 @@ export async function GET() {
     <atom:link href="${SITE}/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>${SITE}/logo.png</url>
-      <title>Farmstay.vn</title>
+      <title>vnfarmstay.vn</title>
       <link>${SITE}</link>
     </image>
 ${items}

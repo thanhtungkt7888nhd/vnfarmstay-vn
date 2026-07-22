@@ -11,7 +11,7 @@ import type {
   LodgingBusiness,
 } from "schema-dts";
 
-const SITE_URL = "https://farmstay.vn";
+const SITE_URL = "https://vnfarmstay.vn";
 
 // ─── Article ────────────────────────────────────────────────────────────────
 
@@ -33,7 +33,7 @@ export function articleSchema({
   imageUrl,
   publishedAt,
   updatedAt,
-  authorName = "Farmstay.vn Editorial",
+  authorName = "vnfarmstay.vn Editorial",
 }: ArticleSchemaProps): WithContext<Article> {
   return {
     "@context": "https://schema.org",
@@ -50,7 +50,7 @@ export function articleSchema({
     },
     publisher: {
       "@type": "Organization",
-      name: "Farmstay.vn",
+      name: "vnfarmstay.vn",
       logo: {
         "@type": "ImageObject",
         url: `${SITE_URL}/logo.png`,
@@ -178,7 +178,7 @@ export function productSchema({
     url,
     brand: {
       "@type": "Brand",
-      name: "Farmstay.vn",
+      name: "vnfarmstay.vn",
     },
   };
 }

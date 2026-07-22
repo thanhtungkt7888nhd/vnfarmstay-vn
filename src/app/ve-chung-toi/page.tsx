@@ -3,10 +3,10 @@ import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 
 export const metadata: Metadata = {
-  title: "Về chúng tôi – Farmstay.vn",
+  title: "Về chúng tôi – vnfarmstay.vn",
   description:
-    "Farmstay.vn — nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam. Sứ mệnh, đội ngũ, câu chuyện.",
-  alternates: { canonical: "https://farmstay.vn/ve-chung-toi" },
+    "vnfarmstay.vn — nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam. Sứ mệnh, đội ngũ, câu chuyện.",
+  alternates: { canonical: "https://vnfarmstay.vn/ve-chung-toi" },
 };
 
 const TEAM = [
@@ -58,7 +58,7 @@ export default function VeChungToiPage() {
               marginBottom: 20,
             }}
           >
-            Về <em style={{ color: "var(--gold)" }}>Farmstay.vn</em>
+            Về <em style={{ color: "var(--gold)" }}>vnfarmstay.vn</em>
           </h1>
           <p
             style={{
@@ -136,7 +136,7 @@ export default function VeChungToiPage() {
                 fontSize: "1rem",
               }}
             >
-              Farmstay.vn ra đời để{" "}
+              vnfarmstay.vn ra đời để{" "}
               <strong style={{ color: "var(--text-primary)" }}>kết nối</strong>{" "}
               những người muốn trải nghiệm nông nghiệp đích thực với những chủ
               farmstay tâm huyết trên khắp Việt Nam — đồng thời giúp
@@ -252,9 +252,9 @@ export default function VeChungToiPage() {
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
-                ["📧", "Email", "hello@farmstay.vn"],
+                ["📧", "Email", "hello@vnfarmstay.vn"],
                 ["📞", "Hotline", "1800 6868 (miễn phí)"],
-                ["💬", "Zalo", "Farmstay.vn Official"],
+                ["💬", "Zalo", "vnfarmstay.vn Official"],
               ].map(([icon, label, value]) => (
                 <div
                   key={label}

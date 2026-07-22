@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!farmstay) return { title: "Không tìm thấy farmstay" };
   return buildMetadata({
     title: farmstay.name,
-    description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}. Giá từ ${formatPrice(farmstay.price)}/đêm. Đặt phòng ngay trên Farmstay.vn.`,
+    description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}. Giá từ ${formatPrice(farmstay.price)}/đêm. Đặt phòng ngay trên vnfarmstay.vn.`,
     canonical: `/farmstay/${farmstay.slug}`,
     keywords: [...farmstay.tags, farmstay.location, "farmstay", "đặt phòng"],
   });
@@ -101,8 +101,8 @@ export default async function FarmstayDetailPage({ params }: Props) {
     farmstaySchema({
       name: farmstay.name,
       description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}.`,
-      url: `https://farmstay.vn/farmstay/${farmstay.slug}`,
-      imageUrl: `https://farmstay.vn/api/og?title=${encodeURIComponent(farmstay.name)}&subtitle=${encodeURIComponent(farmstay.location)}`,
+      url: `https://vnfarmstay.vn/farmstay/${farmstay.slug}`,
+      imageUrl: `https://vnfarmstay.vn/api/og?title=${encodeURIComponent(farmstay.name)}&subtitle=${encodeURIComponent(farmstay.location)}`,
       address: farmstay.location,
       priceFrom: farmstay.price,
       rating: farmstay.rating,

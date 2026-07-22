@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Google-Extended", allow: "/" },
       { userAgent: "PerplexityBot", allow: "/" },
     ],
-    sitemap: "https://farmstay.vn/sitemap.xml",
+    sitemap: "https://vnfarmstay.vn/sitemap.xml",
   };
 }

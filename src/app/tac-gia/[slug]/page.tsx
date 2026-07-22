@@ -28,7 +28,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const author = decodeURIComponent(slug);
   return buildMetadata({
-    title: `${author} — Tác giả trên Farmstay.vn`,
+    title: `${author} — Tác giả trên vnfarmstay.vn`,
     description: `Các bài viết của ${author} về du lịch nông nghiệp và farmstay Việt Nam.`,
     canonical: `/tac-gia/${slug}`,
   });

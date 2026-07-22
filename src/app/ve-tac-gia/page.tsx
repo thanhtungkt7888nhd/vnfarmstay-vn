@@ -1,5 +1,5 @@
 /**
- * Trang giới thiệu tác giả — Phạm Thanh Tùng, Nhà Hoạch Định, người sáng lập Farmstay.vn.
+ * Trang giới thiệu tác giả — Phạm Thanh Tùng, Nhà Hoạch Định, người sáng lập vnfarmstay.vn.
  * E-E-A-T signal quan trọng: Google cần biết ai đứng sau nội dung.
  */
 import type { Metadata } from "next";
@@ -11,13 +11,13 @@ import { breadcrumbSchema } from "@/lib/schema";
 import type { WithContext, Person } from "schema-dts";
 
 export const metadata: Metadata = {
-  title: "Về tác giả — Phạm Thanh Tùng | Farmstay.vn",
+  title: "Về tác giả — Phạm Thanh Tùng | vnfarmstay.vn",
   description:
-    "Phạm Thanh Tùng — Nhà Hoạch Định, người sáng lập Farmstay.vn. Chuyên gia hoạch định chiến lược nông nghiệp sinh thái và du lịch nông thôn Việt Nam.",
+    "Phạm Thanh Tùng — Nhà Hoạch Định, người sáng lập vnfarmstay.vn. Chuyên gia hoạch định chiến lược nông nghiệp sinh thái và du lịch nông thôn Việt Nam.",
   openGraph: {
-    title: "Phạm Thanh Tùng — Nhà Hoạch Định | Farmstay.vn",
+    title: "Phạm Thanh Tùng — Nhà Hoạch Định | vnfarmstay.vn",
     description:
-      "Người sáng lập Farmstay.vn — nền tảng du lịch nông nghiệp đích thực Việt Nam.",
+      "Người sáng lập vnfarmstay.vn — nền tảng du lịch nông nghiệp đích thực Việt Nam.",
     type: "profile",
   },
 };
@@ -29,8 +29,8 @@ const founderSchema: WithContext<Person> = {
   alternateName: "Nhà Hoạch Định",
   jobTitle: "Người sáng lập & Nhà Hoạch Định",
   description:
-    "Người sáng lập Farmstay.vn — nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam. Chuyên gia hoạch định chiến lược nông nghiệp sinh thái và phát triển du lịch nông thôn bền vững.",
-  url: "https://farmstay.vn/ve-tac-gia",
+    "Người sáng lập vnfarmstay.vn — nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam. Chuyên gia hoạch định chiến lược nông nghiệp sinh thái và phát triển du lịch nông thôn bền vững.",
+  url: "https://vnfarmstay.vn/ve-tac-gia",
   sameAs: ["https://nhahoachdinh.vn"],
 };
 
@@ -111,9 +111,9 @@ export default function VeTacGiaPage() {
                 margin: "0 auto",
               }}
             >
-              Người xây dựng Farmstay.vn từ ý tưởng đến nền tảng — với niềm tin
-              rằng du lịch nông nghiệp đích thực là tương lai của du lịch Việt
-              Nam.
+              Người xây dựng vnfarmstay.vn từ ý tưởng đến nền tảng — với niềm
+              tin rằng du lịch nông nghiệp đích thực là tương lai của du lịch
+              Việt Nam.
             </p>
           </div>
         </section>
@@ -182,7 +182,7 @@ export default function VeTacGiaPage() {
                     marginBottom: 8,
                   }}
                 >
-                  Nhà Hoạch Định · Người sáng lập Farmstay.vn
+                  Nhà Hoạch Định · Người sáng lập vnfarmstay.vn
                 </p>
                 <a
                   href="https://nhahoachdinh.vn"
@@ -218,10 +218,11 @@ export default function VeTacGiaPage() {
                 }}
               >
                 Phạm Thanh Tùng là người sáng lập và Nhà Hoạch Định đứng sau
-                Farmstay.vn — nền tảng kết nối du khách với farmstay xác minh
+                vnfarmstay.vn — nền tảng kết nối du khách với farmstay xác minh
                 khắp Việt Nam. Với tư duy hoạch định chiến lược dài hạn, ông xây
-                dựng Farmstay.vn không chỉ là một trang đặt phòng, mà là hệ sinh
-                thái thông tin đáng tin cậy cho cả du khách lẫn chủ farmstay.
+                dựng vnfarmstay.vn không chỉ là một trang đặt phòng, mà là hệ
+                sinh thái thông tin đáng tin cậy cho cả du khách lẫn chủ
+                farmstay.
               </p>
               <p
                 style={{
@@ -230,10 +231,10 @@ export default function VeTacGiaPage() {
                   lineHeight: 1.8,
                 }}
               >
-                Mọi nội dung trên Farmstay.vn — từ bài review thực tế, hướng dẫn
-                pháp lý, đến chiến lược vận hành — đều được hoạch định theo một
-                tiêu chuẩn biên tập nhất quán: chính xác, có chiều sâu, và có
-                giá trị thực cho người đọc.
+                Mọi nội dung trên vnfarmstay.vn — từ bài review thực tế, hướng
+                dẫn pháp lý, đến chiến lược vận hành — đều được hoạch định theo
+                một tiêu chuẩn biên tập nhất quán: chính xác, có chiều sâu, và
+                có giá trị thực cho người đọc.
               </p>
             </div>
 
@@ -285,9 +286,9 @@ export default function VeTacGiaPage() {
                 lineHeight: 1.7,
               }}
             >
-              Ngoài người sáng lập, Farmstay.vn cộng tác với các chuyên gia pháp
-              lý, vận hành, và những chủ farmstay có kinh nghiệm thực chiến.
-              Danh sách tác giả cộng tác sẽ được cập nhật tại đây.
+              Ngoài người sáng lập, vnfarmstay.vn cộng tác với các chuyên gia
+              pháp lý, vận hành, và những chủ farmstay có kinh nghiệm thực
+              chiến. Danh sách tác giả cộng tác sẽ được cập nhật tại đây.
             </p>
           </section>
 

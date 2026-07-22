@@ -87,7 +87,7 @@ export default async function BlogPostPage({
     ? urlFor(post.coverImage).width(1200).height(630).url()
     : null;
 
-  const articleUrl = `https://farmstay.vn/blog/${slug}`;
+  const articleUrl = `https://vnfarmstay.vn/blog/${slug}`;
 
   const schemas = [
     articleSchema({
@@ -96,7 +96,7 @@ export default async function BlogPostPage({
       url: articleUrl,
       imageUrl:
         coverImageUrl ??
-        `https://farmstay.vn/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt ?? "Farmstay.vn")}`,
+        `https://vnfarmstay.vn/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt ?? "vnfarmstay.vn")}`,
       publishedAt: post.publishedAt ?? new Date().toISOString(),
       updatedAt: post.updatedAt,
       authorName: post.author,

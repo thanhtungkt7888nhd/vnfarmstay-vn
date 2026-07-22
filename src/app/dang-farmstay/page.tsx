@@ -108,7 +108,7 @@ const BENEFITS = [
 /** Quote từ chủ farmstay thật */
 const TESTIMONIAL = {
   quote:
-    "Từ khi lên Farmstay.vn, tôi không phải đăng bài Facebook mỗi ngày nữa. Khách tự tìm đến, tháng nào cũng kín lịch cuối tuần.",
+    "Từ khi lên vnfarmstay.vn, tôi không phải đăng bài Facebook mỗi ngày nữa. Khách tự tìm đến, tháng nào cũng kín lịch cuối tuần.",
   name: "Chị Nguyễn Hương",
   farm: "Vườn Cà Phê Robusta · Kon Tum",
   avatar: "☕",
@@ -160,7 +160,7 @@ export default function DangFarmstayPage() {
                 marginBottom: 12,
               }}
             >
-              Đội ngũ Farmstay.vn sẽ liên hệ trong vòng{" "}
+              Đội ngũ vnfarmstay.vn sẽ liên hệ trong vòng{" "}
               <strong style={{ color: "var(--text-primary)" }}>24 giờ</strong>{" "}
               để xác minh và hỗ trợ hoàn thiện hồ sơ farmstay của bạn.
             </p>
@@ -271,7 +271,7 @@ export default function DangFarmstayPage() {
             margin: "0 auto",
           }}
         >
-          Đăng ký miễn phí — không phí ẩn, không cam kết dài hạn. Farmstay.vn
+          Đăng ký miễn phí — không phí ẩn, không cam kết dài hạn. vnfarmstay.vn
           chỉ thu phí khi bạn có đặt phòng thành công.
         </p>
       </section>
@@ -356,7 +356,7 @@ export default function DangFarmstayPage() {
             >
               Tại sao 500+ chủ farmstay
               <br />
-              chọn Farmstay.vn?
+              chọn vnfarmstay.vn?
             </h2>
 
             {/* Benefits */}

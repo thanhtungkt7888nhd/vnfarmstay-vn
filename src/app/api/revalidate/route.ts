@@ -119,11 +119,11 @@ async function pingIndexNow(slug: string): Promise<void> {
   const key = process.env.INDEXNOW_KEY;
   if (!key) return;
 
-  const url = `https://farmstay.vn/blog/${slug}`;
+  const url = `https://vnfarmstay.vn/blog/${slug}`;
   const body = {
-    host: "farmstay.vn",
+    host: "vnfarmstay.vn",
     key,
-    keyLocation: `https://farmstay.vn/${key}.txt`,
+    keyLocation: `https://vnfarmstay.vn/${key}.txt`,
     urlList: [url],
   };
 

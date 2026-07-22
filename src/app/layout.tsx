@@ -18,13 +18,13 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
 });
 
-const SITE_URL = "https://farmstay.vn";
+const SITE_URL = "https://vnfarmstay.vn";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Farmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
-    template: "%s | Farmstay.vn",
+    default: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
+    template: "%s | vnfarmstay.vn",
   },
   description:
     "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau — trải nghiệm nông nghiệp đích thực, đặt phòng dễ dàng.",
@@ -36,34 +36,34 @@ export const metadata: Metadata = {
     "du lịch nông trại",
     "trải nghiệm nông nghiệp",
   ],
-  authors: [{ name: "Farmstay.vn", url: SITE_URL }],
-  creator: "Farmstay.vn",
-  publisher: "Farmstay.vn",
+  authors: [{ name: "vnfarmstay.vn", url: SITE_URL }],
+  creator: "vnfarmstay.vn",
+  publisher: "vnfarmstay.vn",
   openGraph: {
     type: "website",
     locale: "vi_VN",
     url: SITE_URL,
-    siteName: "Farmstay.vn",
-    title: "Farmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
+    siteName: "vnfarmstay.vn",
+    title: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
     description:
       "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau.",
     images: [
       {
         // Dynamic OG image — Edge function trả về PNG 1200×630 thật
-        url: `${SITE_URL}/api/og?title=Farmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
+        url: `${SITE_URL}/api/og?title=vnfarmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
         width: 1200,
         height: 630,
-        alt: "Farmstay.vn — Nền tảng farmstay Việt Nam",
+        alt: "vnfarmstay.vn — Nền tảng farmstay Việt Nam",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Farmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
+    title: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
     description:
       "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. 500+ farmstay xác minh.",
     images: [
-      `${SITE_URL}/api/og?title=Farmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
+      `${SITE_URL}/api/og?title=vnfarmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
     ],
   },
   robots: {
@@ -83,7 +83,7 @@ export const viewport: Viewport = {
 const orgSchema: WithContext<Organization> = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Farmstay.vn",
+  name: "vnfarmstay.vn",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   sameAs: [
@@ -103,7 +103,7 @@ const orgSchema: WithContext<Organization> = {
 const websiteSchema: WithContext<WebSite> = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Farmstay.vn",
+  name: "vnfarmstay.vn",
   url: SITE_URL,
   potentialAction: {
     "@type": "SearchAction",
@@ -138,7 +138,7 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="Farmstay.vn Blog RSS"
+          title="vnfarmstay.vn Blog RSS"
           href="/rss.xml"
         />
         {/* Search engine verification meta tags — env-gated */}

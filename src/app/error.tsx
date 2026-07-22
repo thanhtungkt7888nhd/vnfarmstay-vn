@@ -14,7 +14,7 @@ interface ErrorProps {
 export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {
     // Log lỗi để monitoring (có thể gửi Sentry sau này)
-    console.error("[Farmstay.vn Error]", error);
+    console.error("[vnfarmstay.vn Error]", error);
   }, [error]);
 
   return (

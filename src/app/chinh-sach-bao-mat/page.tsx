@@ -3,10 +3,10 @@ import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 
 export const metadata: Metadata = {
-  title: "Chính sách bảo mật – Farmstay.vn",
+  title: "Chính sách bảo mật – vnfarmstay.vn",
   description:
-    "Chính sách bảo mật Farmstay.vn — cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn.",
-  alternates: { canonical: "https://farmstay.vn/chinh-sach-bao-mat" },
+    "Chính sách bảo mật vnfarmstay.vn — cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn.",
+  alternates: { canonical: "https://vnfarmstay.vn/chinh-sach-bao-mat" },
 };
 
 const SECTIONS = [
@@ -28,7 +28,7 @@ const SECTIONS = [
   {
     title: "4. Cookie và theo dõi",
     content:
-      "Farmstay.vn dùng cookie để: lưu phiên đăng nhập; ghi nhớ tùy chọn tìm kiếm; phân tích lưu lượng qua GA4 (ẩn danh). Bạn có thể tắt cookie trong trình duyệt, nhưng một số tính năng có thể bị ảnh hưởng.",
+      "vnfarmstay.vn dùng cookie để: lưu phiên đăng nhập; ghi nhớ tùy chọn tìm kiếm; phân tích lưu lượng qua GA4 (ẩn danh). Bạn có thể tắt cookie trong trình duyệt, nhưng một số tính năng có thể bị ảnh hưởng.",
   },
   {
     title: "5. Bảo mật dữ liệu",
@@ -48,7 +48,7 @@ const SECTIONS = [
   {
     title: "8. Trẻ em",
     content:
-      "Farmstay.vn không có dịch vụ hướng đến trẻ em dưới 13 tuổi và không cố ý thu thập thông tin của trẻ em. Nếu phát hiện, vui lòng liên hệ để chúng tôi xóa ngay.",
+      "vnfarmstay.vn không có dịch vụ hướng đến trẻ em dưới 13 tuổi và không cố ý thu thập thông tin của trẻ em. Nếu phát hiện, vui lòng liên hệ để chúng tôi xóa ngay.",
   },
   {
     title: "9. Thay đổi chính sách",
@@ -58,7 +58,7 @@ const SECTIONS = [
   {
     title: "10. Liên hệ",
     content:
-      "Mọi yêu cầu liên quan đến dữ liệu cá nhân: Email privacy@farmstay.vn hoặc gửi thư đến địa chỉ Farmstay.vn, TP. Hồ Chí Minh, Việt Nam. Phản hồi trong vòng 72 giờ.",
+      "Mọi yêu cầu liên quan đến dữ liệu cá nhân: Email privacy@vnfarmstay.vn hoặc gửi thư đến địa chỉ vnfarmstay.vn, TP. Hồ Chí Minh, Việt Nam. Phản hồi trong vòng 72 giờ.",
   },
 ];
 
@@ -137,10 +137,10 @@ export default function ChinhSachBaoMatPage() {
             >
               Câu hỏi về quyền riêng tư?{" "}
               <a
-                href="mailto:privacy@farmstay.vn"
+                href="mailto:privacy@vnfarmstay.vn"
                 style={{ color: "var(--gold)" }}
               >
-                privacy@farmstay.vn
+                privacy@vnfarmstay.vn
               </a>
             </div>
           </div>

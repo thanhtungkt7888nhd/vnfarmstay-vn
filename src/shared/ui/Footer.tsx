@@ -22,7 +22,7 @@ const footerLinks = {
     { href: "/cong-dong#forum", label: "Diễn đàn" },
     { href: "/ve-chung-toi#lien-he", label: "Liên hệ" },
   ],
-  "Farmstay.vn": [
+  "vnfarmstay.vn": [
     { href: "/ve-chung-toi", label: "Về chúng tôi" },
     { href: "/ve-chung-toi#su-menh", label: "Sứ mệnh" },
     { href: "/ve-tac-gia", label: "Tác giả & Chuyên gia" },
@@ -140,7 +140,7 @@ export function Footer() {
           color: "var(--text-dim)",
         }}
       >
-        <p>© 2026 Farmstay.vn. Nền tảng du lịch nông nghiệp Việt Nam.</p>
+        <p>© 2026 vnfarmstay.vn. Nền tảng du lịch nông nghiệp Việt Nam.</p>
         <div className="flex gap-4">
           <Link href="/chinh-sach-bao-mat">Chính sách bảo mật</Link>
           <Link href="/dieu-khoan">Điều khoản sử dụng</Link>

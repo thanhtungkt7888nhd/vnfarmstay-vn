@@ -5,8 +5,8 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
-const SITE_URL = "https://farmstay.vn";
-const SITE_HOST = "farmstay.vn";
+const SITE_URL = "https://vnfarmstay.vn";
+const SITE_HOST = "vnfarmstay.vn";
 
 /** Ping IndexNow để Google/Bing index URL mới ngay lập tức */
 async function pingIndexNow(url: string): Promise<void> {

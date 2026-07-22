@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Cộng đồng Farmstay Việt Nam",
   description:
     "Kết nối với cộng đồng chủ farmstay và du khách — chia sẻ kinh nghiệm, hỏi đáp, sự kiện.",
-  alternates: { canonical: "https://farmstay.vn/cong-dong" },
+  alternates: { canonical: "https://vnfarmstay.vn/cong-dong" },
 };
 
 const POSTS = [

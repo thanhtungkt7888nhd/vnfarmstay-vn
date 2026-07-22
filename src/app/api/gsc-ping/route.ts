@@ -6,7 +6,7 @@
  * Header: x-secret = REVALIDATE_SECRET
  *
  * Lưu ý: Cần GSC_SERVICE_ACCOUNT_JSON (JSON key của Google Service Account)
- * có quyền "Owner" trên Google Search Console property farmstay.vn.
+ * có quyền "Owner" trên Google Search Console property vnfarmstay.vn.
  */
 import { NextRequest, NextResponse } from "next/server";
 

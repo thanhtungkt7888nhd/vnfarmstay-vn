@@ -7,7 +7,7 @@ import { FARMSTAYS } from "@/features/listing/data";
 import { fetchPostSlugs } from "@/lib/sanity-queries";
 import { MOCK_POSTS } from "@/features/blog/mock-posts";
 
-const SITE_URL = "https://farmstay.vn";
+const SITE_URL = "https://vnfarmstay.vn";
 
 export const revalidate = 3600;
 

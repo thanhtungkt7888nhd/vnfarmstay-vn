@@ -5,7 +5,7 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 
-const SITE = "https://farmstay.vn";
+const SITE = "https://vnfarmstay.vn";
 
 export async function POST(req: NextRequest) {
   const secret = req.headers.get("x-secret");
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   }
 
   const payload = {
-    host: "farmstay.vn",
+    host: "vnfarmstay.vn",
     key: indexNowKey,
     keyLocation: `${SITE}/${indexNowKey}.txt`,
     urlList: urls,
