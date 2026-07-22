@@ -279,7 +279,7 @@ export default function ChuFarmstayPage() {
                   color: "#0f2318",
                   fontWeight: 700,
                   fontSize: "0.95rem",
-                  paddingStyle: "px-8 py-3.5",
+                  padding: "px-8 py-3.5",
                   borderRadius: "var(--radius-sm)",
                   textDecoration: "none",
                 }}
