@@ -309,19 +309,30 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
         ))}
       </div>
 
+      {/* Responsive grid */}
+      <style>{`
+        #main-listing {
+          display: grid;
+          grid-template-columns: 240px 1fr 300px;
+          gap: 0;
+          max-width: 100%;
+          min-height: 60vh;
+        }
+        @media (max-width: 1023px) {
+          #main-listing { grid-template-columns: 1fr 280px; }
+          #sidebar-filter { display: none; }
+        }
+        @media (max-width: 767px) {
+          #main-listing { grid-template-columns: 1fr; }
+          #map-panel { display: none !important; }
+        }
+      `}</style>
+
       {/* 3-column layout */}
-      <div
-        id="main"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "240px 1fr 300px",
-          gap: 0,
-          maxWidth: "100%",
-          minHeight: "60vh",
-        }}
-      >
+      <div id="main-listing">
         {/* Sidebar */}
         <aside
+          id="sidebar-filter"
           aria-label="Bộ lọc nâng cao"
           style={{
             padding: "24px 20px",
@@ -566,6 +577,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
 
         {/* Map panel */}
         <aside
+          id="map-panel"
           aria-label="Bản đồ farmstay"
           style={{
             borderLeft: "1px solid var(--border)",
