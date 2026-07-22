@@ -17,7 +17,7 @@ const _isReal =
 export const sanityClient = createClient({
   projectId: _isReal ? _projectId : "a1b2c3d4",
   dataset: _isReal
-    ? (process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production")
+    ? (process.env.NEXT_PUBLIC_SANITY_DATASET?.trim() ?? "production")
     : "production",
   apiVersion: "2026-04-29",
   useCdn: _isReal ? process.env.NODE_ENV === "production" : false,
