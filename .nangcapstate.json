@@ -9,7 +9,7 @@
   "doiTuong": ["du-khach-vn", "khach-quoc-te", "chu-farmstay", "nha-dau-tu-nong-nghiep"],
   "soDoDaChon": true,
   "mauDaChon": true,
-  "nhipDaChon": false,
+  "nhipDaChon": true,
   "hieuUngDaChon": false,
   "hoaVanDaChon": false,
   "hoaVanNenDaChon": false,

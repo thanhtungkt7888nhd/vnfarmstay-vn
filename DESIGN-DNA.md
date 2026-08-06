@@ -37,7 +37,19 @@
 
 ---
 
-## Nhịp (chưa chốt — chờ B3b)
+## Nhịp ✅ (chốt 20260806 — Bộ IV Trầm Sang Điện Ảnh)
+
+| Token | Giá trị | Dùng cho |
+|---|---|---|
+| `--dur-fast` | `250ms` | Hover · micro-feedback |
+| `--dur-base` | `450ms` | Reveal chữ · fade phần tử |
+| `--dur-slow` | `720ms` | Chuyển trang · hero reveal |
+| `--stagger-step` | `64ms` | Delay giữa mỗi phần tử stagger |
+| `--reveal-y` | `16px` | Khoảng trượt lên khi reveal |
+| `--space-section` | `clamp(72px,11vh,132px)` | Khoảng cách giữa section |
+| `--ease` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | Easing chính |
+
+**Đặc trưng Bộ IV:** chậm nhất trong 6 Bộ — điện ảnh sâu, mỗi thứ nổi lên có chủ đích, không vội vàng.
 
 ---
 
