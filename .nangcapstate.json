@@ -8,7 +8,7 @@
   "giongVan": "Truyền cảm hứng, chạm cảm xúc",
   "doiTuong": ["du-khach-vn", "khach-quoc-te", "chu-farmstay", "nha-dau-tu-nong-nghiep"],
   "soDoDaChon": true,
-  "mauDaChon": false,
+  "mauDaChon": true,
   "nhipDaChon": false,
   "hieuUngDaChon": false,
   "hoaVanDaChon": false,

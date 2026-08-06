@@ -15,14 +15,25 @@
 
 ---
 
-## Palette (chưa chốt — chờ B3b)
+## Palette ✅ (chốt 20260806 — PA5 Rừng Mạ Non Dịu × Bộ IV)
 
-Palette hiện tại (mặc định từ template):
-- `--bg-deep: #0f2318` · `--bg-main: #1a3d28` · `--bg-card: #213d2e`
-- `--gold: #d4a853` · `--gold-light: #e8c97a`
-- `--text-primary: #faf6ef` · `--text-muted: #a8c5b0` · `--text-dim: #6b9478`
+**Hue chính:** 132° (blend H2 Lá Trà × H8 Mạ Non — không hẳn xanh rừng, không hẳn xanh mạ)
+**Bộ cảm xúc:** IV — Trầm Sang Điện Ảnh · Chroma: 0.20
+**Cảm xúc:** rừng sâu thẳm + mạ non dịu + gold ấm — trầm, sang, không gắt
 
-*Cần chốt qua B3b với widget màu sắc thật.*
+| Token | Giá trị OKLCH | Vai trò |
+|---|---|---|
+| `--bg-deep` | `oklch(0.10 0.20 132)` | Nền sâu nhất (nav, footer) |
+| `--bg-main` | `oklch(0.17 0.20 130)` | Nền trang chính |
+| `--bg-card` | `oklch(0.22 0.18 130)` | Nền thẻ/card |
+| `--gold` | `oklch(0.72 0.20 75)` | Accent chính — gold dịu ấm |
+| `--gold-light` | `oklch(0.80 0.18 75)` | Accent sáng — hover/highlight |
+| `--accent-ma` | `oklch(0.70 0.18 115)` | Accent phụ — mạ non (badge/tag) |
+| `--text-primary` | `oklch(0.95 0.05 120)` | Chữ chính |
+| `--text-muted` | `oklch(0.60 0.07 125)` | Chữ mờ |
+| `--text-dim` | `oklch(0.40 0.07 130)` | Chữ rất mờ |
+
+**Biến CSS gốc:** `--brand-h: 132; --brand-c: 0.20`
 
 ---
 
