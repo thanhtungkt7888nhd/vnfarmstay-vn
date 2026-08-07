@@ -94,7 +94,16 @@
 
 **Kỹ thuật:** CSS `background-image: url("data:image/svg+xml,...")` với pattern SVG inline — không tải thêm file.
 
-## Bố cục chữ (chưa chốt — chờ B3b)
+## Bố cục chữ ✅ (chốt 20260808 — Libre Bodoni 700 + DM Sans 400)
+
+| Vai trò | Font | Weight | Ghi chú |
+|---|---|---|---|
+| Heading / Display | `Libre Bodoni` | 700 (italic tuỳ ngữ cảnh) | Didone tương phản cao — nét mảnh bắt gold |
+| Body / UI | `DM Sans` | 400 | Trung tính, chuyên nghiệp, italic đẹp cho trích dẫn |
+| Kicker / Label | `DM Sans` | 500 letter-spacing .12em uppercase | Phân cấp thứ bậc |
+
+**Tính cách cặp:** Bodoni cổ điển sang trọng + DM Sans hiện đại trung tính — tương phản thời đại, không cạnh tranh nhau.
+**Load strategy:** Google Fonts `display=swap`, chỉ load weight dùng thật (700 Bodoni + 400/500 DM Sans).
 
 ---
 

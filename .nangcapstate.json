@@ -14,7 +14,7 @@
   "hoaVanDaChon": true,
   "hoaVanNenDaChon": true,
   "thamMyDaChon": false,
-  "bocucChuDaChon": false,
+  "bocucChuDaChon": true,
   "moodBoardDaChon": false,
   "phamViDaDuyet": false,
   "vongLap": [],
