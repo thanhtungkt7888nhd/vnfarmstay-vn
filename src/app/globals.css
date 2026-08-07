@@ -1,25 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --bg-deep: #0f2318;
-  --bg-main: #1a3d28;
-  --bg-card: #213d2e;
-  --bg-card-hover: #264835;
-  --gold: #d4a853;
-  --gold-light: #e8c97a;
-  --gold-dim: rgba(212, 168, 83, 0.12);
-  --gold-border: rgba(212, 168, 83, 0.25);
-  --text-primary: #faf6ef;
-  --text-muted: #a8c5b0;
-  --text-dim: #6b9478;
-  --border: rgba(168, 197, 176, 0.12);
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  /* ── Palette PA5 Rừng Mạ Non Dịu × Bộ IV ───────────────────── */
+  --brand-h: 132;
+  --brand-c: 0.2;
+
+  --bg-deep: oklch(0.1 0.2 132);
+  --bg-main: oklch(0.17 0.2 130);
+  --bg-card: oklch(0.22 0.18 130);
+  --bg-card-hover: oklch(0.26 0.16 130);
+  --gold: oklch(0.72 0.2 75);
+  --gold-light: oklch(0.8 0.18 75);
+  --gold-dim: oklch(0.72 0.2 75 / 0.12);
+  --gold-border: oklch(0.72 0.2 75 / 0.35);
+  --accent-ma: oklch(0.7 0.18 115);
+  --text-primary: oklch(0.95 0.05 120);
+  --text-muted: oklch(0.6 0.07 125);
+  --text-dim: oklch(0.4 0.07 130);
+  --border: oklch(0.6 0.07 125 / 0.12);
+  --shadow: 0 8px 32px oklch(0 0 0 / 0.4);
+  --shadow-sm: 0 2px 8px oklch(0 0 0 / 0.3);
+
+  /* ── Nhịp Bộ IV Trầm Sang Điện Ảnh ─────────────────────────── */
+  --dur-fast: 250ms;
+  --dur-base: 450ms;
+  --dur-slow: 720ms;
+  --stagger-step: 64ms;
+  --reveal-y: 16px;
+  --space-section: clamp(72px, 11vh, 132px);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* ── Hoa văn X Nút Gold ──────────────────────────────────────── */
+  --motif-stroke: oklch(0.7 0.18 115);
+  --motif-node: oklch(0.72 0.2 75);
+  --motif-opacity: 0.45;
+  --motif-size: 28px;
+
+  /* ── Layout ──────────────────────────────────────────────────── */
   --nav-h: 62px;
   --radius: 12px;
   --radius-sm: 8px;
   --radius-lg: 16px;
-  --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all var(--dur-fast) var(--ease);
 }
 
 *,
@@ -35,12 +57,58 @@ html {
 }
 
 body {
-  font-family: "Be Vietnam Pro", sans-serif;
-  background: var(--bg-deep);
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  background: var(--bg-main);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Hoa văn N1 — X Nút Gold mờ toàn trang */
+  background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='0' x2='28' y2='28' stroke='%23b8c870' stroke-width='0.6' stroke-opacity='0.07'/%3E%3Cline x1='28' y1='0' x2='0' y2='28' stroke='%23b8c870' stroke-width='0.6' stroke-opacity='0.07'/%3E%3Ccircle cx='14' cy='14' r='2.2' fill='%23c8a840' fill-opacity='0.08'/%3E%3C/svg%3E");
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), "Libre Bodoni", Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Kicker / label / tag trên heading */
+.kicker {
+  font-family: var(--font-body), "DM Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Tag viền gold mảnh — Dark Luxe Editorial */
+.tag-gold {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  font-family: var(--font-body), "DM Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Số thứ tự Bodoni khổng lồ nền mờ — Dark Luxe Editorial */
+.editorial-num {
+  font-family: var(--font-display), "Libre Bodoni", Georgia, serif;
+  font-size: clamp(80px, 12vw, 120px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
 }
 
 a {
@@ -90,6 +158,150 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* ══ I5: METALLIC SHINE — Kim Loại Lướt ═══════════════════════════
+   Áp cho: .hero-title, .section-title, .shine
+   Vệt sáng gold quét ngang khi hover/on-enter
+═══════════════════════════════════════════════════════════════════ */
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    oklch(0.8 0.18 75 / 0.55) 50%,
+    transparent 80%
+  );
+  transform: translateX(-110%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.shine:hover::after,
+.shine.animate-shine::after {
+  animation: shine-sweep var(--dur-slow) var(--ease) forwards;
+}
+
+/* ══ I6: PLASMA BLOBS — Bong Bóng Huyền Ảo ════════════════════════
+   Áp cho: section nền dark (Hero, CTA footer)
+   2 blob tròn mờ trôi hữu cơ
+═══════════════════════════════════════════════════════════════════ */
+@keyframes blob-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -30px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.94);
+  }
+}
+
+@keyframes blob-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 40px) scale(0.92);
+  }
+  66% {
+    transform: translate(25px, -20px) scale(1.06);
+  }
+}
+
+.plasma-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.plasma-bg::before,
+.plasma-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.plasma-bg::before {
+  width: 420px;
+  height: 420px;
+  top: -80px;
+  right: -60px;
+  background: radial-gradient(
+    circle,
+    oklch(0.7 0.18 115 / 0.14),
+    transparent 70%
+  );
+  filter: blur(60px);
+  animation: blob-drift-1 14s ease-in-out infinite;
+}
+
+.plasma-bg::after {
+  width: 320px;
+  height: 320px;
+  bottom: -60px;
+  left: -40px;
+  background: radial-gradient(
+    circle,
+    oklch(0.72 0.2 75 / 0.1),
+    transparent 70%
+  );
+  filter: blur(50px);
+  animation: blob-drift-2 18s ease-in-out infinite;
+}
+
+/* Nội dung trong plasma-bg phải trên blob */
+.plasma-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ══ Hoa văn X Nút Gold — section dark ════════════════════════════
+   Chồng với I6 (z-index 0, dưới z-index 1 của nội dung)
+═══════════════════════════════════════════════════════════════════ */
+.motif-x {
+  background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='0' x2='28' y2='28' stroke='%23b8c870' stroke-width='0.8' stroke-opacity='0.35'/%3E%3Cline x1='28' y1='0' x2='0' y2='28' stroke='%23b8c870' stroke-width='0.8' stroke-opacity='0.35'/%3E%3Ccircle cx='14' cy='14' r='2.2' fill='%23c8a840' fill-opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* ══ Reveal animation — Bộ IV Trầm Sang ═══════════════════════════ */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-y));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: reveal-up var(--dur-base) var(--ease) both;
+}
+
+.reveal-slow {
+  animation: reveal-up var(--dur-slow) var(--ease) both;
 }
 
 /* ── Responsive layout helpers ─────────────────────────────── */

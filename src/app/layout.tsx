@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Be_Vietnam_Pro, Playfair_Display } from "next/font/google";
+import { Libre_Bodoni, DM_Sans } from "next/font/google";
 import "./globals.css";
 import type { WithContext, Organization, WebSite } from "schema-dts";
 
-const beVietnamPro = Be_Vietnam_Pro({
+const libreBodoni = Libre_Bodoni({
   subsets: ["latin", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-be-vietnam",
+  weight: ["700"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
   display: "swap",
 });
 
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
+const dmSans = DM_Sans({
+  subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -129,10 +129,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="vi"
-      className={`${beVietnamPro.variable} ${playfairDisplay.variable}`}
-    >
+    <html lang="vi" className={`${libreBodoni.variable} ${dmSans.variable}`}>
       <head>
         {/* RSS Feed discovery */}
         <link
