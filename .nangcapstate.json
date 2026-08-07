@@ -15,7 +15,7 @@
   "hoaVanNenDaChon": true,
   "thamMyDaChon": true,
   "bocucChuDaChon": true,
-  "moodBoardDaChon": false,
+  "moodBoardDaChon": true,
   "phamViDaDuyet": false,
   "vongLap": [],
   "formXacNhanPhien": "20260806"

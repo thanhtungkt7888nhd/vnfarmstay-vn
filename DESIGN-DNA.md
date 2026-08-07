@@ -113,7 +113,12 @@
 **Nguyên tắc bố trí:** mỗi section có 1 focal point duy nhất, không cạnh tranh; Bodoni italic xuất hiện đúng lúc — không dùng mọi chỗ; khoảng cách `--space-section` giữ đủ để mỗi block "thở".
 **Không khí:** resort 5 sao × nông trại xác thực — sang mà không xa lạ, gần mà không thô.
 
-## Mood board (chưa chốt — chờ B3c)
+## Mood board ✅ (chốt 20260808 — Dark Luxe Editorial)
+
+**Phong cách:** Số Bodoni khổng lồ làm nền mờ · layout bất quy tắc lệch/chồng · tag viền gold mảnh · ảnh đen trắng + filter green.
+**Cảm hứng ảnh:** Tông trầm, ảnh farmstay qua lăng kính điện ảnh — không ảnh sáng sủa bình thường; ưu tiên góc lạ, ánh sáng tự nhiên, texture đất/lá/gỗ.
+**Bố cục section:** Số thứ tự Bodoni 80–120px mờ 0.08–0.12 làm nền · heading italic nổi trên · layout grid lệch (không symmetric) · tag viền `border: 1px solid --gold / 0.4`.
+**Tham chiếu:** Monocle magazine · Wallpaper* · Condé Nast Traveler dark edition.
 
 ---
 
