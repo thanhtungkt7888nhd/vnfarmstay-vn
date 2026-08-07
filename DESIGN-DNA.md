@@ -107,6 +107,12 @@
 
 ---
 
+## Thẩm Mỹ Tổng Thể ✅ (chốt 20260808 — Resort Sang Trọng)
+
+**Tinh thần:** Bodoni italic dàn trải · không gian thở nhiều · accent mạ non · ít text nhiều cảm xúc.
+**Nguyên tắc bố trí:** mỗi section có 1 focal point duy nhất, không cạnh tranh; Bodoni italic xuất hiện đúng lúc — không dùng mọi chỗ; khoảng cách `--space-section` giữ đủ để mỗi block "thở".
+**Không khí:** resort 5 sao × nông trại xác thực — sang mà không xa lạ, gần mà không thô.
+
 ## Mood board (chưa chốt — chờ B3c)
 
 ---
