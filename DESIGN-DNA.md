@@ -53,7 +53,14 @@
 
 ---
 
-## Hiệu ứng signature (chưa chốt — chờ B3b)
+## Hiệu ứng signature ✅ (chốt 20260807 — I5 + I6)
+
+| Mã | Tên | Kỹ thuật | Dùng cho |
+|---|---|---|---|
+| **I5** | Metallic Shine — Kim Loại Lướt | CSS `::after` + `translateX` + `mix-blend-mode: overlay` | Logo · Headline · CTA chính (vệt sáng gold quét ngang) |
+| **I6** | Plasma Blobs — Bong Bóng Huyền Ảo | CSS `::before/::after` 2 khối tròn `blur()` trôi hữu cơ | Nền section dark — sống động, gợi đêm farmstay |
+
+**Nguyên tắc áp:** I5 áp cho MỌI headline cùng vai trò (H1 trang chủ, H1 bài viết, tên farmstay nổi bật) — không chỉ 1 chỗ. I6 áp cho section nền dark (Hero, Cộng đồng, footer CTA) — không chỉ Hero.
 
 ---
 
