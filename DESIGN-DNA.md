@@ -129,3 +129,16 @@ Tính năng ROADMAP (không build trong đợt này):
 - Hệ thống thành viên 2 vai (auth + role management)
 - Cross-linking API với website riêng farmstay
 - Thông báo email/app khi có câu hỏi mới
+
+---
+
+## Sổ bàn giao — /nang-cap-web 20260808 (FAIL ngoài phạm vi B4)
+
+| Cổng | Việc | Nơi làm |
+|---|---|---|
+| `priv.28-consent-gate` | Bọc GA4/Clarity trong ConsentGate — PDPL bắt buộc | `layout.tsx` |
+| `h1-count` | Thêm H1 thật vào mọi route còn thiếu | `/nang-cap-giao-dien` |
+| `content.41` | Xoá/ẩn số mock "500+, 63 tỉnh, listing mock" — thay bằng Sanity thật hoặc giữ `[[CẦN-DỮ-KIỆN]]` | component content |
+| `sec.1/2` | Thêm security headers + vá CSP unsafe-eval | `next.config.ts` |
+| `seo.2-head` | Kiểm head từng route còn thiếu title/description | route pages |
+| `mobile.14` | Thêm orientation lock | layout/meta |
