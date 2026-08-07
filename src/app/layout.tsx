@@ -12,7 +12,7 @@ const libreBodoni = Libre_Bodoni({
 });
 
 const dmSans = DM_Sans({
-  subsets: ["latin", "vietnamese"],
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500"],
   variable: "--font-body",
   display: "swap",
