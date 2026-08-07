@@ -64,7 +64,20 @@
 
 ---
 
-## Hoa văn (chưa chốt — chờ B3b)
+## Hoa văn ✅ (chốt 20260807 — X Nút Gold, chữ X logo)
+
+**Nguồn:** Sáng tạo riêng từ chữ **X** trong logo vnfarmstay — không dùng mô-típ dân tộc.
+**Ý nghĩa:** X = kết nối, giao thoa — ẩn dụ chính xác cho nền tảng nối farmstay ↔ du khách.
+
+| Token | Giá trị | Ghi chú |
+|---|---|---|
+| `--motif-stroke` | `oklch(0.70 0.18 115)` | Nét X — màu mạ non |
+| `--motif-node` | `oklch(0.72 0.20 75)` | Nút gold tại giao điểm |
+| `--motif-opacity` | `0.35–0.55` | Mờ nhạt ở nền, rõ hơn ở accent |
+| `--motif-size` | `28px` | Ô tile cơ bản |
+
+**Kỹ thuật:** SVG `<pattern>` — 2 đường chéo nét mảnh (opacity 0.35) + chấm gold tại giao điểm (r=2.2, opacity 0.55). Tile đều nền section dark.
+**Dùng cho:** Nền Hero · Nền section Cộng đồng · Nền footer CTA — đúng vị trí I6 Plasma Blobs (2 hiệu ứng chồng layer, không cạnh tranh).
 
 ---
 
