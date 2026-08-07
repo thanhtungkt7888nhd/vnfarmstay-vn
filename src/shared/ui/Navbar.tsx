@@ -46,12 +46,12 @@ export function Navbar() {
           style={{ flexShrink: 0, display: "flex", alignItems: "center" }}
         >
           <Image
-            src="/logo-horizontal.png"
+            src="/logo-x.png"
             alt="Vietnam Farmstay"
-            width={182}
-            height={75}
+            width={36}
+            height={36}
             priority
-            style={{ height: 36, width: "auto", objectFit: "contain" }}
+            style={{ height: 36, width: 36, objectFit: "contain" }}
           />
         </Link>
 
@@ -308,11 +308,11 @@ export function Navbar() {
         >
           <div style={{ padding: "8px 16px 4px" }}>
             <Image
-              src="/logo-horizontal.png"
+              src="/logo-x.png"
               alt="Vietnam Farmstay"
-              width={140}
-              height={58}
-              style={{ height: 30, width: "auto" }}
+              width={30}
+              height={30}
+              style={{ height: 30, width: 30 }}
             />
           </div>
 
