@@ -81,6 +81,19 @@
 
 ---
 
+## Hoa văn nền ✅ (chốt 20260808 — N1 Nền X Mờ)
+
+**Phương án:** N1 — dùng lại đúng pattern X Nút Gold ở opacity thấp hơn nhiều, trải toàn trang.
+**Nguyên tắc:** 1 ngôn ngữ xuyên suốt — hoa văn nền và hoa văn chữ ký là cùng 1 mô-típ X, chỉ khác độ mờ.
+
+| Vị trí | Opacity | Ghi chú |
+|---|---|---|
+| Nền trang tổng thể (`--bg-main`) | `0.06–0.08` | Gần như vô hình, chỉ tạo chiều sâu |
+| Nền card / section sáng | `0.05` | Cực nhẹ, không cạnh tranh nội dung |
+| Nền section dark (Hero, CTA) | X Nút Gold đầy đủ `0.35–0.55` | Đây là hoa văn chữ ký — không phải nền |
+
+**Kỹ thuật:** CSS `background-image: url("data:image/svg+xml,...")` với pattern SVG inline — không tải thêm file.
+
 ## Bố cục chữ (chưa chốt — chờ B3b)
 
 ---

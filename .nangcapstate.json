@@ -12,7 +12,7 @@
   "nhipDaChon": true,
   "hieuUngDaChon": true,
   "hoaVanDaChon": true,
-  "hoaVanNenDaChon": false,
+  "hoaVanNenDaChon": true,
   "thamMyDaChon": false,
   "bocucChuDaChon": false,
   "moodBoardDaChon": false,
