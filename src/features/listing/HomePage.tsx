@@ -1,36 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import dynamic from "next/dynamic";
 import type { Farmstay } from "@/shared/types/farmstay";
 import { FarmstayCard } from "./FarmstayCard";
-
-/** Lazy-load FarmstayMap — Leaflet không chạy được trên server */
-const FarmstayMap = dynamic(
-  () => import("./FarmstayMap").then((m) => ({ default: m.FarmstayMap })),
-  {
-    ssr: false,
-    loading: () => (
-      <div
-        style={{
-          height: 480,
-          background: "var(--bg-card)",
-          borderRadius: "var(--radius)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "var(--text-dim)",
-          fontSize: "0.9rem",
-          border: "1px solid var(--border)",
-        }}
-        aria-label="Đang tải bản đồ"
-        aria-busy="true"
-      >
-        🗺️ Đang tải bản đồ...
-      </div>
-    ),
-  }
-);
 
 const CHIPS = [
   { label: "🌿 Tất cả", value: "all" },
@@ -313,18 +285,14 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
       <style>{`
         #main-listing {
           display: grid;
-          grid-template-columns: 240px 1fr 300px;
+          grid-template-columns: 240px 1fr;
           gap: 0;
           max-width: 100%;
           min-height: 60vh;
         }
         @media (max-width: 1023px) {
-          #main-listing { grid-template-columns: 1fr 280px; }
-          #sidebar-filter { display: none; }
-        }
-        @media (max-width: 767px) {
           #main-listing { grid-template-columns: 1fr; }
-          #map-panel { display: none !important; }
+          #sidebar-filter { display: none; }
         }
       `}</style>
 
@@ -574,47 +542,6 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
             </div>
           )}
         </main>
-
-        {/* Map panel */}
-        <aside
-          id="map-panel"
-          aria-label="Bản đồ farmstay"
-          style={{
-            borderLeft: "1px solid var(--border)",
-            background: "var(--bg-main)",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div
-            style={{
-              padding: "16px 20px 12px",
-              borderBottom: "1px solid var(--border)",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                color: "var(--text-muted)",
-              }}
-            >
-              🗺️ Bản đồ farmstay
-            </h3>
-            <p
-              style={{
-                fontSize: "0.75rem",
-                color: "var(--text-dim)",
-                marginTop: 2,
-              }}
-            >
-              Click vào điểm để xem chi tiết
-            </p>
-          </div>
-          <div style={{ flex: 1, minHeight: 400 }}>
-            <FarmstayMap farmstays={filtered} />
-          </div>
-        </aside>
       </div>
     </>
   );
