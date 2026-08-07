@@ -122,7 +122,7 @@
 
 ---
 
-## Phạm vi (chưa duyệt — chờ B3d)
+## Phạm vi ✅ (duyệt 20260808 — 5 lớp thi công B4)
 
 Tính năng ROADMAP (không build trong đợt này):
 - Chat cộng đồng realtime + AI fallback sau 10 giây
