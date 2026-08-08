@@ -40,7 +40,10 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
     >
       {/* Ảnh bìa — dùng next/image để tự động tối ưu WebP/AVIF */}
       {coverUrl ? (
-        <div style={{ position: "relative", width: "100%", height: 200 }}>
+        <div
+          className="fx-hover-scale-img"
+          style={{ position: "relative", width: "100%", height: 200 }}
+        >
           <Image
             src={coverUrl}
             alt={post.title}

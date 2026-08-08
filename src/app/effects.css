@@ -870,3 +870,87 @@
     transition: none;
   }
 }
+
+/* ══ MỤC D — bản CSS cho recipe đơn thuốc đòi mà web CSS-thuần chưa có ══
+   Web này KHÔNG có framer-motion, nên mọi recipe chỉ có bản linh kiện React
+   đều "hết lối cấp" (đơn thuốc 09/08/2026 từ chối 20+ mục vì lý do này).
+   Ba lớp dưới là bản CSS thuần của 3 recipe hay được kê nhất, viết đúng
+   token Bộ IV (gold 75° + mạ non 115°) — không mã màu cứng ngoài palette.
+   Đều tôn trọng prefers-reduced-motion ở cuối tệp.
+═══════════════════════════════════════════════════════════════════════ */
+
+/* hoverScaleImage — ảnh trong thẻ phóng nhẹ khi rê chuột.
+   Đặt lên phần tử BỌC ảnh (cần overflow ẩn để ảnh không tràn bo góc). */
+.fx-hover-scale-img {
+  overflow: hidden;
+}
+.fx-hover-scale-img img,
+.fx-hover-scale-img > [data-anh] {
+  transition: transform 0.6s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94));
+  will-change: transform;
+}
+.fx-hover-scale-img:hover img,
+.fx-hover-scale-img:focus-within img,
+.fx-hover-scale-img:hover > [data-anh] {
+  transform: scale(1.06);
+}
+
+/* arrowSlideCta — mũi tên trong nút trượt sang phải khi rê chuột.
+   Không thêm thẻ mới: mũi tên là ::after của chính nút. */
+.fx-arrow-slide::after {
+  content: "→";
+  display: inline-block;
+  margin-inline-start: 8px;
+  transition: transform 0.32s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94));
+}
+.fx-arrow-slide:hover::after,
+.fx-arrow-slide:focus-visible::after {
+  transform: translateX(5px);
+}
+
+/* rippleEffect — gợn sóng gold lan ra khi bấm. Thuần CSS :active,
+   không cần JS bắt toạ độ con trỏ (bản JS gợn từ điểm chạm, bản này
+   gợn từ tâm — ghi rõ để không hứa quá với người đọc sau). */
+.fx-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.fx-ripple::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold, oklch(0.72 0.2 75));
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+}
+.fx-ripple:active::before {
+  animation: fx-ripple-out 0.5s ease-out;
+}
+@keyframes fx-ripple-out {
+  from {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(26);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-hover-scale-img img,
+  .fx-arrow-slide::after {
+    transition: none;
+  }
+  .fx-hover-scale-img:hover img {
+    transform: none;
+  }
+  .fx-ripple:active::before {
+    animation: none;
+  }
+}

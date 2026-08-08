@@ -757,6 +757,7 @@ export default function FarmstayLaGiPage() {
             </p>
             <Link
               href="/chu-farmstay"
+              className="fx-arrow-slide fx-ripple"
               style={{
                 display: "inline-block",
                 padding: "13px 30px",
@@ -768,7 +769,7 @@ export default function FarmstayLaGiPage() {
                 transition: "var(--transition)",
               }}
             >
-              Dành cho chủ farmstay →
+              Dành cho chủ farmstay
             </Link>
           </div>
         </section>

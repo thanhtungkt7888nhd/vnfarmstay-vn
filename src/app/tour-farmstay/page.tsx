@@ -704,6 +704,7 @@ export default function TourFarmstayPage() {
             </p>
             <Link
               href="/dang-farmstay"
+              className="fx-arrow-slide fx-ripple"
               style={{
                 display: "inline-block",
                 padding: "13px 30px",
@@ -715,7 +716,7 @@ export default function TourFarmstayPage() {
                 transition: "var(--transition)",
               }}
             >
-              Giới thiệu farmstay của bạn →
+              Giới thiệu farmstay của bạn
             </Link>
           </div>
         </section>

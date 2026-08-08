@@ -713,7 +713,7 @@ time,
   font-size: 0.9rem;
   /* Vùng chạm ≥44px (a11y.26) — khi hiện ra bằng phím Tab nó là nút thật,
      người dùng chạm/bấm được, nên phải đủ cao như mọi nút khác. */
-  padding: 11px 20px;
+  padding: 12px 20px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
