@@ -103,22 +103,19 @@ export default async function FarmstayDetailPage({ params }: Props) {
                     : "linear-gradient(135deg, #0f2a1a, #1e4a2d, #0a1f10)",
             }}
           />
-          {/* Emoji lớn */}
+          {/* Hoa văn X thương hiệu thay cho placeholder emoji.
+              LUẬT: cấm emoji làm placeholder ảnh (nhìn quê, không sang) —
+              dùng đúng mô-típ X đã chốt trong DESIGN-DNA, tông trầm. */}
           <div
             aria-hidden="true"
+            className="motif-x"
             style={{
               position: "absolute",
               inset: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "10rem",
-              opacity: 0.18,
-              userSelect: "none",
+              opacity: 0.5,
+              backgroundSize: "56px 56px",
             }}
-          >
-            {farmstay.emoji}
-          </div>
+          />
           {/* Overlay gradient bottom */}
           <div
             style={{
@@ -150,13 +147,15 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   fontSize: "0.7rem",
                   fontWeight: 700,
                   letterSpacing: "0.08em",
+                  /* Palette Bộ IV: chỉ xanh mạ non + gold, không màu ngoài
+                     bảng (trước đây là xanh dương/cam/tím — đá tông). */
                   background:
                     b === "verified"
-                      ? "#2563eb"
+                      ? "var(--accent-ma)"
                       : b === "featured"
-                        ? "#b45309"
-                        : "#7c3aed",
-                  color: "#fff",
+                        ? "var(--gold)"
+                        : "var(--gold-light)",
+                  color: "var(--bg-deep)",
                 }}
               >
                 {b === "verified"
@@ -360,7 +359,17 @@ export default async function FarmstayDetailPage({ params }: Props) {
                       gap: 10,
                     }}
                   >
-                    <span style={{ fontSize: "1.4rem" }}>{farmstay.emoji}</span>
+                    {/* Chấm gold — nhịp thị giác thay icon emoji (LUẬT no-emoji) */}
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: 7,
+                        height: 7,
+                        borderRadius: "50%",
+                        background: "var(--gold)",
+                        flexShrink: 0,
+                      }}
+                    />
                     <span
                       style={{
                         fontSize: "0.85rem",
@@ -721,11 +730,15 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "1.5rem",
+                  fontFamily: "var(--font-display), serif",
+                  fontSize: "1.35rem",
+                  fontWeight: 700,
+                  color: "var(--gold)",
                   flexShrink: 0,
                 }}
               >
-                {farmstay.emoji}
+                {/* Chữ cái đầu tên farm bằng Bodoni — thay icon emoji (LUẬT no-emoji) */}
+                {farmstay.name.trim().charAt(0).toUpperCase()}
               </div>
               <div>
                 <p

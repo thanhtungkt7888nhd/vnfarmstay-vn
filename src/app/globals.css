@@ -366,6 +366,10 @@ img {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  /* Nơi dùng thường có style color inline (var(--text-primary)) đè lên
+     `color: transparent` ở trên → gradient bị màu đặc che, hiệu ứng câm.
+     -webkit-text-fill-color không bị inline color đè nên giữ được vệt gold. */
+  -webkit-text-fill-color: transparent;
   animation: gold-sweep 8s var(--ease) infinite;
 }
 

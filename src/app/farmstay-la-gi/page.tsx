@@ -408,6 +408,7 @@ export default function FarmstayLaGiPage() {
               {LOAI_HINH.map((l) => (
                 <article
                   key={l.ten}
+                  className="fx-tilt"
                   style={{
                     background: "var(--bg-card)",
                     border: "1px solid var(--border)",

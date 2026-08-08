@@ -22,6 +22,7 @@
  * farmstay Việt Nam; "chúng tôi" chỉ dùng khi vnfarmstay.vn tự ràng buộc cam kết.
  */
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
@@ -160,8 +161,17 @@ export default function VeChungToiPage() {
             background: "linear-gradient(160deg,#0f2318,#1a3d28 60%,#0f2318)",
             padding: "84px 24px 88px",
             textAlign: "center",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
+          {/* Tia sáng xiên — hiệu ứng rút mới từ kho (fx-god-rays), buộc theo
+              --accent = gold thương hiệu để không đá tông Bộ IV. */}
+          <div
+            aria-hidden="true"
+            className="fx-god-rays"
+            style={{ "--accent": "var(--gold)" } as CSSProperties}
+          />
           <span className="section-kicker reveal">Lẽ sống của chúng ta</span>
           <h1
             className="shine reveal"

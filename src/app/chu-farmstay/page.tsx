@@ -834,6 +834,7 @@ export default function ChuFarmstayPage() {
           {/* ── FAQ ── */}
           <section style={{ marginTop: 72 }} aria-label="Câu hỏi thường gặp">
             <h2
+              className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "1.7rem",
