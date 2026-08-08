@@ -110,6 +110,7 @@ export default function DangFarmstayPage() {
             }}
           >
             <h2
+              className="section-heading"
               style={{
                 fontSize: "1.15rem",
                 fontWeight: 700,
@@ -163,6 +164,7 @@ export default function DangFarmstayPage() {
             }}
           >
             <h2
+              className="section-heading"
               style={{
                 fontSize: "1.15rem",
                 fontWeight: 700,

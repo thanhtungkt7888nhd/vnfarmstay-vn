@@ -36,6 +36,7 @@ export default async function BlogPage() {
       <main id="main">
         {/* Hero */}
         <section
+          className="plasma-bg motif-x"
           style={{
             background: "var(--bg-deep)",
             padding: "72px 24px 48px",

@@ -1383,5 +1383,135 @@
     "doKhaiThacKho": "23/100 = 23%",
     "checkLuat": "82 PASS · 45 WARN · 4 FAIL (nền: 80 PASS · 46 WARN · 5 FAIL)",
     "ranhGioi": "KHÔNG cổng sec./seo./geo./priv. nào xấu đi"
+  },
+  "dot2": {
+    "ngay": "20260809",
+    "lyDo": "Sau đợt 1 (08/08) có 2 commit nội dung lớn (2954c11 + 29dca4a) thêm 2 route mới và viết lại 2 trang — các khúc mới CHƯA qua vòng giao diện nào.",
+    "phamViTong": {
+      "routes": 18,
+      "khucUocTinh": 112,
+      "khucMoiSoVoiDot1": 27
+    },
+    "nenCheckLuat": "78 PASS · 49 WARN · 5 FAIL",
+    "nenMayDo": {
+      "boCucChu": "9 FAIL · 378 WARN / 44 lượt",
+      "canAnh": "0 lỗi / 19 ảnh",
+      "matDo": "3/4 loại trang đạt sàn"
+    },
+    "khoApDung": {
+      "lopFxChuaDung": 16,
+      "camChongHeReveal": [
+        "fx-reveal-text",
+        "fx-reveal-cards",
+        "fx-scroll-reveal",
+        "fx-stagger-grid"
+      ],
+      "daApDung": [
+        "fx-tilt-glow",
+        "fx-card-wash",
+        "fx-text-clip",
+        "fx-god-rays",
+        "fx-tilt",
+        "fx-hover-scale-img(mới viết)",
+        "fx-arrow-slide(mới viết)",
+        "fx-ripple(mới viết)"
+      ],
+      "tuChoiCoLyDo": [
+        {
+          "muc": "fx-gradient-shift",
+          "lyDo": "mã màu cứng hồng #ec4899 + cam #fb923c — đá tông palette 132°/75° Bộ IV"
+        },
+        {
+          "muc": "fx-bg-gradient",
+          "lyDo": "mã màu cứng xanh dương #3b82f6 + tím #a855f7 — đá tông"
+        },
+        {
+          "muc": "fx-burning-text · fx-neon-flicker",
+          "lyDo": "đá tông Bộ IV Trầm Sang Điện Ảnh"
+        },
+        {
+          "muc": "fx-fog-layer",
+          "lyDo": "dùng biến --background không tồn tại ⇒ fallback #fff trắng, z-index 5 phủ lên chữ"
+        },
+        {
+          "muc": "fx-metallic-shine · fx-plasma-blobs",
+          "lyDo": "trùng cơ chế web đã có (.shine / .plasma-bg là hiệu ứng signature I5+I6 đã chốt)"
+        },
+        {
+          "muc": "fx-water-reflection",
+          "lyDo": "cần ảnh thật; danh bạ farmstay CỐ Ý rỗng (chưa có farm thật) nên không có chỗ áp"
+        }
+      ]
+    },
+    "vongLap": [
+      {
+        "vong": 1,
+        "muc": "1-dung-chuan",
+        "soLechVa": 8,
+        "chinh": [
+          "6 chỗ dính chữ sau </strong>",
+          "8 FAIL can-deu (li thẻ mô tả)",
+          "I5 shine cho 3 H1 trang mới",
+          "I6 plasma + hoa văn X cho 2 CTA cuối",
+          "fx-tilt-glow vá trang_chu thiếu loại C"
+        ]
+      },
+      {
+        "vong": 2,
+        "muc": "2-deu-khap",
+        "soLechVa": 6,
+        "chinh": [
+          "fx-gradient-text-gold CÂM ở 3 chỗ do style color inline đè -> thêm -webkit-text-fill-color",
+          "badge farmstay 3 màu ngoài palette (xanh dương/cam/tím) -> token brand",
+          "gỡ 3 emoji cuối cùng (placeholder ảnh + 2 icon) theo LUẬT no-emoji",
+          "H2 FAQ chu-farmstay thiếu gạch gold",
+          "rút mới: fx-god-rays, fx-tilt"
+        ]
+      },
+      {
+        "vong": 3,
+        "muc": "3-trang-thai-bien",
+        "soLechVa": 3,
+        "chinh": [
+          "nav desktop TRÀN mép phải ở 768 -> breakpoint md->lg (5 chỗ)",
+          "dính chữ tái phát do prettier hoàn tác {\" \"} -> vá bền bằng &nbsp; trong <strong>",
+          "skip-link 39px < 44px vùng chạm"
+        ]
+      },
+      {
+        "vong": 4,
+        "muc": "4-lam-giau",
+        "soLechVa": 4,
+        "chinh": [
+          "MỞ ĐƯỜNG: viết bản CSS thuần cho 3 recipe đơn thuốc đòi mà web CSS-thuần không có (hoverScaleImage/arrowSlideCta/rippleEffect)",
+          "áp ảnh thẻ blog + 2 nút CTA",
+          "sửa hồi quy spacing 11px -> 12px"
+        ]
+      },
+      {
+        "vong": 5,
+        "muc": "5-dinh-hoi-quy",
+        "soLechVa": 8,
+        "chinh": [
+          "hero /blog + /ve-tac-gia thiếu I6 plasma + hoa văn X",
+          "6 H2 ở /ve-tac-gia, /dang-farmstay, /phap-ly thiếu gạch gold section-heading",
+          "đối chiếu 11 route: H1 1/trang + .shine đều 11/11"
+        ]
+      }
+    ],
+    "ketQua": {
+      "checkLuat": "78 PASS · 49 WARN · 5 FAIL — Y NGUYÊN mốc nền, không cổng nào xấu đi",
+      "boCucChu": "9 FAIL -> 1 FAIL (còn lại là BÁO OAN: khối flex thanh tiến độ 2 cột ở /ve-chung-toi, không phải đoạn văn)",
+      "matDo": "3/4 -> 4/4 loại trang đạt sàn",
+      "canAnh": "0 lỗi / 19 ảnh"
+    },
+    "conSot": [
+      "5 FAIL check-luat: sec.1 HSTS · sec.2 CSP · seo.2-head · priv.28 consent gate · content.41 (BÁO OAN: bắt \"100+ dự án\" là số bịa, nhưng đó là SỐ THẬT Ông cấp trong tài liệu nền tảng thương hiệu) — TẤT CẢ ngoài phạm vi giao diện",
+      "378 WARN bố cục chữ: phần lớn là measure (độ dài dòng) ở khổ màn hẹp + cỡ chữ phụ <16px ở kicker/nhãn (CỐ Ý) — vá tiếp sẽ phá thứ bậc thị giác đã chốt",
+      "thân bài 6 bài blog vẫn rỗng (\"Nội dung đang được cập nhật...\") — việc NỘI DUNG",
+      "/farmstay/[slug]: vá badge + bỏ emoji đã làm ở mã nhưng KHÔNG kiểm được bằng màn hình vì FARMSTAYS cố ý rỗng (chưa có farm thật)",
+      "fx-text-clip áp cho H2 /tour-farmstay chạy lúc load, người dùng cuộn tới thì đã xong — vô hại nhưng hiệu quả thấp; cân nhắc đổi sang cơ chế theo cuộn nếu web nhận framer-motion",
+      "ĐỀ XUẤT KHO CHUNG (chưa làm, ngoài ô này): 3 lớp CSS vừa viết (fx-hover-scale-img/fx-arrow-slide/fx-ripple) nên đưa vào mục C của effects.css trong 05-TEMPLATE-CHUAN để mọi web CSS-thuần khác dùng được"
+    ]
   }
 }

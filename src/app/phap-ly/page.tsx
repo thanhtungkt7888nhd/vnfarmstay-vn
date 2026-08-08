@@ -201,6 +201,7 @@ export default function PhapLyPage() {
             }}
           >
             <h2
+              className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "1.6rem",

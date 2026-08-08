@@ -62,6 +62,7 @@ export default function VeTacGiaPage() {
       >
         {/* Hero */}
         <section
+          className="plasma-bg motif-x"
           style={{
             background: "var(--bg-deep)",
             borderBottom: "1px solid var(--border)",
@@ -170,6 +171,7 @@ export default function VeTacGiaPage() {
               </div>
               <div>
                 <h2
+                  className="section-heading"
                   style={{
                     fontFamily: "var(--font-display), serif",
                     fontSize: "1.6rem",
@@ -275,6 +277,7 @@ export default function VeTacGiaPage() {
           {/* Các tác giả khác — placeholder */}
           <section style={{ marginTop: 56 }} aria-label="Các tác giả khác">
             <h2
+              className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "1.2rem",
@@ -311,6 +314,7 @@ export default function VeTacGiaPage() {
             aria-label="Liên hệ"
           >
             <h2
+              className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "1.3rem",
