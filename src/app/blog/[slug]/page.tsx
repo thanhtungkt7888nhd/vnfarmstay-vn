@@ -15,6 +15,7 @@ import { CATEGORY_LABELS } from "@/features/blog/types";
 import { buildMetadata } from "@/lib/seo";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
+import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
 import {
   fetchPostBySlug,
@@ -126,10 +127,22 @@ export default async function BlogPostPage({
               background: "var(--bg-deep)",
             }}
           >
-            <img
+            {/* next/image thay <img> thô (cổng perf.4-raw-img). urlFor() ở
+                trên đã dựng ảnh đúng 1200×630, nên khai đúng cặp số đó —
+                trình duyệt giữ chỗ trước, không nhảy bố cục lúc ảnh về. */}
+            <Image
               src={coverImageUrl}
               alt={post.title}
-              style={{ width: "100%", objectFit: "cover", display: "block" }}
+              width={1200}
+              height={630}
+              priority
+              sizes="100vw"
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+                display: "block",
+              }}
             />
           </div>
         )}

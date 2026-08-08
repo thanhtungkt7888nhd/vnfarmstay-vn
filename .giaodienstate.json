@@ -766,6 +766,184 @@
         "ảnh bìa blog vẫn <img> thô — vòng 3",
         "BÀI HỌC VẬN HÀNH: dev server này KHÔNG tự biên dịch lại globals.css sau sửa — PHẢI ép (append rồi xoá 1 dòng) TRƯỚC MỌI phép đo, nếu không máy đọc CSS cũ và báo oan (đã bị lừa 1 lần: 84 FAIL giả, thực tế 2)"
       ]
+    },
+    {
+      "vong": 3,
+      "muc": "3-trang-thai-bien",
+      "phamViDaPhu": {
+        "khuc": "85/85",
+        "route": "16/16",
+        "the": "4/4 loại",
+        "bai": "6/6"
+      },
+      "soTieuChiSoi": 38,
+      "soLechVa": 5,
+      "khoTieuThu": {
+        "vongNay": 0,
+        "congDon": 14,
+        "conLai": 86
+      },
+      "theoLoai": {
+        "1-mau": {
+          "daRaSoat": [
+            "tương phản ở 375 và 768",
+            "10 tổ hợp khổ tablet"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "0 rớt ở cả 375/768 sau khi nâng L ở vòng 2"
+        },
+        "2-chu": {
+          "daRaSoat": [
+            "do-bo-cuc-chu 4 khổ màn"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "0 FAIL trên 44 lượt (mobile_375 · mobile_414 · tablet_768 · desktop_1280)"
+        },
+        "3-hieuung-chu": {
+          "daRaSoat": [
+            "reveal/shine ở khổ mobile"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "4-bocuc": {
+          "daRaSoat": [
+            "tràn ngang 375/768"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "scrollW === clientW ở cả 375 và 768 — 0 tràn ngang"
+        },
+        "5-chuyendong-khoi": {
+          "daRaSoat": [
+            "prefers-reduced-motion"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [
+              "thêm nhánh reduced-motion cho :active (bỏ translateY)"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "6-hoavan": {
+          "daRaSoat": [
+            "motif-x ở khổ hẹp"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "7-anh-media": {
+          "daRaSoat": [
+            "perf.4 lần 2"
+          ],
+          "lech": [
+            "ảnh bìa bài viết vẫn <img> thô (hoãn từ vòng 2)"
+          ],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [
+              "ảnh bìa blog/[slug] → next/image 1200x630 + priority + sizes=100vw"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "0 thẻ <img> thô còn lại trong src (trừ api/og là ImageResponse, không phải DOM)"
+        },
+        "8-ui-vi-mo": {
+          "daRaSoat": [
+            "ux.12 4 trạng thái",
+            "a11y.26 đo THẬT ở 375"
+          ],
+          "lech": [
+            "CSS thiếu :active và :disabled",
+            "14 phần tử vùng chạm cao 18-19px < 24px (đo thật ở khổ 375) — cổng a11y.26 tĩnh KHÔNG bắt được vì nó chỉ dò khai cứng chiều cao"
+          ],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [
+              "thêm :focus-visible viền gold offset 3px cho a/button/summary/input/textarea/select/[tabindex]",
+              "thêm :active translateY(1px)",
+              "thêm :disabled opacity .45 + grayscale + not-allowed + pointer-events none",
+              "min-height 24px + inline-flex cho link/nút footer & nav, padding-block 4px cho mục danh sách"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "vùng chạm <24px: 14 → 0 (đo lại ở 375 và 768) · ux.12: WARN → PASS"
+        },
+        "9-dieuhuong-mobile": {
+          "daRaSoat": [
+            "mobile.29",
+            "375/414/768"
+          ],
+          "lech": [
+            "chưa có env(safe-area-inset)",
+            "cổng ux.19 báo footer >4 nhóm"
+          ],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [
+              "safe-area-inset cho body (trái/phải), footer (đáy), nav (đỉnh)"
+            ],
+            "tuChoi": [
+              {
+                "muc": "gộp nhóm footer",
+                "lyDo": "ĐẾM THẬT trong Footer.tsx chỉ có 4 nhóm (Khám phá · Chủ farmstay · Về chúng tôi · Hệ sinh thái) = ĐÚNG giới hạn 3-4. Cổng đọc bản chụp CŨ nên báo oan; đã dựng lại bản chụp."
+              }
+            ],
+            "hoanChoOng": []
+          },
+          "soDo": "mobile.29: WARN → PASS"
+        },
+        "10-microcopy": {
+          "daRaSoat": [
+            "nhãn trạng thái rỗng/lỗi"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "ghiChu": "trang chủ khi danh bạ rỗng đã có microcopy thật (Ông duyệt 08/08), không sửa"
+        }
+      },
+      "conSot": [
+        "aeo.12-qa-40-60tu PASS→WARN: KHÔNG do việc giao diện — bản chụp NỀN cũ thiếu mọi trang bài nên cổng trả N/A=PASS; bản chụp mới có FAQ thật, đáp án 22/21/33 từ so chuẩn 40-60. Đây là việc NỘI DUNG/AEO, NGOÀI phạm vi skill này",
+        "231 WARN bố cục chữ — vòng 4/5",
+        "5 FAIL check-luat còn lại đều thuộc sec./seo./priv. — ngoài phạm vi giao diện, y nguyên mốc nền"
+      ]
     }
   ]
 }
