@@ -7,7 +7,7 @@ import { FARMSTAYS } from "@/features/listing/data";
 export const metadata: Metadata = {
   title: "vnfarmstay.vn – Khám phá trải nghiệm nông nghiệp đích thực Việt Nam",
   description:
-    "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau.",
+    "Giới thiệu farmstay Việt Nam và những câu chuyện vùng miền — ruộng bậc thang, đồi chè, vườn cà phê, văn hoá bản địa chưa bị thương mại hoá.",
   alternates: { canonical: "https://vnfarmstay.vn/" },
 };
 

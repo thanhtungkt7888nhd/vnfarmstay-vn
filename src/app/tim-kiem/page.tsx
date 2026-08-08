@@ -7,7 +7,7 @@ import { FARMSTAYS } from "@/features/listing/data";
 export const metadata: Metadata = {
   title: "Tìm kiếm Farmstay | vnfarmstay.vn",
   description:
-    "Tìm kiếm 500+ farmstay xác minh khắp Việt Nam — Miền Bắc, Miền Trung, Miền Nam. Lọc theo khu vực, giá, đánh giá.",
+    "Tìm farmstay theo khu vực Miền Bắc, Miền Trung, Miền Nam trên vnfarmstay.vn.",
   alternates: { canonical: "https://vnfarmstay.vn/tim-kiem" },
 };
 

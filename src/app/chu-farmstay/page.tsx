@@ -1,6 +1,12 @@
 /**
- * Trang hub dành cho Chủ Farmstay — giải thích lợi ích, cách hoạt động,
- * giá niêm yết, FAQ và CTA đăng ký. Đây là landing page B2B quan trọng nhất.
+ * Trang hub dành cho Chủ Farmstay — giải thích lời mời, cách hoạt động và FAQ.
+ *
+ * ⚠️ 08/08/2026 — Ông ra lệnh gỡ sạch nội dung NỀN TẢNG BỊA thừa hưởng từ khung web cũ:
+ * vnfarmstay.vn KHÔNG vận hành nền tảng đặt phòng, KHÔNG thu hoa hồng, KHÔNG xác minh
+ * thực địa, KHÔNG có bảng điều khiển chủ farmstay. Đã gỡ: bảng giá "8% hoa hồng" ·
+ * "50.000+ du khách/tháng" · "500+ farmstay đối tác" · huy hiệu "Đã xác minh" ·
+ * 2 lời chứng thực tự chế (Chị Nguyễn Hương · Anh Trần Minh).
+ * CẤM đưa số liệu mới vào trang này nếu Ông chưa xác nhận đó là số THẬT.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -14,14 +20,14 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Dành cho Chủ Farmstay — Đưa farm của bạn lên vnfarmstay.vn",
   description:
-    "Nền tảng farmstay hàng đầu Việt Nam. Miễn phí đăng ký, tiếp cận 50.000+ du khách mỗi tháng. Công cụ quản lý đặt phòng, analytics và hỗ trợ 24/7 cho chủ farmstay.",
+    "Giới thiệu farmstay của bạn trên vnfarmstay.vn — miễn phí, kèm liên kết về website riêng của farm. Chúng tôi kể câu chuyện của farm, khách liên hệ thẳng với bạn.",
   canonical: "/chu-farmstay",
   keywords: [
     "chủ farmstay",
-    "đăng ký farmstay",
+    "giới thiệu farmstay",
     "kinh doanh farmstay",
-    "quản lý farmstay",
-    "nền tảng farmstay việt nam",
+    "quảng bá farmstay",
+    "farmstay việt nam",
   ],
 });
 
@@ -36,130 +42,76 @@ const steps = [
   {
     num: "01",
     icon: "📋",
-    title: "Đăng ký miễn phí",
-    desc: "Điền thông tin cơ bản về farmstay trong 10 phút. Đội ngũ vnfarmstay.vn liên hệ hỗ trợ trong 24h.",
+    title: "Bạn kể về farm của mình",
+    desc: "Gửi cho chúng tôi tên farm, ở đâu, làm nông gì, khách tới được trải nghiệm điều gì — kèm vài tấm ảnh thật của farm.",
   },
   {
     num: "02",
-    icon: "✅",
-    title: "Xác minh thực địa",
-    desc: "Chúng tôi xác minh farmstay của bạn — đảm bảo tiêu chuẩn chất lượng và xây dựng lòng tin với du khách.",
+    icon: "✍️",
+    title: "Chúng tôi viết lại thành câu chuyện",
+    desc: "Không phải mẩu rao vặt. Là câu chuyện về vùng đất, mùa vụ và con người ở farm bạn — thứ khiến người đọc muốn tới tận nơi.",
   },
   {
     num: "03",
-    icon: "🚀",
-    title: "Lên sóng & nhận đặt phòng",
-    desc: "Trang farmstay của bạn xuất hiện trên nền tảng, trên Google và mạng xã hội. Đặt phòng về trực tiếp.",
+    icon: "🔗",
+    title: "Đăng lên, kèm đường về farm bạn",
+    desc: "Trang giới thiệu trỏ thẳng về website, Zalo hoặc số điện thoại của bạn. Khách liên hệ trực tiếp với bạn, không qua chúng tôi.",
   },
 ];
 
 const benefits = [
   {
-    icon: "👁️",
-    title: "50.000+ du khách/tháng",
-    desc: "Tiếp cận đúng đối tượng — người thật sự muốn đến farmstay, không phải khách du lịch đại trà.",
+    icon: "🆓",
+    title: "Hoàn toàn miễn phí",
+    desc: "Không phí đăng, không phí hàng tháng, không hoa hồng. vnfarmstay.vn không đứng giữa việc kinh doanh của bạn.",
   },
   {
-    icon: "📸",
-    title: "Trang giới thiệu chuyên nghiệp",
-    desc: "Gallery ảnh đẹp, mô tả đầy cảm xúc, bản đồ vị trí, hoạt động nổi bật — farmstay của bạn được trình bày đúng giá trị.",
+    icon: "📖",
+    title: "Được kể chuyện tử tế",
+    desc: "Farm của bạn được viết bằng giọng kể — vùng đất, mùa vụ, nếp sống — thay vì một dòng liệt kê tiện nghi khô khan.",
   },
   {
-    icon: "📊",
-    title: "Analytics minh bạch",
-    desc: "Biết ai đang xem trang của bạn, từ đâu đến, quan tâm điều gì. Ra quyết định dựa trên dữ liệu thật.",
+    icon: "🔗",
+    title: "Dẫn khách về thẳng chỗ bạn",
+    desc: "Mọi liên kết trỏ về website, Zalo hoặc số điện thoại của farm. Khách đặt thẳng với bạn, theo giá và điều kiện của bạn.",
   },
   {
-    icon: "🛡️",
-    title: "Hỗ trợ pháp lý & vận hành",
-    desc: "Thư viện kiến thức về giấy phép, bảo hiểm, định giá và vận hành farmstay chuẩn — chỉ có trên vnfarmstay.vn.",
+    icon: "🔍",
+    title: "Có mặt trên Google",
+    desc: "Trang của farm bạn được tối ưu để người tìm 'farmstay + tên vùng' có thể tìm ra — thứ mà một trang Facebook khó làm được.",
   },
   {
-    icon: "💬",
-    title: "Cộng đồng chủ farmstay",
-    desc: "Kết nối với hàng trăm chủ farmstay trên cả nước. Chia sẻ kinh nghiệm, học từ người đi trước.",
+    icon: "🤝",
+    title: "Quảng bá chéo",
+    desc: "Farm của bạn đứng cạnh những farm khác cùng vùng. Người đọc tìm một cái, biết thêm cả cụm.",
   },
   {
-    icon: "💰",
-    title: "0đ niêm yết cơ bản",
-    desc: "Tạo trang farmstay hoàn toàn miễn phí. Chỉ thanh toán % hoa hồng khi có đặt phòng thành công.",
-  },
-];
-
-const pricing = [
-  {
-    tier: "Cơ bản",
-    price: "Miễn phí",
-    sub: "Mãi mãi",
-    color: "var(--border)",
-    features: [
-      "Trang giới thiệu farmstay",
-      "Tối đa 10 ảnh",
-      "Hiển thị trên bản đồ",
-      "Nhận yêu cầu đặt phòng",
-      "Hỗ trợ email",
-    ],
-    cta: "Đăng ký ngay",
-    ctaHref: "/dang-farmstay",
-    highlight: false,
-  },
-  {
-    tier: "Xác minh",
-    price: "8% hoa hồng",
-    sub: "trên mỗi đặt phòng thành công",
-    color: "var(--gold)",
-    features: [
-      "Tất cả tính năng Cơ bản",
-      'Huy hiệu "Đã xác minh"',
-      "Ảnh không giới hạn",
-      "Ưu tiên hiển thị trong kết quả",
-      "Analytics chi tiết",
-      "Hỗ trợ ưu tiên 24/7",
-      "Xuất hiện trong bài viết blog",
-    ],
-    cta: "Đăng ký & xác minh",
-    ctaHref: "/dang-farmstay",
-    highlight: true,
+    icon: "🌾",
+    title: "Mọi quy mô đều được",
+    desc: "Từ vườn nhà vài phòng tới trang trại sinh thái lớn. Điều chúng tôi tìm là trải nghiệm thật, không phải tiện nghi xa xỉ.",
   },
 ];
 
 const faqs = [
   {
     q: "vnfarmstay.vn lấy phí như thế nào?",
-    a: "Đăng ký và tạo trang giới thiệu hoàn toàn miễn phí. Chúng tôi chỉ thu 8% hoa hồng trên mỗi đặt phòng thành công qua nền tảng. Không phí ẩn, không phí hàng tháng.",
+    a: "Không lấy đồng nào. Giới thiệu farm trên vnfarmstay.vn hoàn toàn miễn phí — không phí đăng, không phí hàng tháng, không hoa hồng. Chúng tôi không nhận đặt phòng nên cũng không có gì để ăn phần trăm.",
   },
   {
-    q: "Tôi cần chuẩn bị gì để đăng ký?",
-    a: "Thông tin cơ bản về farmstay (tên, địa chỉ, mô tả), ít nhất 5 ảnh chất lượng tốt, và giấy phép kinh doanh (hoặc hộ kinh doanh cá thể). Đội ngũ chúng tôi sẽ hướng dẫn phần còn lại.",
+    q: "Tôi cần chuẩn bị gì để được giới thiệu?",
+    a: "Tên farm, địa chỉ, mô tả ngắn về việc làm nông và trải nghiệm cho khách, vài tấm ảnh thật của farm, cùng cách liên hệ để chúng tôi dẫn khách về đúng chỗ bạn — website, Zalo hoặc số điện thoại.",
   },
   {
-    q: "Mất bao lâu để farmstay xuất hiện trên nền tảng?",
-    a: "Sau khi đăng ký, đội ngũ vnfarmstay.vn liên hệ trong 24h. Sau khi xác minh thực địa (3–5 ngày), farmstay của bạn lên sóng ngay.",
+    q: "Khách đặt phòng qua vnfarmstay.vn phải không?",
+    a: "Không. Chúng tôi chỉ giới thiệu và dẫn đường. Khách đọc xong sẽ liên hệ thẳng với bạn qua kênh bạn cung cấp, đặt theo giá và điều kiện của bạn. Chúng tôi không giữ tiền, không xử lý thanh toán, không can thiệp.",
   },
   {
-    q: "Tôi có thể tự chỉnh sửa thông tin sau khi đăng ký không?",
-    a: "Có. Bạn có thể cập nhật ảnh, mô tả, giá phòng và lịch trống bất cứ lúc nào qua bảng điều khiển chủ farmstay.",
+    q: "Tôi muốn sửa thông tin farm sau khi đã đăng thì làm sao?",
+    a: "Nhắn cho chúng tôi qua trang liên hệ, nói rõ cần sửa gì. Hiện chưa có trang tự quản lý cho chủ farmstay — mọi thay đổi đều làm thủ công, nên xin bạn kiên nhẫn vài ngày.",
   },
   {
-    q: "Farmstay nhỏ, chưa có nhiều tiện nghi có thể đăng ký không?",
-    a: "Hoàn toàn có thể. vnfarmstay.vn phù hợp với mọi quy mô — từ homestay nông trại nhỏ đến resort sinh thái lớn. Điều quan trọng là trải nghiệm đích thực, không phải tiện nghi xa xỉ.",
-  },
-];
-
-const testimonials = [
-  {
-    avatar: "🌿",
-    name: "Chị Nguyễn Hương",
-    farm: "Vườn Cà Phê Robusta · Kon Tum",
-    text: "Trước khi lên vnfarmstay.vn, tôi chủ yếu dựa vào khách qua zalo và giới thiệu miệng. Sau 3 tháng, đặt phòng tăng gấp đôi, quan trọng hơn là khách hiểu đúng về trải nghiệm của mình ngay từ đầu.",
-    stat: "Đặt phòng tăng 2×",
-  },
-  {
-    avatar: "🍃",
-    name: "Anh Trần Minh",
-    farm: "Vườn Dâu Tằm · Bảo Lộc",
-    text: "Trang giới thiệu farmstay nhà tôi trông chuyên nghiệp hơn hẳn. Du khách đến đã hiểu mình sẽ trải nghiệm gì, nên rất ít khi thất vọng. Đó là thứ tôi cần nhất.",
-    stat: "Giảm 70% câu hỏi lặp lại",
+    q: "Farmstay nhỏ, chưa có nhiều tiện nghi có được giới thiệu không?",
+    a: "Được. vnfarmstay.vn hợp với mọi quy mô — từ homestay nông trại nhỏ tới trang trại sinh thái lớn. Điều quan trọng là trải nghiệm đích thực và cách bạn đối đãi với đất đai, không phải tiện nghi xa xỉ.",
   },
 ];
 
@@ -173,12 +125,8 @@ export default function ChuFarmstayPage() {
         .owner-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
         @media (min-width: 640px) { .owner-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .benefits-grid { grid-template-columns: repeat(3, 1fr) !important; } }
-        .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-        @media (min-width: 640px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
         .step-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
         @media (min-width: 768px) { .step-grid { grid-template-columns: repeat(3, 1fr); } }
-        .testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 768px) { .testimonial-grid { grid-template-columns: repeat(2, 1fr); } }
       `}</style>
 
       <main style={{ background: "var(--bg-main)", minHeight: "100vh" }}>
@@ -258,9 +206,9 @@ export default function ChuFarmstayPage() {
                 margin: "0 auto 36px",
               }}
             >
-              vnfarmstay.vn kết nối farmstay của bạn với 50.000+ du khách đang
-              tìm kiếm trải nghiệm nông nghiệp đích thực mỗi tháng — không qua
-              trung gian, không phức tạp.
+              vnfarmstay.vn giới thiệu farm của bạn tới người đang tìm trải
+              nghiệm nông nghiệp đích thực, rồi dẫn họ về thẳng chỗ bạn — miễn
+              phí, không hoa hồng, không đứng giữa.
             </p>
 
             <div
@@ -305,55 +253,9 @@ export default function ChuFarmstayPage() {
           </div>
         </section>
 
-        {/* ── Stats bar ── */}
-        <div
-          style={{
-            background: "var(--bg-card)",
-            borderBottom: "1px solid var(--border)",
-            padding: "20px 24px",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: 900,
-              margin: "0 auto",
-              display: "flex",
-              justifyContent: "space-around",
-              flexWrap: "wrap",
-              gap: 16,
-            }}
-          >
-            {[
-              { num: "50K+", label: "du khách/tháng" },
-              { num: "500+", label: "farmstay đối tác" },
-              { num: "8%", label: "hoa hồng duy nhất" },
-              { num: "0đ", label: "phí niêm yết" },
-            ].map(({ num, label }) => (
-              <div key={label} style={{ textAlign: "center" }}>
-                <div
-                  style={{
-                    fontFamily: "var(--font-playfair), serif",
-                    fontSize: "1.6rem",
-                    fontWeight: 700,
-                    color: "var(--gold)",
-                    lineHeight: 1,
-                  }}
-                >
-                  {num}
-                </div>
-                <div
-                  style={{
-                    color: "var(--text-dim)",
-                    fontSize: "0.78rem",
-                    marginTop: 4,
-                  }}
-                >
-                  {label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Thanh số cũ (50K+ du khách/tháng · 500+ farmstay đối tác · 8% hoa hồng ·
+            0đ phí niêm yết) đã GỠ 08/08/2026 — toàn bộ là số tự chế của khung web cũ.
+            KHÔNG thay bằng bộ số khác; chỉ đặt lại khi có số THẬT Ông xác nhận. */}
 
         <div
           style={{ maxWidth: 960, margin: "0 auto", padding: "0 24px 80px" }}
@@ -511,279 +413,10 @@ export default function ChuFarmstayPage() {
             </div>
           </section>
 
-          {/* ── Testimonials ── */}
-          <section
-            style={{ marginTop: 72 }}
-            aria-label="Chia sẻ từ chủ farmstay"
-          >
-            <h2
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontSize: "1.7rem",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                textAlign: "center",
-                marginBottom: 44,
-              }}
-            >
-              Chủ farmstay nói gì?
-            </h2>
-
-            <div className="testimonial-grid">
-              {testimonials.map((t) => (
-                <div
-                  key={t.name}
-                  style={{
-                    background: "var(--bg-card)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "var(--radius)",
-                    padding: "32px",
-                    position: "relative",
-                  }}
-                >
-                  {/* Stat badge */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 20,
-                      right: 20,
-                      background: "rgba(212,168,83,0.1)",
-                      border: "1px solid var(--gold-border)",
-                      color: "var(--gold)",
-                      fontSize: "0.72rem",
-                      fontWeight: 700,
-                      padding: "4px 10px",
-                      borderRadius: 20,
-                    }}
-                  >
-                    {t.stat}
-                  </div>
-
-                  {/* Quote mark */}
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      fontFamily: "Georgia, serif",
-                      fontSize: "3.5rem",
-                      color: "var(--gold-border)",
-                      lineHeight: 1,
-                      marginBottom: 8,
-                    }}
-                  >
-                    "
-                  </div>
-
-                  <p
-                    style={{
-                      color: "var(--text-muted)",
-                      fontSize: "0.92rem",
-                      lineHeight: 1.75,
-                      fontStyle: "italic",
-                      marginBottom: 24,
-                    }}
-                  >
-                    {t.text}
-                  </p>
-
-                  <div
-                    style={{ display: "flex", alignItems: "center", gap: 12 }}
-                  >
-                    <div
-                      style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: "50%",
-                        background: "var(--gold-dim)",
-                        border: "1px solid var(--gold-border)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "1.3rem",
-                      }}
-                    >
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          fontWeight: 700,
-                          color: "var(--text-primary)",
-                          fontSize: "0.88rem",
-                        }}
-                      >
-                        {t.name}
-                      </div>
-                      <div
-                        style={{
-                          color: "var(--text-dim)",
-                          fontSize: "0.78rem",
-                          marginTop: 2,
-                        }}
-                      >
-                        {t.farm}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── Bảng giá ── */}
-          <section
-            id="bang-gia"
-            style={{ marginTop: 72 }}
-            aria-label="Bảng giá"
-          >
-            <h2
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontSize: "1.7rem",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                textAlign: "center",
-                marginBottom: 8,
-              }}
-            >
-              Minh bạch về chi phí
-            </h2>
-            <p
-              style={{
-                color: "var(--text-dim)",
-                textAlign: "center",
-                marginBottom: 44,
-                fontSize: "0.92rem",
-              }}
-            >
-              Không phí ẩn. Chỉ trả khi có doanh thu.
-            </p>
-
-            <div className="pricing-grid">
-              {pricing.map((plan) => (
-                <div
-                  key={plan.tier}
-                  style={{
-                    background: plan.highlight
-                      ? "var(--bg-deep)"
-                      : "var(--bg-card)",
-                    border: `1px solid ${plan.highlight ? "var(--gold-border)" : "var(--border)"}`,
-                    borderRadius: "var(--radius)",
-                    padding: "36px 28px",
-                    position: "relative",
-                  }}
-                >
-                  {plan.highlight && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: -13,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        background: "var(--gold)",
-                        color: "#0f2318",
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                        padding: "4px 16px",
-                        borderRadius: 20,
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      Được chọn nhiều nhất
-                    </div>
-                  )}
-
-                  <div
-                    style={{
-                      fontWeight: 700,
-                      color: "var(--text-dim)",
-                      fontSize: "0.78rem",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      marginBottom: 12,
-                    }}
-                  >
-                    {plan.tier}
-                  </div>
-
-                  <div
-                    style={{
-                      fontFamily: "var(--font-playfair), serif",
-                      fontSize: "2rem",
-                      fontWeight: 700,
-                      color: plan.highlight
-                        ? "var(--gold)"
-                        : "var(--text-primary)",
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {plan.price}
-                  </div>
-                  <div
-                    style={{
-                      color: "var(--text-dim)",
-                      fontSize: "0.78rem",
-                      marginBottom: 28,
-                      marginTop: 4,
-                    }}
-                  >
-                    {plan.sub}
-                  </div>
-
-                  <ul
-                    style={{
-                      listStyle: "none",
-                      padding: 0,
-                      margin: "0 0 32px 0",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 10,
-                    }}
-                  >
-                    {plan.features.map((f) => (
-                      <li
-                        key={f}
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 8,
-                          color: "var(--text-muted)",
-                          fontSize: "0.88rem",
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        <span style={{ color: "var(--gold)", flexShrink: 0 }}>
-                          ✓
-                        </span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    href={plan.ctaHref}
-                    style={{
-                      display: "block",
-                      textAlign: "center",
-                      background: plan.highlight
-                        ? "var(--gold)"
-                        : "transparent",
-                      border: plan.highlight
-                        ? "none"
-                        : "1px solid var(--border)",
-                      color: plan.highlight ? "#0f2318" : "var(--text-muted)",
-                      fontWeight: 700,
-                      fontSize: "0.9rem",
-                      padding: "12px",
-                      borderRadius: "var(--radius-sm)",
-                      textDecoration: "none",
-                    }}
-                  >
-                    {plan.cta}
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </section>
+          {/* Khối "Chủ farmstay nói gì?" (2 lời chứng thực Chị Nguyễn Hương ·
+              Anh Trần Minh) và khối "Minh bạch về chi phí" (gói Cơ bản / gói Xác minh
+              8% hoa hồng) đã GỠ HẲN 08/08/2026 — người không có thật, gói phí không có thật.
+              Ông chốt: KHÔNG viết lời chứng thực mới, KHÔNG dựng bảng giá mới. */}
 
           {/* ── FAQ ── */}
           <section style={{ marginTop: 72 }} aria-label="Câu hỏi thường gặp">
@@ -883,8 +516,8 @@ export default function ChuFarmstayPage() {
                 lineHeight: 1.7,
               }}
             >
-              Đăng ký miễn phí trong 10 phút. Đội ngũ vnfarmstay.vn liên hệ hỗ
-              trợ trong 24h.
+              Gửi cho chúng tôi vài dòng về farm của bạn. Miễn phí, không hoa
+              hồng, không ràng buộc.
             </p>
             <Link
               href="/dang-farmstay"
@@ -899,7 +532,7 @@ export default function ChuFarmstayPage() {
                 textDecoration: "none",
               }}
             >
-              Đăng ký farmstay miễn phí →
+              Giới thiệu farmstay của bạn →
             </Link>
           </section>
         </div>

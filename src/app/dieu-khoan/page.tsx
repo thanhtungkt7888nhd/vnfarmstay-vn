@@ -2,10 +2,18 @@ import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 
+/**
+ * ⚠️ 08/08/2026 — Ông ra lệnh sửa lại cho đúng sự thật. Bản cũ (thừa hưởng từ khung web
+ * nền tảng đặt phòng) khai vnfarmstay.vn "thu phí hoa hồng trên mỗi đặt phòng thành công"
+ * và có "chính sách huỷ phòng / hoàn tiền", "tài khoản người dùng" — KHÔNG có thứ nào tồn
+ * tại. Đây là văn bản RÀNG BUỘC hiển thị công khai nên sai ở đây nặng hơn sai ở trang bán
+ * hàng. Đã gỡ 3 điều đó. CẤM viết lại điều khoản về đặt phòng/hoa hồng/thanh toán/tài khoản
+ * khi web chưa thật sự có các chức năng ấy.
+ */
 export const metadata: Metadata = {
   title: "Điều khoản sử dụng – vnfarmstay.vn",
   description:
-    "Điều khoản sử dụng dịch vụ vnfarmstay.vn — quyền và nghĩa vụ của người dùng, chủ farmstay, và nền tảng.",
+    "Điều khoản sử dụng vnfarmstay.vn — phạm vi dịch vụ giới thiệu farmstay, quyền và nghĩa vụ của người đọc và chủ farmstay.",
   alternates: { canonical: "https://vnfarmstay.vn/dieu-khoan" },
 };
 
@@ -18,45 +26,35 @@ const SECTIONS = [
   {
     title: "2. Mô tả dịch vụ",
     content:
-      "vnfarmstay.vn là nền tảng kết nối du khách với chủ farmstay tại Việt Nam. Chúng tôi cung cấp công cụ tìm kiếm, đặt phòng, và quản lý farmstay — không trực tiếp cung cấp dịch vụ lưu trú.",
+      "vnfarmstay.vn là website giới thiệu farmstay và kể câu chuyện về các vùng nông nghiệp Việt Nam. Chúng tôi KHÔNG phải nền tảng đặt phòng: không nhận đặt chỗ, không xử lý thanh toán, không giữ tiền của bạn và không thu hoa hồng của ai. Mọi giao dịch diễn ra trực tiếp giữa bạn và chủ farmstay, theo giá và điều kiện do chủ farmstay đặt ra.",
   },
   {
-    title: "3. Tài khoản người dùng",
+    title: "3. Quy tắc sử dụng",
     content:
-      "Bạn chịu trách nhiệm bảo mật tài khoản và mật khẩu. Mọi hoạt động dưới tài khoản của bạn là trách nhiệm của bạn. Thông báo ngay cho chúng tôi nếu phát hiện truy cập trái phép.",
+      "Nghiêm cấm: gửi cho chúng tôi thông tin sai lệch về farmstay, mạo danh chủ farmstay khác, spam, vi phạm quyền riêng tư của người khác, hoặc sử dụng nội dung của website cho mục đích bất hợp pháp.",
   },
   {
-    title: "4. Quy tắc sử dụng",
+    title: "4. Chi phí",
     content:
-      "Nghiêm cấm: đăng thông tin sai lệch về farmstay, gian lận đánh giá, spam, vi phạm quyền riêng tư của người khác, hoặc sử dụng dịch vụ cho mục đích bất hợp pháp.",
+      "Việc giới thiệu farmstay trên vnfarmstay.vn hoàn toàn miễn phí — không phí đăng, không phí duy trì, không hoa hồng. Chúng tôi không phát sinh khoản thu nào với chủ farmstay hay với người đọc.",
   },
   {
-    title: "5. Phí và thanh toán",
+    title: "5. Giới hạn trách nhiệm",
     content:
-      "vnfarmstay.vn thu phí hoa hồng trên mỗi đặt phòng thành công theo tỷ lệ đã thông báo. Đăng ký farmstay hoàn toàn miễn phí. Phí sẽ được khấu trừ trực tiếp từ thanh toán của khách.",
+      "vnfarmstay.vn không chịu trách nhiệm về chất lượng dịch vụ thực tế tại farmstay, về thoả thuận giữa bạn và chủ farmstay, về thiệt hại phát sinh từ thông tin sai lệch do chủ farmstay cung cấp, hoặc sự cố nằm ngoài tầm kiểm soát. Chúng tôi chỉ giới thiệu và dẫn đường, không đứng ra bảo đảm.",
   },
   {
-    title: "6. Chính sách huỷ phòng",
-    content:
-      "Chính sách huỷ phòng do từng chủ farmstay quy định và được hiển thị rõ trên trang farmstay. vnfarmstay.vn hỗ trợ xử lý hoàn tiền theo chính sách đã đăng ký.",
-  },
-  {
-    title: "7. Giới hạn trách nhiệm",
-    content:
-      "vnfarmstay.vn không chịu trách nhiệm về chất lượng dịch vụ thực tế tại farmstay, thiệt hại phát sinh từ thông tin sai lệch do chủ farmstay cung cấp, hoặc sự cố nằm ngoài tầm kiểm soát.",
-  },
-  {
-    title: "8. Sở hữu trí tuệ",
+    title: "6. Sở hữu trí tuệ",
     content:
       "Toàn bộ nội dung trên vnfarmstay.vn (logo, hình ảnh, văn bản, code) thuộc quyền sở hữu của vnfarmstay.vn hoặc đối tác được cấp phép. Nghiêm cấm sao chép, phân phối khi chưa được phép.",
   },
   {
-    title: "9. Thay đổi điều khoản",
+    title: "7. Thay đổi điều khoản",
     content:
-      "vnfarmstay.vn có quyền cập nhật Điều khoản này bất kỳ lúc nào. Thay đổi quan trọng sẽ được thông báo qua email đăng ký. Tiếp tục sử dụng sau thông báo nghĩa là bạn chấp nhận điều khoản mới.",
+      "vnfarmstay.vn có quyền cập nhật Điều khoản này bất kỳ lúc nào. Bản mới có hiệu lực kể từ khi đăng trên trang này. Bạn nên xem lại định kỳ; tiếp tục sử dụng website nghĩa là bạn chấp nhận điều khoản hiện hành.",
   },
   {
-    title: "10. Luật áp dụng",
+    title: "8. Luật áp dụng",
     content:
       "Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Mọi tranh chấp sẽ được giải quyết tại toà án có thẩm quyền tại TP. Hồ Chí Minh, Việt Nam.",
   },

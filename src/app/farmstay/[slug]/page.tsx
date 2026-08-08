@@ -62,33 +62,12 @@ function getAmenities(tags: string[]): string[] {
   return Array.from(found).slice(0, 8);
 }
 
-/** Mock reviews theo rating */
-function getMockReviews(rating: number) {
-  return [
-    {
-      name: "Minh Phương",
-      avatar: "🌸",
-      date: "Tháng 3/2026",
-      stars: Math.min(5, Math.round(rating)),
-      text: "Tuyệt vời! Không khí trong lành, chủ nhà nhiệt tình và thân thiện. Buổi sáng thức dậy ngắm sương mù giữa vườn — cảm giác như đang ở một thế giới khác. Chắc chắn sẽ quay lại lần nữa.",
-    },
-    {
-      name: "Gia đình anh Tuấn",
-      avatar: "👨‍👩‍👧",
-      date: "Tháng 2/2026",
-      stars: Math.min(5, Math.round(rating)),
-      text: "Đưa hai con nhỏ đến đây — các bé thích lắm! Được tự tay hái rau, cho gà ăn, tối cùng nhau ngồi bên lửa. Đây mới là du lịch có ý nghĩa thật sự, không phải ngồi khách sạn nhìn điện thoại.",
-    },
-  ];
-}
-
 export default async function FarmstayDetailPage({ params }: Props) {
   const { slug } = await params;
   const farmstay = FARMSTAYS.find((f) => f.slug === slug);
   if (!farmstay) notFound();
 
   const amenities = getAmenities(farmstay.tags);
-  const reviews = getMockReviews(farmstay.rating);
 
   const regionLabel =
     farmstay.region === "north"
@@ -174,7 +153,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
               gap: 8,
             }}
           >
-            {farmstay.badges.map((b) => (
+            {farmstay.badges?.map((b) => (
               <span
                 key={b}
                 style={{
@@ -237,20 +216,27 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 flexWrap: "wrap",
               }}
             >
-              <span
-                style={{
-                  color: "var(--gold)",
-                  fontWeight: 700,
-                  fontSize: "1rem",
-                }}
-              >
-                {"★".repeat(Math.round(farmstay.rating))} {farmstay.rating}
-              </span>
-              <span
-                style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}
-              >
-                {farmstay.reviewCount} đánh giá
-              </span>
+              {farmstay.rating !== undefined && (
+                <span
+                  style={{
+                    color: "var(--gold)",
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                  }}
+                >
+                  {"★".repeat(Math.round(farmstay.rating))} {farmstay.rating}
+                </span>
+              )}
+              {farmstay.reviewCount !== undefined && (
+                <span
+                  style={{
+                    color: "rgba(255,255,255,0.6)",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  {farmstay.reviewCount} đánh giá
+                </span>
+              )}
               {farmstay.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
@@ -452,113 +438,10 @@ export default async function FarmstayDetailPage({ params }: Props) {
               </div>
             </section>
 
-            {/* Reviews */}
-            <section style={{ paddingTop: 32 }}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 16,
-                  marginBottom: 24,
-                }}
-              >
-                <h2
-                  style={{
-                    fontFamily: "var(--font-playfair),serif",
-                    fontSize: "1.3rem",
-                    fontWeight: 700,
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  Đánh giá từ khách
-                </h2>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span
-                    style={{
-                      color: "var(--gold)",
-                      fontWeight: 700,
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    {farmstay.rating}★
-                  </span>
-                  <span
-                    style={{ color: "var(--text-dim)", fontSize: "0.82rem" }}
-                  >
-                    ({farmstay.reviewCount} đánh giá)
-                  </span>
-                </div>
-              </div>
-              <div
-                style={{ display: "flex", flexDirection: "column", gap: 20 }}
-              >
-                {reviews.map((r, i) => (
-                  <article
-                    key={i}
-                    style={{
-                      background: "var(--bg-card)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "var(--radius-sm)",
-                      padding: "24px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 12,
-                        marginBottom: 14,
-                      }}
-                    >
-                      <div
-                        aria-hidden="true"
-                        style={{
-                          width: 40,
-                          height: 40,
-                          borderRadius: "50%",
-                          background: "var(--gold-dim)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: "1.2rem",
-                          flexShrink: 0,
-                        }}
-                      >
-                        {r.avatar}
-                      </div>
-                      <div>
-                        <p
-                          style={{
-                            fontWeight: 700,
-                            fontSize: "0.88rem",
-                            color: "var(--text-primary)",
-                          }}
-                        >
-                          {r.name}
-                        </p>
-                        <p
-                          style={{
-                            fontSize: "0.75rem",
-                            color: "var(--text-dim)",
-                          }}
-                        >
-                          {"★".repeat(r.stars)} · {r.date}
-                        </p>
-                      </div>
-                    </div>
-                    <p
-                      style={{
-                        color: "var(--text-muted)",
-                        fontSize: "0.88rem",
-                        lineHeight: 1.75,
-                      }}
-                    >
-                      {r.text}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </section>
+            {/* Khối "Đánh giá từ khách" đã GỠ 08/08/2026: 2 lời khen ký tên
+                "Minh Phương" và "Gia đình anh Tuấn" do khung web cũ tự chế, dùng chung
+                cho MỌI farmstay. Web không có chức năng nhận đánh giá nên không có
+                đánh giá thật nào để thay vào — để trống là đúng. */}
           </div>
 
           {/* ── RIGHT COLUMN: Booking card ── */}
@@ -597,21 +480,27 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   /đêm
                 </span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                  marginBottom: 24,
-                }}
-              >
-                <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>
-                  {"★".repeat(Math.round(farmstay.rating))}
-                </span>
-                <span style={{ color: "var(--text-dim)", fontSize: "0.78rem" }}>
-                  {farmstay.reviewCount} đánh giá
-                </span>
-              </div>
+              {farmstay.rating !== undefined && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    marginBottom: 24,
+                  }}
+                >
+                  <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>
+                    {"★".repeat(Math.round(farmstay.rating))}
+                  </span>
+                  {farmstay.reviewCount !== undefined && (
+                    <span
+                      style={{ color: "var(--text-dim)", fontSize: "0.78rem" }}
+                    >
+                      {farmstay.reviewCount} đánh giá
+                    </span>
+                  )}
+                </div>
+              )}
 
               {/* Date pickers */}
               <div
@@ -856,8 +745,10 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 >
                   Chủ farmstay
                 </p>
+                {/* Dòng "Tỷ lệ phản hồi 98% · Thường trả lời trong 1 giờ" đã GỠ
+                    08/08/2026 — số tự chế, web không đo được tốc độ trả lời của chủ farm. */}
                 <p style={{ fontSize: "0.75rem", color: "var(--text-dim)" }}>
-                  Tỷ lệ phản hồi 98% · Thường trả lời trong 1 giờ
+                  Liên hệ trực tiếp với chủ farm
                 </p>
               </div>
             </div>

@@ -2,40 +2,20 @@ import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 
+/**
+ * ⚠️ 08/08/2026 — Ông ra lệnh gỡ nội dung BỊA thừa hưởng từ khung web cũ ở trang này:
+ * · khối `STATS` (500+ Farmstay xác minh · 63 Tỉnh thành · 50K+ Du khách tin tưởng ·
+ *   4.8★ Đánh giá trung bình) — toàn bộ tự chế, đã gỡ, KHÔNG thay bộ số khác.
+ * · khối `TEAM` — Ông xác nhận "Nguyễn Thị Lan" và "Lê Văn Hùng" là người KHÔNG CÓ THẬT.
+ *   Còn lại một mình Phạm Thanh Tùng thì không gọi là "đội ngũ" được, nên gộp vào phần
+ *   sứ mệnh. CẤM dựng lại khối đội ngũ bằng tên tự nghĩ ra.
+ */
 export const metadata: Metadata = {
   title: "Về chúng tôi – vnfarmstay.vn",
   description:
-    "vnfarmstay.vn — nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam. Sứ mệnh, đội ngũ, câu chuyện.",
+    "vnfarmstay.vn — giới thiệu farmstay Việt Nam và kể câu chuyện của những vùng đất nông nghiệp. Sứ mệnh và người đứng sau.",
   alternates: { canonical: "https://vnfarmstay.vn/ve-chung-toi" },
 };
-
-const TEAM = [
-  {
-    name: "Phạm Thanh Tùng",
-    role: "Nhà sáng lập & CEO",
-    emoji: "🌿",
-    desc: "Nhà hoạch định farmstay với 10+ năm đồng hành cùng nông dân Việt Nam.",
-  },
-  {
-    name: "Nguyễn Thị Lan",
-    role: "Giám đốc Vận hành",
-    emoji: "⚙️",
-    desc: "Xây dựng quy trình xác minh farmstay đạt chuẩn chất lượng cao nhất.",
-  },
-  {
-    name: "Lê Văn Hùng",
-    role: "Trưởng nhóm Công nghệ",
-    emoji: "💻",
-    desc: "Xây dựng nền tảng kỹ thuật đảm bảo trải nghiệm mượt mà cho 100K+ người dùng.",
-  },
-];
-
-const STATS = [
-  ["500+", "Farmstay xác minh"],
-  ["63", "Tỉnh thành"],
-  ["50K+", "Du khách tin tưởng"],
-  ["4.8★", "Đánh giá trung bình"],
-];
 
 export default function VeChungToiPage() {
   return (
@@ -75,47 +55,6 @@ export default function VeChungToiPage() {
           </p>
         </section>
 
-        {/* Stats */}
-        <section
-          style={{
-            padding: "60px 24px",
-            borderTop: "1px solid var(--border)",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          <div
-            className="grid-stats-4"
-            style={{
-              maxWidth: 800,
-              margin: "0 auto",
-            }}
-          >
-            {STATS.map(([num, label]) => (
-              <div key={label}>
-                <div
-                  style={{
-                    fontSize: "2.2rem",
-                    fontWeight: 700,
-                    color: "var(--gold)",
-                    fontFamily: "var(--font-playfair),serif",
-                  }}
-                >
-                  {num}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.82rem",
-                    color: "var(--text-dim)",
-                    marginTop: 6,
-                  }}
-                >
-                  {label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Sứ mệnh */}
         <section id="su-menh" style={{ padding: "80px 24px" }}>
           <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
@@ -151,76 +90,20 @@ export default function VeChungToiPage() {
               </strong>{" "}
               thông qua du lịch có trách nhiệm.
             </p>
-          </div>
-        </section>
-
-        {/* Team */}
-        <section id="doi-ngu" style={{ padding: "0 24px 80px" }}>
-          <div style={{ maxWidth: 900, margin: "0 auto" }}>
-            <h2
+            <p
               style={{
-                fontFamily: "var(--font-playfair),serif",
-                fontSize: "2rem",
-                fontWeight: 700,
-                textAlign: "center",
-                marginBottom: 40,
+                color: "var(--text-dim)",
+                lineHeight: 1.8,
+                fontSize: "0.92rem",
+                marginTop: 28,
               }}
             >
-              Đội ngũ
-            </h2>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))",
-                gap: 24,
-              }}
-            >
-              {TEAM.map((member) => (
-                <div
-                  key={member.name}
-                  style={{
-                    background: "var(--bg-card)",
-                    borderRadius: "var(--radius)",
-                    border: "1px solid var(--border)",
-                    padding: "32px 24px",
-                    textAlign: "center",
-                  }}
-                >
-                  <div style={{ fontSize: "3rem", marginBottom: 16 }}>
-                    {member.emoji}
-                  </div>
-                  <h3
-                    style={{
-                      fontWeight: 700,
-                      fontSize: "1rem",
-                      color: "var(--text-primary)",
-                      marginBottom: 6,
-                    }}
-                  >
-                    {member.name}
-                  </h3>
-                  <div
-                    style={{
-                      fontSize: "0.78rem",
-                      color: "var(--gold)",
-                      fontWeight: 600,
-                      marginBottom: 12,
-                    }}
-                  >
-                    {member.role}
-                  </div>
-                  <p
-                    style={{
-                      fontSize: "0.83rem",
-                      color: "var(--text-dim)",
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {member.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+              Người khởi xướng và đứng sau vnfarmstay.vn là{" "}
+              <strong style={{ color: "var(--text-muted)" }}>
+                Phạm Thanh Tùng
+              </strong>{" "}
+              — Nhà Hoạch Định.
+            </p>
           </div>
         </section>
 
@@ -247,43 +130,22 @@ export default function VeChungToiPage() {
             >
               Liên hệ với chúng tôi
             </h2>
-            <p style={{ color: "var(--text-muted)", marginBottom: 28 }}>
-              Đặt câu hỏi, hợp tác, hoặc đăng ký trở thành đối tác farmstay.
+            {/* ⚠️ 08/08/2026 — Ông xác nhận CẢ BA kênh cũ đều KHÔNG CÓ THẬT, đã gỡ:
+                email hello@vnfarmstay.vn · hotline "1800 6868 (miễn phí)" ·
+                Zalo "vnfarmstay.vn Official". Để người ta gọi vào số không tồn tại
+                hoặc gửi thư vào hòm thư không ai đọc còn tệ hơn là nói thẳng chưa có.
+                Khi Ông cấp kênh THẬT thì đặt lại vào đúng chỗ này. */}
+            <p
+              style={{
+                color: "var(--text-muted)",
+                marginBottom: 0,
+                lineHeight: 1.8,
+              }}
+            >
+              Kênh liên hệ chính thức của vnfarmstay.vn đang được mở. Khi có,
+              địa chỉ sẽ được đăng ngay tại đây — chúng tôi không muốn để lại
+              một số điện thoại hay hòm thư mà bạn gọi vào lại không có ai.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {[
-                ["📧", "Email", "hello@vnfarmstay.vn"],
-                ["📞", "Hotline", "1800 6868 (miễn phí)"],
-                ["💬", "Zalo", "vnfarmstay.vn Official"],
-              ].map(([icon, label, value]) => (
-                <div
-                  key={label}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "12px 16px",
-                    borderRadius: "var(--radius-sm)",
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid var(--border)",
-                  }}
-                >
-                  <span
-                    style={{ color: "var(--text-dim)", fontSize: "0.85rem" }}
-                  >
-                    {icon} {label}
-                  </span>
-                  <span
-                    style={{
-                      color: "var(--text-primary)",
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {value}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>

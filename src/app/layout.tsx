@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | vnfarmstay.vn",
   },
   description:
-    "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau — trải nghiệm nông nghiệp đích thực, đặt phòng dễ dàng.",
+    "Giới thiệu farmstay Việt Nam và những câu chuyện vùng miền — ruộng bậc thang, đồi chè, vườn cà phê, văn hoá bản địa chưa bị thương mại hoá. Cầu nối giữa nông dân Việt và du khách.",
   keywords: [
     "farmstay việt nam",
     "du lịch nông nghiệp",
@@ -46,14 +46,14 @@ export const metadata: Metadata = {
     siteName: "vnfarmstay.vn",
     title: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
     description:
-      "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. Khám phá 500+ farmstay xác minh từ Hà Giang đến Cà Mau.",
+      "Giới thiệu farmstay Việt Nam và những câu chuyện vùng miền — ruộng bậc thang, đồi chè, vườn cà phê, văn hoá bản địa chưa bị thương mại hoá.",
     images: [
       {
         // Dynamic OG image — Edge function trả về PNG 1200×630 thật
         url: `${SITE_URL}/api/og?title=vnfarmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
         width: 1200,
         height: 630,
-        alt: "vnfarmstay.vn — Nền tảng farmstay Việt Nam",
+        alt: "vnfarmstay.vn — Farmstay và câu chuyện vùng miền Việt Nam",
       },
     ],
   },
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
     description:
-      "Nền tảng đặt phòng farmstay hàng đầu Việt Nam. 500+ farmstay xác minh.",
+      "Giới thiệu farmstay Việt Nam và những câu chuyện vùng miền — cầu nối giữa nông dân Việt và du khách.",
     images: [
       `${SITE_URL}/api/og?title=vnfarmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
     ],
@@ -86,18 +86,16 @@ const orgSchema: WithContext<Organization> = {
   name: "vnfarmstay.vn",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
+  // ⚠️ 08/08/2026 — Ông xác nhận facebook.com/farmstayvn và instagram.com/farmstayvn
+  // KHÔNG phải trang của vnfarmstay.vn (tên tay cầm là "farmstayvn" — của thương hiệu
+  // khác), đã gỡ. Khai nhận trang mạng xã hội của thương hiệu khác là chính cái bệnh
+  // đợt này đi chữa. Chỉ thêm lại khi có trang THẬT do Ông xác nhận.
   sameAs: [
-    "https://www.facebook.com/farmstayvn",
-    "https://www.instagram.com/farmstayvn",
     // Ecosystem cross-reference — liên kết entity với các site cùng hệ sinh thái
     "https://nhahoachdinh.vn",
   ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+84-1800-6868",
-    contactType: "customer service",
-    availableLanguage: "Vietnamese",
-  },
+  // `contactPoint` đã gỡ cùng ngày: hotline "+84-1800-6868" là số BỊA (Ông xác nhận),
+  // mà đây là dữ liệu gửi thẳng cho Google nên sai ở đây lan ra mọi kết quả tìm kiếm.
 };
 
 const websiteSchema: WithContext<WebSite> = {

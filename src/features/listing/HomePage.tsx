@@ -5,32 +5,25 @@ import type { Farmstay } from "@/shared/types/farmstay";
 import { FarmstayCard } from "./FarmstayCard";
 
 const CHIPS = [
-  { label: "🌿 Tất cả", value: "all" },
-  { label: "🏔️ Miền núi", value: "mien-nui" },
-  { label: "🌊 Ven biển", value: "ven-bien" },
-  { label: "🌾 Đồng bằng", value: "dong-bang" },
-  { label: "🍃 Trà & cà phê", value: "tra-ca-phe" },
-  { label: "🐄 Chăn nuôi", value: "chan-nuoi" },
-  { label: "🌺 Hoa & cây cảnh", value: "hoa-cay-canh" },
-  { label: "🍎 Vườn cây ăn quả", value: "vuon-cay" },
-  { label: "🌿 Dược liệu", value: "duoc-lieu" },
-  { label: "🏕️ Cắm trại", value: "cam-trai" },
-  { label: "⭐ Mới mở", value: "new" },
+  { label: "Tất cả", value: "all" },
+  { label: "Miền núi", value: "mien-nui" },
+  { label: "Ven biển", value: "ven-bien" },
+  { label: "Đồng bằng", value: "dong-bang" },
+  { label: "Trà & cà phê", value: "tra-ca-phe" },
+  { label: "Chăn nuôi", value: "chan-nuoi" },
+  { label: "Hoa & cây cảnh", value: "hoa-cay-canh" },
+  { label: "Vườn cây ăn quả", value: "vuon-cay" },
+  { label: "Dược liệu", value: "duoc-lieu" },
+  { label: "Cắm trại", value: "cam-trai" },
+  { label: "Mới mở", value: "new" },
 ];
 
+/** Số đếm mỗi khu vực tính từ dữ liệu THẬT — không khai số cứng. */
 const REGIONS = [
-  { label: "🗺️ Toàn quốc", value: "all", count: "500+" },
-  { label: "🏔️ Miền Bắc", value: "north", count: "198" },
-  { label: "🌊 Miền Trung", value: "central", count: "154" },
-  { label: "🌴 Miền Nam", value: "south", count: "148" },
-];
-
-const AMENITIES = [
-  "Wifi",
-  "Đón tiễn sân bay",
-  "Bữa ăn nông trại",
-  "Hồ bơi",
-  "Thú nuôi OK",
+  { label: "Toàn quốc", value: "all" },
+  { label: "Miền Bắc", value: "north" },
+  { label: "Miền Trung", value: "central" },
+  { label: "Miền Nam", value: "south" },
 ];
 
 interface Props {
@@ -39,19 +32,21 @@ interface Props {
 }
 
 export function HomePage({ farmstays, initialQuery = "" }: Props) {
+  /**
+   * Chưa có farmstay THẬT nào ⇒ ẩn toàn bộ bộ máy tìm/lọc/danh sách.
+   * Ông ra lệnh 08/08/2026: khung rỗng có tiêu đề còn tệ hơn không có khung.
+   * Máy lọc vẫn nằm nguyên trong mã, tự sống lại khi `FARMSTAYS` có dữ liệu thật.
+   */
+  const hasFarmstays = farmstays.length > 0;
   const [activeChip, setActiveChip] = useState("all");
   const [region, setRegion] = useState("all");
-  const [maxPrice, setMaxPrice] = useState(5000000);
-  const [minRating, setMinRating] = useState(4);
   const [query, setQuery] = useState(initialQuery);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
     return farmstays.filter((f) => {
       if (region !== "all" && f.region !== region) return false;
-      if (f.price > maxPrice) return false;
-      if (f.rating < minRating) return false;
-      if (activeChip === "new" && !f.badges.includes("new")) return false;
+      if (activeChip === "new" && !f.badges?.includes("new")) return false;
       if (q) {
         const hay =
           `${f.name} ${f.location} ${f.province} ${f.tags.join(" ")}`.toLowerCase();
@@ -59,10 +54,12 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
       }
       return true;
     });
-  }, [farmstays, region, maxPrice, minRating, activeChip, query]);
+  }, [farmstays, region, activeChip, query]);
 
   return (
-    <>
+    /* `id="main"` là đích của liên kết bỏ qua "Chuyển đến nội dung chính" ở / và /tim-kiem,
+       và là landmark <main> duy nhất của trang — phải luôn tồn tại kể cả khi chưa có farmstay. */
+    <main id="main">
       {/* Hero */}
       <section
         aria-label="Hero trang chủ"
@@ -75,22 +72,6 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           overflow: "hidden",
         }}
       >
-        <div
-          style={{
-            display: "inline-block",
-            padding: "6px 18px",
-            borderRadius: 20,
-            background: "var(--gold-dim)",
-            border: "1px solid var(--gold-border)",
-            fontSize: "0.78rem",
-            fontWeight: 600,
-            color: "var(--gold)",
-            letterSpacing: "0.08em",
-            marginBottom: 24,
-          }}
-        >
-          500+ Farmstay Xác Minh
-        </div>
         <h1
           style={{
             fontFamily: "var(--font-playfair), serif",
@@ -122,427 +103,297 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           vườn cà phê, văn hoá bản địa chưa bị thương mại hoá
         </p>
 
-        {/* Hero search */}
-        <form
-          role="search"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const input =
-              (e.currentTarget.elements.namedItem("q") as HTMLInputElement)
-                ?.value ?? "";
-            setQuery(input);
-            if (typeof window !== "undefined") {
-              const url = new URL(window.location.href);
-              url.searchParams.set("q", input);
-              window.history.replaceState(null, "", url.toString());
-            }
-            const el = document.getElementById("main");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-          }}
-          style={{
-            display: "flex",
-            maxWidth: 520,
-            margin: "0 auto 40px",
-            borderRadius: 30,
-            overflow: "hidden",
-            border: "1px solid var(--gold-border)",
-            background: "rgba(255,255,255,0.05)",
-          }}
-        >
-          <label htmlFor="searchInput" className="sr-only">
-            Tìm kiếm farmstay
-          </label>
-          <input
-            id="searchInput"
-            name="q"
-            type="search"
-            defaultValue={initialQuery}
-            placeholder="Tìm farmstay, vùng đất, trải nghiệm…"
-            autoComplete="off"
-            style={{
-              flex: 1,
-              padding: "14px 20px",
-              background: "transparent",
-              border: "none",
-              outline: "none",
-              color: "var(--text-primary)",
-              fontSize: "0.9rem",
+        {/* Hero search — chỉ hiện khi có farmstay để tìm */}
+        {hasFarmstays && (
+          <form
+            role="search"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const input =
+                (e.currentTarget.elements.namedItem("q") as HTMLInputElement)
+                  ?.value ?? "";
+              setQuery(input);
+              if (typeof window !== "undefined") {
+                const url = new URL(window.location.href);
+                url.searchParams.set("q", input);
+                window.history.replaceState(null, "", url.toString());
+              }
+              const el = document.getElementById("main-listing");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
-          />
-          <button
-            type="submit"
             style={{
-              padding: "14px 28px",
-              background: "var(--gold)",
-              color: "var(--bg-deep)",
-              border: "none",
-              fontWeight: 700,
-              cursor: "pointer",
-              fontSize: "0.88rem",
-              transition: "var(--transition)",
+              display: "flex",
+              maxWidth: 520,
+              margin: "0 auto 40px",
+              borderRadius: 30,
+              overflow: "hidden",
+              border: "1px solid var(--gold-border)",
+              background: "rgba(255,255,255,0.05)",
             }}
           >
-            Tìm ngay
-          </button>
-        </form>
+            <label htmlFor="searchInput" className="sr-only">
+              Tìm kiếm farmstay
+            </label>
+            <input
+              id="searchInput"
+              name="q"
+              type="search"
+              defaultValue={initialQuery}
+              placeholder="Tìm farmstay, vùng đất, trải nghiệm…"
+              autoComplete="off"
+              style={{
+                flex: 1,
+                padding: "14px 20px",
+                background: "transparent",
+                border: "none",
+                outline: "none",
+                color: "var(--text-primary)",
+                fontSize: "0.9rem",
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                padding: "14px 28px",
+                background: "var(--gold)",
+                color: "var(--bg-deep)",
+                border: "none",
+                fontWeight: 700,
+                cursor: "pointer",
+                fontSize: "0.88rem",
+                transition: "var(--transition)",
+              }}
+            >
+              Tìm ngay
+            </button>
+          </form>
+        )}
 
-        {/* Stats */}
-        <div
-          role="list"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "clamp(24px, 4vw, 60px)",
-            marginBottom: 60,
-          }}
-        >
-          {[
-            ["500+", "Farmstay xác minh"],
-            ["63", "Tỉnh thành"],
-            ["12K+", "Lượt đặt/tháng"],
-            ["4.8★", "Đánh giá trung bình"],
-          ].map(([num, label]) => (
-            <div role="listitem" key={label} style={{ textAlign: "center" }}>
-              <strong
-                style={{
-                  fontSize: "1.6rem",
-                  fontWeight: 700,
-                  color: "var(--gold)",
-                  display: "block",
-                }}
-              >
-                {num}
-              </strong>
-              <span style={{ fontSize: "0.78rem", color: "var(--text-dim)" }}>
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
+        {/* Lời mời thay cho bộ số cũ (500+ farmstay · 63 tỉnh · 12K+ lượt đặt · 4.8★
+            — Ông xác nhận 08/08/2026 toàn bộ là số tự chế, đã gỡ, KHÔNG thay số khác) */}
+        {!hasFarmstays && (
+          <div style={{ maxWidth: 560, margin: "0 auto 60px" }}>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "var(--text-muted)",
+                lineHeight: 1.7,
+                marginBottom: 20,
+              }}
+            >
+              Danh bạ farmstay đang được xây dựng. Chúng tôi chỉ đăng những
+              farmstay đã đi tới tận nơi — nên trang này còn trống, và sẽ dày
+              lên từng cái một.
+            </p>
+            <a
+              href="/chu-farmstay"
+              style={{
+                display: "inline-block",
+                padding: "12px 28px",
+                borderRadius: 24,
+                background: "var(--gold)",
+                color: "var(--bg-deep)",
+                fontWeight: 700,
+                fontSize: "0.88rem",
+                textDecoration: "none",
+                transition: "var(--transition)",
+              }}
+            >
+              Bạn có farmstay? Giới thiệu với chúng tôi →
+            </a>
+          </div>
+        )}
 
-        {/* Terrain SVG */}
+        {/* Terrain SVG — 3 lớp sóng, lớp giữa chuyển động */}
+        <style>{`
+          @keyframes wave-drift {
+            0%   { transform: translateX(0); }
+            50%  { transform: translateX(-60px); }
+            100% { transform: translateX(0); }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .wave-animated { animation: none !important; }
+          }
+        `}</style>
         <svg
-          viewBox="0 0 1440 200"
+          viewBox="0 0 1600 200"
           preserveAspectRatio="none"
           aria-hidden="true"
-          style={{ display: "block", width: "100%", height: 80 }}
+          style={{
+            display: "block",
+            width: "100%",
+            height: 90,
+            overflow: "hidden",
+          }}
         >
+          {/* Lớp 1 — xa nhất, mờ nhất */}
           <path
-            d="M0,200 L0,160 Q180,100 360,130 Q540,160 720,100 Q900,40 1080,80 Q1260,120 1440,70 L1440,200 Z"
-            fill="rgba(15,35,24,0.7)"
+            d="M-80,200 L-80,155 Q180,90 440,125 Q700,160 960,95 Q1220,30 1480,75 Q1560,90 1680,65 L1680,200 Z"
+            fill="rgba(15,35,24,0.55)"
           />
+          {/* Lớp 2 — giữa, chuyển động */}
           <path
-            d="M0,200 L0,180 Q240,130 480,160 Q720,190 960,140 Q1200,90 1440,120 L1440,200 Z"
+            className="wave-animated"
+            d="M-80,200 L-80,172 Q200,118 480,148 Q760,178 1040,128 Q1320,78 1560,110 L1680,105 L1680,200 Z"
+            fill="rgba(10,28,18,0.75)"
+            style={{ animation: "wave-drift 9s ease-in-out infinite" }}
+          />
+          {/* Lớp 3 — gần nhất, đậm nhất */}
+          <path
+            d="M-80,200 L-80,185 Q240,138 560,165 Q880,192 1120,148 Q1360,104 1680,130 L1680,200 Z"
             fill="var(--bg-deep)"
           />
         </svg>
       </section>
 
-      {/* Filter chips */}
-      <div
-        role="toolbar"
-        aria-label="Lọc farmstay"
-        style={{
-          display: "flex",
-          gap: 8,
-          padding: "16px 24px",
-          overflowX: "auto",
-          scrollbarWidth: "none",
-          background: "var(--bg-deep)",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
-        {CHIPS.map((chip) => (
-          <button
-            key={chip.value}
-            aria-pressed={activeChip === chip.value}
-            onClick={() => setActiveChip(chip.value)}
-            style={{
-              padding: "8px 18px",
-              borderRadius: 20,
-              border: "1px solid",
-              borderColor:
-                activeChip === chip.value ? "var(--gold)" : "var(--border)",
-              background:
-                activeChip === chip.value ? "var(--gold)" : "transparent",
-              color:
-                activeChip === chip.value
-                  ? "var(--bg-deep)"
-                  : "var(--text-muted)",
-              fontSize: "0.82rem",
-              fontWeight: activeChip === chip.value ? 700 : 400,
-              cursor: "pointer",
-              whiteSpace: "nowrap",
-              transition: "var(--transition)",
-            }}
-          >
-            {chip.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Responsive grid */}
-      <style>{`
-        #main-listing {
-          display: grid;
-          grid-template-columns: 240px 1fr;
-          gap: 0;
-          max-width: 100%;
-          min-height: 60vh;
-        }
-        @media (max-width: 1023px) {
-          #main-listing { grid-template-columns: 1fr; }
-          #sidebar-filter { display: none; }
-        }
-      `}</style>
-
-      {/* 3-column layout */}
-      <div id="main-listing">
-        {/* Sidebar */}
-        <aside
-          id="sidebar-filter"
-          aria-label="Bộ lọc nâng cao"
-          style={{
-            padding: "24px 20px",
-            borderRight: "1px solid var(--border)",
-            background: "var(--bg-main)",
-          }}
-        >
-          {/* Region */}
-          <div style={{ marginBottom: 24 }}>
-            <div
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                color: "var(--text-dim)",
-                letterSpacing: "0.1em",
-                marginBottom: 10,
-              }}
-            >
-              KHU VỰC
-            </div>
-            {REGIONS.map((r) => (
-              <button
-                key={r.value}
-                onClick={() => setRegion(r.value)}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "100%",
-                  padding: "8px 12px",
-                  borderRadius: "var(--radius-sm)",
-                  background:
-                    region === r.value ? "var(--gold-dim)" : "transparent",
-                  border: "1px solid",
-                  borderColor:
-                    region === r.value ? "var(--gold-border)" : "transparent",
-                  color:
-                    region === r.value
-                      ? "var(--text-primary)"
-                      : "var(--text-muted)",
-                  fontSize: "0.83rem",
-                  cursor: "pointer",
-                  marginBottom: 4,
-                  transition: "var(--transition)",
-                  textAlign: "left",
-                }}
-              >
-                {r.label}
-                <span style={{ color: "var(--text-dim)", fontSize: "0.75rem" }}>
-                  {r.count}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          {/* Price */}
-          <div style={{ marginBottom: 24 }}>
-            <div
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                color: "var(--text-dim)",
-                letterSpacing: "0.1em",
-                marginBottom: 10,
-              }}
-            >
-              GIÁ/ĐÊM (VNĐ)
-            </div>
-            <input
-              type="range"
-              min={0}
-              max={5000000}
-              step={100000}
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-              aria-label="Giá tối đa"
-              style={{ width: "100%", accentColor: "var(--gold)" }}
-            />
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                fontSize: "0.75rem",
-                color: "var(--text-dim)",
-                marginTop: 4,
-              }}
-            >
-              <span>0</span>
-              <span>{maxPrice.toLocaleString("vi-VN")}đ</span>
-            </div>
-          </div>
-
-          {/* Rating */}
-          <div style={{ marginBottom: 24 }}>
-            <div
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                color: "var(--text-dim)",
-                letterSpacing: "0.1em",
-                marginBottom: 10,
-              }}
-            >
-              ĐÁNH GIÁ TỐI THIỂU
-            </div>
-            <div style={{ display: "flex", gap: 8 }}>
-              {[3, 4, 5].map((r) => (
-                <button
-                  key={r}
-                  onClick={() => setMinRating(r)}
-                  style={{
-                    padding: "6px 12px",
-                    borderRadius: 20,
-                    border: "1px solid",
-                    borderColor:
-                      minRating === r ? "var(--gold)" : "var(--border)",
-                    background: minRating === r ? "var(--gold)" : "transparent",
-                    color:
-                      minRating === r ? "var(--bg-deep)" : "var(--text-muted)",
-                    fontSize: "0.78rem",
-                    fontWeight: minRating === r ? 700 : 400,
-                    cursor: "pointer",
-                  }}
-                >
-                  {r === 5 ? "5★" : `${r}★+`}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Amenities */}
-          <div>
-            <div
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                color: "var(--text-dim)",
-                letterSpacing: "0.1em",
-                marginBottom: 10,
-              }}
-            >
-              TIỆN ÍCH
-            </div>
-            {AMENITIES.map((a) => (
-              <label
-                key={a}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "6px 10px",
-                  fontSize: "0.83rem",
-                  color: "var(--text-muted)",
-                  cursor: "pointer",
-                }}
-              >
-                <input type="checkbox" style={{ accentColor: "var(--gold)" }} />
-                {a}
-              </label>
-            ))}
-          </div>
-        </aside>
-
-        {/* Listings */}
-        <main
-          style={{ padding: "24px", background: "var(--bg-deep)" }}
-          aria-label="Danh sách farmstay"
-        >
+      {hasFarmstays && (
+        <>
+          {/* Filter chips */}
           <div
+            role="toolbar"
+            aria-label="Lọc farmstay"
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 20,
+              gap: 8,
+              padding: "16px 24px",
+              overflowX: "auto",
+              scrollbarWidth: "none",
+              background: "var(--bg-deep)",
+              borderBottom: "1px solid var(--border)",
             }}
           >
-            <p style={{ fontSize: "0.85rem", color: "var(--text-muted)" }}>
-              {filtered.length} farmstay phù hợp
-            </p>
-            <select
-              style={{
-                padding: "6px 12px",
-                borderRadius: "var(--radius-sm)",
-                background: "var(--bg-card)",
-                border: "1px solid var(--border)",
-                color: "var(--text-muted)",
-                fontSize: "0.82rem",
-                cursor: "pointer",
-              }}
-            >
-              <option>Phổ biến nhất</option>
-              <option>Giá thấp → cao</option>
-              <option>Giá cao → thấp</option>
-              <option>Đánh giá cao nhất</option>
-            </select>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))",
-              gap: 20,
-            }}
-          >
-            {filtered.map((f) => (
-              <FarmstayCard key={f.id} farmstay={f} />
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <div
-              style={{
-                textAlign: "center",
-                padding: "60px 0",
-                color: "var(--text-dim)",
-              }}
-            >
-              <div style={{ fontSize: "3rem", marginBottom: 16 }}>🌿</div>
-              <p>Không có farmstay phù hợp với bộ lọc hiện tại.</p>
-            </div>
-          )}
-
-          {filtered.length > 0 && (
-            <div style={{ textAlign: "center", marginTop: 32 }}>
+            {CHIPS.map((chip) => (
               <button
+                key={chip.value}
+                aria-pressed={activeChip === chip.value}
+                onClick={() => setActiveChip(chip.value)}
                 style={{
-                  padding: "12px 32px",
+                  padding: "8px 18px",
                   borderRadius: 20,
-                  background: "var(--gold-dim)",
-                  border: "1px solid var(--gold-border)",
-                  color: "var(--gold)",
-                  fontWeight: 600,
+                  border: "1px solid",
+                  borderColor:
+                    activeChip === chip.value ? "var(--gold)" : "var(--border)",
+                  background:
+                    activeChip === chip.value ? "var(--gold)" : "transparent",
+                  color:
+                    activeChip === chip.value
+                      ? "var(--bg-deep)"
+                      : "var(--text-muted)",
+                  fontSize: "0.82rem",
+                  fontWeight: activeChip === chip.value ? 700 : 400,
                   cursor: "pointer",
-                  fontSize: "0.88rem",
+                  whiteSpace: "nowrap",
                   transition: "var(--transition)",
                 }}
               >
-                Xem thêm farmstay ↓
+                {chip.label}
               </button>
-            </div>
-          )}
-        </main>
-      </div>
-    </>
+            ))}
+          </div>
+
+          {/* Listing */}
+          <div
+            id="main-listing"
+            style={{ maxWidth: "100%", minHeight: "60vh" }}
+          >
+            {/* Listings */}
+            <section
+              style={{ padding: "24px", background: "var(--bg-deep)" }}
+              aria-label="Danh sách farmstay"
+            >
+              {/* Vùng miền lọc nhanh */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: 8,
+                  marginBottom: 20,
+                  flexWrap: "wrap",
+                }}
+              >
+                {REGIONS.map((r) => (
+                  <button
+                    key={r.value}
+                    onClick={() => setRegion(r.value)}
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: 20,
+                      border: "1px solid",
+                      borderColor:
+                        region === r.value ? "var(--gold)" : "var(--border)",
+                      background:
+                        region === r.value ? "var(--gold-dim)" : "transparent",
+                      color:
+                        region === r.value
+                          ? "var(--gold)"
+                          : "var(--text-muted)",
+                      fontSize: "0.82rem",
+                      fontWeight: region === r.value ? 600 : 400,
+                      cursor: "pointer",
+                      transition: "var(--transition)",
+                    }}
+                  >
+                    {r.label}
+                  </button>
+                ))}
+              </div>
+
+              <p
+                style={{
+                  fontSize: "0.85rem",
+                  color: "var(--text-muted)",
+                  marginBottom: 20,
+                }}
+              >
+                {filtered.length} farmstay
+              </p>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))",
+                  gap: 20,
+                }}
+              >
+                {filtered.map((f) => (
+                  <FarmstayCard key={f.id} farmstay={f} />
+                ))}
+              </div>
+
+              {filtered.length === 0 && (
+                <div
+                  style={{
+                    textAlign: "center",
+                    padding: "60px 0",
+                    color: "var(--text-dim)",
+                  }}
+                >
+                  <p>Không có farmstay phù hợp với bộ lọc hiện tại.</p>
+                </div>
+              )}
+
+              {filtered.length > 0 && (
+                <div style={{ textAlign: "center", marginTop: 32 }}>
+                  <button
+                    style={{
+                      padding: "12px 32px",
+                      borderRadius: 20,
+                      background: "var(--gold-dim)",
+                      border: "1px solid var(--gold-border)",
+                      color: "var(--gold)",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      fontSize: "0.88rem",
+                      transition: "var(--transition)",
+                    }}
+                  >
+                    Xem thêm farmstay ↓
+                  </button>
+                </div>
+              )}
+            </section>
+          </div>
+        </>
+      )}
+    </main>
   );
 }

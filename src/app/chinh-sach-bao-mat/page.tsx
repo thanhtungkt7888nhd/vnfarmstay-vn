@@ -9,41 +9,51 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://vnfarmstay.vn/chinh-sach-bao-mat" },
 };
 
+/**
+ * ⚠️ 08/08/2026 — Ông ra lệnh sửa lại cho đúng sự thật. Bản cũ (thừa hưởng từ khung web
+ * nền tảng đặt phòng) khai thu thập "thông tin đặt phòng", "xử lý đặt phòng và thanh toán",
+ * chia sẻ với "đối tác thanh toán", lưu "phiên đăng nhập", "mã hoá mật khẩu bcrypt",
+ * "2FA tài khoản admin", "backup mã hoá 4 nơi lưu trữ", "dữ liệu đặt phòng lưu 3 năm".
+ * KHÔNG có thứ nào tồn tại — web không có tài khoản, không có đặt phòng, không có thanh toán.
+ * Khai khống trong chính sách bảo mật là tự nhận nghĩa vụ pháp lý mình không thực hiện được.
+ * Bản này chỉ liệt kê đúng thứ ĐANG chạy thật: GA4 + Microsoft Clarity (khai ở layout.tsx)
+ * và thư người dùng chủ động gửi tới. CẤM thêm mục nếu chức năng tương ứng chưa tồn tại.
+ */
 const SECTIONS = [
   {
     title: "1. Thông tin chúng tôi thu thập",
     content:
-      "Chúng tôi thu thập: thông tin bạn cung cấp (tên, email, số điện thoại khi đăng ký); thông tin đặt phòng (ngày, số khách, farmstay); dữ liệu sử dụng (trang đã xem, thời gian truy cập, thiết bị); và cookie phục vụ trải nghiệm.",
+      "vnfarmstay.vn không có hệ thống tài khoản và không có chức năng đặt phòng, nên không thu thập thông tin đăng ký hay thông tin đặt chỗ của bạn. Chúng tôi chỉ có: dữ liệu truy cập ẩn danh (trang đã xem, thời gian, loại thiết bị, nguồn truy cập) do công cụ phân tích ghi nhận; và nội dung bạn chủ động gửi cho chúng tôi qua email.",
   },
   {
     title: "2. Mục đích sử dụng",
     content:
-      "Dữ liệu được dùng để: xử lý đặt phòng và thanh toán; gửi thông báo liên quan đến đặt phòng; cải thiện dịch vụ và trải nghiệm người dùng; phân tích xu hướng (ẩn danh); phòng chống gian lận.",
+      "Dữ liệu truy cập ẩn danh dùng để hiểu bài viết nào hữu ích, trang nào khó đọc, từ đó cải thiện website. Thư bạn gửi chỉ dùng để trả lời bạn và — nếu bạn là chủ farmstay — để viết bài giới thiệu farm theo đúng ý bạn. Chúng tôi không dùng dữ liệu của bạn cho quảng cáo.",
   },
   {
     title: "3. Chia sẻ thông tin",
     content:
-      "Chúng tôi KHÔNG bán thông tin cá nhân. Thông tin chỉ được chia sẻ với: chủ farmstay khi bạn đặt phòng (tên, số điện thoại); đối tác thanh toán (mã hóa); cơ quan pháp luật khi có yêu cầu hợp pháp.",
+      "Chúng tôi KHÔNG bán và KHÔNG trao đổi thông tin cá nhân. Dữ liệu truy cập ẩn danh nằm trên hệ thống của Google Analytics và Microsoft Clarity theo chính sách của họ. Ngoài ra chỉ chia sẻ khi cơ quan pháp luật có yêu cầu hợp pháp.",
   },
   {
     title: "4. Cookie và theo dõi",
     content:
-      "vnfarmstay.vn dùng cookie để: lưu phiên đăng nhập; ghi nhớ tùy chọn tìm kiếm; phân tích lưu lượng qua GA4 (ẩn danh). Bạn có thể tắt cookie trong trình duyệt, nhưng một số tính năng có thể bị ảnh hưởng.",
+      "vnfarmstay.vn dùng cookie cho Google Analytics 4 và Microsoft Clarity để đo lưu lượng ẩn danh. Website không có đăng nhập nên không có cookie phiên đăng nhập. Bạn có thể chặn cookie trong trình duyệt — website vẫn hoạt động bình thường.",
   },
   {
     title: "5. Bảo mật dữ liệu",
     content:
-      "Chúng tôi áp dụng: HTTPS/TLS cho mọi kết nối; mã hóa mật khẩu bcrypt; 2FA cho tài khoản admin; giới hạn truy cập dữ liệu theo vai trò; backup mã hóa 4 nơi lưu trữ.",
+      "Toàn bộ kết nối tới website đi qua HTTPS/TLS. Vì chúng tôi không lưu tài khoản, mật khẩu hay thông tin thanh toán của bạn nên cũng không có kho dữ liệu nhạy cảm nào để bị đánh cắp. Thư bạn gửi nằm trong hòm thư của chúng tôi.",
   },
   {
     title: "6. Quyền của bạn",
     content:
-      "Bạn có quyền: xem dữ liệu chúng tôi lưu về bạn; yêu cầu chỉnh sửa thông tin không chính xác; yêu cầu xóa tài khoản và dữ liệu; rút lại sự đồng ý marketing bất kỳ lúc nào.",
+      "Bạn có quyền hỏi chúng tôi đang giữ gì về bạn, yêu cầu sửa thông tin không chính xác, và yêu cầu xoá thư cùng mọi thông tin bạn đã gửi. Chủ farmstay có quyền yêu cầu gỡ bài giới thiệu về farm mình bất cứ lúc nào, không cần nêu lý do.",
   },
   {
     title: "7. Lưu trữ dữ liệu",
     content:
-      "Dữ liệu đặt phòng được lưu 3 năm theo yêu cầu kế toán. Tài khoản không hoạt động 2 năm sẽ được thông báo trước khi xóa. Dữ liệu analytics được ẩn danh sau 26 tháng.",
+      "Thư trao đổi được giữ trong thời gian còn cần cho việc liên hệ, và xoá khi bạn yêu cầu. Dữ liệu truy cập ẩn danh do Google Analytics và Microsoft Clarity lưu theo thời hạn mặc định của các công cụ này.",
   },
   {
     title: "8. Trẻ em",
@@ -53,7 +63,7 @@ const SECTIONS = [
   {
     title: "9. Thay đổi chính sách",
     content:
-      "Khi có thay đổi quan trọng, chúng tôi sẽ thông báo qua email và hiển thị banner trên website ít nhất 7 ngày trước khi áp dụng. Ngày cập nhật luôn được hiển thị đầu trang.",
+      "Khi có thay đổi quan trọng, bản mới sẽ được đăng ngay trên trang này kèm ngày cập nhật ở đầu trang. Vì không có danh sách tài khoản, chúng tôi không thể gửi thông báo riêng cho từng người — bạn nên xem lại trang này định kỳ.",
   },
   {
     title: "10. Liên hệ",

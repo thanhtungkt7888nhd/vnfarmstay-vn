@@ -55,7 +55,7 @@ export function FarmstayCard({ farmstay }: Props) {
             gap: 6,
           }}
         >
-          {farmstay.badges.map((badge) => (
+          {farmstay.badges?.map((badge) => (
             <span
               key={badge}
               style={{
@@ -140,10 +140,15 @@ export function FarmstayCard({ farmstay }: Props) {
             justifyContent: "space-between",
           }}
         >
+          {/* Không có điểm đánh giá thật thì không hiện gì — không hiện "undefined★". */}
           <div>
-            <span style={{ fontSize: "0.72rem", color: "var(--text-dim)" }}>
-              {farmstay.rating}★ ({farmstay.reviewCount} đánh giá)
-            </span>
+            {farmstay.rating !== undefined && (
+              <span style={{ fontSize: "0.72rem", color: "var(--text-dim)" }}>
+                {farmstay.rating}★
+                {farmstay.reviewCount !== undefined &&
+                  ` (${farmstay.reviewCount} đánh giá)`}
+              </span>
+            )}
           </div>
           <div>
             <span
