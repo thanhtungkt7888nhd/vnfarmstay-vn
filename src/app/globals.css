@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/* Kho hiệu ứng CSS thuần (lớp fx-*) — PHẢI nạp ở đầu tệp: @import đặt sau rule khác
+   sẽ bị trình duyệt bỏ im lặng. Trước 08/08 tệp này tồn tại nhưng chưa từng được nạp
+   ⇒ mọi lớp fx-* dán vào JSX đều chết lặng (đo: fxDaNap=false trên trình duyệt). */
+@import "./effects.css";
 
 :root {
   /* ── Palette PA5 Rừng Mạ Non Dịu × Bộ IV ───────────────────── */
@@ -348,4 +352,114 @@ img {
   .grid-form-2 {
     grid-template-columns: 1fr;
   }
+}
+
+/* ── Typography utilities ──────────────────────────────────────── */
+
+/* Label nhỏ trên heading — Dark Luxe Editorial */
+.section-kicker {
+  display: block;
+  font-family: var(--font-body), "DM Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+/* Tiêu đề section với gạch vàng bên dưới */
+.section-heading {
+  position: relative;
+  padding-bottom: 18px;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.section-heading--center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Đoạn dẫn — to hơn, sáng hơn đoạn thường */
+.lead {
+  font-size: 1.08rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Prose — nội dung dài (blog, bài viết) */
+.prose {
+  max-width: 65ch;
+  line-height: 1.85;
+  color: var(--text-muted);
+}
+
+.prose p + p {
+  margin-top: 1.4em;
+}
+
+.prose h2 {
+  font-family: var(--font-display), "Libre Bodoni", Georgia, serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+
+.prose h3 {
+  font-family: var(--font-display), "Libre Bodoni", Georgia, serif;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+}
+
+.prose strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--gold);
+  padding-left: 20px;
+  margin: 1.6em 0;
+  font-style: italic;
+  color: var(--text-dim);
+}
+
+.prose a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Farmstay card — hover qua CSS ────────────────────────────── */
+.farmstay-card {
+  display: block;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition:
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.farmstay-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px oklch(0 0 0 / 0.55);
+  border-color: var(--gold-border);
 }

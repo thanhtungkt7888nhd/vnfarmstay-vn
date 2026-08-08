@@ -56,7 +56,7 @@ export default async function BlogPage() {
             </p>
             <h1
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(2rem,5vw,2.8rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",

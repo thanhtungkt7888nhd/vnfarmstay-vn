@@ -172,7 +172,7 @@ export default async function BlogPostPage({
           {/* Title */}
           <h1
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-display), serif",
               fontSize: "clamp(1.6rem,4vw,2.2rem)",
               fontWeight: 700,
               color: "var(--text-primary)",
@@ -260,7 +260,7 @@ export default async function BlogPostPage({
             <div style={{ marginTop: 48 }}>
               <h2
                 style={{
-                  fontFamily: "var(--font-playfair), serif",
+                  fontFamily: "var(--font-display), serif",
                   fontSize: "1.4rem",
                   fontWeight: 700,
                   color: "var(--text-primary)",

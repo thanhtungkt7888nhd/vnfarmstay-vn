@@ -30,7 +30,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
       <div style={{ maxWidth: 1160, margin: "0 auto" }}>
         <h2
           style={{
-            fontFamily: "var(--font-playfair), serif",
+            fontFamily: "var(--font-display), serif",
             fontSize: "1.4rem",
             fontWeight: 700,
             color: "var(--text-primary)",

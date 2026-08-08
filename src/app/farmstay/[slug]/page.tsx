@@ -185,7 +185,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
             </p>
             <h1
               style={{
-                fontFamily: "var(--font-playfair),serif",
+                fontFamily: "var(--font-display),serif",
                 fontSize: "clamp(1.8rem,4vw,2.8rem)",
                 fontWeight: 700,
                 color: "#fff",
@@ -281,7 +281,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
             >
               <h2
                 style={{
-                  fontFamily: "var(--font-playfair),serif",
+                  fontFamily: "var(--font-display),serif",
                   fontSize: "1.3rem",
                   fontWeight: 700,
                   color: "var(--text-primary)",
@@ -330,7 +330,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
             >
               <h2
                 style={{
-                  fontFamily: "var(--font-playfair),serif",
+                  fontFamily: "var(--font-display),serif",
                   fontSize: "1.3rem",
                   fontWeight: 700,
                   color: "var(--text-primary)",
@@ -386,7 +386,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
               >
                 <h2
                   style={{
-                    fontFamily: "var(--font-playfair),serif",
+                    fontFamily: "var(--font-display),serif",
                     fontSize: "1.3rem",
                     fontWeight: 700,
                     color: "var(--text-primary)",
@@ -463,7 +463,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                     fontSize: "1.8rem",
                     fontWeight: 700,
                     color: "var(--gold)",
-                    fontFamily: "var(--font-playfair),serif",
+                    fontFamily: "var(--font-display),serif",
                   }}
                 >
                   {formatPrice(farmstay.price)}

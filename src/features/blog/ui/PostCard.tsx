@@ -102,7 +102,7 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
         {/* Title */}
         <h3
           style={{
-            fontFamily: "var(--font-playfair), serif",
+            fontFamily: "var(--font-display), serif",
             fontSize: "1.05rem",
             fontWeight: 700,
             color: "var(--text-primary)",

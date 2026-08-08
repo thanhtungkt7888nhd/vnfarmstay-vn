@@ -74,7 +74,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
       >
         <h1
           style={{
-            fontFamily: "var(--font-playfair), serif",
+            fontFamily: "var(--font-display), serif",
             fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
             fontWeight: 700,
             lineHeight: 1.2,

@@ -148,7 +148,7 @@ function renderBlock(block: SanityBlock): React.ReactNode {
         style={{
           ...baseStyle,
           ...headingStyles[style],
-          fontFamily: "var(--font-playfair), serif",
+          fontFamily: "var(--font-display), serif",
           fontWeight: 700,
         }}
       >

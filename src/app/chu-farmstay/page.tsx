@@ -156,7 +156,7 @@ export default function ChuFarmstayPage() {
 
             <h1
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(2rem, 5vw, 3.2rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
@@ -246,7 +246,7 @@ export default function ChuFarmstayPage() {
           >
             <h2
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "1.7rem",
                 fontWeight: 700,
                 color: "var(--text-primary)",
@@ -279,7 +279,7 @@ export default function ChuFarmstayPage() {
                 >
                   <div
                     style={{
-                      fontFamily: "var(--font-playfair), serif",
+                      fontFamily: "var(--font-display), serif",
                       fontSize: "3rem",
                       fontWeight: 700,
                       color: "rgba(212,168,83,0.15)",
@@ -320,7 +320,7 @@ export default function ChuFarmstayPage() {
           >
             <h2
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "1.7rem",
                 fontWeight: 700,
                 color: "var(--text-primary)",
@@ -390,7 +390,7 @@ export default function ChuFarmstayPage() {
           <section style={{ marginTop: 72 }} aria-label="Câu hỏi thường gặp">
             <h2
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "1.7rem",
                 fontWeight: 700,
                 color: "var(--text-primary)",
@@ -463,7 +463,7 @@ export default function ChuFarmstayPage() {
             </p>
             <h2
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(1.5rem, 3vw, 2rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",

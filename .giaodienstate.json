@@ -1,0 +1,75 @@
+{
+  "domain": "vnfarmstay.vn",
+  "ngayBatDau": "20260808",
+  "uyQuyen": "đứng — chạy liền 5 vòng, không cổng hỏi, không deploy",
+  "chuanGoc": {
+    "mauNeo": "PA5 Rừng Mạ Non Dịu × Bộ IV (sáng tạo riêng, blend H2 Lá Trà × H8 Mạ Non)",
+    "brandHue": 132,
+    "brandChroma": 0.2,
+    "toHopBo": "IV",
+    "fontsDisplay": "Libre Bodoni 700 (italic tuỳ ngữ cảnh)",
+    "fontsText": "DM Sans 400 / 500 kicker uppercase .12em",
+    "nhip": "Bộ IV Trầm Sang Điện Ảnh — dur-fast 250ms · base 450ms · slow 720ms · stagger 64ms · reveal-y 16px · space-section clamp(72px,11vh,132px)",
+    "hieuUngSignature": [
+      "I5 Metallic Shine — .shine ::after translateX + mix-blend-mode overlay (logo · headline · CTA chính)",
+      "I6 Plasma Blobs — .plasma-bg ::before/::after 2 khối blur trôi hữu cơ (section nền dark)"
+    ],
+    "hoaVan": "X Nút Gold — sáng tạo riêng từ chữ X logo; SVG pattern 2 đường chéo + chấm gold; nền N1 X Mờ opacity 0.06-0.08 toàn trang",
+    "thamMy": "Resort Sang Trọng — Bodoni italic dàn trải, 1 focal point/section, nhiều khoảng thở",
+    "moodBoard": "Dark Luxe Editorial — số Bodoni khổng lồ mờ 0.08-0.12 làm nền, layout lệch, tag viền gold mảnh"
+  },
+  "heHieuUngSanCo": {
+    "ghiChu": "Web CSS-THUẦN, KHÔNG có framer-motion. Hệ reveal riêng nằm trong globals.css.",
+    "classSanCo": [".shine", ".plasma-bg", ".reveal-up", ".reveal-up-slow", ".skeleton-pulse"],
+    "vanCam": "CẤM nhồi hệ reveal thứ 2 (fx-reveal-text/fx-reveal-cards/fx-scroll-reveal/staggerGrid) chồng lên .reveal-up — sự cố căn lề 27/07. Chỉ dùng fx-* BỔ SUNG cơ chế web chưa có."
+  },
+  "phatHienGoc": {
+    "moCoiEffectsCss": "src/app/effects.css (23.5KB, đủ 8 lớp fx-* bản 07/08) TỒN TẠI nhưng KHÔNG được @import ở globals.css, KHÔNG import ở layout.tsx, và KHÔNG lớp fx-* nào xuất hiện trong bất kỳ .tsx nào. Máy đơn-thuốc ghi 'lớp CSS web ĐÃ CÓ' là ĐIỂM MÙ — nó đọc file, không kiểm đường nạp. Hệ quả đo được: do-mat-do-web --chua-dung trả 'đã chạm: (chưa recipe kho nào)' = 0/120 hiệu ứng kho được dùng.",
+    "phaiVaTruoc": "Vòng 1 loại 5 phải nối @import './effects.css' vào globals.css TRƯỚC mọi việc dán fx-*, nếu không mọi lớp dán sau đều chết lặng (bẫy 'số đo tăng mà màn hình đứng im')."
+  },
+  "khoApDung": {
+    "blocksChuaDung": ["ArticleGrid", "ContactForm", "DestinationHub", "FaqAccordion", "FeatureGrid", "HeroBanner", "StatsBanner", "TeamGrid", "TestimonialGrid", "TimelineSection", "VerifiedBadge"],
+    "blocksLoaiBo": {
+      "muc": ["CountdownTimer", "CredentialList", "PriceChart", "PricingTable", "VietQRBlock"],
+      "lyDo": "web không bán hàng/không có bảng giá thật — số liệu giá đã bị xoá 08/08 vì là nội dung bịa"
+    },
+    "hieuUngUngVien": "76 recipe kho CHƯA TỪNG chạm (đo bằng do-mat-do-web --chua-dung, unique qua 4 loại trang)",
+    "hieuUngGoiYTheoBlock": {
+      "trang_chu": ["fx-spotlight", "fx-gradient-btn", "fx-line-draw", "fx-hover-lift", "fx-gradient-text", "fx-metallic-shine", "fx-glow", "fx-card-sheen", "fx-gold-dust"],
+      "blog_danh_sach": ["fx-spotlight", "fx-line-draw", "fx-hover-lift", "fx-gradient-text", "fx-card-sheen", "fx-tilt-glow", "fx-underline-slide", "fx-grain"],
+      "bai_viet": ["fx-spotlight", "fx-gradient-text", "fx-card-sheen", "fx-blur-in", "fx-hover-lift", "fx-underline-slide"]
+    },
+    "hoaVan": {
+      "dangDung": 1,
+      "hopVanHoa": 0,
+      "chuaDung": [],
+      "lyDo": "DNA chốt 20260807 ghi rõ 'Sáng tạo riêng từ chữ X trong logo — KHÔNG dùng mô-típ dân tộc'. 12 mục hoa văn dân tộc trong 07-HOA-VAN-LINE.md do đó KHÔNG hợp DNA, không được tính là cơ hội. Cơ hội thật của loại 6 = áp ĐỀU mô-típ X đã chốt ra các route/section chưa có, không phải thêm mô-típ mới."
+    },
+    "chuBienThe": ["drop-cap Bodoni mở bài", "pull-quote Bodoni italic", "kicker DM Sans 500 uppercase .12em", "số thứ tự Bodoni 80-120px mờ nền (mood board)", "letter-spacing âm cho display lớn", "tabular-nums cho số liệu"],
+    "mauBienThe": ["gradient gold→gold-light cho CTA", "viền gold 0.4 alpha cho tag (mood board)", "accent-ma cho badge/tag chưa dùng đều", "lớp phủ green filter cho ảnh (mood board)"],
+    "bocucBienThe": ["grid lệch bất quy tắc (mood board)", "chồng lớp số nền × heading", "asymmetric 2 cột 7/5"],
+    "loai7": "N/A — kho chưa có thư viện ảnh/media riêng, chỉ có máy đo lệch (do-can-anh.mjs + check-luat media.*)",
+    "loai8": "N/A — kho chưa có thư viện UI vi mô riêng, chỉ có máy đo lệch (check-luat ux.12/a11y.26/ux.17)",
+    "tongCoHoi": 100,
+    "ghiChuTongCoHoi": "76 hiệu ứng + 11 block + 0 hoa văn (DNA từ chối, có lý do) + 6 kỹ thuật chữ + 4 biến thể màu + 3 biến thể bố cục = 100. SỐ NÀY BẤT BIẾN suốt 5 vòng."
+  },
+  "nenCheckLuat": {
+    "ngayChup": "20260808",
+    "nguon": ".kiem-snapshot (bản build trước vá)",
+    "sec": {"sec.1-header-baseline": "FAIL", "sec.2-csp-unsafe-eval": "FAIL", "sec.3-ratelimit-post": "WARN", "sec.4-no-secret-in-public-env": "PASS", "sec.5-error-no-stack-source": "PASS", "sec.6-form-honeypot-server": "PASS", "sec.7-ci-npm-audit": "WARN", "sec.8-cookie-via-helper": "PASS"},
+    "seo": {"seo.2-head": "FAIL", "seo.20-org-schema": "PASS", "seo.23-sitemap": "PASS", "seo.24-dynroute-sitemap": "WARN", "seo.30-title-length": "WARN", "seo.31-desc-length": "WARN", "seo.32-h1-single": "WARN", "seo.33-heading-hierarchy": "WARN", "seo.34-title-unique": "PASS", "seo.35-route-redirect": "WARN", "seo.36-internal-link-density": "WARN", "seo.43-sitemap-url-song": "WARN"},
+    "aeo": {"aeo.11-selfcontained": "PASS", "aeo.12-qa-40-60tu": "PASS", "aeo.24-faq-schema": "WARN"},
+    "geo": {"geo.21-llms-txt": "PASS", "geo.22-ai-bots": "PASS", "geo.23-llms-link-song": "PASS"},
+    "priv": {"priv.28-consent-gate": "FAIL"}
+  },
+  "nenMatDoHieuUng": {
+    "ngayChup": "20260808",
+    "bai_viet": "⛔ A 0/1 B 3/2 C 1/1 D 0/1 E 0/1",
+    "blog_danh_sach": "⛔ A 0/1 B 1/2 C 1/2 D 0/1 E 0/1",
+    "trang_chu": "⛔ A 0/2 B 2/3 C 0/1 D 0/2 E 3/1",
+    "toan_site": "✅",
+    "tomTat": "1/4 loại trang đạt sàn"
+  },
+  "phamViTong": null,
+  "vongLap": []
+}

@@ -6,10 +6,23 @@ interface Props {
   farmstay: Farmstay;
 }
 
-const badgeColors: Record<string, string> = {
-  verified: "#2563eb",
-  new: "#7c3aed",
-  featured: "#b45309",
+/* Màu badge dùng brand tokens thay vì hex cứng */
+const badgeStyle: Record<string, React.CSSProperties> = {
+  verified: {
+    background: "oklch(0.22 0.12 132 / 0.9)",
+    color: "var(--accent-ma)",
+    border: "1px solid oklch(0.7 0.18 115 / 0.4)",
+  },
+  new: {
+    background: "oklch(0.18 0.12 75 / 0.9)",
+    color: "var(--gold)",
+    border: "1px solid var(--gold-border)",
+  },
+  featured: {
+    background: "oklch(0.18 0.12 75 / 0.9)",
+    color: "var(--gold-light)",
+    border: "1px solid var(--gold-border)",
+  },
 };
 
 const REGION_GRADIENT: Record<string, string> = {
@@ -26,21 +39,11 @@ const REGION_LABEL: Record<string, string> = {
 
 export function FarmstayCard({ farmstay }: Props) {
   return (
-    <Link
-      href={`/farmstay/${farmstay.slug}`}
-      style={{
-        background: "var(--bg-card)",
-        borderRadius: "var(--radius)",
-        border: "1px solid var(--border)",
-        overflow: "hidden",
-        transition: "var(--transition)",
-        display: "block",
-      }}
-    >
-      {/* Image placeholder */}
+    <Link href={`/farmstay/${farmstay.slug}`} className="farmstay-card">
+      {/* Image placeholder — aspect-ratio 16/9 thay vì height cứng */}
       <div
         style={{
-          height: 200,
+          aspectRatio: "16/9",
           background: REGION_GRADIENT[farmstay.region] ?? REGION_GRADIENT.south,
           position: "relative",
         }}
@@ -64,8 +67,11 @@ export function FarmstayCard({ farmstay }: Props) {
                 fontSize: "0.68rem",
                 fontWeight: 700,
                 letterSpacing: "0.05em",
-                background: badgeColors[badge] ?? "#374151",
-                color: "#fff",
+                ...(badgeStyle[badge] ?? {
+                  background: "oklch(0.22 0.05 130 / 0.9)",
+                  color: "var(--text-muted)",
+                  border: "1px solid var(--border)",
+                }),
               }}
             >
               {badgeLabel(badge)}
@@ -164,6 +170,20 @@ export function FarmstayCard({ farmstay }: Props) {
               /đêm
             </span>
           </div>
+        </div>
+
+        <div
+          style={{
+            marginTop: 12,
+            paddingTop: 12,
+            borderTop: "1px solid var(--border)",
+            fontSize: "0.78rem",
+            color: "var(--gold)",
+            fontWeight: 600,
+            letterSpacing: "0.02em",
+          }}
+        >
+          Xem farm →
         </div>
       </div>
     </Link>

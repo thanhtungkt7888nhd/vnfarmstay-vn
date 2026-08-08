@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Farmstay" },
@@ -14,6 +14,13 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -23,15 +30,25 @@ export function Navbar() {
           height: "var(--nav-h)",
           background: "rgba(15,35,24,0.95)",
           backdropFilter: "blur(16px)",
-          borderColor: "var(--border)",
+          borderColor: scrolled
+            ? "oklch(0.6 0.07 125 / 0.22)"
+            : "var(--border)",
+          boxShadow: scrolled ? "0 4px 24px oklch(0 0 0 / 0.35)" : "none",
+          transition:
+            "border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease)",
         }}
         aria-label="Menu chính"
       >
-        {/* Logo */}
+        {/* Logo + tên thương hiệu */}
         <Link
           href="/"
-          aria-label="Vietnam Farmstay — Trang chủ"
-          style={{ flexShrink: 0, display: "flex", alignItems: "center" }}
+          aria-label="vnfarmstay.vn — Trang chủ"
+          style={{
+            flexShrink: 0,
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+          }}
         >
           <Image
             src="/logo-x.png"
@@ -41,36 +58,50 @@ export function Navbar() {
             priority
             style={{ height: 36, width: 36, objectFit: "contain" }}
           />
+          <span
+            className="hidden md:block"
+            style={{
+              fontFamily: "var(--font-display), serif",
+              fontSize: "1rem",
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
+              lineHeight: 1,
+            }}
+          >
+            <span style={{ color: "var(--gold)" }}>vnfarmstay</span>
+            <span style={{ color: "var(--text-dim)", fontWeight: 400 }}>
+              .vn
+            </span>
+          </span>
         </Link>
 
         {/* Desktop links */}
         <ul className="hidden flex-1 list-none items-center gap-1 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                aria-current={pathname === link.href ? "page" : undefined}
-                style={{
-                  padding: "6px 14px",
-                  borderRadius: "20px",
-                  fontSize: "0.85rem",
-                  fontWeight: 500,
-                  color:
-                    pathname === link.href
-                      ? "var(--text-primary)"
-                      : "var(--text-muted)",
-                  background:
-                    pathname === link.href
-                      ? "rgba(168,197,176,0.1)"
-                      : "transparent",
-                  transition: "var(--transition)",
-                  display: "block",
-                }}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  style={{
+                    padding: "6px 14px",
+                    paddingBottom: "4px",
+                    fontSize: "0.85rem",
+                    fontWeight: active ? 600 : 500,
+                    color: active ? "var(--gold)" : "var(--text-muted)",
+                    borderBottom: active
+                      ? "2px solid var(--gold)"
+                      : "2px solid transparent",
+                    transition: "var(--transition)",
+                    display: "block",
+                  }}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Desktop CTAs */}
@@ -152,25 +183,20 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
-      {open && (
-        <div
-          className="fixed inset-x-0 top-[62px] z-40 flex flex-col gap-1 p-4 md:hidden"
-          style={{
-            background: "rgba(15,35,24,0.98)",
-            backdropFilter: "blur(16px)",
-          }}
-        >
-          <div style={{ padding: "8px 16px 4px" }}>
-            <Image
-              src="/logo-x.png"
-              alt="Vietnam Farmstay"
-              width={30}
-              height={30}
-              style={{ height: 30, width: 30 }}
-            />
-          </div>
-
+      {/* Mobile menu — slide down animation */}
+      <div
+        className="fixed inset-x-0 top-[62px] z-40 md:hidden"
+        style={{
+          background: "rgba(15,35,24,0.98)",
+          backdropFilter: "blur(16px)",
+          overflow: "hidden",
+          maxHeight: open ? "480px" : "0",
+          transition: "max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          borderBottom: open ? "1px solid var(--border)" : "none",
+        }}
+        aria-hidden={!open}
+      >
+        <div className="flex flex-col gap-1 p-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -181,7 +207,8 @@ export function Navbar() {
                 borderRadius: "var(--radius-sm)",
                 color:
                   pathname === link.href ? "var(--gold)" : "var(--text-muted)",
-                fontWeight: 500,
+                fontWeight: pathname === link.href ? 600 : 500,
+                fontSize: "0.95rem",
               }}
             >
               {link.label}
@@ -200,6 +227,7 @@ export function Navbar() {
               borderRadius: "var(--radius-sm)",
               color: "var(--gold)",
               fontWeight: 600,
+              fontSize: "0.9rem",
             }}
           >
             Chủ farmstay
@@ -210,7 +238,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             style={{
               padding: "13px 16px",
-              margin: "4px 0 0",
+              margin: "4px 0 8px",
               borderRadius: "var(--radius-sm)",
               background: "var(--gold)",
               color: "var(--bg-deep)",
@@ -222,7 +250,7 @@ export function Navbar() {
             + Đăng farmstay
           </Link>
         </div>
-      )}
+      </div>
     </>
   );
 }

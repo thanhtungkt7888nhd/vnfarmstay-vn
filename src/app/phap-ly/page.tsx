@@ -79,7 +79,7 @@ export default function PhapLyPage() {
           </div>
           <h1
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-display), serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
               marginBottom: 16,
@@ -187,7 +187,7 @@ export default function PhapLyPage() {
             <div style={{ fontSize: "2.5rem", marginBottom: 16 }}>⚖️</div>
             <h2
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "1.6rem",
                 fontWeight: 700,
                 marginBottom: 12,

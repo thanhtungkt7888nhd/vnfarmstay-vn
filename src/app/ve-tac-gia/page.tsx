@@ -81,7 +81,7 @@ export default function VeTacGiaPage() {
             </p>
             <h1
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(2rem, 5vw, 3rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
@@ -93,7 +93,7 @@ export default function VeTacGiaPage() {
             </h1>
             <p
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "1.1rem",
                 fontStyle: "italic",
                 color: "var(--gold)",
@@ -165,7 +165,7 @@ export default function VeTacGiaPage() {
               <div>
                 <h2
                   style={{
-                    fontFamily: "var(--font-playfair), serif",
+                    fontFamily: "var(--font-display), serif",
                     fontSize: "1.6rem",
                     fontWeight: 700,
                     color: "var(--text-primary)",
@@ -270,7 +270,7 @@ export default function VeTacGiaPage() {
           <section style={{ marginTop: 56 }} aria-label="Các tác giả khác">
             <h2
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "1.2rem",
                 fontWeight: 700,
                 color: "var(--text-primary)",
@@ -306,7 +306,7 @@ export default function VeTacGiaPage() {
           >
             <h2
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "1.3rem",
                 fontWeight: 700,
                 color: "var(--text-primary)",

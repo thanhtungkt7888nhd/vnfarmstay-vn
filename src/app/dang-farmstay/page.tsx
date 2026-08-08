@@ -63,7 +63,7 @@ export default function DangFarmstayPage() {
 
           <h1
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-display), serif",
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
               fontWeight: 700,
               lineHeight: 1.25,

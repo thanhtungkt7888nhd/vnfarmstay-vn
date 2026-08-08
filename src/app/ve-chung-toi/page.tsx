@@ -32,7 +32,7 @@ export default function VeChungToiPage() {
         >
           <h1
             style={{
-              fontFamily: "var(--font-playfair), serif",
+              fontFamily: "var(--font-display), serif",
               fontSize: "clamp(2rem,4vw,3rem)",
               fontWeight: 700,
               marginBottom: 20,
@@ -60,7 +60,7 @@ export default function VeChungToiPage() {
           <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
             <h2
               style={{
-                fontFamily: "var(--font-playfair),serif",
+                fontFamily: "var(--font-display),serif",
                 fontSize: "2rem",
                 fontWeight: 700,
                 marginBottom: 24,
@@ -122,7 +122,7 @@ export default function VeChungToiPage() {
           >
             <h2
               style={{
-                fontFamily: "var(--font-playfair),serif",
+                fontFamily: "var(--font-display),serif",
                 fontSize: "1.8rem",
                 fontWeight: 700,
                 marginBottom: 16,

@@ -68,7 +68,7 @@ export default async function TagPage({
             </p>
             <h1
               style={{
-                fontFamily: "var(--font-playfair), serif",
+                fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(1.8rem,4vw,2.4rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
