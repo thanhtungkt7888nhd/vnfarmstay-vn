@@ -1,17 +1,25 @@
 /**
- * Trang tuyên ngôn — trả lời câu "các anh là ai, tin được không".
+ * Trang tuyên ngôn — câu chuyện thương hiệu và lý do tồn tại của vnfarmstay.vn.
  *
- * ⚠️ 08/08/2026 — Ông ra lệnh gỡ nội dung BỊA thừa hưởng từ khung web cũ ở trang này:
- * · khối `STATS` (500+ Farmstay xác minh · 63 Tỉnh thành · 50K+ Du khách tin tưởng ·
- *   4.8★ Đánh giá trung bình) — toàn bộ tự chế, đã gỡ, KHÔNG thay bộ số khác.
- * · khối `TEAM` — Ông xác nhận "Nguyễn Thị Lan" và "Lê Văn Hùng" là người KHÔNG CÓ THẬT.
- *   Còn lại một mình Phạm Thanh Tùng thì không gọi là "đội ngũ" được, nên gộp vào phần
- *   sứ mệnh. CẤM dựng lại khối đội ngũ bằng tên tự nghĩ ra.
+ * ✅ NGUỒN NỘI DUNG (Ông cấp 08/08/2026): `vnfarmstay-nen-tang-thuong-hieu-v2.md`
+ * — tài liệu nền tảng thương hiệu chính thức. Trang này dựng theo Phần I (Câu chuyện),
+ * Phần II (Lý do tồn tại) và Phần V (Thông điệp lõi) của tài liệu đó.
  *
- * ⚠️ 08/08/2026 (đợt sau) — mở rộng thành tuyên ngôn đầy đủ. Mọi nội dung thêm vào đây
- * là NGUYÊN TẮC và CAM KẾT (điều chúng tôi tự ràng buộc mình), KHÔNG phải thành tích.
- * Tuyệt đối KHÔNG thêm: số farmstay, số lượt khách, số tỉnh thành, năm thành lập, giải
- * thưởng, đối tác — trừ khi Ông xác nhận đó là số THẬT.
+ * ⚠️⚠️ ĐỌC KỸ TRƯỚC KHI XOÁ BẤT KỲ SỐ LIỆU NÀO Ở TRANG NÀY ⚠️⚠️
+ * Bộ số "9+ năm · 100+ dự án · 30+ tỉnh thành · 5 mùa Xuyên Việt · 100+ điểm đến"
+ * là số THẬT, do ÔNG CUNG CẤP trong tài liệu nền tảng thương hiệu nói trên.
+ * ĐÂY KHÔNG PHẢI số bịa. KHÔNG được gỡ.
+ *
+ * Bối cảnh để phiên sau khỏi hiểu nhầm: ngày 08/08/2026 trang này từng bị gỡ một bộ
+ * số HOÀN TOÀN KHÁC vì đó là số tự chế của khung web mẫu (500+ farmstay xác minh ·
+ * 63 tỉnh thành · 50K+ du khách · 4.8★) — cùng khối "đội ngũ" với hai cái tên không
+ * có thật. Bộ số hiện tại KHÔNG liên quan gì tới bộ số đã gỡ đó.
+ *
+ * Vẫn CẤM tuyệt đối: thêm số farmstay thành viên, số lượt khách, giải thưởng, tên
+ * đối tác, hay bất kỳ con số nào KHÔNG có trong tài liệu nền tảng thương hiệu.
+ *
+ * Giọng: theo đúng nguyên tắc của tài liệu — "chúng ta" khi nói về cộng đồng làm
+ * farmstay Việt Nam; "chúng tôi" chỉ dùng khi vnfarmstay.vn tự ràng buộc cam kết.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -22,15 +30,17 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Về vnfarmstay.vn — Chúng tôi là ai và làm việc theo nguyên tắc nào",
+  title: "Về vnfarmstay.vn — Hạ tầng chung của cộng đồng Farmstay Việt Nam",
   description:
-    "vnfarmstay.vn giới thiệu farmstay Việt Nam miễn phí, không hoa hồng, không nhận đặt phòng. Nguyên tắc chọn farm, cam kết với du khách và chủ farmstay, lộ trình công khai.",
+    "Một cây đứng riêng thì đổ. Một khu rừng thì có tên trên bản đồ. Câu chuyện và lý do tồn tại của vnfarmstay.vn — hạ tầng chung đưa Việt Nam thành Quốc Gia Du Lịch Nông Nghiệp.",
   canonical: "/ve-chung-toi",
   keywords: [
     "về vnfarmstay",
-    "giới thiệu vnfarmstay.vn",
-    "nền tảng farmstay việt nam",
-    "du lịch nông nghiệp việt nam",
+    "hạ tầng cộng đồng farmstay việt nam",
+    "quốc gia du lịch nông nghiệp",
+    "làng farmstay việt nam",
+    "xuyên việt farmstay",
+    "phạm thanh tùng nhà hoạch định",
   ],
 });
 
@@ -41,92 +51,89 @@ const schemas = [
   ]),
 ];
 
-/** Nguyên tắc chọn farm — là RÀNG BUỘC tự đặt, không phải thành tích đã đạt */
-const NGUYEN_TAC = [
+/** Ba điều thay đổi khi đứng cùng nhau — Phần I.3 tài liệu nền tảng */
+const KHI_DUNG_CUNG = [
   {
-    num: "01",
-    ten: "Phải là nông trại đang canh tác thật",
-    mota: "Có mùa vụ, có thu hoạch, có sản phẩm. Một khu nghỉ dưỡng trồng vài luống rau trước sân không phải farmstay, dù nó tự gọi mình là vậy.",
+    ten: "Giữ nguyên bản sắc riêng",
+    mota: "Không đồng phục, không thâu tóm. Mỗi farmstay vẫn là chính nó — với vùng đất, mùa vụ và cách làm riêng.",
   },
   {
-    num: "02",
-    ten: "Khách phải được tham gia, không chỉ đứng nhìn",
-    mota: "Được xuống ruộng, được hái, được vào bếp. Nơi nào chỉ cho khách chụp ảnh rồi về thì chúng tôi xếp vào loại khác, không gọi là farmstay.",
+    ten: "Liên kết vào một lõi chung",
+    mota: "Tín nhiệm, dữ liệu và lượt tiếp cận chảy qua lại giữa mọi mắt xích, thay vì đọng lại ở một chỗ rồi tắt.",
   },
   {
-    num: "03",
-    ten: "Tìm hiểu trước khi đăng",
-    mota: "Chúng tôi hỏi chủ farm về mùa vụ, cách canh tác và trải nghiệm cho khách trước khi viết. Chưa nắm được thì chưa đăng — thà trang trống còn hơn dẫn người ta đi sai chỗ.",
-  },
-  {
-    num: "04",
-    ten: "Kể đúng, kể cả phần chưa hay",
-    mota: "Farm xa, đường xấu, chưa có điều hoà, mùa này chưa có gì để xem — chúng tôi viết thẳng. Khách biết trước thì đi mới vui, và chủ farm cũng đỡ mang tiếng.",
-  },
-  {
-    num: "05",
-    ten: "Không xếp hạng theo tiền",
-    mota: "Không có gói nổi bật, không bán vị trí đầu trang. Thứ tự trên vnfarmstay.vn không mua được — đây là điều chúng tôi giữ kể cả khi có người trả tiền để đổi.",
+    ten: "Trả lời bằng cả hệ sinh thái",
+    mota: "Khi thế giới hỏi “farmstay Việt Nam có gì?”, câu trả lời không còn là một cái tên lẻ.",
   },
 ];
 
-const CAM_KET_KHACH = [
-  "Chúng tôi nói rõ mùa nào farm có gì, để bạn không đi nhầm tháng",
-  "Chúng tôi viết cả điểm bất tiện, không chỉ điểm đẹp",
-  "Chúng tôi không nhận tiền để đẩy farm nào lên trước",
-  "Chúng tôi không giữ tiền của bạn — bạn đặt thẳng với chủ farm",
+/** Ba lý do khiến hệ sinh thái là bắt buộc — Phần II.1 */
+const LY_DO = [
+  {
+    so: "01",
+    ten: "Giá trị thật đang vô hình",
+    mota: "Farmstay Việt Nam không thiếu chất liệu, chỉ thiếu hạ tầng để thế giới nhìn thấy. Một farmstay không được tìm thấy thì về mặt thị trường, nó không tồn tại — dù ngoài đời nó đẹp đến đâu.",
+  },
+  {
+    so: "02",
+    ten: "Kỷ nguyên AI Search đã đến, và không chờ ai",
+    mota: "Du khách không còn chỉ tra Google. Họ hỏi thẳng trợ lý AI: “farmstay nào đáng đi nhất Việt Nam?”. Ai có dữ liệu chuẩn và mạng lưới liên kết — người đó là câu trả lời. Ai không có — người đó không tồn tại.",
+  },
+  {
+    so: "03",
+    ten: "Chi phí truyền thông đang bị đốt trùng lặp",
+    mota: "Hàng trăm farmstay đang trả tiền cho cùng một việc mà không ai tận dụng được công sức của ai. Gộp lại, đó là một nguồn lực khổng lồ đang phân mảnh.",
+  },
 ];
 
-const CAM_KET_CHU_FARM = [
-  "Giới thiệu hoàn toàn miễn phí — không phí đăng, không phí tháng, không hoa hồng",
-  "Mọi liên kết trỏ thẳng về website, Zalo hoặc số điện thoại của bạn",
-  "Chúng tôi không đứng giữa việc kinh doanh của bạn, không can thiệp giá",
-  "Bạn muốn gỡ farm khỏi trang lúc nào cũng được, không ràng buộc",
-];
-
-/** Nói thẳng về thứ mình KHÔNG làm — chống hiểu lầm về mô hình */
-const KHONG_LAM = [
+/** Điều vnfarmstay.vn KHÔNG phải — Phần II.2 */
+const KHONG_PHAI = [
   {
     ten: "Không phải sàn đặt phòng",
-    mota: "Chúng tôi không nhận đặt chỗ, không xử lý thanh toán, không giữ tiền cọc. Mọi giao dịch diễn ra thẳng giữa bạn và chủ farm.",
+    mota: "Không xây chợ — xây hạ tầng. Khách đặt trực tiếp với chủ farm, không trung gian, không hoa hồng.",
   },
   {
-    ten: "Không bán tour",
-    mota: "Trang Tour Farmstay là bản đồ vùng và gợi ý mùa để bạn tự chọn đường đi — không phải sản phẩm tour đang mở bán.",
+    ten: "Không phải tổ chức thâu tóm",
+    mota: "Thành viên giữ 100% quyền sở hữu website, dữ liệu, thương hiệu và khách hàng của mình.",
   },
   {
-    ten: "Không cấp chứng nhận",
-    mota: "Chúng tôi tìm hiểu trước khi đăng, nhưng đó là công việc biên tập chứ không phải kiểm định. Chúng tôi không cấp huy hiệu, không đóng dấu xác nhận chất lượng.",
+    ten: "Không phải danh bạ liệt kê",
+    mota: "Mỗi thành viên là một thực thể có định danh chuẩn, có câu chuyện, có dữ liệu, có liên kết.",
+  },
+  {
+    ten: "Không phải một chiến dịch",
+    mota: "Chiến dịch có ngày kết thúc. Hạ tầng thì được bồi đắp mãi.",
   },
 ];
 
-/** Lộ trình — trung thực về chỗ còn trống, không hứa ngày cụ thể */
-const LO_TRINH = [
+/**
+ * Vốn mồi của người khởi xướng — Phần I.6.
+ * ⚠️ SỐ THẬT do Ông cấp trong tài liệu nền tảng thương hiệu. KHÔNG được gỡ.
+ */
+const VON_MOI = [
+  { so: "9+", nhan: "năm hoạch định thực địa" },
+  { so: "100+", nhan: "dự án đã triển khai" },
+  { so: "30+", nhan: "tỉnh thành đi qua" },
+  { so: "5", nhan: "mùa Xuyên Việt Farmstay" },
+  { so: "100+", nhan: "điểm đến đã kết nối" },
+];
+
+/** Hiệu ứng cộng dồn — Phần III.6 */
+const CONG_DON = [
   {
-    trangThai: "Đã có",
-    mau: "var(--accent-ma)",
-    muc: [
-      "Bản đồ chín vùng nông nghiệp Việt Nam theo mùa vụ",
-      "Trụ kiến thức: farmstay là gì, phân biệt với homestay và resort",
-      "Cửa tiếp nhận giới thiệu farmstay từ chủ farm",
-    ],
+    quyMo: "1 website",
+    ketQua: "Một tín hiệu yếu — thế giới không nghe thấy",
+    manh: 12,
   },
   {
-    trangThai: "Đang làm",
-    mau: "var(--gold)",
-    muc: [
-      "Danh bạ farmstay — đang tìm hiểu từng farm trước khi đăng",
-      "Câu chuyện từng vùng đất, viết theo mùa",
-      "Kênh liên hệ chính thức",
-    ],
+    quyMo: "10 website liên kết",
+    ketQua: "Một cụm tín hiệu — bắt đầu có hình dạng",
+    manh: 42,
   },
   {
-    trangThai: "Chưa có",
-    mau: "var(--text-dim)",
-    muc: [
-      "Diễn đàn cộng đồng cho chủ farmstay và du khách",
-      "Trang tự quản lý thông tin dành cho chủ farm",
-    ],
+    quyMo: "100 website liên kết chuẩn",
+    ketQua: "Một tín hiệu quốc gia — Việt Nam là một quốc gia farmstay",
+    manh: 100,
   },
 ];
 
@@ -137,87 +144,94 @@ export default function VeChungToiPage() {
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
 
       <style>{`
-        .vct-grid-2 { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 900px) { .vct-grid-2 { grid-template-columns: repeat(2, 1fr); } }
-        .vct-grid-3 { display: grid; grid-template-columns: 1fr; gap: 18px; }
-        @media (min-width: 860px) { .vct-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+        .vct-3 { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        @media (min-width: 860px) { .vct-3 { grid-template-columns: repeat(3, 1fr); } }
+        .vct-4 { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        @media (min-width: 700px) { .vct-4 { grid-template-columns: repeat(2, 1fr); } }
+        .vct-von { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+        @media (min-width: 820px) { .vct-von { grid-template-columns: repeat(5, 1fr); } }
       `}</style>
 
       <main id="main" style={{ background: "var(--bg-deep)" }}>
-        {/* ── Hero ── */}
+        {/* ── Hero — tuyên ngôn lõi ── */}
         <section
           className="plasma-bg motif-x"
           style={{
             background: "linear-gradient(160deg,#0f2318,#1a3d28 60%,#0f2318)",
-            padding: "80px 24px",
+            padding: "84px 24px 88px",
             textAlign: "center",
           }}
         >
+          <span className="section-kicker reveal">Lẽ sống của chúng ta</span>
           <h1
             className="reveal"
             style={{
               fontFamily: "var(--font-display), serif",
-              fontSize: "clamp(2rem,4vw,3rem)",
+              fontSize: "clamp(1.9rem,4vw,3rem)",
               fontWeight: 700,
-              marginBottom: 20,
+              lineHeight: 1.25,
+              marginBottom: 24,
               color: "var(--text-primary)",
+              maxWidth: 880,
+              margin: "0 auto 24px",
             }}
           >
-            Về <em style={{ color: "var(--gold)" }}>vnfarmstay.vn</em>
+            Một cây đứng riêng thì đổ.
+            <br />
+            <em style={{ color: "var(--gold)" }}>
+              Một khu rừng thì có tên trên bản đồ.
+            </em>
           </h1>
-          <p className="lead" style={{ maxWidth: 640, margin: "0 auto" }}>
-            Chúng tôi tin rằng mỗi mảnh đất nông nghiệp Việt Nam đều mang trong
-            mình một câu chuyện xứng đáng được kể — và mỗi du khách xứng đáng
-            được trải nghiệm điều đó.
+          <p className="lead" style={{ maxWidth: 660, margin: "0 auto" }}>
+            vnfarmstay.vn là{" "}
+            <strong style={{ color: "var(--text-primary)" }}>
+              hạ tầng chung của cộng đồng Farmstay Việt Nam
+            </strong>{" "}
+            — nơi nguồn lực rời rạc của hàng trăm thành viên được quy tụ thành
+            một sức mạnh có tổ chức.
           </p>
         </section>
 
-        {/* ── Vì sao trang này tồn tại ── */}
-        <section style={{ padding: "80px 24px 64px" }}>
+        {/* ── Nghịch lý ── */}
+        <section style={{ padding: "84px 24px 64px" }}>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
-            <span className="section-kicker">Vì sao có trang này</span>
+            <span className="section-kicker">Nghịch lý của chúng ta</span>
             <h2
               className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
-                fontSize: "clamp(1.5rem,3vw,2rem)",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                marginBottom: 24,
+                marginBottom: 26,
               }}
             >
-              Vấn đề chúng tôi muốn giải
+              Giá trị thật thì có, nhưng đơn độc
             </h2>
             <div className="prose" style={{ maxWidth: "none" }}>
               <p>
-                Việt Nam có nông nghiệp trải dài từ ruộng bậc thang vùng cao tới
-                miệt vườn sông nước — gần như vùng nào cũng có thứ đáng để người
-                ta tới xem và làm cùng. Nhưng người muốn đi thì không biết đi
-                đâu, còn người làm nông muốn đón khách thì không biết kể chuyện
-                mình ở đâu cho ai nghe.
+                Việt Nam có hàng nghìn farmstay. Mỗi nơi giữ một thứ mà không
+                resort nào mua được: gốc trà Shan Tuyết trăm tuổi trên núi Tây
+                Bắc, hạt cà phê Liberica gần trăm năm ở Khe Sanh, những cánh
+                đồng sen miền Tây, văn hoá Raglai — Êđê giữa đại ngàn, một nếp
+                nhà giữ đúng hồn bản địa.
               </p>
               <p>
-                Khoảng trống ở giữa đang được lấp bằng những thứ không ổn: các
-                trang đặt phòng xếp farmstay lẫn với nhà nghỉ và xếp hạng theo
-                tiền quảng cáo; nhiều nơi mượn chữ &ldquo;farmstay&rdquo; cho
-                một khu nghỉ không hề canh tác gì. Người đi thì thất vọng, người
-                làm nông tử tế thì chìm nghỉm.
+                Giá trị là thật. Nhưng gõ tên lên Google —{" "}
+                <strong>thường không có gì cả.</strong>
               </p>
               <p>
-                vnfarmstay.vn ra đời để làm đúng một việc:{" "}
-                <strong>
-                  giới thiệu farmstay Việt Nam cho tử tế, rồi đứng sang một bên
-                </strong>{" "}
-                — dẫn khách về thẳng chỗ chủ farm, không đứng giữa thu tiền của
-                bên nào.
+                Đơn độc trong một website tự làm không ai tìm thấy. Đơn độc
+                trong một fanpage tự chạy không ai tin. Đơn độc trước Google,
+                trước ChatGPT, trước dòng khách quốc tế — những nơi mà farmstay
+                của chúng ta không tồn tại, dù nó đẹp đến đâu ngoài đời thật.
               </p>
             </div>
           </div>
         </section>
 
-        {/* ── Sứ mệnh ── */}
+        {/* ── Vì sao tự làm không đủ ── */}
         <section
-          id="su-menh"
           style={{
             padding: "72px 24px",
             background: "var(--bg-main)",
@@ -225,276 +239,394 @@ export default function VeChungToiPage() {
             borderBottom: "1px solid var(--border)",
           }}
         >
-          <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-            <span className="section-kicker">Sứ mệnh</span>
-            <h2
-              className="section-heading section-heading--center"
-              style={{
-                fontFamily: "var(--font-display),serif",
-                fontSize: "clamp(1.5rem,3vw,2rem)",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                marginBottom: 24,
-              }}
-            >
-              Sứ mệnh của chúng tôi
-            </h2>
-            <p
-              style={{
-                color: "var(--text-muted)",
-                lineHeight: 1.9,
-                fontSize: "1.02rem",
-              }}
-            >
-              vnfarmstay.vn ra đời để{" "}
-              <strong style={{ color: "var(--text-primary)" }}>kết nối</strong>{" "}
-              những người muốn trải nghiệm nông nghiệp đích thực với những chủ
-              farmstay tâm huyết trên khắp Việt Nam — đồng thời giúp
-              <strong style={{ color: "var(--text-primary)" }}>
-                {" "}
-                tăng thu nhập cho nông dân
-              </strong>{" "}
-              và
-              <strong style={{ color: "var(--text-primary)" }}>
-                {" "}
-                bảo tồn văn hoá bản địa
-              </strong>{" "}
-              thông qua du lịch có trách nhiệm.
-            </p>
-          </div>
-        </section>
-
-        {/* ── Nguyên tắc chọn farm ── */}
-        <section style={{ padding: "80px 24px" }}>
-          <div style={{ maxWidth: 820, margin: "0 auto" }}>
-            <span className="section-kicker">Năm nguyên tắc</span>
+          <div style={{ maxWidth: 760, margin: "0 auto" }}>
+            <span className="section-kicker">Vì sao tự làm thì không đủ</span>
             <h2
               className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
-                fontSize: "clamp(1.5rem,3vw,2rem)",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                marginBottom: 14,
+                marginBottom: 26,
               }}
             >
-              Chúng tôi chọn farmstay theo nguyên tắc nào
+              Chúng ta không thua vì thiếu giá trị
+            </h2>
+            <div className="prose" style={{ maxWidth: "none" }}>
+              <p>
+                Suốt nhiều năm, mỗi farmstay tự bơi theo cách của mình: tự làm
+                web, tự chạy quảng cáo, tự tìm khách. Ai cũng cố gắng. Nhưng kết
+                quả cộng lại của cả ngành vẫn gần bằng không trên bản đồ thế
+                giới.
+              </p>
+              <p>
+                Lý do đơn giản:{" "}
+                <strong>
+                  một tiếng nói đơn lẻ, dù to đến đâu, cũng không thành một tín
+                  hiệu quốc gia.
+                </strong>
+              </p>
+              <p>
+                Một website đứng một mình là một cái cây mọc trên đất trống —
+                gió nào cũng lay. Ngân sách quảng cáo của một farmstay nhỏ, dù
+                tăng gấp mười, vẫn không đủ để chen chân trên thị trường quốc
+                tế. Chúng ta không thua vì thiếu giá trị. Chúng ta thua vì{" "}
+                <strong>đứng rời nhau.</strong>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Điều thay đổi khi đứng cùng nhau ── */}
+        <section style={{ padding: "84px 24px" }}>
+          <div style={{ maxWidth: 1020, margin: "0 auto" }}>
+            <span className="section-kicker">Khi đứng cùng nhau</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 18,
+              }}
+            >
+              Rễ giữ rễ, tán che tán
             </h2>
             <p
               style={{
                 color: "var(--text-muted)",
-                marginBottom: 36,
-                lineHeight: 1.8,
-                maxWidth: 640,
+                maxWidth: 680,
+                marginBottom: 38,
+                lineHeight: 1.85,
               }}
             >
-              Đây là những ràng buộc chúng tôi tự đặt cho mình. Bạn có quyền soi
-              và nhắc chúng tôi khi thấy chúng tôi làm sai.
+              Trong tự nhiên, một cái cây đứng riêng thì đổ. Một khu rừng thì
+              không — vì rễ giữ rễ, tán che tán. Và từ vệ tinh nhìn xuống, người
+              ta không thấy từng cây, người ta thấy{" "}
+              <strong style={{ color: "var(--text-primary)" }}>
+                một khu rừng có tên
+              </strong>
+              .
             </p>
 
-            <ol style={{ listStyle: "none", display: "grid", gap: 24 }}>
-              {NGUYEN_TAC.map((n) => (
-                <li
-                  key={n.num}
-                  style={{ display: "flex", gap: 20, alignItems: "flex-start" }}
+            <div className="vct-3">
+              {KHI_DUNG_CUNG.map((k, i) => (
+                <div
+                  key={k.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderTop: "3px solid var(--accent-ma)",
+                    borderRadius: "var(--radius)",
+                    padding: "24px 22px 26px",
+                  }}
                 >
-                  <span
+                  <div
                     aria-hidden="true"
                     style={{
                       fontFamily: "var(--font-display), serif",
-                      fontSize: "1.9rem",
+                      fontSize: "1.5rem",
                       fontWeight: 700,
-                      color: "var(--gold)",
-                      opacity: 0.42,
-                      lineHeight: 1.1,
-                      minWidth: 44,
+                      color: "var(--accent-ma)",
+                      opacity: 0.45,
+                      marginBottom: 10,
                     }}
                   >
-                    {n.num}
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontSize: "1.04rem",
-                        fontWeight: 700,
-                        color: "var(--text-primary)",
-                        marginBottom: 7,
-                      }}
-                    >
-                      {n.ten}
-                    </h3>
-                    <p
-                      style={{
-                        color: "var(--text-muted)",
-                        fontSize: "0.93rem",
-                        lineHeight: 1.78,
-                      }}
-                    >
-                      {n.mota}
-                    </p>
+                    {String(i + 1).padStart(2, "0")}
                   </div>
-                </li>
+                  <h3
+                    style={{
+                      fontSize: "1.02rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {k.ten}
+                  </h3>
+                  <p
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "0.91rem",
+                      lineHeight: 1.75,
+                    }}
+                  >
+                    {k.mota}
+                  </p>
+                </div>
               ))}
-            </ol>
+            </div>
           </div>
         </section>
 
-        {/* ── Cam kết hai chiều ── */}
+        {/* ── Đích đến chung — khối nhấn ── */}
+        <section id="su-menh" style={{ padding: "24px 24px 84px" }}>
+          <div
+            style={{
+              maxWidth: 900,
+              margin: "0 auto",
+              background:
+                "linear-gradient(150deg, oklch(0.22 0.18 130), oklch(0.17 0.2 130))",
+              border: "1px solid var(--gold-border)",
+              borderRadius: "var(--radius-lg)",
+              padding: "52px 44px",
+              textAlign: "center",
+            }}
+          >
+            <span className="section-kicker">Đích đến chung</span>
+            <blockquote
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.25rem,2.6vw,1.75rem)",
+                fontWeight: 700,
+                lineHeight: 1.5,
+                color: "var(--text-primary)",
+                margin: "10px 0 20px",
+              }}
+            >
+              Đưa Việt Nam định vị thành{" "}
+              <em style={{ color: "var(--gold)" }}>
+                Quốc Gia Du Lịch Nông Nghiệp
+              </em>{" "}
+              trên bản đồ thế giới — nơi mỗi vùng đất kể câu chuyện riêng qua
+              nông sản, văn hoá và trải nghiệm bản địa.
+            </blockquote>
+            <p
+              style={{
+                color: "var(--text-dim)",
+                fontSize: "0.92rem",
+                lineHeight: 1.75,
+                maxWidth: 560,
+                margin: "0 auto",
+              }}
+            >
+              Đây không phải mục tiêu của một người hay một doanh nghiệp. Đây là
+              đích đến chỉ có thể tới bằng sức của cả cộng đồng.
+            </p>
+          </div>
+        </section>
+
+        {/* ── Ba lý do tồn tại ── */}
         <section
           style={{
-            padding: "80px 24px",
+            padding: "84px 24px",
             background: "var(--bg-main)",
             borderTop: "1px solid var(--border)",
           }}
         >
           <div style={{ maxWidth: 1020, margin: "0 auto" }}>
-            <span className="section-kicker">Cam kết</span>
+            <span className="section-kicker">Lý do tồn tại</span>
             <h2
               className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
-                fontSize: "clamp(1.5rem,3vw,2rem)",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                marginBottom: 36,
+                marginBottom: 18,
               }}
             >
-              Chúng tôi hứa gì — với cả hai phía
+              Ba lý do khiến hệ sinh thái là bắt buộc
             </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                maxWidth: 660,
+                marginBottom: 38,
+                lineHeight: 1.85,
+              }}
+            >
+              Không phải một lựa chọn hay ho để cân nhắc. Là điều kiện sống còn
+              của cả ngành trong thập kỷ tới.
+            </p>
 
-            <div className="vct-grid-2">
-              <div
-                style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                  borderRadius: "var(--radius)",
-                  padding: "28px 26px",
-                }}
-              >
-                <h3
+            <div style={{ display: "grid", gap: 22 }}>
+              {LY_DO.map((l) => (
+                <div
+                  key={l.so}
                   style={{
-                    fontSize: "1.06rem",
-                    fontWeight: 700,
-                    color: "var(--text-primary)",
-                    marginBottom: 18,
+                    display: "flex",
+                    gap: 22,
+                    alignItems: "flex-start",
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    padding: "26px 26px 28px",
                   }}
                 >
-                  Với người đi
-                </h3>
-                <ul style={{ listStyle: "none", display: "grid", gap: 13 }}>
-                  {CAM_KET_KHACH.map((t) => (
-                    <li
-                      key={t}
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "2.1rem",
+                      fontWeight: 700,
+                      color: "var(--gold)",
+                      opacity: 0.4,
+                      lineHeight: 1,
+                      minWidth: 52,
+                    }}
+                  >
+                    {l.so}
+                  </span>
+                  <div>
+                    <h3
                       style={{
-                        color: "var(--text-muted)",
-                        fontSize: "0.92rem",
-                        lineHeight: 1.72,
-                        paddingLeft: 20,
-                        position: "relative",
+                        fontSize: "1.08rem",
+                        fontWeight: 700,
+                        color: "var(--text-primary)",
+                        marginBottom: 9,
                       }}
                     >
-                      <span
-                        aria-hidden="true"
-                        style={{
-                          position: "absolute",
-                          left: 0,
-                          color: "var(--gold)",
-                        }}
-                      >
-                        ✓
-                      </span>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div
-                style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid oklch(0.7 0.18 115 / 0.3)",
-                  borderRadius: "var(--radius)",
-                  padding: "28px 26px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.06rem",
-                    fontWeight: 700,
-                    color: "var(--accent-ma)",
-                    marginBottom: 18,
-                  }}
-                >
-                  Với chủ farmstay
-                </h3>
-                <ul style={{ listStyle: "none", display: "grid", gap: 13 }}>
-                  {CAM_KET_CHU_FARM.map((t) => (
-                    <li
-                      key={t}
+                      {l.ten}
+                    </h3>
+                    <p
                       style={{
                         color: "var(--text-muted)",
-                        fontSize: "0.92rem",
-                        lineHeight: 1.72,
-                        paddingLeft: 20,
-                        position: "relative",
+                        fontSize: "0.93rem",
+                        lineHeight: 1.8,
                       }}
                     >
-                      <span
-                        aria-hidden="true"
-                        style={{
-                          position: "absolute",
-                          left: 0,
-                          color: "var(--accent-ma)",
-                        }}
-                      >
-                        ✓
-                      </span>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      {l.mota}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ── Chúng tôi KHÔNG làm gì ── */}
-        <section style={{ padding: "80px 24px" }}>
+        {/* ── Hiệu ứng cộng dồn ── */}
+        <section style={{ padding: "84px 24px" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto" }}>
+            <span className="section-kicker">Càng đông càng mạnh</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 18,
+              }}
+            >
+              Giá trị không cộng lại — nó nhân lên
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                marginBottom: 38,
+                lineHeight: 1.85,
+                maxWidth: 660,
+              }}
+            >
+              Một mắt xích có lượt truy cập, có tín nhiệm — cả mạng lưới cùng
+              hưởng. Mỗi thành viên mới gia nhập làm tăng giá trị của tất cả
+              những người đã có mặt.
+            </p>
+
+            <div style={{ display: "grid", gap: 18 }}>
+              {CONG_DON.map((c) => (
+                <div key={c.quyMo}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "baseline",
+                      gap: 16,
+                      marginBottom: 9,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontWeight: 700,
+                        color: "var(--text-primary)",
+                        fontSize: "0.98rem",
+                      }}
+                    >
+                      {c.quyMo}
+                    </span>
+                    <span
+                      style={{
+                        color: "var(--text-muted)",
+                        fontSize: "0.88rem",
+                      }}
+                    >
+                      {c.ketQua}
+                    </span>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      height: 8,
+                      borderRadius: 4,
+                      background: "var(--gold-dim)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: `${c.manh}%`,
+                        height: "100%",
+                        borderRadius: 4,
+                        background:
+                          c.manh === 100
+                            ? "linear-gradient(90deg, var(--accent-ma), var(--gold))"
+                            : "var(--gold-border)",
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Điều KHÔNG phải ── */}
+        <section
+          style={{
+            padding: "84px 24px",
+            background: "var(--bg-main)",
+            borderTop: "1px solid var(--border)",
+          }}
+        >
           <div style={{ maxWidth: 1020, margin: "0 auto" }}>
             <span className="section-kicker">Nói cho rõ</span>
             <h2
               className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
-                fontSize: "clamp(1.5rem,3vw,2rem)",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                marginBottom: 14,
+                marginBottom: 18,
               }}
             >
-              Chúng tôi không làm những việc này
+              vnfarmstay.vn không phải những thứ này
             </h2>
             <p
               style={{
                 color: "var(--text-muted)",
-                marginBottom: 32,
-                lineHeight: 1.8,
                 maxWidth: 640,
+                marginBottom: 36,
+                lineHeight: 1.85,
               }}
             >
-              Nói trước để không ai kỳ vọng nhầm — và cũng để bạn biết chúng tôi
-              kiếm gì và không kiếm gì từ việc này.
+              Chúng ta không xây một thương hiệu mới đè lên các thương hiệu cũ.
+              Chúng ta xây <strong>cái nền mà tất cả cùng đứng.</strong>
             </p>
 
-            <div className="vct-grid-3">
-              {KHONG_LAM.map((k) => (
+            <div className="vct-4">
+              {KHONG_PHAI.map((k) => (
                 <div
                   key={k.ten}
                   style={{
                     background: "var(--bg-card)",
                     border: "1px solid var(--border)",
                     borderRadius: "var(--radius)",
-                    padding: "22px 22px 24px",
+                    padding: "24px 22px 26px",
                   }}
                 >
                   <h3
@@ -522,195 +654,283 @@ export default function VeChungToiPage() {
           </div>
         </section>
 
-        {/* ── Lộ trình công khai ── */}
-        <section
-          style={{
-            padding: "80px 24px",
-            background: "var(--bg-main)",
-            borderTop: "1px solid var(--border)",
-          }}
-        >
-          <div style={{ maxWidth: 1020, margin: "0 auto" }}>
-            <span className="section-kicker">Minh bạch</span>
+        {/* ── Nguyên tắc bất di bất dịch ── */}
+        <section style={{ padding: "84px 24px" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto" }}>
+            <span className="section-kicker">Nguyên tắc bất di bất dịch</span>
             <h2
               className="section-heading"
               style={{
                 fontFamily: "var(--font-display), serif",
-                fontSize: "clamp(1.5rem,3vw,2rem)",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                marginBottom: 14,
+                marginBottom: 34,
               }}
             >
-              Chúng tôi đang ở đâu
+              Cộng sinh, không ký sinh
+            </h2>
+
+            <div style={{ display: "grid", gap: 22 }}>
+              <div
+                style={{
+                  background: "var(--bg-card)",
+                  borderLeft: "3px solid var(--accent-ma)",
+                  borderRadius: "var(--radius-sm)",
+                  padding: "24px 26px",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "1.02rem",
+                    fontWeight: 700,
+                    color: "var(--accent-ma)",
+                    marginBottom: 10,
+                  }}
+                >
+                  Cộng sinh, không ký sinh
+                </h3>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "0.93rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  Hệ sinh thái không sống bằng việc lấy đi của thành viên. Hệ
+                  sinh thái sống bằng việc làm mỗi thành viên mạnh lên — và mỗi
+                  thành viên mạnh lên lại làm dày thêm đất chung.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  background: "var(--bg-card)",
+                  borderLeft: "3px solid var(--gold)",
+                  borderRadius: "var(--radius-sm)",
+                  padding: "24px 26px",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "1.02rem",
+                    fontWeight: 700,
+                    color: "var(--gold)",
+                    marginBottom: 10,
+                  }}
+                >
+                  Cho trước, nhận sau — nhưng nhận nhiều hơn cho
+                </h3>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "0.93rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  Mỗi thành viên góp vào một phần: câu chuyện thật, hình ảnh
+                  thật, một lượt chia sẻ, một liên kết. Đổi lại, họ nhận về sức
+                  mạnh cộng hưởng của cả trăm thành viên khác. Đó là phép tính
+                  duy nhất khiến mọi người cùng có lợi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Người khởi xướng + vốn mồi ── */}
+        <section
+          className="motif-x"
+          style={{
+            padding: "84px 24px",
+            background: "var(--bg-main)",
+            borderTop: "1px solid var(--border)",
+            borderBottom: "1px solid var(--border)",
+          }}
+        >
+          <div style={{ maxWidth: 960, margin: "0 auto" }}>
+            <span className="section-kicker">Người khởi xướng</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 22,
+              }}
+            >
+              Bộ rễ đầu tiên
             </h2>
             <p
               style={{
                 color: "var(--text-muted)",
-                marginBottom: 34,
-                lineHeight: 1.8,
-                maxWidth: 660,
+                lineHeight: 1.85,
+                fontSize: "1rem",
+                maxWidth: 720,
+                marginBottom: 16,
               }}
             >
-              vnfarmstay.vn còn mới và còn nhiều chỗ trống. Chúng tôi để bảng
-              này ở đây thay vì giả vờ mọi thứ đã xong — bạn biết đúng thứ mình
-              đang dùng.
+              Hệ sinh thái được khởi xướng bởi{" "}
+              <strong style={{ color: "var(--text-primary)" }}>
+                Nhà Hoạch Định Phạm Thanh Tùng
+              </strong>{" "}
+              cùng cộng đồng{" "}
+              <strong style={{ color: "var(--text-primary)" }}>
+                Làng Farmstay Việt Nam
+              </strong>
+              .
+            </p>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                lineHeight: 1.85,
+                fontSize: "0.95rem",
+                maxWidth: 720,
+                marginBottom: 40,
+              }}
+            >
+              Toàn bộ uy tín tích luỹ ấy được{" "}
+              <strong style={{ color: "var(--text-primary)" }}>
+                góp vào làm vốn mồi cho cộng đồng
+              </strong>{" "}
+              — như người mở đất góp bộ rễ đầu tiên. Từ đây, hệ sinh thái lớn
+              lên bằng nguồn lực của tất cả thành viên.
             </p>
 
-            <div className="vct-grid-3">
-              {LO_TRINH.map((g) => (
+            {/* ⚠️ Bộ số THẬT do Ông cấp trong tài liệu nền tảng thương hiệu — KHÔNG gỡ */}
+            <div className="vct-von">
+              {VON_MOI.map((v) => (
                 <div
-                  key={g.trangThai}
+                  key={v.nhan}
                   style={{
                     background: "var(--bg-card)",
-                    border: "1px solid var(--border)",
-                    borderTop: `3px solid ${g.mau}`,
+                    border: "1px solid var(--gold-border)",
                     borderRadius: "var(--radius)",
-                    padding: "22px 22px 24px",
+                    padding: "22px 16px",
+                    textAlign: "center",
                   }}
                 >
-                  <h3
+                  <div
                     style={{
-                      fontSize: "0.78rem",
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.9rem",
                       fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: g.mau,
-                      marginBottom: 16,
+                      color: "var(--gold)",
+                      lineHeight: 1.1,
+                      marginBottom: 8,
                     }}
                   >
-                    {g.trangThai}
-                  </h3>
-                  <ul style={{ listStyle: "none", display: "grid", gap: 11 }}>
-                    {g.muc.map((m) => (
-                      <li
-                        key={m}
-                        style={{
-                          color: "var(--text-muted)",
-                          fontSize: "0.89rem",
-                          lineHeight: 1.7,
-                        }}
-                      >
-                        {m}
-                      </li>
-                    ))}
-                  </ul>
+                    {v.so}
+                  </div>
+                  <div
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "0.8rem",
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    {v.nhan}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Người đứng sau ── */}
-        <section style={{ padding: "80px 24px 64px" }}>
-          <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-            <span className="section-kicker">Người đứng sau</span>
-            <h2
-              className="section-heading section-heading--center"
-              style={{
-                fontFamily: "var(--font-display), serif",
-                fontSize: "clamp(1.4rem,2.6vw,1.8rem)",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                marginBottom: 22,
-              }}
-            >
-              Ai làm trang này
-            </h2>
-            <p
-              style={{
-                color: "var(--text-muted)",
-                lineHeight: 1.85,
-                fontSize: "0.98rem",
-              }}
-            >
-              Người khởi xướng và đứng sau vnfarmstay.vn là{" "}
-              <strong style={{ color: "var(--text-primary)" }}>
-                Phạm Thanh Tùng
-              </strong>{" "}
-              — Nhà Hoạch Định.
-            </p>
-            <p
-              style={{
-                color: "var(--text-dim)",
-                lineHeight: 1.8,
-                fontSize: "0.9rem",
-                marginTop: 18,
-              }}
-            >
-              Hiện chưa có đội ngũ nhiều người. Chúng tôi nói thẳng điều đó thay
-              vì dựng lên một trang &ldquo;đội ngũ&rdquo; với những cái tên
-              không có thật — cách nhiều nền tảng vẫn làm để trông cho lớn.
-            </p>
-          </div>
-        </section>
-
-        {/* ── Liên hệ ── */}
-        <section id="lien-he" style={{ padding: "0 24px 88px" }}>
+        {/* ── Lời mời ── */}
+        <section id="lien-he" style={{ padding: "84px 24px 88px" }}>
           <div
             style={{
-              maxWidth: 680,
+              maxWidth: 760,
               margin: "0 auto",
               background: "var(--bg-card)",
               borderRadius: "var(--radius-lg)",
               border: "1px solid var(--gold-border)",
-              padding: "44px 38px",
+              padding: "48px 40px",
               textAlign: "center",
             }}
           >
-            <h2
+            <blockquote
               style={{
-                fontFamily: "var(--font-display),serif",
-                fontSize: "1.7rem",
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.2rem,2.4vw,1.6rem)",
                 fontWeight: 700,
                 color: "var(--text-primary)",
-                marginBottom: 16,
+                lineHeight: 1.5,
+                marginBottom: 20,
               }}
             >
-              Liên hệ với chúng tôi
-            </h2>
-            {/* ⚠️ 08/08/2026 — Ông xác nhận CẢ BA kênh cũ đều KHÔNG CÓ THẬT, đã gỡ:
-                email hello@vnfarmstay.vn · hotline "1800 6868 (miễn phí)" ·
-                Zalo "vnfarmstay.vn Official". Để người ta gọi vào số không tồn tại
-                hoặc gửi thư vào hòm thư không ai đọc còn tệ hơn là nói thẳng chưa có.
-                Khi Ông cấp kênh THẬT thì đặt lại vào đúng chỗ này. */}
+              Chúng ta không chạy đua marketing với nhau.
+              <br />
+              <em style={{ color: "var(--gold)" }}>
+                Chúng ta cùng nhau quy hoạch lại luật chơi.
+              </em>
+            </blockquote>
             <p
               style={{
                 color: "var(--text-muted)",
-                marginBottom: 26,
                 lineHeight: 1.8,
+                marginBottom: 14,
+                fontSize: "0.95rem",
               }}
             >
-              Kênh liên hệ chính thức của vnfarmstay.vn đang được mở. Khi có,
-              địa chỉ sẽ được đăng ngay tại đây — chúng tôi không muốn để lại
-              một số điện thoại hay hòm thư mà bạn gọi vào lại không có ai.
+              Bạn giữ 100% những gì là của bạn — bạn chỉ thêm, không mất gì.
+              Không phí đăng, không hoa hồng, khách đặt thẳng với bạn.
             </p>
+            {/* ⚠️ 08/08/2026 — CẢ BA kênh liên hệ cũ đều KHÔNG CÓ THẬT, đã gỡ:
+                email hello@vnfarmstay.vn · hotline "1800 6868" · Zalo "Official".
+                Khi Ông cấp kênh THẬT thì đặt lại vào đúng chỗ này. */}
             <p
               style={{
                 color: "var(--text-dim)",
-                fontSize: "0.9rem",
-                marginBottom: 24,
+                fontSize: "0.88rem",
                 lineHeight: 1.75,
+                marginBottom: 28,
               }}
             >
-              Nếu bạn đang làm nông và muốn giới thiệu farm của mình, dùng cửa
-              dưới đây — đó là lối vào đang mở.
+              Kênh liên hệ chính thức đang được mở. Trong lúc chờ, cửa dưới đây
+              là lối vào đang hoạt động.
             </p>
-            <Link
-              href="/dang-farmstay"
+            <div
               style={{
-                display: "inline-block",
-                padding: "13px 30px",
-                borderRadius: 24,
-                background: "var(--gold)",
-                color: "var(--bg-deep)",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                transition: "var(--transition)",
+                display: "flex",
+                gap: 12,
+                justifyContent: "center",
+                flexWrap: "wrap",
               }}
             >
-              Giới thiệu farmstay của bạn →
-            </Link>
+              <Link
+                href="/chu-farmstay"
+                style={{
+                  display: "inline-block",
+                  padding: "13px 28px",
+                  borderRadius: 24,
+                  background: "var(--gold)",
+                  color: "var(--bg-deep)",
+                  fontWeight: 700,
+                  fontSize: "0.9rem",
+                  transition: "var(--transition)",
+                }}
+              >
+                Tham gia hệ sinh thái →
+              </Link>
+              <Link
+                href="/tour-farmstay"
+                style={{
+                  display: "inline-block",
+                  padding: "13px 28px",
+                  borderRadius: 24,
+                  border: "1px solid var(--gold-border)",
+                  color: "var(--gold)",
+                  fontWeight: 600,
+                  fontSize: "0.9rem",
+                  transition: "var(--transition)",
+                }}
+              >
+                Khám phá vùng đất
+              </Link>
+            </div>
           </div>
         </section>
       </main>

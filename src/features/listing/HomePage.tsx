@@ -274,6 +274,130 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
         </div>
       </section>
 
+      {/* ── Câu chuyện thương hiệu — nguồn: vnfarmstay-nen-tang-thuong-hieu-v2.md
+          (Ông cấp 08/08/2026). Du khách chạm trang chủ trước tiên, nên lẽ sống phải
+          nói ở đây chứ không đợi họ bấm sang /ve-chung-toi. ── */}
+      <section
+        aria-label="Lẽ sống của vnfarmstay.vn"
+        style={{
+          background: "var(--bg-deep)",
+          padding: "84px 24px",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+          <span className="section-kicker">Vì sao có trang này</span>
+          <h2
+            style={{
+              fontFamily: "var(--font-display), serif",
+              fontSize: "clamp(1.5rem, 3.2vw, 2.3rem)",
+              fontWeight: 700,
+              lineHeight: 1.35,
+              color: "var(--text-primary)",
+              marginBottom: 26,
+            }}
+          >
+            Một cây đứng riêng thì đổ.
+            <br />
+            <em style={{ color: "var(--gold)" }}>
+              Một khu rừng thì có tên trên bản đồ.
+            </em>
+          </h2>
+
+          <p
+            style={{
+              color: "var(--text-muted)",
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              maxWidth: 700,
+              margin: "0 auto 20px",
+            }}
+          >
+            Việt Nam có hàng nghìn farmstay, mỗi nơi giữ một thứ mà không resort
+            nào mua được. Giá trị là thật — nhưng gõ tên lên Google thường không
+            có gì cả. Chúng ta không thua vì thiếu giá trị.{" "}
+            <strong style={{ color: "var(--text-primary)" }}>
+              Chúng ta thua vì đứng rời nhau.
+            </strong>
+          </p>
+
+          <p
+            style={{
+              color: "var(--text-muted)",
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              maxWidth: 700,
+              margin: "0 auto 34px",
+            }}
+          >
+            vnfarmstay.vn không phải sàn đặt phòng, cũng không phải danh bạ. Đây
+            là{" "}
+            <strong style={{ color: "var(--text-primary)" }}>
+              hạ tầng chung của cộng đồng Farmstay Việt Nam
+            </strong>{" "}
+            — nơi mỗi thành viên giữ nguyên bản sắc riêng, nhưng cùng liên kết
+            vào một lõi để tín nhiệm và lượt tiếp cận chảy qua lại giữa mọi mắt
+            xích.
+          </p>
+
+          <div
+            style={{
+              background: "var(--bg-card)",
+              border: "1px solid var(--gold-border)",
+              borderRadius: "var(--radius-lg)",
+              padding: "32px 30px",
+              marginBottom: 32,
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.72rem",
+                fontWeight: 700,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: "var(--gold)",
+                marginBottom: 14,
+              }}
+            >
+              Đích đến chung
+            </div>
+            <p
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.05rem, 2.2vw, 1.35rem)",
+                fontWeight: 700,
+                lineHeight: 1.55,
+                color: "var(--text-primary)",
+              }}
+            >
+              Đưa Việt Nam định vị thành{" "}
+              <em style={{ color: "var(--gold)" }}>
+                Quốc Gia Du Lịch Nông Nghiệp
+              </em>{" "}
+              trên bản đồ thế giới — nơi mỗi vùng đất kể câu chuyện riêng qua
+              nông sản, văn hoá và trải nghiệm bản địa.
+            </p>
+          </div>
+
+          <a
+            href="/ve-chung-toi"
+            style={{
+              display: "inline-block",
+              padding: "12px 28px",
+              borderRadius: 24,
+              border: "1px solid var(--gold-border)",
+              color: "var(--gold)",
+              fontWeight: 600,
+              fontSize: "0.9rem",
+              textDecoration: "none",
+              transition: "var(--transition)",
+            }}
+          >
+            Đọc trọn câu chuyện của chúng ta →
+          </a>
+        </div>
+      </section>
+
       {hasFarmstays && (
         <>
           {/* Filter chips */}

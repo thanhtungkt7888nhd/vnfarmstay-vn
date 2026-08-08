@@ -83,6 +83,105 @@ const benefits = [
   },
 ];
 
+/**
+ * Bốn tầng hệ sinh thái — Phần III.2 tài liệu nền tảng thương hiệu (Ông cấp 08/08/2026).
+ * Không tầng nào chỉ nhận, không tầng nào chỉ cho.
+ */
+const TANG = [
+  {
+    ten: "Rễ",
+    thucThe: "vnfarmstay.vn",
+    nhan: "Sự phong phú và dữ liệu thực địa của các nhánh",
+    gop: "Bảo chứng uy tín, chuẩn dữ liệu, điều phối chung",
+    mau: "var(--gold)",
+  },
+  {
+    ten: "Thân",
+    thucThe: "Chủ farm & người kiến tạo",
+    nhan: "Thẩm quyền được cả mạng lưới xác nhận",
+    gop: "Câu chuyện thật, tính người, nội dung gốc",
+    mau: "var(--accent-ma)",
+  },
+  {
+    ten: "Tán",
+    thucThe: "Farmstay điểm đến",
+    nhan: "Lượt tiếp cận, tín nhiệm, khách trong nước và quốc tế",
+    gop: "Bằng chứng thực địa, hình ảnh, sản vật, trải nghiệm",
+    mau: "var(--gold-light)",
+  },
+  {
+    ten: "Gió",
+    thucThe: "Kênh social cộng đồng",
+    nhan: "Nội dung chuẩn từ lõi và từ thành viên khác",
+    gop: "Độ phủ, tương tác, khuếch tán chéo",
+    mau: "var(--text-muted)",
+  },
+];
+
+/** Liên kết ngang giữa thành viên — Phần III.4 */
+const LIEN_KET_NGANG = [
+  {
+    ten: "Liên kết cùng vùng",
+    mota: "Các farmstay trong một vùng đất giới thiệu chéo nhau, cùng tạo thành một tuyến trải nghiệm hoàn chỉnh thay vì cạnh tranh giành một lượt khách.",
+  },
+  {
+    ten: "Liên kết cùng chủ đề",
+    mota: "Các thành viên cùng làm cà phê, cùng làm trà, cùng làm nông nghiệp hữu cơ liên kết thành cụm chuyên đề — nâng thẩm quyền của cả cụm.",
+  },
+  {
+    ten: "Liên kết theo tuyến hành trình",
+    mota: "Khách đi Tây Bắc năm ngày cần ba bốn điểm dừng; mỗi điểm giới thiệu điểm kế tiếp — không ai mất khách, tất cả cùng có thêm đêm lưu trú.",
+  },
+];
+
+/** Cơ chế truyền thông chéo — Phần IV.3 */
+const CO_CHE = [
+  {
+    ten: "Nội dung một lần — lan toả nhiều lần",
+    mota: "Một câu chuyện hay không chỉ nằm trên web của bạn: được đưa lên lõi trung tâm, được các thành viên cùng vùng và cùng chủ đề chia sẻ lại, được cắt thành nội dung ngắn cho các kênh cộng đồng.",
+  },
+  {
+    ten: "Giới thiệu chéo theo tuyến",
+    mota: "Mỗi hồ sơ farmstay đều dẫn tới các điểm đến kế tiếp trên cùng hành trình. Khách đến với một thành viên — biết thêm ba thành viên khác, không tốn một đồng quảng cáo.",
+  },
+  {
+    ten: "Chiến dịch chung theo mùa",
+    mota: "Mùa lúa chín Tây Bắc, mùa cà phê Tây Nguyên, mùa nước nổi miền Tây — cả cộng đồng cùng đẩy một chủ đề trong cùng khoảng thời gian. Trăm kênh nói cùng một câu chuyện.",
+  },
+  {
+    ten: "Kho tài nguyên dùng chung",
+    mota: "Bộ nhận diện thành viên, mẫu nội dung, hướng dẫn chụp ảnh, khung bài viết, cẩm nang chuẩn hoá dữ liệu — làm một lần, cả cộng đồng dùng. Thành viên nhỏ nhất cũng có công cụ như thành viên lớn nhất.",
+  },
+  {
+    ten: "Sự kiện hội tụ",
+    mota: "Hành trình Xuyên Việt Farmstay, sự kiện thường niên Farmstay Update, các buổi gặp mặt vùng — nơi quan hệ được làm dày và thành viên mới được kết nạp trước sự chứng kiến của cả cộng đồng.",
+  },
+  {
+    ten: "Tiếng nói chung với bên ngoài",
+    mota: "Khi cộng đồng làm việc với báo chí, chính quyền, đối tác lữ hành hay thị trường quốc tế, một tiếng nói đại diện cho hàng trăm thành viên có trọng lượng khác hẳn hàng trăm tiếng nói lẻ.",
+  },
+];
+
+/** Cam kết công bằng của cơ chế — Phần IV.4 */
+const CAM_KET_CONG_BANG = [
+  {
+    ten: "Không thu hoa hồng",
+    mota: "Không lấy phần trăm trên doanh thu của thành viên — khách đặt thẳng với chủ farm.",
+  },
+  {
+    ten: "Thành viên nhỏ không bị lép vế",
+    mota: "Vị trí trên bản đồ và trong nội dung dựa trên chất lượng và tính xác thực, không dựa trên quy mô hay chi tiền.",
+  },
+  {
+    ten: "Ai góp nhiều được lan toả nhiều",
+    mota: "Thành viên tích cực đóng góp nội dung và chia sẻ chéo được ưu tiên khuếch đại.",
+  },
+  {
+    ten: "Dữ liệu là của thành viên",
+    mota: "Góp vào để dùng chung, không phải giao đi. Bạn giữ 100% quyền sở hữu website, dữ liệu, thương hiệu và khách hàng.",
+  },
+];
+
 const faqs = [
   {
     q: "vnfarmstay.vn lấy phí như thế nào?",
@@ -411,6 +510,326 @@ export default function ChuFarmstayPage() {
               Anh Trần Minh) và khối "Minh bạch về chi phí" (gói Cơ bản / gói Xác minh
               8% hoa hồng) đã GỠ HẲN 08/08/2026 — người không có thật, gói phí không có thật.
               Ông chốt: KHÔNG viết lời chứng thực mới, KHÔNG dựng bảng giá mới. */}
+
+          {/* ── Bốn tầng hệ sinh thái ──
+              Nguồn: vnfarmstay-nen-tang-thuong-hieu-v2.md Phần III.2 (Ông cấp 08/08/2026).
+              Mỗi tầng VỪA CHO VỪA NHẬN — đó là điều khiến hệ sinh thái tự nuôi được chính nó. */}
+          <section style={{ marginTop: 72 }} aria-label="Bốn tầng hệ sinh thái">
+            <span className="section-kicker">Cấu trúc hệ sinh thái</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "1.7rem",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 16,
+              }}
+            >
+              Bốn tầng — mỗi tầng vừa cho vừa nhận
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                maxWidth: 640,
+                marginBottom: 28,
+                lineHeight: 1.8,
+              }}
+            >
+              vnfarmstay.vn là <strong>bộ rễ chung</strong> — nơi tích tụ và
+              phân phối tín nhiệm. Website thành viên là{" "}
+              <strong>tầng tán</strong> mọc trên bộ rễ ấy: vươn nhanh hơn, đứng
+              vững hơn so với mọc một mình trên đất trống.
+            </p>
+
+            <div style={{ display: "grid", gap: 14 }}>
+              {TANG.map((t) => (
+                <div
+                  key={t.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderLeft: `3px solid ${t.mau}`,
+                    borderRadius: "var(--radius-sm)",
+                    padding: "20px 22px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "baseline",
+                      gap: 12,
+                      flexWrap: "wrap",
+                      marginBottom: 12,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-display), serif",
+                        fontSize: "1.15rem",
+                        fontWeight: 700,
+                        color: t.mau,
+                      }}
+                    >
+                      {t.ten}
+                    </span>
+                    <span
+                      style={{
+                        color: "var(--text-muted)",
+                        fontSize: "0.88rem",
+                      }}
+                    >
+                      {t.thucThe}
+                    </span>
+                  </div>
+                  <div className="owner-grid">
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "0.7rem",
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                          color: "var(--text-dim)",
+                          fontWeight: 600,
+                          marginBottom: 5,
+                        }}
+                      >
+                        Nhận từ mạng lưới
+                      </div>
+                      <p
+                        style={{
+                          color: "var(--text-muted)",
+                          fontSize: "0.87rem",
+                          lineHeight: 1.65,
+                        }}
+                      >
+                        {t.nhan}
+                      </p>
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "0.7rem",
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                          color: "var(--text-dim)",
+                          fontWeight: 600,
+                          marginBottom: 5,
+                        }}
+                      >
+                        Góp lại cho mạng lưới
+                      </div>
+                      <p
+                        style={{
+                          color: "var(--text-muted)",
+                          fontSize: "0.87rem",
+                          lineHeight: 1.65,
+                        }}
+                      >
+                        {t.gop}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Liên kết ngang — Phần III.4 ── */}
+          <section
+            style={{ marginTop: 72 }}
+            aria-label="Liên kết giữa các thành viên"
+          >
+            <span className="section-kicker">Liên kết ngang</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "1.7rem",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 16,
+              }}
+            >
+              Farmstay bên cạnh không phải đối thủ
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                maxWidth: 640,
+                marginBottom: 28,
+                lineHeight: 1.8,
+              }}
+            >
+              Đây là phần mà mọi danh bạ đều bỏ quên — và là phần tạo ra sức
+              mạnh thật của hệ sinh thái. Farm bên cạnh là{" "}
+              <strong>mắt xích tiếp theo của cùng một hành trình.</strong>
+            </p>
+
+            <div className="owner-grid">
+              {LIEN_KET_NGANG.map((l) => (
+                <div
+                  key={l.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    padding: "22px 22px 24px",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: "0.99rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: 9,
+                    }}
+                  >
+                    {l.ten}
+                  </h3>
+                  <p
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "0.89rem",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    {l.mota}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Cơ chế truyền thông chéo — Phần IV.3 ── */}
+          <section
+            style={{ marginTop: 72 }}
+            aria-label="Cơ chế truyền thông chéo"
+          >
+            <span className="section-kicker">Cơ chế vận hành</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "1.7rem",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 16,
+              }}
+            >
+              Một công sức, nhiều lần hiệu quả
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                maxWidth: 640,
+                marginBottom: 28,
+                lineHeight: 1.8,
+              }}
+            >
+              Mỗi người góp một phần nhỏ, mỗi người nhận về phần của tất cả. Đây
+              là sáu cách công sức của bạn được nhân lên khi chảy qua mạng lưới.
+            </p>
+
+            <div className="owner-grid">
+              {CO_CHE.map((c, i) => (
+                <div
+                  key={c.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    padding: "22px 22px 24px",
+                  }}
+                >
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.4rem",
+                      fontWeight: 700,
+                      color: "var(--gold)",
+                      opacity: 0.42,
+                      marginBottom: 8,
+                      lineHeight: 1,
+                    }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3
+                    style={{
+                      fontSize: "0.99rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: 9,
+                    }}
+                  >
+                    {c.ten}
+                  </h3>
+                  <p
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "0.89rem",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    {c.mota}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Cam kết công bằng — Phần IV.4 ── */}
+          <section style={{ marginTop: 72 }} aria-label="Cam kết công bằng">
+            <span className="section-kicker">Cam kết công bằng</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "1.7rem",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 28,
+              }}
+            >
+              Bốn điều cơ chế này tự ràng buộc
+            </h2>
+
+            <ul style={{ listStyle: "none", display: "grid", gap: 14 }}>
+              {CAM_KET_CONG_BANG.map((c) => (
+                <li
+                  key={c.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid oklch(0.7 0.18 115 / 0.28)",
+                    borderRadius: "var(--radius-sm)",
+                    padding: "18px 22px",
+                  }}
+                >
+                  <strong
+                    style={{
+                      color: "var(--accent-ma)",
+                      fontSize: "0.95rem",
+                      display: "block",
+                      marginBottom: 6,
+                    }}
+                  >
+                    {c.ten}
+                  </strong>
+                  <span
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "0.89rem",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    {c.mota}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           {/* ── FAQ ── */}
           <section style={{ marginTop: 72 }} aria-label="Câu hỏi thường gặp">
