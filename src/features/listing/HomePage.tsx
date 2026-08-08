@@ -204,46 +204,63 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           </div>
         )}
 
-        {/* Terrain SVG — 3 lớp sóng, lớp giữa chuyển động */}
+        {/* Terrain sóng 3 lớp — width:300% + translateX(-33.333%) = cuộn liền mạch
+            Path bắt đầu và kết thúc cùng Y → tile không giật, mỗi lớp tốc độ / chiều khác nhau */}
         <style>{`
-          @keyframes wave-drift {
-            0%   { transform: translateX(0); }
-            50%  { transform: translateX(-60px); }
-            100% { transform: translateX(0); }
+          .hero-waves {
+            position: absolute; left: 0; right: 0; bottom: 0;
+            height: 90px; overflow: hidden; pointer-events: none;
           }
+          .hero-wave {
+            position: absolute; left: 0; bottom: 0;
+            width: 300%; height: 100%;
+          }
+          @keyframes wave-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-33.333%); }
+          }
+          .hero-wave-1 { animation: wave-scroll 28s linear infinite; }
+          .hero-wave-2 { animation: wave-scroll 18s linear infinite reverse; }
+          .hero-wave-3 { animation: wave-scroll 14s linear infinite; }
           @media (prefers-reduced-motion: reduce) {
-            .wave-animated { animation: none !important; }
+            .hero-wave { animation: none !important; }
           }
         `}</style>
-        <svg
-          viewBox="0 0 1600 200"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          style={{
-            display: "block",
-            width: "100%",
-            height: 90,
-            overflow: "hidden",
-          }}
-        >
-          {/* Lớp 1 — xa nhất, mờ nhất */}
-          <path
-            d="M-80,200 L-80,155 Q180,90 440,125 Q700,160 960,95 Q1220,30 1480,75 Q1560,90 1680,65 L1680,200 Z"
-            fill="rgba(15,35,24,0.55)"
-          />
-          {/* Lớp 2 — giữa, chuyển động */}
-          <path
-            className="wave-animated"
-            d="M-80,200 L-80,172 Q200,118 480,148 Q760,178 1040,128 Q1320,78 1560,110 L1680,105 L1680,200 Z"
-            fill="rgba(10,28,18,0.75)"
-            style={{ animation: "wave-drift 9s ease-in-out infinite" }}
-          />
-          {/* Lớp 3 — gần nhất, đậm nhất */}
-          <path
-            d="M-80,200 L-80,185 Q240,138 560,165 Q880,192 1120,148 Q1360,104 1680,130 L1680,200 Z"
-            fill="var(--bg-deep)"
-          />
-        </svg>
+        <div className="hero-waves" aria-hidden="true">
+          {/* Lớp 1 — sâu nhất, chậm nhất */}
+          <svg
+            className="hero-wave hero-wave-1"
+            viewBox="0 0 1200 90"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,48 C200,18 380,65 580,38 C730,18 880,58 1050,42 C1130,32 1170,44 1200,48 L1200,90 L0,90 Z"
+              fill="rgba(15,35,24,0.50)"
+            />
+          </svg>
+          {/* Lớp 2 — giữa, ngược chiều */}
+          <svg
+            className="hero-wave hero-wave-2"
+            viewBox="0 0 1200 90"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,60 C180,40 380,72 580,55 C750,40 920,68 1080,58 C1150,52 1180,58 1200,60 L1200,90 L0,90 Z"
+              fill="rgba(10,28,18,0.78)"
+            />
+          </svg>
+          {/* Lớp 3 — gần nhất, nhanh nhất, màu nền → che đáy */}
+          <svg
+            className="hero-wave hero-wave-3"
+            viewBox="0 0 1200 90"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,72 C250,58 480,78 700,68 C880,58 1050,76 1160,70 C1185,68 1195,70 1200,72 L1200,90 L0,90 Z"
+              fill="var(--bg-deep)"
+            />
+          </svg>
+        </div>
       </section>
 
       {hasFarmstays && (
