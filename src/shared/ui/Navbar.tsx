@@ -61,7 +61,7 @@ export function Navbar() {
             style={{ height: 36, width: 36, objectFit: "contain" }}
           />
           <span
-            className="hidden md:block"
+            className="hidden lg:block"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "1rem",
@@ -78,7 +78,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden flex-1 list-none items-center gap-1 md:flex">
+        <ul className="hidden flex-1 list-none items-center gap-1 lg:flex">
           {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
@@ -107,7 +107,7 @@ export function Navbar() {
         </ul>
 
         {/* Desktop CTAs */}
-        <div className="ml-auto hidden items-center gap-2 md:flex">
+        <div className="ml-auto hidden items-center gap-2 lg:flex">
           {/* Cụm "Thành viên" (Đăng ký thành viên · Khách du lịch · Đăng nhập) đã GỠ
               08/08/2026: web không có hệ thống tài khoản, /dang-nhap chỉ là form câm
               bấm nút không xảy ra gì. Lối vào cho chủ farmstay giữ ở nút ngay dưới đây. */}
@@ -147,7 +147,7 @@ export function Navbar() {
 
         {/* Hamburger */}
         <button
-          className="ml-auto flex flex-col gap-1.5 p-2 md:hidden"
+          className="ml-auto flex flex-col gap-1.5 p-2 lg:hidden"
           aria-label={open ? "Đóng menu" : "Mở menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
@@ -187,7 +187,7 @@ export function Navbar() {
 
       {/* Mobile menu — slide down animation */}
       <div
-        className="fixed inset-x-0 top-[62px] z-40 md:hidden"
+        className="fixed inset-x-0 top-[62px] z-40 lg:hidden"
         style={{
           background: "rgba(15,35,24,0.98)",
           backdropFilter: "blur(16px)",

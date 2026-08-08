@@ -711,7 +711,12 @@ time,
   color: var(--bg-deep);
   font-weight: 700;
   font-size: 0.9rem;
-  padding: 8px 20px;
+  /* Vùng chạm ≥44px (a11y.26) — khi hiện ra bằng phím Tab nó là nút thật,
+     người dùng chạm/bấm được, nên phải đủ cao như mọi nút khác. */
+  padding: 11px 20px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: var(--radius-sm);
   transition: top var(--dur-fast) var(--ease);
 }

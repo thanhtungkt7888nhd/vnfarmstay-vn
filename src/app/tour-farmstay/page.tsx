@@ -582,22 +582,22 @@ export default function TourFarmstayPage() {
             </h2>
             <div className="prose" style={{ maxWidth: "none" }}>
               <p>
-                <strong>Chọn mùa trước, chọn vùng sau.</strong> Đây là điều
+                <strong>Chọn mùa trước, chọn vùng sau.&nbsp;</strong>Đây là điều
                 ngược với cách phần lớn người Việt đi chơi — thường chọn nơi rồi
                 mới xem đi tháng nào. Với farmstay thì ngược lại mới đúng: cùng
                 một đồi chè, tháng có vụ và tháng vừa đốn là hai nơi hoàn toàn
                 khác nhau.
               </p>
               <p>
-                <strong>Hỏi chủ farm trước khi đặt vé.</strong> Lịch mùa trên
-                trang này là nhịp chung của vùng, còn thời tiết mỗi năm mỗi khác
-                — mưa muộn hay nắng sớm đều đẩy mùa vụ lệch đi vài tuần. Người
-                biết chắc nhất luôn là người đang đứng trên mảnh đất đó.
+                <strong>Hỏi chủ farm trước khi đặt vé.&nbsp;</strong>Lịch mùa
+                trên trang này là nhịp chung của vùng, còn thời tiết mỗi năm mỗi
+                khác — mưa muộn hay nắng sớm đều đẩy mùa vụ lệch đi vài tuần.
+                Người biết chắc nhất luôn là người đang đứng trên mảnh đất đó.
               </p>
               <p>
-                <strong>Ở lại lâu một chỗ, đừng chạy nhiều nơi.</strong> Nhịp
-                làm nông bắt đầu từ tờ mờ sáng và kết thúc lúc chiều muộn. Đi
-                lướt qua thì bạn chỉ gặp được phần cảnh, không gặp được phần
+                <strong>Ở lại lâu một chỗ, đừng chạy nhiều nơi.&nbsp;</strong>
+                Nhịp làm nông bắt đầu từ tờ mờ sáng và kết thúc lúc chiều muộn.
+                Đi lướt qua thì bạn chỉ gặp được phần cảnh, không gặp được phần
                 việc — mà phần việc mới là thứ đáng để đi.
               </p>
             </div>

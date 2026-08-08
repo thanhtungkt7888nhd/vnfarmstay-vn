@@ -538,8 +538,8 @@ export default function ChuFarmstayPage() {
             >
               vnfarmstay.vn là <strong>bộ rễ chung</strong> — nơi tích tụ và
               phân phối tín nhiệm. Website thành viên là{" "}
-              <strong>tầng tán</strong> mọc trên bộ rễ ấy: vươn nhanh hơn, đứng
-              vững hơn so với mọc một mình trên đất trống.
+              <strong>tầng tán&nbsp;</strong>mọc trên bộ rễ ấy: vươn nhanh hơn,
+              đứng vững hơn so với mọc một mình trên đất trống.
             </p>
 
             <div style={{ display: "grid", gap: 14 }}>

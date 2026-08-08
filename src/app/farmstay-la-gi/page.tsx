@@ -263,11 +263,11 @@ export default function FarmstayLaGiPage() {
                 đây.
               </p>
               <p>
-                <strong>Một, nông trại phải đang sản xuất thật.</strong> Có mùa
-                vụ, có thu hoạch, có sản phẩm bán ra — chứ không phải vài luống
-                cây trồng cho đẹp ảnh. Nông trại thật thì tháng nào cũng khác
-                nhau, và chủ farm luôn trả lời được câu &ldquo;tháng này nhà
-                đang làm gì&rdquo;.
+                <strong>Một, nông trại phải đang sản xuất thật.&nbsp;</strong>Có
+                mùa vụ, có thu hoạch, có sản phẩm bán ra — chứ không phải vài
+                luống cây trồng cho đẹp ảnh. Nông trại thật thì tháng nào cũng
+                khác nhau, và chủ farm luôn trả lời được câu &ldquo;tháng này
+                nhà đang làm gì&rdquo;.
               </p>
               <p>
                 <strong>Hai, khách được tham gia, không chỉ đứng nhìn.</strong>{" "}
@@ -276,10 +276,10 @@ export default function FarmstayLaGiPage() {
                 làm, một bên bạn được phục vụ.
               </p>
               <p>
-                <strong>Ba, người của vùng đất đó vẫn ở đó.</strong> Chủ farm và
-                người làm là người bản địa hoặc người đã gắn bó với đất, không
-                phải nhân viên thời vụ thuê theo ca. Đây là thứ quyết định câu
-                chuyện bạn nghe được có thật hay không.
+                <strong>Ba, người của vùng đất đó vẫn ở đó.&nbsp;</strong>Chủ
+                farm và người làm là người bản địa hoặc người đã gắn bó với đất,
+                không phải nhân viên thời vụ thuê theo ca. Đây là thứ quyết định
+                câu chuyện bạn nghe được có thật hay không.
               </p>
             </div>
           </div>
