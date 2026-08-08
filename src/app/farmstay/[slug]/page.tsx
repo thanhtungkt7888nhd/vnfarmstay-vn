@@ -27,39 +27,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!farmstay) return { title: "Không tìm thấy farmstay" };
   return buildMetadata({
     title: farmstay.name,
-    description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}. Giá từ ${formatPrice(farmstay.price)}/đêm. Đặt phòng ngay trên vnfarmstay.vn.`,
+    description: `Trải nghiệm ${farmstay.tags.join(", ")} tại ${farmstay.location}. Giá từ ${formatPrice(farmstay.price)}/đêm. Liên hệ trực tiếp chủ farm.`,
     canonical: `/farmstay/${farmstay.slug}`,
-    keywords: [...farmstay.tags, farmstay.location, "farmstay", "đặt phòng"],
+    keywords: [...farmstay.tags, farmstay.location, "farmstay"],
   });
 }
 
-/** Tiện nghi mẫu theo loại farmstay */
-function getAmenities(tags: string[]): string[] {
-  const base = [
-    "Wifi miễn phí",
-    "Bãi đậu xe",
-    "Bữa sáng",
-    "Hướng dẫn viên nội bộ",
-  ];
-  const extras: Record<string, string[]> = {
-    "Cắm trại": ["Lều cắm trại", "Lửa trại tối", "Thiết bị trekking"],
-    Trekking: ["Bản đồ trail", "Gậy trekking", "Cứu thương cơ bản"],
-    "Cà phê": ["Thử cà phê tươi", "Tour rang xay", "Gift bag cà phê"],
-    "Lúa nước": ["Trải nghiệm cấy lúa", "Thu hoạch theo mùa", "Bếp dã ngoại"],
-    "Trái cây": [
-      "Hái trái cây tự do",
-      "Chế biến mứt",
-      "Giỏ trái cây chào mừng",
-    ],
-    "Sông nước": ["Thuyền tham quan", "Câu cá", "Bơi lội"],
-    "Chăn nuôi": ["Chăm sóc gia súc", "Vắt sữa bò", "Làm phó mát"],
-    "Văn hoá Mông": ["Trang phục dân tộc", "Múa xòe", "Chợ phiên"],
-  };
-  const found = new Set<string>(base);
-  tags.forEach((tag) => {
-    (extras[tag] ?? []).forEach((e) => found.add(e));
-  });
-  return Array.from(found).slice(0, 8);
+/**
+ * Tiện nghi CÓ THẬT của farmstay — hiện chưa có nguồn dữ liệu nào cấp, nên trả về rỗng
+ * và khối "Tiện nghi" tự ẩn.
+ *
+ * ⚠️ 08/08/2026 — bản cũ TỰ SUY RA tiện nghi từ thẻ phân loại: mọi farm đều được gán
+ * "Wifi miễn phí · Bãi đậu xe · Bữa sáng · Hướng dẫn viên nội bộ", farm gắn thẻ "Chăn
+ * nuôi" thì tự động có "Vắt sữa bò · Làm phó mát", thẻ "Cà phê" thì có "Gift bag cà phê"...
+ * Đây là quả mìn ngủ: ngày Ông đưa farmstay THẬT vào `data.ts`, nó lập tức bịa tiện nghi
+ * cho farm của người ta mà không ai kịp nhận ra. Đã tháo ngòi.
+ *
+ * Muốn dùng lại: thêm trường `amenities` vào type `Farmstay` và điền bằng thứ chủ farm
+ * xác nhận. CẤM suy ra từ thẻ phân loại.
+ */
+function getAmenities(_tags: string[]): string[] {
+  return [];
 }
 
 export default async function FarmstayDetailPage({ params }: Props) {
@@ -386,57 +374,61 @@ export default async function FarmstayDetailPage({ params }: Props) {
               </div>
             </section>
 
-            {/* Amenities */}
-            <section
-              style={{
-                paddingTop: 32,
-                paddingBottom: 36,
-                borderBottom: "1px solid var(--border)",
-              }}
-            >
-              <h2
+            {/* Amenities — tự ẩn khi chưa có tiện nghi THẬT, không để lại khung trống
+                mang tiêu đề "Tiện nghi & Dịch vụ" */}
+            {amenities.length > 0 && (
+              <section
                 style={{
-                  fontFamily: "var(--font-playfair),serif",
-                  fontSize: "1.3rem",
-                  fontWeight: 700,
-                  color: "var(--text-primary)",
-                  marginBottom: 20,
+                  paddingTop: 32,
+                  paddingBottom: 36,
+                  borderBottom: "1px solid var(--border)",
                 }}
               >
-                Tiện nghi & Dịch vụ
-              </h2>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                  gap: 12,
-                }}
-              >
-                {amenities.map((item) => (
-                  <div
-                    key={item}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      color: "var(--text-muted)",
-                      fontSize: "0.88rem",
-                    }}
-                  >
-                    <span
+                <h2
+                  style={{
+                    fontFamily: "var(--font-playfair),serif",
+                    fontSize: "1.3rem",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    marginBottom: 20,
+                  }}
+                >
+                  Tiện nghi & Dịch vụ
+                </h2>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns:
+                      "repeat(auto-fill, minmax(200px, 1fr))",
+                    gap: 12,
+                  }}
+                >
+                  {amenities.map((item) => (
+                    <div
+                      key={item}
                       style={{
-                        color: "var(--gold)",
-                        fontWeight: 700,
-                        fontSize: "0.8rem",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        color: "var(--text-muted)",
+                        fontSize: "0.88rem",
                       }}
                     >
-                      ✓
-                    </span>
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </section>
+                      <span
+                        style={{
+                          color: "var(--gold)",
+                          fontWeight: 700,
+                          fontSize: "0.8rem",
+                        }}
+                      >
+                        ✓
+                      </span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Khối "Đánh giá từ khách" đã GỠ 08/08/2026: 2 lời khen ký tên
                 "Minh Phương" và "Gia đình anh Tuấn" do khung web cũ tự chế, dùng chung

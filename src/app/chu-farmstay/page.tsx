@@ -41,19 +41,16 @@ const schemas = [
 const steps = [
   {
     num: "01",
-    icon: "📋",
     title: "Bạn kể về farm của mình",
     desc: "Gửi cho chúng tôi tên farm, ở đâu, làm nông gì, khách tới được trải nghiệm điều gì — kèm vài tấm ảnh thật của farm.",
   },
   {
     num: "02",
-    icon: "✍️",
     title: "Chúng tôi viết lại thành câu chuyện",
     desc: "Không phải mẩu rao vặt. Là câu chuyện về vùng đất, mùa vụ và con người ở farm bạn — thứ khiến người đọc muốn tới tận nơi.",
   },
   {
     num: "03",
-    icon: "🔗",
     title: "Đăng lên, kèm đường về farm bạn",
     desc: "Trang giới thiệu trỏ thẳng về website, Zalo hoặc số điện thoại của bạn. Khách liên hệ trực tiếp với bạn, không qua chúng tôi.",
   },
@@ -61,32 +58,26 @@ const steps = [
 
 const benefits = [
   {
-    icon: "🆓",
     title: "Hoàn toàn miễn phí",
     desc: "Không phí đăng, không phí hàng tháng, không hoa hồng. vnfarmstay.vn không đứng giữa việc kinh doanh của bạn.",
   },
   {
-    icon: "📖",
     title: "Được kể chuyện tử tế",
     desc: "Farm của bạn được viết bằng giọng kể — vùng đất, mùa vụ, nếp sống — thay vì một dòng liệt kê tiện nghi khô khan.",
   },
   {
-    icon: "🔗",
     title: "Dẫn khách về thẳng chỗ bạn",
     desc: "Mọi liên kết trỏ về website, Zalo hoặc số điện thoại của farm. Khách đặt thẳng với bạn, theo giá và điều kiện của bạn.",
   },
   {
-    icon: "🔍",
     title: "Có mặt trên Google",
     desc: "Trang của farm bạn được tối ưu để người tìm 'farmstay + tên vùng' có thể tìm ra — thứ mà một trang Facebook khó làm được.",
   },
   {
-    icon: "🤝",
     title: "Quảng bá chéo",
     desc: "Farm của bạn đứng cạnh những farm khác cùng vùng. Người đọc tìm một cái, biết thêm cả cụm.",
   },
   {
-    icon: "🌾",
     title: "Mọi quy mô đều được",
     desc: "Từ vườn nhà vài phòng tới trang trại sinh thái lớn. Điều chúng tôi tìm là trải nghiệm thật, không phải tiện nghi xa xỉ.",
   },
@@ -315,9 +306,6 @@ export default function ChuFarmstayPage() {
                   >
                     {step.num}
                   </div>
-                  <div style={{ fontSize: "2rem", marginBottom: 12 }}>
-                    {step.icon}
-                  </div>
                   <h3
                     style={{
                       fontWeight: 700,
@@ -386,9 +374,6 @@ export default function ChuFarmstayPage() {
                     transition: "var(--transition)",
                   }}
                 >
-                  <div style={{ fontSize: "2rem", marginBottom: 12 }}>
-                    {b.icon}
-                  </div>
                   <h3
                     style={{
                       fontWeight: 700,
