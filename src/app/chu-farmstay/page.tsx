@@ -133,23 +133,6 @@ export default function ChuFarmstayPage() {
             overflow: "hidden",
           }}
         >
-          {/* Decorative watermark */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              fontSize: "20rem",
-              opacity: 0.03,
-              pointerEvents: "none",
-              userSelect: "none",
-            }}
-          >
-            🌾
-          </div>
-
           <div
             style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}
           >
@@ -218,7 +201,7 @@ export default function ChuFarmstayPage() {
                   color: "#0f2318",
                   fontWeight: 700,
                   fontSize: "0.95rem",
-                  padding: "px-8 py-3.5",
+                  padding: "14px 32px",
                   borderRadius: "var(--radius-sm)",
                   textDecoration: "none",
                 }}
@@ -281,7 +264,7 @@ export default function ChuFarmstayPage() {
                 fontSize: "0.92rem",
               }}
             >
-              Từ đăng ký đến nhận đặt phòng — không quá 7 ngày.
+              Từ đăng ký đến lên sóng — không quá 7 ngày.
             </p>
 
             <div className="step-grid">
