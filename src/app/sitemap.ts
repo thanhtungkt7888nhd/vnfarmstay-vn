@@ -16,6 +16,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: SITE_URL, priority: 1.0, changeFrequency: "daily" },
     { url: `${SITE_URL}/tim-kiem`, priority: 0.9, changeFrequency: "daily" },
     { url: `${SITE_URL}/blog`, priority: 0.9, changeFrequency: "daily" },
+    // Hai trụ nội dung cốt lõi — thêm 08/08/2026
+    {
+      url: `${SITE_URL}/tour-farmstay`,
+      priority: 0.9,
+      changeFrequency: "weekly",
+    },
+    {
+      url: `${SITE_URL}/farmstay-la-gi`,
+      priority: 0.9,
+      changeFrequency: "monthly",
+    },
+    // Cửa vào của chủ farmstay — trước 08/08/2026 bị SÓT khỏi sitemap dù là trang cốt lõi
+    {
+      url: `${SITE_URL}/chu-farmstay`,
+      priority: 0.8,
+      changeFrequency: "monthly",
+    },
     { url: `${SITE_URL}/cong-dong`, priority: 0.7, changeFrequency: "weekly" },
     { url: `${SITE_URL}/phap-ly`, priority: 0.7, changeFrequency: "monthly" },
     {

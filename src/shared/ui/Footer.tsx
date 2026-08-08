@@ -3,6 +3,8 @@ import Link from "next/link";
 const footerLinks = {
   "Khám phá": [
     { href: "/", label: "Trang chủ farmstay" },
+    { href: "/tour-farmstay", label: "Bản đồ vùng farmstay" },
+    { href: "/farmstay-la-gi", label: "Farmstay là gì?" },
     { href: "/blog", label: "Câu chuyện & Blog" },
     { href: "/cong-dong", label: "Cộng đồng" },
   ],

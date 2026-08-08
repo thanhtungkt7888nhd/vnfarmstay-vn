@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Farmstay" },
+  { href: "/tour-farmstay", label: "Tour Farmstay" },
+  { href: "/farmstay-la-gi", label: "Farmstay là gì" },
   { href: "/blog", label: "Câu chuyện" },
   { href: "/cong-dong", label: "Cộng đồng" },
 ];
