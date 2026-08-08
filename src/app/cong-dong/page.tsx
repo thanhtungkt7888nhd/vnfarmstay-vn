@@ -35,6 +35,7 @@ export default function CongDongPage() {
           }}
         >
           <h1
+            className="shine reveal"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",

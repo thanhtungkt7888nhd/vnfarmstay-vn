@@ -67,7 +67,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           nằm trong globals.css mà chưa gắn vào thẻ nào. */}
       <section
         aria-label="Hero trang chủ"
-        className="plasma-bg motif-x"
+        className="plasma-bg motif-x fx-gold-dust"
         style={{
           background:
             "linear-gradient(160deg,#0f2318 0%,#1a4a2e 50%,#0f2318 100%)",

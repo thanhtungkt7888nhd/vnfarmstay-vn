@@ -80,6 +80,7 @@ export default function VeTacGiaPage() {
               Người sáng lập
             </p>
             <h1
+              className="shine reveal"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(2rem, 5vw, 3rem)",

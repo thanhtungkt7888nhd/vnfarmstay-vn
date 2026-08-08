@@ -118,7 +118,7 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
           <p
             style={{
               color: "var(--text-muted)",
-              fontSize: "0.85rem",
+              fontSize: "1rem",
               lineHeight: 1.6,
               marginBottom: 14,
               display: "-webkit-box",

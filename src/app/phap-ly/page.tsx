@@ -72,6 +72,7 @@ export default function PhapLyPage() {
             MIỄN PHÍ • CẬP NHẬT LIÊN TỤC
           </div>
           <h1
+            className="shine reveal"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -108,6 +109,7 @@ export default function PhapLyPage() {
             {LEGAL_DOCS.map((doc, idx) => (
               <div
                 key={doc.title}
+                className="fx-tilt-glow"
                 style={{
                   background: "var(--bg-card)",
                   borderRadius: "var(--radius)",

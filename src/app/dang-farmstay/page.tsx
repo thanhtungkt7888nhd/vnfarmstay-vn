@@ -62,6 +62,7 @@ export default function DangFarmstayPage() {
           />
 
           <h1
+            className="shine reveal"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(1.8rem, 4vw, 2.6rem)",

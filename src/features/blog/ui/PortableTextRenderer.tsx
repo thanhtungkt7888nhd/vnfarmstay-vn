@@ -5,6 +5,7 @@
 "use client";
 
 import type { SanityBlock } from "@/features/blog/types";
+import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
 
 interface PortableTextRendererProps {
@@ -74,15 +75,20 @@ function renderBlock(block: SanityBlock): React.ReactNode {
     if (!imgUrl) return null;
     return (
       <figure key={block._key} style={{ margin: "32px 0" }}>
-        <img
+        {/* next/image thay <img> thô: tự sinh AVIF/WebP và giữ chỗ chống nhảy
+            bố cục (cổng perf.4-raw-img). Ảnh Sanity luôn dựng ở bề ngang 760. */}
+        <Image
           src={imgUrl}
           alt={(block as { alt?: string }).alt ?? ""}
+          width={760}
+          height={428}
+          sizes="(max-width: 760px) 100vw, 760px"
           style={{
             width: "100%",
+            height: "auto",
             borderRadius: "var(--radius-sm)",
             display: "block",
           }}
-          loading="lazy"
         />
       </figure>
     );
@@ -101,7 +107,9 @@ function renderBlock(block: SanityBlock): React.ReactNode {
   ));
 
   const baseStyle: React.CSSProperties = {
-    fontFamily: "var(--font-be-vietnam), sans-serif",
+    // --font-be-vietnam là biến MA (web khai --font-body cho DM Sans) — biến
+    // không tồn tại làm cả khai báo hỏng, chữ thân bài rơi về font mặc định.
+    fontFamily: 'var(--font-body), "DM Sans", sans-serif',
     color: "var(--text-primary)",
     lineHeight: 1.8,
   };
@@ -128,7 +136,7 @@ function renderBlock(block: SanityBlock): React.ReactNode {
     return (
       <p
         key={block._key}
-        style={{ ...baseStyle, marginBottom: 20, fontSize: "0.97rem" }}
+        style={{ ...baseStyle, marginBottom: 20, fontSize: "1rem" }}
       >
         {children}
       </p>
@@ -187,7 +195,7 @@ export function PortableTextRenderer({ content }: PortableTextRendererProps) {
             style={{
               color: "var(--text-primary)",
               marginBottom: 6,
-              fontSize: "0.97rem",
+              fontSize: "1rem",
             }}
           >
             {b.children?.map((child, i) => (
@@ -218,5 +226,5 @@ export function PortableTextRenderer({ content }: PortableTextRendererProps) {
   }
   flushList();
 
-  return <div style={{ fontSize: "0.97rem" }}>{elements}</div>;
+  return <div style={{ fontSize: "1rem" }}>{elements}</div>;
 }

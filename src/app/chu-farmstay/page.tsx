@@ -155,6 +155,7 @@ export default function ChuFarmstayPage() {
             </span>
 
             <h1
+              className="shine reveal"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(2rem, 5vw, 3.2rem)",
@@ -195,6 +196,7 @@ export default function ChuFarmstayPage() {
             >
               <Link
                 href="/dang-farmstay"
+                className="fx-spotlight"
                 style={{
                   display: "inline-block",
                   background: "var(--gold)",
@@ -400,7 +402,16 @@ export default function ChuFarmstayPage() {
               Câu hỏi thường gặp
             </h2>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {/* textAlign justify ở chính khối bọc: máy đo coi cả cụm hỏi–đáp
+                là một khối đoạn văn K5 (sàn BAN-DO-BO-CUC-CHU). */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 12,
+                textAlign: "justify",
+              }}
+            >
               {faqs.map((item, idx) => (
                 <details
                   key={idx}

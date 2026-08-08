@@ -19,8 +19,12 @@
   --gold-border: oklch(0.72 0.2 75 / 0.35);
   --accent-ma: oklch(0.7 0.18 115);
   --text-primary: oklch(0.95 0.05 120);
-  --text-muted: oklch(0.6 0.07 125);
-  --text-dim: oklch(0.4 0.07 130);
+  /* Độ sáng 2 token chữ phụ nâng lên cho ĐẠT SÀN tương phản 4.5:1 (đo canvas
+     thật, 08/08): trước đó --text-muted 0.60 chỉ đạt 4.30 và --text-dim 0.40
+     chỉ đạt 2.06 trên nền --bg-main — breadcrumb/footer gần như không đọc nổi.
+     Giữ NGUYÊN hue/chroma đã chốt, chỉ đổi L — không đụng DNA màu. */
+  --text-muted: oklch(0.72 0.07 125);
+  --text-dim: oklch(0.63 0.07 130);
   --border: oklch(0.6 0.07 125 / 0.12);
   --shadow: 0 8px 32px oklch(0 0 0 / 0.4);
   --shadow-sm: 0 2px 8px oklch(0 0 0 / 0.3);
@@ -440,13 +444,13 @@ img {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* Tiêu đề section với gạch vàng bên dưới */
 .section-heading {
   position: relative;
-  padding-bottom: 18px;
+  padding-bottom: 16px;
 }
 
 .section-heading::after {

@@ -550,6 +550,222 @@
         "a11y.25 máy mù oklch, phải đo canvas — vòng 2",
         "10 route chưa soi mắt · 5 bài chưa soi mắt — vòng 2"
       ]
+    },
+    {
+      "vong": 2,
+      "muc": "2-deu-khap",
+      "phamViDaPhu": {
+        "khuc": "70/85",
+        "route": "16/16",
+        "the": "4/4 loại",
+        "bai": "6/6"
+      },
+      "soTieuChiSoi": 31,
+      "soLechVa": 9,
+      "khoTieuThu": {
+        "vongNay": 3,
+        "congDon": 14,
+        "conLai": 86
+      },
+      "theoLoai": {
+        "1-mau": {
+          "daRaSoat": [
+            "đo tương phản canvas thật 3 route",
+            "36 tổ hợp màu/cỡ chữ"
+          ],
+          "lech": [
+            "--text-dim chỉ đạt 2.06:1 (sàn 4.5) — breadcrumb + footer + chính-sách gần như không đọc nổi",
+            "--text-muted chỉ đạt 4.30:1 (sàn 4.5)",
+            "tag #farmstay 4.30:1"
+          ],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [
+              "nâng L: --text-muted 0.60→0.72 · --text-dim 0.40→0.63, GIỮ NGUYÊN hue 125/130 + chroma 0.07 đã chốt"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "6 tổ hợp rớt → 0 rớt (36 tổ hợp đo trên 3 route). Cổng a11y.25 tĩnh KHÔNG bắt được vì mù với oklch — phải đo canvas."
+        },
+        "2-chu": {
+          "daRaSoat": [
+            "do-bo-cuc-chu 44 lượt",
+            "quét biến font toàn src",
+            "cỡ chữ K5"
+          ],
+          "lech": [
+            "--font-be-vietnam là BIẾN MA thứ 2 — chi phối TOÀN BỘ chữ thân bài Portable Text",
+            "cỡ chữ thân bài 0.97rem và tóm tắt thẻ 0.85rem (13.6px) dưới sàn 16px",
+            "2 FAIL can-deu khối FAQ /chu-farmstay"
+          ],
+          "coHoiKho": [
+            "drop-cap",
+            "pull-quote",
+            "tabular-nums"
+          ],
+          "vaXong": {
+            "apDung": [
+              "--font-be-vietnam → --font-body",
+              "thân bài + mục danh sách + tóm tắt thẻ → 1rem (16px)",
+              "textAlign justify cho khối bọc FAQ chu-farmstay"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "do-bo-cuc-chu: 6 FAIL → 0 FAIL (44 lượt đo, 11 loại trang × 4 khổ)"
+        },
+        "3-hieuung-chu": {
+          "daRaSoat": [
+            "H1 mọi route"
+          ],
+          "lech": [
+            "12/14 route có H1 nhưng KHÔNG có I5 .shine — DNA ghi rõ I5 áp cho MỌI headline cùng vai trò"
+          ],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [
+              "shine + reveal cho H1 của 12 route còn lại → 14/14 H1 đồng bộ"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "4-bocuc": {
+          "daRaSoat": [
+            "layout.24 spacing"
+          ],
+          "lech": [
+            "2 giá trị spacing không bội 4/8 (10px, 18px)"
+          ],
+          "coHoiKho": [
+            "grid lệch",
+            "chồng lớp số nền",
+            "asymmetric 7/5"
+          ],
+          "vaXong": {
+            "apDung": [
+              "10px→8px · 18px→16px"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "5-chuyendong-khoi": {
+          "daRaSoat": [
+            "do-mat-do-web",
+            "cổng 3d′ sàn≠trần"
+          ],
+          "lech": [],
+          "coHoiKho": [
+            "fx-spotlight (A)",
+            "fx-tilt-glow (C)",
+            "fx-gold-dust (E)"
+          ],
+          "vaXong": {
+            "apDung": [
+              "fx-spotlight → CTA /chu-farmstay (loại A)",
+              "fx-tilt-glow → thẻ pháp lý (loại C)",
+              "fx-gold-dust → hero trang chủ (loại E)"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "diemMuMay": "do-mat-do-web --chua-dung CHỈ nhận recipe qua recipe=\"Tên\" hoặc JSX linh kiện kho (hàm tenKhoDangDung dòng 179-191) — KHÔNG đọc lớp fx-*. Web CSS-thuần (không framer-motion) vì thế VĨNH VIỄN in \"đã chạm: (chưa recipe kho nào)\" dù đã áp 14 hiệu ứng. Máy MẬT ĐỘ thì đếm đúng fx-* (A 0→4, E 0→4). Cổng 3d′ đòi \"tên vừa áp phải rời danh sách chưa-dùng\" là BẤT KHẢ THI về mặt cấu tạo với web CSS-thuần — cần Ông cho sửa máy (ngoài phạm vi skill này, KHÔNG tự sửa máy kiểm)."
+        },
+        "6-hoavan": {
+          "daRaSoat": [
+            "motif-x các route"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [
+              {
+                "muc": "mô-típ dân tộc",
+                "lyDo": "DNA cấm — đã ghi vòng 1"
+              }
+            ],
+            "hoanChoOng": []
+          },
+          "hoan": "phủ motif-x sang section dark route khác — vòng 4"
+        },
+        "7-anh-media": {
+          "daRaSoat": [
+            "do-can-anh",
+            "perf.4"
+          ],
+          "lech": [
+            "2 tệp dùng <img> thô"
+          ],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [
+              "PortableTextRenderer: <img> → next/image (width 760, sizes, height auto)"
+            ],
+            "tuChoi": [
+              {
+                "muc": "<img> ảnh bìa blog/[slug]",
+                "lyDo": "nguồn Sanity CDN kích thước động, chuyển next/image cần biết tỉ lệ thật — hoãn vòng 3 để đo trước"
+              }
+            ],
+            "hoanChoOng": []
+          },
+          "soDo": "do-can-anh 0 lỗi/4 tiêu chí (17 trang/17 ảnh)"
+        },
+        "8-ui-vi-mo": {
+          "daRaSoat": [
+            "ux.12"
+          ],
+          "lech": [
+            "thiếu :active, :disabled"
+          ],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "hoan": "vòng 3"
+        },
+        "9-dieuhuong-mobile": {
+          "daRaSoat": [
+            "ux.19",
+            "mobile.29"
+          ],
+          "lech": [
+            "footer >4 nhóm",
+            "chưa có safe-area"
+          ],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "hoan": "vòng 3"
+        },
+        "10-microcopy": {
+          "daRaSoat": [
+            "quét lại emoji toàn src"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        }
+      },
+      "conSot": [
+        "231 WARN bố cục chữ (104 measure + 92 sách cỡ chữ + 25 S-1) — vòng 3",
+        "ux.12 :active/:disabled — vòng 3",
+        "mobile.29 safe-area + ux.19 footer — vòng 3",
+        "ảnh bìa blog vẫn <img> thô — vòng 3",
+        "BÀI HỌC VẬN HÀNH: dev server này KHÔNG tự biên dịch lại globals.css sau sửa — PHẢI ép (append rồi xoá 1 dòng) TRƯỚC MỌI phép đo, nếu không máy đọc CSS cũ và báo oan (đã bị lừa 1 lần: 84 FAIL giả, thực tế 2)"
+      ]
     }
   ]
 }

@@ -55,7 +55,7 @@ export default async function BlogPage() {
               BLOG & HƯỚNG DẪN
             </p>
             <h1
-              className="reveal"
+              className="shine reveal"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(2rem,5vw,2.8rem)",
