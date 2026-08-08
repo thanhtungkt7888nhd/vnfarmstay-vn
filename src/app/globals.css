@@ -105,6 +105,15 @@ p.text-center {
   text-align: right;
 }
 
+/* Thẻ danh sách dạng "tiêu đề <strong> + đoạn mô tả dài": máy đo coi cả <li>
+   là một khối đoạn văn K5, nên phải justify ở chính <li>, không chỉ ở <p> con.
+   Chỉ áp cho li CÓ <strong> con trực tiếp — danh sách gạch đầu dòng ngắn
+   (không có strong) giữ nguyên căn trái, justify sẽ giãn chữ xấu. */
+li:has(> strong) {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 /* Khối hỏi–đáp: máy đo coi cả <details> là một khối đoạn văn K5 nên phải
    justify ở chính nó, không chỉ ở <p> con. Câu hỏi (summary) giữ căn trái. */
 details {

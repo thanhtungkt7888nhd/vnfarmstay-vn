@@ -341,6 +341,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           </p>
 
           <div
+            className="fx-tilt-glow"
             style={{
               background: "var(--bg-card)",
               border: "1px solid var(--gold-border)",

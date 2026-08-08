@@ -164,7 +164,7 @@ export default function VeChungToiPage() {
         >
           <span className="section-kicker reveal">Lẽ sống của chúng ta</span>
           <h1
-            className="reveal"
+            className="shine reveal"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(1.9rem,4vw,3rem)",

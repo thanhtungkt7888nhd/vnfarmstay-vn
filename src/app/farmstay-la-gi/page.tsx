@@ -212,7 +212,7 @@ export default function FarmstayLaGiPage() {
         >
           <span className="section-kicker reveal">Trụ kiến thức</span>
           <h1
-            className="reveal"
+            className="shine reveal"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(2rem,4.5vw,3.2rem)",
@@ -716,7 +716,10 @@ export default function FarmstayLaGiPage() {
         </section>
 
         {/* ── CTA cuối ── */}
-        <section style={{ padding: "0 24px 88px" }}>
+        <section
+          className="plasma-bg motif-x"
+          style={{ padding: "0 24px 88px" }}
+        >
           <div
             style={{
               maxWidth: 720,

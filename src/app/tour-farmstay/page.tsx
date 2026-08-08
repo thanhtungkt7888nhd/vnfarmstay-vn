@@ -264,7 +264,7 @@ export default function TourFarmstayPage() {
         >
           <span className="section-kicker reveal">Bản đồ vùng</span>
           <h1
-            className="reveal"
+            className="shine reveal"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(2rem,4.5vw,3.2rem)",
@@ -306,7 +306,7 @@ export default function TourFarmstayPage() {
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <span className="section-kicker">Tra nhanh</span>
             <h2
-              className="section-heading"
+              className="section-heading fx-text-clip"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(1.5rem,3vw,2rem)",
@@ -321,6 +321,7 @@ export default function TourFarmstayPage() {
               {LICH_MUA.map((m) => (
                 <div
                   key={m.thang}
+                  className="fx-card-wash"
                   style={{
                     background: "var(--bg-card)",
                     border: "1px solid var(--border)",
@@ -663,7 +664,10 @@ export default function TourFarmstayPage() {
         </section>
 
         {/* ── CTA cuối ── */}
-        <section style={{ padding: "72px 24px 88px" }}>
+        <section
+          className="plasma-bg motif-x"
+          style={{ padding: "72px 24px 88px" }}
+        >
           <div
             style={{
               maxWidth: 720,
