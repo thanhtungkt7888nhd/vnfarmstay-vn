@@ -49,7 +49,7 @@ export default async function AuthorPage({
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         <section
           style={{
             background: "var(--bg-deep)",

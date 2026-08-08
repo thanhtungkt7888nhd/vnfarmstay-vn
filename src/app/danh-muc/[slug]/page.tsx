@@ -52,7 +52,7 @@ export default async function CategoryPage({
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         {/* Header */}
         <section
           style={{

@@ -64,7 +64,10 @@ export default function DieuKhoanPage() {
   return (
     <>
       <Navbar />
-      <main style={{ background: "var(--bg-deep)", minHeight: "80vh" }}>
+      <main
+        id="main"
+        style={{ background: "var(--bg-deep)", minHeight: "80vh" }}
+      >
         <section
           style={{
             background: "linear-gradient(160deg,#0f2318,#1a3d28 60%,#0f2318)",

@@ -684,3 +684,26 @@ time,
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
 }
+
+/* ══ Liên kết bỏ qua (skip-link) — a11y.8 ══════════════════════════
+   Ẩn khỏi mắt nhưng KHÔNG ẩn khỏi bàn phím/trình đọc màn hình; hiện
+   ra ngay khi nhận tiêu điểm bằng phím Tab.
+═══════════════════════════════════════════════════════════════════ */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 9999;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  transition: top var(--dur-fast) var(--ease);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 8px;
+}

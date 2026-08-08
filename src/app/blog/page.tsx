@@ -33,7 +33,7 @@ export default async function BlogPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         {/* Hero */}
         <section
           style={{

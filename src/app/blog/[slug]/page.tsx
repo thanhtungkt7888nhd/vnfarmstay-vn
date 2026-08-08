@@ -115,7 +115,11 @@ export default async function BlogPostPage({
     <>
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
-      <main className="fx-grain" style={{ background: "var(--bg-main)" }}>
+      <main
+        id="main"
+        className="fx-grain"
+        style={{ background: "var(--bg-main)" }}
+      >
         {/* Hero ảnh bìa */}
         {coverImageUrl && (
           <div

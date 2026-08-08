@@ -19,22 +19,6 @@ export default async function TimKiemPage({ searchParams }: Props) {
   const { q } = await searchParams;
   return (
     <>
-      <a
-        href="#main"
-        style={{
-          position: "absolute",
-          top: -40,
-          left: 0,
-          zIndex: 9999,
-          background: "var(--gold)",
-          color: "var(--bg-deep)",
-          padding: "8px 16px",
-          fontWeight: 600,
-        }}
-        className="transition-all focus:top-0"
-      >
-        Chuyển đến nội dung chính
-      </a>
       <Navbar />
       <HomePage farmstays={FARMSTAYS} initialQuery={q ?? ""} />
       <Footer />

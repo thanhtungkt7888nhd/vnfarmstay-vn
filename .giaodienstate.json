@@ -1197,6 +1197,191 @@
         "231 WARN bố cục chữ — vòng 5",
         "thân bài 6 bài đều rỗng (\"Nội dung đang được cập nhật...\") — việc NỘI DUNG, ngoài phạm vi"
       ]
+    },
+    {
+      "vong": 5,
+      "muc": "5-dinh-hoi-quy",
+      "phamViDaPhu": {
+        "khuc": "85/85",
+        "route": "16/16",
+        "the": "4/4 loại",
+        "bai": "6/6"
+      },
+      "soTieuChiSoi": 52,
+      "soLechVa": 6,
+      "khoTieuThu": {
+        "vongNay": 0,
+        "congDon": 23,
+        "conLai": 77
+      },
+      "theoLoai": {
+        "1-mau": {
+          "daRaSoat": [
+            "đo tương phản canvas lần cuối, 17 tổ hợp"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "0 rớt / 17 tổ hợp (đã gồm cả skip-link mới)"
+        },
+        "2-chu": {
+          "daRaSoat": [
+            "do-bo-cuc-chu 44 lượt"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "0 FAIL · 231 WARN · layout.43-tughep PASS"
+        },
+        "3-hieuung-chu": {
+          "daRaSoat": [
+            "14 H1"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "h1-count PASS — mỗi trang đúng 1 H1"
+        },
+        "4-bocuc": {
+          "daRaSoat": [
+            "layout.24 lần 2"
+          ],
+          "lech": [
+            "1 giá trị 10px lẻ (do chính skip-link vòng 5 mới thêm)"
+          ],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [
+              "skip-link padding 10px→8px"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "layout.24 WARN→PASS"
+        },
+        "5-chuyendong-khoi": {
+          "daRaSoat": [
+            "mot.1-linear",
+            "do-mat-do-web"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [
+              {
+                "muc": "10 chỗ easing linear",
+                "lyDo": "ĐỌC THẬT cả 10: 3 là xoay/sóng LẶP VÔ HẠN (fx-rotate-gradient, fx-gradient-wave, fx-god-rays-spin) và 6 là animation THEO CUỘN (animation-timeline) — cả hai ca linear là ĐÚNG chuẩn, không phải lỗi nhịp. Và effects.css là tệp VENDOR TỪ KHO, sửa sẽ lệch bản gốc"
+              }
+            ],
+            "hoanChoOng": []
+          },
+          "soDo": "3/4 loại trang đạt sàn (trang chủ thiếu thẻ/card vì danh bạ rỗng)"
+        },
+        "6-hoavan": {
+          "daRaSoat": [
+            "5 section dark"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "hoavan.1-nguon-van-hoa PASS"
+        },
+        "7-anh-media": {
+          "daRaSoat": [
+            "do-can-anh",
+            "perf.4"
+          ],
+          "lech": [],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "do-can-anh 0 lỗi/4 tiêu chí · perf.4 PASS"
+        },
+        "8-ui-vi-mo": {
+          "daRaSoat": [
+            "ux.12",
+            "a11y.26",
+            "ux.17"
+          ],
+          "lech": [],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "cả 3 PASS"
+        },
+        "9-dieuhuong-mobile": {
+          "daRaSoat": [
+            "a11y.8 skip-link",
+            "mobile.14",
+            "landmark main"
+          ],
+          "lech": [
+            "13/15 trang KHÔNG có skip-link (chỉ / và /tim-kiem tự khai inline)",
+            "13/15 trang <main> thiếu id=main nên skip-link không có đích",
+            "public/manifest.json khoá orientation portrait-primary — vi phạm WCAG 1.3.4"
+          ],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [
+              "skip-link dời lên layout.tsx → MỌI trang có, kèm lớp .skip-link ẩn-tới-khi-focus",
+              "thêm id=main cho 15 <main>",
+              "gỡ khoá orientation khỏi manifest.json",
+              "gỡ 2 skip-link inline trùng ở / và /tim-kiem"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "a11y.8 WARN→PASS · mobile.14 FAIL→PASS · ux.19 WARN→PASS"
+        },
+        "10-microcopy": {
+          "daRaSoat": [
+            "aes.1-emoji toàn site"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "aes.1-emoji PASS — không emoji trong UI"
+        }
+      },
+      "conSot": [
+        "231 WARN bố cục chữ: 104 measure (độ dài dòng) + 92 sách (cỡ chữ phụ <16px ở nhãn/kicker/tag — CỐ Ý, đó là chữ phụ không phải thân bài) + 25 S-1 mức WARN. Không vá tiếp vì mọi WARN còn lại đều nằm ở chữ PHỤ hoặc do khổ màn hẹp, vá sẽ phá thứ bậc thị giác đã chốt",
+        "4 FAIL check-luat còn lại (sec.1 HSTS · sec.2 CSP · seo.2-head trang ve-tac-gia · priv.28 consent gate) — NGOÀI phạm vi giao diện, y hệt mốc nền, đã có trong sổ bàn giao DESIGN-DNA"
+      ]
     }
-  ]
+  ],
+  "ketThuc": {
+    "ngay": "20260808",
+    "soVong": 5,
+    "ketQua": "đủ 5 vòng × 10 loại",
+    "doKhaiThacKho": "23/100 = 23%",
+    "checkLuat": "82 PASS · 45 WARN · 4 FAIL (nền: 80 PASS · 46 WARN · 5 FAIL)",
+    "ranhGioi": "KHÔNG cổng sec./seo./geo./priv. nào xấu đi"
+  }
 }

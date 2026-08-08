@@ -146,6 +146,12 @@ export default function RootLayout({
         )}
       </head>
       <body className="flex min-h-screen flex-col">
+        {/* Liên kết bỏ qua — đặt ở layout nên MỌI trang đều có (trước 08/08
+            chỉ / và /tim-kiem tự khai, 13 trang còn lại không có lối tắt cho
+            người dùng bàn phím). Ẩn ngoài màn hình tới khi nhận tiêu điểm. */}
+        <a href="#main" className="skip-link">
+          Chuyển đến nội dung chính
+        </a>
         {children}
 
         {/* JSON-LD: Organization + WebSite */}

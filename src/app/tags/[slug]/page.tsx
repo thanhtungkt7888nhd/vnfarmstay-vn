@@ -46,7 +46,7 @@ export default async function TagPage({
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         <section
           style={{
             background: "var(--bg-deep)",

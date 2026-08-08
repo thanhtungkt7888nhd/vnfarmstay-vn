@@ -120,7 +120,10 @@ export default function ChuFarmstayPage() {
         @media (min-width: 768px) { .step-grid { grid-template-columns: repeat(3, 1fr); } }
       `}</style>
 
-      <main style={{ background: "var(--bg-main)", minHeight: "100vh" }}>
+      <main
+        id="main"
+        style={{ background: "var(--bg-main)", minHeight: "100vh" }}
+      >
         {/* ── Hero ── */}
         <section
           className="plasma-bg motif-x"

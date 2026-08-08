@@ -56,7 +56,10 @@ export default function VeTacGiaPage() {
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
 
-      <main style={{ background: "var(--bg-main)", minHeight: "100vh" }}>
+      <main
+        id="main"
+        style={{ background: "var(--bg-main)", minHeight: "100vh" }}
+      >
         {/* Hero */}
         <section
           style={{

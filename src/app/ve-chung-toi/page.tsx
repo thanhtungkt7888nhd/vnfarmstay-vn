@@ -21,7 +21,10 @@ export default function VeChungToiPage() {
   return (
     <>
       <Navbar />
-      <main style={{ background: "var(--bg-deep)", minHeight: "80vh" }}>
+      <main
+        id="main"
+        style={{ background: "var(--bg-deep)", minHeight: "80vh" }}
+      >
         {/* Hero */}
         <section
           className="plasma-bg motif-x"

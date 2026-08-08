@@ -87,7 +87,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
       <Navbar />
       <JsonLd schema={schemas} />
 
-      <main style={{ background: "var(--bg-deep)" }}>
+      <main id="main" style={{ background: "var(--bg-deep)" }}>
         {/* ── HERO ── */}
         <div style={{ position: "relative", height: 480, overflow: "hidden" }}>
           {/* Background gradient theo vùng */}
