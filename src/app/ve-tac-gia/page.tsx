@@ -156,11 +156,13 @@ export default function VeTacGiaPage() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  fontFamily: "var(--font-display), serif",
+                  color: "var(--gold)",
                   fontSize: "2.8rem",
                   flexShrink: 0,
                 }}
               >
-                🌿
+                X
               </div>
               <div>
                 <h2

@@ -11,37 +11,31 @@ export const metadata: Metadata = {
 
 const LEGAL_DOCS = [
   {
-    icon: "📋",
     title: "Giấy phép kinh doanh lưu trú",
     desc: "Điều kiện, hồ sơ, thủ tục xin cấp phép kinh doanh dịch vụ lưu trú tại farmstay.",
     tag: "Cơ bản",
   },
   {
-    icon: "🌾",
     title: "Quy định đất nông nghiệp",
     desc: "Sử dụng đất nông nghiệp kết hợp du lịch — những gì được phép và không được phép.",
     tag: "Đất đai",
   },
   {
-    icon: "🏗️",
     title: "Giấy phép xây dựng",
     desc: "Xây dựng công trình phụ trợ trên đất nông nghiệp — quy trình và giới hạn diện tích.",
     tag: "Xây dựng",
   },
   {
-    icon: "🔥",
     title: "Phòng cháy chữa cháy",
     desc: "Tiêu chuẩn PCCC bắt buộc cho cơ sở lưu trú farmstay — kiểm tra và nghiệm thu.",
     tag: "An toàn",
   },
   {
-    icon: "🌿",
     title: "Bảo vệ môi trường",
     desc: "Đánh giá tác động môi trường, xử lý chất thải, bảo tồn hệ sinh thái tại farmstay.",
     tag: "Môi trường",
   },
   {
-    icon: "💰",
     title: "Thuế & kế toán",
     desc: "Nghĩa vụ thuế, hóa đơn, kế toán đơn giản cho chủ farmstay quy mô nhỏ và vừa.",
     tag: "Tài chính",
@@ -111,7 +105,7 @@ export default function PhapLyPage() {
               gap: 20,
             }}
           >
-            {LEGAL_DOCS.map((doc) => (
+            {LEGAL_DOCS.map((doc, idx) => (
               <div
                 key={doc.title}
                 style={{
@@ -121,10 +115,25 @@ export default function PhapLyPage() {
                   padding: "28px 24px",
                   transition: "var(--transition)",
                   cursor: "pointer",
+                  position: "relative",
+                  overflow: "hidden",
                 }}
               >
-                <div style={{ fontSize: "2rem", marginBottom: 12 }}>
-                  {doc.icon}
+                {/* Số thứ tự Bodoni mờ thay icon emoji — mood board Dark Luxe
+                    Editorial. aria-hidden vì đây là trang trí, không mang nghĩa. */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    fontFamily: "var(--font-display), serif",
+                    fontSize: "3.2rem",
+                    fontWeight: 700,
+                    lineHeight: 1,
+                    color: "var(--gold)",
+                    opacity: 0.16,
+                    marginBottom: 4,
+                  }}
+                >
+                  {String(idx + 1).padStart(2, "0")}
                 </div>
                 <span
                   style={{
@@ -184,7 +193,6 @@ export default function PhapLyPage() {
               padding: "48px 40px",
             }}
           >
-            <div style={{ fontSize: "2.5rem", marginBottom: 16 }}>⚖️</div>
             <h2
               style={{
                 fontFamily: "var(--font-display), serif",

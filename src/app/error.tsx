@@ -30,8 +30,32 @@ export default function Error({ error, reset }: ErrorProps) {
         textAlign: "center",
       }}
     >
-      {/* Icon */}
-      <div style={{ fontSize: "4rem", marginBottom: 20 }}>🌧️</div>
+      {/* Mô-típ X — hoa văn chữ ký thương hiệu, thay emoji (LUẬT THIẾT KẾ: không emoji) */}
+      <svg
+        width="56"
+        height="56"
+        viewBox="0 0 28 28"
+        aria-hidden="true"
+        style={{ marginBottom: 20 }}
+      >
+        <line
+          x1="2"
+          y1="2"
+          x2="26"
+          y2="26"
+          stroke="var(--accent-ma)"
+          strokeWidth="1.2"
+        />
+        <line
+          x1="26"
+          y1="2"
+          x2="2"
+          y2="26"
+          stroke="var(--accent-ma)"
+          strokeWidth="1.2"
+        />
+        <circle cx="14" cy="14" r="3" fill="var(--gold)" />
+      </svg>
 
       {/* Code */}
       <h1

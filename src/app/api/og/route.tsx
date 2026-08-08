@@ -72,7 +72,7 @@ export async function GET(req: NextRequest) {
           transform: "translateY(-50%)",
         }}
       >
-        🌿
+        X
       </div>
 
       {/* Title */}

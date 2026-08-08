@@ -80,10 +80,12 @@ export default async function AuthorPage({
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 16px",
+                fontFamily: "var(--font-display), serif",
+                color: "var(--gold)",
                 fontSize: "1.8rem",
               }}
             >
-              ✍️
+              X
             </div>
             <h1
               style={{

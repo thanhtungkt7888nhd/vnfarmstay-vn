@@ -55,6 +55,7 @@ export default async function BlogPage() {
               BLOG & HƯỚNG DẪN
             </p>
             <h1
+              className="reveal"
               style={{
                 fontFamily: "var(--font-display), serif",
                 fontSize: "clamp(2rem,5vw,2.8rem)",
@@ -63,9 +64,16 @@ export default async function BlogPage() {
                 marginBottom: 16,
               }}
             >
-              Kiến thức Farmstay
+              Kiến thức{" "}
+              <em
+                className="fx-gradient-text-gold"
+                style={{ fontStyle: "italic" }}
+              >
+                Farmstay
+              </em>
             </h1>
             <p
+              className="fx-blur-in"
               style={{
                 color: "var(--text-muted)",
                 fontSize: "1rem",
@@ -110,6 +118,7 @@ export default async function BlogPage() {
                 <a
                   key={slug}
                   href={`/danh-muc/${slug}`}
+                  className="fx-hover-lift"
                   style={{
                     background: "var(--bg-main)",
                     border: "1px solid var(--border)",

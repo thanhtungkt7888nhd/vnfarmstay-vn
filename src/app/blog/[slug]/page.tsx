@@ -14,6 +14,7 @@ import { TableOfContents } from "@/shared/ui/TableOfContents";
 import { CATEGORY_LABELS } from "@/features/blog/types";
 import { buildMetadata } from "@/lib/seo";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 import { urlFor } from "@/lib/sanity";
 import {
   fetchPostBySlug,
@@ -113,10 +114,11 @@ export default async function BlogPostPage({
     <>
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
-      <main style={{ background: "var(--bg-main)" }}>
+      <main className="fx-grain" style={{ background: "var(--bg-main)" }}>
         {/* Hero ảnh bìa */}
         {coverImageUrl && (
           <div
+            className="fx-blur-in"
             style={{
               width: "100%",
               maxHeight: 480,
@@ -152,6 +154,7 @@ export default async function BlogPostPage({
           {post.category && (
             <a
               href={`/danh-muc/${post.category}`}
+              className="fx-underline-slide"
               style={{
                 display: "inline-block",
                 background: "rgba(196,160,70,0.15)",
@@ -171,6 +174,7 @@ export default async function BlogPostPage({
 
           {/* Title */}
           <h1
+            className="shine reveal"
             style={{
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(1.6rem,4vw,2.2rem)",
@@ -180,7 +184,7 @@ export default async function BlogPostPage({
               marginBottom: 16,
             }}
           >
-            {post.title}
+            {giuTuGhep(post.title)}
           </h1>
 
           {/* Meta */}
@@ -197,10 +201,15 @@ export default async function BlogPostPage({
               flexWrap: "wrap",
             }}
           >
-            {post.author && <span>✍️ {post.author}</span>}
+            {/* Nhãn chữ thay emoji — LUẬT THIẾT KẾ: không emoji trên web premium */}
+            {post.author && (
+              <span>
+                <span className="kicker">Tác giả</span> {post.author}
+              </span>
+            )}
             {post.publishedAt && (
               <span>
-                📅{" "}
+                <span className="kicker">Đăng</span>{" "}
                 {new Date(post.publishedAt).toLocaleDateString("vi-VN", {
                   day: "2-digit",
                   month: "2-digit",
@@ -208,7 +217,11 @@ export default async function BlogPostPage({
                 })}
               </span>
             )}
-            {post.readTime && <span>⏱ {post.readTime} phút đọc</span>}
+            {post.readTime && (
+              <span>
+                <span className="kicker">Đọc</span> {post.readTime} phút
+              </span>
+            )}
           </div>
 
           {/* Mục lục tự động (hiện khi bài có ≥ 3 heading) */}
@@ -259,6 +272,7 @@ export default async function BlogPostPage({
           {post.faq && post.faq.length > 0 && (
             <div style={{ marginTop: 48 }}>
               <h2
+                className="fx-gradient-text-gold"
                 style={{
                   fontFamily: "var(--font-display), serif",
                   fontSize: "1.4rem",
@@ -270,7 +284,12 @@ export default async function BlogPostPage({
                 Câu hỏi thường gặp
               </h2>
               <div
-                style={{ display: "flex", flexDirection: "column", gap: 16 }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 16,
+                  textAlign: "justify",
+                }}
               >
                 {post.faq.map((item, idx) => (
                   <details

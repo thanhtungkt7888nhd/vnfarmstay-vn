@@ -79,6 +79,38 @@ h3 {
   line-height: 1.2;
 }
 
+/* ── K5 Đoạn văn — căn đều 2 bên (sàn BAN-DO-BO-CUC-CHU, lệnh Ông 25/07/2026) ──
+   Đoạn văn thân bài phải justify. Khối CỐ Ý căn giữa/phải (hero, CTA, khối
+   .text-center) được loại trừ bên dưới để rule này không đè ý đồ bố cục. */
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+[style*="text-align:center"] p,
+[style*="text-align: center"] p,
+[style*="textAlign:center"] p,
+.text-center p,
+.text-center,
+p.text-center {
+  text-align: center;
+}
+
+[style*="text-align:right"] p,
+[style*="text-align: right"] p {
+  text-align: right;
+}
+
+/* Khối hỏi–đáp: máy đo coi cả <details> là một khối đoạn văn K5 nên phải
+   justify ở chính nó, không chỉ ở <p> con. Câu hỏi (summary) giữ căn trái. */
+details {
+  text-align: justify;
+}
+
+details > summary {
+  text-align: start;
+}
+
 /* Kicker / label / tag trên heading */
 .kicker {
   font-family: var(--font-body), "DM Sans", sans-serif;
@@ -286,6 +318,49 @@ img {
 ═══════════════════════════════════════════════════════════════════ */
 .motif-x {
   background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='0' x2='28' y2='28' stroke='%23b8c870' stroke-width='0.8' stroke-opacity='0.35'/%3E%3Cline x1='28' y1='0' x2='0' y2='28' stroke='%23b8c870' stroke-width='0.8' stroke-opacity='0.35'/%3E%3Ccircle cx='14' cy='14' r='2.2' fill='%23c8a840' fill-opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* ══ Chữ gradient GOLD — thay fx-gradient-text của kho ═════════════
+   Lớp fx-gradient-text trong kho hard-code #ec4899 (hồng) + #60a5fa
+   (xanh) — đá thẳng palette 132° gold của web, nên TỪ CHỐI dùng và
+   viết bản đúng tông ở đây (mạ non → gold → gold sáng). Nhịp 8s hợp
+   Bộ IV trầm sang: chuyển động có mà không giật mắt.
+═══════════════════════════════════════════════════════════════════ */
+@keyframes gold-sweep {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ⚠️ KHÔNG dán chung thẻ với .reveal — cả hai đặt thuộc tính rút gọn
+   `animation`, lớp đứng sau thắng nên gradient sẽ đứng im. Và thẻ có
+   `color` inline sẽ đè `color: transparent` ⇒ gradient bị chữ đục che.
+   Cách dùng đúng: bọc RIÊNG một từ tiêu điểm bằng <em>, như hero. */
+.fx-gradient-text-gold {
+  background-image: linear-gradient(
+    100deg,
+    var(--accent-ma),
+    var(--gold) 40%,
+    var(--gold-light) 55%,
+    var(--gold) 70%,
+    var(--accent-ma)
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gold-sweep 8s var(--ease) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-gradient-text-gold {
+    animation: none;
+    background-position: 40% 50%;
+  }
 }
 
 /* ══ Reveal animation — Bộ IV Trầm Sang ═══════════════════════════ */

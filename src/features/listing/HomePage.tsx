@@ -61,8 +61,13 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
        và là landmark <main> duy nhất của trang — phải luôn tồn tại kể cả khi chưa có farmstay. */
     <main id="main">
       {/* Hero */}
+      {/* plasma-bg = I6 Bong Bóng Huyền Ảo · motif-x = hoa văn X Nút Gold —
+          DNA chốt 20260807: cả hai áp cho section nền dark, chồng layer
+          (blob z-0, hoa văn nền, nội dung z-1). Trước 08/08 hai lớp này chỉ
+          nằm trong globals.css mà chưa gắn vào thẻ nào. */}
       <section
         aria-label="Hero trang chủ"
+        className="plasma-bg motif-x"
         style={{
           background:
             "linear-gradient(160deg,#0f2318 0%,#1a4a2e 50%,#0f2318 100%)",
@@ -72,7 +77,10 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           overflow: "hidden",
         }}
       >
+        {/* shine = I5 Metallic Shine — DNA: áp cho MỌI headline cùng vai trò.
+            reveal = nhịp Bộ IV trầm sang, phần tử nổi lên có chủ đích. */}
         <h1
+          className="shine reveal"
           style={{
             fontFamily: "var(--font-display), serif",
             fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
@@ -84,8 +92,9 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           }}
         >
           Trải nghiệm{" "}
-          <em style={{ color: "var(--gold)", fontStyle: "italic" }}>
-            nông nghiệp
+          <em className="fx-gradient-text-gold" style={{ fontStyle: "italic" }}>
+            {/* nbsp giữ từ ghép "nông nghiệp" không bị bẻ đôi ở khổ hẹp (cổng S-1) */}
+            nông&nbsp;nghiệp
           </em>
           <br />
           đích thực Việt Nam
@@ -187,6 +196,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
             </p>
             <a
               href="/chu-farmstay"
+              className="fx-gradient-btn fx-glow"
               style={{
                 display: "inline-block",
                 padding: "12px 28px",

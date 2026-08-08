@@ -36,7 +36,7 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
         textDecoration: "none",
         transition: "var(--transition)",
       }}
-      className="post-card"
+      className="post-card fx-hover-lift fx-card-sheen"
     >
       {/* Ảnh bìa — dùng next/image để tự động tối ưu WebP/AVIF */}
       {coverUrl ? (
