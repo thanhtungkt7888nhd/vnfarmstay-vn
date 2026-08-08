@@ -608,16 +608,79 @@ nav {
    link footer, mục nav trong ngăn kéo, nút biểu tượng. Nới bằng
    padding-block để KHÔNG đổi cỡ chữ và KHÔNG phá bố cục cột.
 ═══════════════════════════════════════════════════════════════════ */
-footer a,
-footer button,
-nav a,
-nav button {
-  min-height: 24px;
-  display: inline-flex;
-  align-items: center;
+/* ⚠️ PHẢI nằm trong @layer components. Rule để ngoài layer sẽ THẮNG mọi
+   utility của Tailwind v4 (utility nằm trong @layer utilities) — bản đầu
+   đặt ngoài layer đã làm `display: inline-flex` đè `md:hidden`, khiến nút
+   menu mobile lộ ra ở khổ desktop. Trong layer thì utility thắng lại. */
+@layer components {
+  footer a,
+  footer button,
+  nav a,
+  nav button {
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  footer li a,
+  nav li a {
+    padding-block: 4px;
+  }
 }
 
-footer li a,
-nav li a {
-  padding-block: 4px;
+/* ══ VÒNG 4 — LÀM GIÀU: kỹ thuật chữ Bodoni từ kho ═════════════════
+   Kho 02-BANG-CHU + mood board "Dark Luxe Editorial" có sẵn 4 kỹ
+   thuật hợp đúng cặp Libre Bodoni × DM Sans mà web chưa từng dùng.
+   Đây là vòng TIÊU THỤ KHO — kho là điểm xuất phát, không phải trần.
+═══════════════════════════════════════════════════════════════════ */
+
+/* 1. Drop-cap Bodoni — chữ cái đầu bài thả xuống 3 dòng */
+.drop-cap::first-letter {
+  font-family: var(--font-display), "Libre Bodoni", Georgia, serif;
+  font-size: 3.4em;
+  line-height: 0.86;
+  font-weight: 700;
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  color: var(--gold);
+}
+
+/* 2. Pull-quote Bodoni italic — trích dẫn thành điểm nhấn thị giác,
+      thay vì đoạn văn thường bo viền trái */
+blockquote {
+  font-family: var(--font-display), "Libre Bodoni", Georgia, serif;
+  font-style: italic;
+  font-size: 1.22em;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  text-align: left;
+}
+
+blockquote::before {
+  content: "“";
+  font-family: var(--font-display), "Libre Bodoni", Georgia, serif;
+  font-size: 2.6em;
+  line-height: 0;
+  color: var(--gold);
+  opacity: 0.5;
+  vertical-align: -0.28em;
+  margin-right: 0.06em;
+}
+
+/* 3. Letter-spacing âm cho chữ display lớn — Didone khổ lớn giãn
+      quá rộng sẽ rời rạc; siết nhẹ cho khối chữ liền mạch */
+h1 {
+  letter-spacing: -0.018em;
+}
+
+h2 {
+  letter-spacing: -0.012em;
+}
+
+/* 4. Số dùng bản chiều rộng đều — cột số/ngày tháng không nhảy */
+time,
+.editorial-num,
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }

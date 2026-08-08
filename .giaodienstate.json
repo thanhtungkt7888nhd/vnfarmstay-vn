@@ -944,6 +944,259 @@
         "231 WARN bố cục chữ — vòng 4/5",
         "5 FAIL check-luat còn lại đều thuộc sec./seo./priv. — ngoài phạm vi giao diện, y nguyên mốc nền"
       ]
+    },
+    {
+      "vong": 4,
+      "muc": "4-lam-giau",
+      "phamViDaPhu": {
+        "khuc": "85/85",
+        "route": "16/16",
+        "the": "4/4 loại",
+        "bai": "6/6"
+      },
+      "soTieuChiSoi": 45,
+      "soLechVa": 10,
+      "khoTieuThu": {
+        "vongNay": 9,
+        "congDon": 23,
+        "conLai": 77
+      },
+      "doiChieuSoSach": {
+        "1-mau": "4=2+0+2 ✓",
+        "2-chu": "6=6+0+0 ✓",
+        "3-hieuung-chu": "0 ✓",
+        "4-bocuc": "3=1+0+2 ✓",
+        "5-chuyendong": "76=14+4+58 ✓",
+        "5b-block": "11=0+11+0 ✓",
+        "6-hoavan": "0 ✓",
+        "7-anh": "N/A",
+        "8-ui": "N/A",
+        "9-dieuhuong": "0 ✓",
+        "10-microcopy": "0 ✓",
+        "tong": "100 khớp tongCoHoi",
+        "doKhaiThacKho": "23/100 = 23%"
+      },
+      "theoLoai": {
+        "1-mau": {
+          "daRaSoat": [
+            "mauBienThe 4 mục"
+          ],
+          "lech": [],
+          "coHoiKho": [
+            "gradient gold→gold-light CTA",
+            "viền gold 0.4 tag",
+            "accent-ma badge",
+            "lớp phủ green ảnh"
+          ],
+          "vaXong": {
+            "apDung": [
+              "fx-gradient-btn cho CTA trang chủ (gradient gold)",
+              "fx-border-gradient cho hộp CTA /phap-ly (viền gold mảnh)"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": [
+              {
+                "muc": "accent-ma cho badge",
+                "lyDo": "web chưa có badge thật nào ngoài tag danh mục — thêm badge trống = khung rỗng"
+              },
+              {
+                "muc": "lớp phủ green filter cho ảnh",
+                "lyDo": "chưa có ảnh THẬT nào trên web (danh bạ rỗng, bài chưa có ảnh bìa) — không có ảnh để phủ"
+              }
+            ]
+          }
+        },
+        "2-chu": {
+          "daRaSoat": [
+            "chuBienThe 6 mục"
+          ],
+          "lech": [],
+          "coHoiKho": [
+            "drop-cap",
+            "pull-quote",
+            "kicker",
+            "số Bodoni nền",
+            "letter-spacing âm",
+            "tabular-nums"
+          ],
+          "vaXong": {
+            "apDung": [
+              "drop-cap Bodoni 3.4em float trái gold cho đoạn mở bài (kiểm THẬT: Libre Bodoni 54.4px float left)",
+              "pull-quote Bodoni italic + dấu nháy gold 2.6em (kiểm THẬT: Libre Bodoni italic 19.52px)",
+              "kicker DM Sans uppercase .12em (vòng 1, meta bài)",
+              "số Bodoni nền mờ (vòng 1 /phap-ly + vòng 4 /chu-farmstay)",
+              "letter-spacing -0.018em h1 / -0.012em h2 (đo: -0.6336px)",
+              "tabular-nums cho time/.editorial-num/.tabular"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "canhBao": "drop-cap và pull-quote ĐÃ CHẠY ĐÚNG (kiểm bằng phần tử thử trên trình duyệt) nhưng CHƯA HIỆN trên web vì 6 bài mock chỉ có tiêu đề+tóm tắt+FAQ, thân bài đang là chuỗi \"Nội dung đang được cập nhật...\". Sẽ tự hiện khi có nội dung thật. KHÔNG bịa nội dung để trình diễn hiệu ứng."
+        },
+        "3-hieuung-chu": {
+          "daRaSoat": [
+            "shine/reveal 14 H1"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "4-bocuc": {
+          "daRaSoat": [
+            "bocucBienThe 3 mục"
+          ],
+          "lech": [],
+          "coHoiKho": [
+            "grid lệch",
+            "chồng lớp số nền × heading",
+            "asymmetric 7/5"
+          ],
+          "vaXong": {
+            "apDung": [
+              "chồng lớp: số Bodoni 120px opacity .1 z-index -1 làm NỀN, h2 nổi trên — /chu-farmstay section Cách hoạt động"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": [
+              {
+                "muc": "grid lệch bất quy tắc",
+                "lyDo": "mọi lưới hiện tại là lưới thẻ đều — bẻ lệch khi CHƯA có nội dung thật sẽ thành lệch vô nghĩa"
+              },
+              {
+                "muc": "asymmetric 2 cột 7/5",
+                "lyDo": "cùng lý do — chờ có ảnh/nội dung thật để chia trọng số"
+              }
+            ]
+          }
+        },
+        "5-chuyendong-khoi": {
+          "daRaSoat": [
+            "30 lớp fx trong kho vs 11 đã dùng"
+          ],
+          "lech": [],
+          "coHoiKho": [
+            "20 lớp fx chưa dùng"
+          ],
+          "vaXong": {
+            "apDung": [
+              "fx-line-draw (B) → 4 nét SVG mô-típ X ở /404 và /500",
+              "fx-card-halo (C) → thẻ pháp lý",
+              "fx-border-gradient (A/C) → hộp CTA /phap-ly"
+            ],
+            "tuChoi": [
+              {
+                "muc": "fx-scroll-reveal · fx-stagger-grid · fx-reveal-cards · fx-reveal-text",
+                "lyDo": "web ĐÃ có hệ reveal riêng (.reveal) — dán thêm là chồng 2 hệ, đúng sự cố căn lề 27/07 mà máy cảnh báo"
+              }
+            ],
+            "hoanChoOng": []
+          },
+          "ghiChu": "58 recipe hoãn: phần lớn đòi framer-motion mà web KHÔNG có (máy đơn thuốc xác nhận: 29/31 mục lối MotionWrap là mã gãy build với web CSS-thuần), phần còn lại chưa có bản CSS trong effects.css."
+        },
+        "5b-block-kho": {
+          "daRaSoat": [
+            "11 block kho hợp archetype"
+          ],
+          "lech": [],
+          "coHoiKho": [
+            "ArticleGrid",
+            "ContactForm",
+            "DestinationHub",
+            "FaqAccordion",
+            "FeatureGrid",
+            "HeroBanner",
+            "StatsBanner",
+            "TeamGrid",
+            "TestimonialGrid",
+            "TimelineSection",
+            "VerifiedBadge"
+          ],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [
+              {
+                "muc": "cả 11 block",
+                "lyDo": "ĐO ĐƯỢC: web KHÔNG vendor 03-KHO-LINH-KIEN (src/components/blocks không tồn tại), mọi trang dựng bằng inline style riêng. Chèn block Tailwind vào = dựng HỆ STYLE THỨ HAI song song — đúng van cấm chồng hệ. Riêng FaqAccordion: web đã có <details> gốc, cổng aeo.24 đã PASS, thay bằng block là đổi kiến trúc (việc của /nang-cap-web)"
+              }
+            ],
+            "hoanChoOng": []
+          }
+        },
+        "6-hoavan": {
+          "daRaSoat": [
+            "section dark toàn web"
+          ],
+          "lech": [
+            "4 section dark khác chưa có hoa văn X + I6, chỉ hero trang chủ có"
+          ],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [
+              "plasma-bg + motif-x cho hero /chu-farmstay, /cong-dong, /ve-chung-toi, /phap-ly → 5/5 section dark đồng bộ"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "7-anh-media": {
+          "daRaSoat": [
+            "do-can-anh"
+          ],
+          "lech": [],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "8-ui-vi-mo": {
+          "daRaSoat": [
+            "hồi quy nav sau vá vòng 3"
+          ],
+          "lech": [
+            "rule vùng chạm đặt NGOÀI @layer đã đè utility md:hidden của Tailwind v4 → nút menu mobile LỘ ra ở khổ desktop"
+          ],
+          "coHoiKho": "N/A",
+          "vaXong": {
+            "apDung": [
+              "bọc rule vùng chạm vào @layer components để utility Tailwind thắng lại"
+            ],
+            "tuChoi": [],
+            "hoanChoOng": []
+          },
+          "soDo": "nút menu: display flex(sai) → none ở 1280 · vẫn flex ở 375 · vùng chạm <24px vẫn = 0 ở cả 2 khổ"
+        },
+        "9-dieuhuong-mobile": {
+          "daRaSoat": [
+            "nav 375 vs 1280"
+          ],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        },
+        "10-microcopy": {
+          "daRaSoat": [],
+          "lech": [],
+          "coHoiKho": [],
+          "vaXong": {
+            "apDung": [],
+            "tuChoi": [],
+            "hoanChoOng": []
+          }
+        }
+      },
+      "conSot": [
+        "231 WARN bố cục chữ — vòng 5",
+        "thân bài 6 bài đều rỗng (\"Nội dung đang được cập nhật...\") — việc NỘI DUNG, ngoài phạm vi"
+      ]
     }
   ]
 }

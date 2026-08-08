@@ -32,6 +32,7 @@ export default function NotFound() {
           y2="26"
           stroke="var(--accent-ma)"
           strokeWidth="1.2"
+          className="fx-line-draw"
         />
         <line
           x1="26"
@@ -40,6 +41,7 @@ export default function NotFound() {
           y2="26"
           stroke="var(--accent-ma)"
           strokeWidth="1.2"
+          className="fx-line-draw"
         />
         <circle cx="14" cy="14" r="3" fill="var(--gold)" />
       </svg>

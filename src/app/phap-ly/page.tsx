@@ -49,6 +49,7 @@ export default function PhapLyPage() {
       <main style={{ background: "var(--bg-deep)", minHeight: "80vh" }}>
         {/* Hero */}
         <section
+          className="plasma-bg motif-x"
           style={{
             background: "linear-gradient(160deg,#0f2318,#1a3d28 60%,#0f2318)",
             padding: "64px 24px 80px",
@@ -109,7 +110,7 @@ export default function PhapLyPage() {
             {LEGAL_DOCS.map((doc, idx) => (
               <div
                 key={doc.title}
-                className="fx-tilt-glow"
+                className="fx-tilt-glow fx-card-halo"
                 style={{
                   background: "var(--bg-card)",
                   borderRadius: "var(--radius)",
@@ -186,6 +187,7 @@ export default function PhapLyPage() {
           }}
         >
           <div
+            className="fx-border-gradient"
             style={{
               maxWidth: 600,
               margin: "0 auto",

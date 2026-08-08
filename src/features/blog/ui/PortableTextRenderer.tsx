@@ -67,8 +67,12 @@ const headingStyles: Record<string, React.CSSProperties> = {
   h4: { fontSize: "1.05rem", marginTop: 24, marginBottom: 10 },
 };
 
-/** Render một block Portable Text */
-function renderBlock(block: SanityBlock): React.ReactNode {
+/**
+ * Render một block Portable Text.
+ * `laDoanDau` = đoạn văn ĐẦU TIÊN của bài — nhận drop-cap Bodoni (kỹ thuật
+ * chữ lấy từ kho 02-BANG-CHU, hợp mood board Dark Luxe Editorial).
+ */
+function renderBlock(block: SanityBlock, laDoanDau = false): React.ReactNode {
   // Ảnh
   if (block._type === "image") {
     const imgUrl = block.asset ? urlFor(block).width(760).url() : null;
@@ -120,11 +124,14 @@ function renderBlock(block: SanityBlock): React.ReactNode {
         key={block._key}
         style={{
           ...baseStyle,
+          // Pull-quote Bodoni italic (kho 02-BANG-CHU): KHÔNG lấy fontFamily
+          // của baseStyle, nếu không style inline sẽ đè rule blockquote trong
+          // globals.css và trích dẫn lại về DM Sans như đoạn văn thường.
+          fontFamily: "var(--font-display), serif",
           borderLeft: "3px solid var(--gold)",
           paddingLeft: 20,
           margin: "28px 0",
           color: "var(--text-muted)",
-          fontStyle: "italic",
         }}
       >
         {children}
@@ -136,6 +143,7 @@ function renderBlock(block: SanityBlock): React.ReactNode {
     return (
       <p
         key={block._key}
+        className={laDoanDau ? "drop-cap" : undefined}
         style={{ ...baseStyle, marginBottom: 20, fontSize: "1rem" }}
       >
         {children}
@@ -211,6 +219,9 @@ export function PortableTextRenderer({ content }: PortableTextRendererProps) {
     listType = null;
   };
 
+  // Đoạn văn thường ĐẦU TIÊN của bài nhận drop-cap — chỉ một lần mỗi bài.
+  let daCoDropCap = false;
+
   for (const block of blocks) {
     const style = block.style ?? "normal";
 
@@ -220,7 +231,9 @@ export function PortableTextRenderer({ content }: PortableTextRendererProps) {
       listBuffer.push(block);
     } else {
       flushList();
-      const rendered = renderBlock(block);
+      const laDoanDau = style === "normal" && !daCoDropCap;
+      if (laDoanDau) daCoDropCap = true;
+      const rendered = renderBlock(block, laDoanDau);
       if (rendered) elements.push(rendered);
     }
   }

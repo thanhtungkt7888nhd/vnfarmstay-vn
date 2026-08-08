@@ -28,6 +28,7 @@ export default function CongDongPage() {
       <main style={{ background: "var(--bg-deep)", minHeight: "80vh" }}>
         {/* Hero */}
         <section
+          className="plasma-bg motif-x"
           style={{
             background: "linear-gradient(160deg,#0f2318,#1a3d28 60%,#0f2318)",
             padding: "64px 24px 80px",

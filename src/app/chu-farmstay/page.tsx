@@ -123,6 +123,7 @@ export default function ChuFarmstayPage() {
       <main style={{ background: "var(--bg-main)", minHeight: "100vh" }}>
         {/* ── Hero ── */}
         <section
+          className="plasma-bg motif-x"
           style={{
             background:
               "linear-gradient(160deg, var(--bg-deep) 0%, #0d2b1a 100%)",
@@ -246,18 +247,38 @@ export default function ChuFarmstayPage() {
             style={{ marginTop: 64 }}
             aria-label="Cách hoạt động"
           >
-            <h2
-              style={{
-                fontFamily: "var(--font-display), serif",
-                fontSize: "1.7rem",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                textAlign: "center",
-                marginBottom: 8,
-              }}
-            >
-              Chỉ 3 bước để lên sóng
-            </h2>
+            {/* Chồng lớp: số Bodoni khổng lồ mờ làm NỀN, heading nổi lên trên
+                — chữ ký bố cục của mood board Dark Luxe Editorial, lấy từ kho
+                03-BANG-LAYOUT (biến thể web chưa từng dùng). */}
+            <div style={{ position: "relative", isolation: "isolate" }}>
+              <span
+                aria-hidden="true"
+                className="editorial-num"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "grid",
+                  placeItems: "center",
+                  zIndex: -1,
+                  transform: "translateY(-0.12em)",
+                }}
+              >
+                03
+              </span>
+              <h2
+                style={{
+                  fontFamily: "var(--font-display), serif",
+                  fontSize: "1.7rem",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  textAlign: "center",
+                  marginBottom: 8,
+                  position: "relative",
+                }}
+              >
+                Chỉ 3 bước để lên sóng
+              </h2>
+            </div>
             <p
               style={{
                 color: "var(--text-dim)",
