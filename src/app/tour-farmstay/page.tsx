@@ -284,7 +284,7 @@ export default function TourFarmstayPage() {
           <p
             style={{
               color: "var(--text-dim)",
-              fontSize: "0.88rem",
+              fontSize: "1rem",
               maxWidth: 560,
               margin: "0 auto",
               lineHeight: 1.7,
@@ -345,7 +345,7 @@ export default function TourFarmstayPage() {
                   <p
                     style={{
                       color: "var(--text-muted)",
-                      fontSize: "0.9rem",
+                      fontSize: "1rem",
                       lineHeight: 1.7,
                     }}
                   >
@@ -444,7 +444,7 @@ export default function TourFarmstayPage() {
                   </h3>
                   <div
                     style={{
-                      fontSize: "0.75rem",
+                      fontSize: "0.8rem",
                       letterSpacing: "0.05em",
                       textTransform: "uppercase",
                       color: "var(--gold)",
@@ -458,7 +458,7 @@ export default function TourFarmstayPage() {
                   <p
                     style={{
                       color: "var(--text-muted)",
-                      fontSize: "0.9rem",
+                      fontSize: "1rem",
                       lineHeight: 1.75,
                       marginBottom: 18,
                       flex: 1,
@@ -471,7 +471,7 @@ export default function TourFarmstayPage() {
                     <div>
                       <dt
                         style={{
-                          fontSize: "0.7rem",
+                          fontSize: "0.72rem",
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           color: "var(--text-dim)",
@@ -484,7 +484,7 @@ export default function TourFarmstayPage() {
                       <dd
                         style={{
                           color: "var(--text-muted)",
-                          fontSize: "0.85rem",
+                          fontSize: "0.88rem",
                           lineHeight: 1.6,
                         }}
                       >
@@ -494,7 +494,7 @@ export default function TourFarmstayPage() {
                     <div>
                       <dt
                         style={{
-                          fontSize: "0.7rem",
+                          fontSize: "0.72rem",
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           color: "var(--text-dim)",
@@ -507,7 +507,7 @@ export default function TourFarmstayPage() {
                       <dd
                         style={{
                           color: "var(--accent-ma)",
-                          fontSize: "0.85rem",
+                          fontSize: "0.88rem",
                           lineHeight: 1.6,
                         }}
                       >
@@ -524,7 +524,7 @@ export default function TourFarmstayPage() {
                   >
                     <div
                       style={{
-                        fontSize: "0.7rem",
+                        fontSize: "0.72rem",
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
                         color: "var(--text-dim)",
@@ -641,7 +641,7 @@ export default function TourFarmstayPage() {
                       cursor: "pointer",
                       fontWeight: 600,
                       color: "var(--text-primary)",
-                      fontSize: "0.98rem",
+                      fontSize: "1rem",
                       lineHeight: 1.5,
                     }}
                   >
@@ -651,7 +651,7 @@ export default function TourFarmstayPage() {
                     style={{
                       marginTop: 14,
                       color: "var(--text-muted)",
-                      fontSize: "0.93rem",
+                      fontSize: "1rem",
                       lineHeight: 1.8,
                     }}
                   >
@@ -695,7 +695,7 @@ export default function TourFarmstayPage() {
                 color: "var(--text-muted)",
                 lineHeight: 1.8,
                 marginBottom: 26,
-                fontSize: "0.95rem",
+                fontSize: "1rem",
               }}
             >
               Bản đồ này sẽ dày lên bằng những farmstay thật — mỗi cái chúng tôi
@@ -712,7 +712,7 @@ export default function TourFarmstayPage() {
                 background: "var(--gold)",
                 color: "var(--bg-deep)",
                 fontWeight: 700,
-                fontSize: "0.9rem",
+                fontSize: "0.95rem",
                 transition: "var(--transition)",
               }}
             >

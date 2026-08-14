@@ -47,7 +47,7 @@ export default async function BlogPage() {
             <p
               style={{
                 color: "var(--gold)",
-                fontSize: "0.78rem",
+                fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 marginBottom: 12,
@@ -124,7 +124,7 @@ export default async function BlogPage() {
                     background: "var(--bg-main)",
                     border: "1px solid var(--border)",
                     color: "var(--text-muted)",
-                    fontSize: "0.78rem",
+                    fontSize: "0.8rem",
                     padding: "4px 14px",
                     borderRadius: 20,
                     textDecoration: "none",

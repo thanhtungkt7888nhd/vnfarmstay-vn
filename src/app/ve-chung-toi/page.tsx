@@ -406,7 +406,7 @@ export default function VeChungToiPage() {
             <p
               style={{
                 color: "var(--text-dim)",
-                fontSize: "0.92rem",
+                fontSize: "1rem",
                 lineHeight: 1.75,
                 maxWidth: 560,
                 margin: "0 auto",
@@ -494,7 +494,7 @@ export default function VeChungToiPage() {
                     <p
                       style={{
                         color: "var(--text-muted)",
-                        fontSize: "0.93rem",
+                        fontSize: "1rem",
                         lineHeight: 1.8,
                       }}
                     >
@@ -553,7 +553,7 @@ export default function VeChungToiPage() {
                       style={{
                         fontWeight: 700,
                         color: "var(--text-primary)",
-                        fontSize: "0.98rem",
+                        fontSize: "1rem",
                       }}
                     >
                       {c.quyMo}
@@ -652,7 +652,7 @@ export default function VeChungToiPage() {
                   <p
                     style={{
                       color: "var(--text-muted)",
-                      fontSize: "0.9rem",
+                      fontSize: "1rem",
                       lineHeight: 1.75,
                     }}
                   >
@@ -703,7 +703,7 @@ export default function VeChungToiPage() {
                 <p
                   style={{
                     color: "var(--text-muted)",
-                    fontSize: "0.93rem",
+                    fontSize: "1rem",
                     lineHeight: 1.8,
                   }}
                 >
@@ -734,7 +734,7 @@ export default function VeChungToiPage() {
                 <p
                   style={{
                     color: "var(--text-muted)",
-                    fontSize: "0.93rem",
+                    fontSize: "1rem",
                     lineHeight: 1.8,
                   }}
                 >
@@ -795,7 +795,7 @@ export default function VeChungToiPage() {
               style={{
                 color: "var(--text-muted)",
                 lineHeight: 1.85,
-                fontSize: "0.95rem",
+                fontSize: "1rem",
                 maxWidth: 720,
                 marginBottom: 40,
               }}
@@ -882,7 +882,7 @@ export default function VeChungToiPage() {
                 color: "var(--text-muted)",
                 lineHeight: 1.8,
                 marginBottom: 14,
-                fontSize: "0.95rem",
+                fontSize: "1rem",
               }}
             >
               Bạn giữ 100% những gì là của bạn — bạn chỉ thêm, không mất gì.
@@ -894,7 +894,7 @@ export default function VeChungToiPage() {
             <p
               style={{
                 color: "var(--text-dim)",
-                fontSize: "0.88rem",
+                fontSize: "1rem",
                 lineHeight: 1.75,
                 marginBottom: 28,
               }}
@@ -919,7 +919,7 @@ export default function VeChungToiPage() {
                   background: "var(--gold)",
                   color: "var(--bg-deep)",
                   fontWeight: 700,
-                  fontSize: "0.9rem",
+                  fontSize: "0.95rem",
                   transition: "var(--transition)",
                 }}
               >
@@ -934,7 +934,7 @@ export default function VeChungToiPage() {
                   border: "1px solid var(--gold-border)",
                   color: "var(--gold)",
                   fontWeight: 600,
-                  fontSize: "0.9rem",
+                  fontSize: "0.95rem",
                   transition: "var(--transition)",
                 }}
               >

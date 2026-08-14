@@ -70,7 +70,7 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
             <span
               style={{
                 color: "var(--text-dim)",
-                fontSize: "0.75rem",
+                fontSize: "0.8rem",
                 fontWeight: 600,
                 letterSpacing: "0.04em",
               }}
@@ -141,7 +141,7 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
             alignItems: "center",
             gap: 12,
             color: "var(--text-dim)",
-            fontSize: "0.78rem",
+            fontSize: "0.8rem",
           }}
         >
           {publishDate && <span>{publishDate}</span>}

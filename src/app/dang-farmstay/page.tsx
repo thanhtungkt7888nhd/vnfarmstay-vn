@@ -89,7 +89,7 @@ export default function DangFarmstayPage() {
           <p
             style={{
               color: "var(--text-muted)",
-              fontSize: "0.95rem",
+              fontSize: "1rem",
               lineHeight: 1.75,
               marginBottom: 36,
             }}
@@ -138,7 +138,7 @@ export default function DangFarmstayPage() {
                     alignItems: "flex-start",
                     gap: 10,
                     color: "var(--text-muted)",
-                    fontSize: "0.92rem",
+                    fontSize: "0.95rem",
                     lineHeight: 1.6,
                   }}
                 >
@@ -177,7 +177,7 @@ export default function DangFarmstayPage() {
             <p
               style={{
                 color: "var(--text-muted)",
-                fontSize: "0.95rem",
+                fontSize: "1rem",
                 lineHeight: 1.75,
               }}
             >
@@ -189,7 +189,7 @@ export default function DangFarmstayPage() {
             <p
               style={{
                 color: "var(--text-muted)",
-                fontSize: "0.95rem",
+                fontSize: "1rem",
                 lineHeight: 1.75,
                 marginTop: 16,
               }}
@@ -208,7 +208,7 @@ export default function DangFarmstayPage() {
           <p
             style={{
               color: "var(--text-dim)",
-              fontSize: "0.88rem",
+              fontSize: "1rem",
               lineHeight: 1.7,
               marginTop: 32,
               textAlign: "center",

@@ -64,7 +64,7 @@ export function FarmstayCard({ farmstay }: Props) {
               style={{
                 padding: "3px 8px",
                 borderRadius: 4,
-                fontSize: "0.68rem",
+                fontSize: "0.72rem",
                 fontWeight: 700,
                 letterSpacing: "0.05em",
                 ...(badgeStyle[badge] ?? {
@@ -83,7 +83,7 @@ export function FarmstayCard({ farmstay }: Props) {
             position: "absolute",
             bottom: 10,
             right: 14,
-            fontSize: "0.7rem",
+            fontSize: "0.72rem",
             fontWeight: 600,
             letterSpacing: "0.03em",
             color: "rgba(255,255,255,0.78)",
@@ -106,7 +106,7 @@ export function FarmstayCard({ farmstay }: Props) {
         </div>
         <h3
           style={{
-            fontSize: "0.98rem",
+            fontSize: "1rem",
             fontWeight: 600,
             color: "var(--text-primary)",
             marginBottom: 8,
@@ -177,7 +177,7 @@ export function FarmstayCard({ farmstay }: Props) {
             marginTop: 12,
             paddingTop: 12,
             borderTop: "1px solid var(--border)",
-            fontSize: "0.78rem",
+            fontSize: "0.8rem",
             color: "var(--gold)",
             fontWeight: 600,
             letterSpacing: "0.02em",

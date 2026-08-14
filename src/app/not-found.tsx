@@ -72,7 +72,7 @@ export default function NotFound() {
           background: "var(--gold)",
           color: "var(--bg-deep)",
           fontWeight: 700,
-          fontSize: "0.9rem",
+          fontSize: "0.95rem",
         }}
       >
         Về trang chủ

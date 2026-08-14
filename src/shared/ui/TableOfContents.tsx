@@ -72,7 +72,7 @@ export function TableOfContents({
     >
       <p
         style={{
-          fontSize: "0.75rem",
+          fontSize: "0.8rem",
           fontWeight: 700,
           color: "var(--text-dim)",
           letterSpacing: "0.08em",
@@ -101,7 +101,7 @@ export function TableOfContents({
             <a
               href={`#${item.id}`}
               style={{
-                fontSize: "0.82rem",
+                fontSize: "0.8rem",
                 color:
                   activeId === item.id ? "var(--gold)" : "var(--text-muted)",
                 textDecoration: "none",

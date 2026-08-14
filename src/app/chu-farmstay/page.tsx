@@ -320,7 +320,7 @@ export default function ChuFarmstayPage() {
                   border: "1px solid var(--border)",
                   color: "var(--text-muted)",
                   fontWeight: 600,
-                  fontSize: "0.9rem",
+                  fontSize: "0.95rem",
                   padding: "14px 28px",
                   borderRadius: "var(--radius-sm)",
                   textDecoration: "none",
@@ -386,7 +386,7 @@ export default function ChuFarmstayPage() {
                 color: "var(--text-dim)",
                 textAlign: "center",
                 marginBottom: 48,
-                fontSize: "0.92rem",
+                fontSize: "1rem",
               }}
             >
               Từ đăng ký đến lên sóng — không quá 7 ngày.
@@ -427,7 +427,7 @@ export default function ChuFarmstayPage() {
                   <p
                     style={{
                       color: "var(--text-muted)",
-                      fontSize: "0.88rem",
+                      fontSize: "1rem",
                       lineHeight: 1.7,
                     }}
                   >
@@ -460,7 +460,7 @@ export default function ChuFarmstayPage() {
                 color: "var(--text-dim)",
                 textAlign: "center",
                 marginBottom: 44,
-                fontSize: "0.92rem",
+                fontSize: "1rem",
               }}
             >
               Không chỉ là nơi đăng tin — đây là đối tác phát triển kinh doanh
@@ -495,7 +495,7 @@ export default function ChuFarmstayPage() {
                   <p
                     style={{
                       color: "var(--text-muted)",
-                      fontSize: "0.85rem",
+                      fontSize: "1rem",
                       lineHeight: 1.7,
                     }}
                   >
@@ -586,7 +586,7 @@ export default function ChuFarmstayPage() {
                     <div>
                       <div
                         style={{
-                          fontSize: "0.7rem",
+                          fontSize: "0.72rem",
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           color: "var(--text-dim)",
@@ -609,7 +609,7 @@ export default function ChuFarmstayPage() {
                     <div>
                       <div
                         style={{
-                          fontSize: "0.7rem",
+                          fontSize: "0.72rem",
                           letterSpacing: "0.08em",
                           textTransform: "uppercase",
                           color: "var(--text-dim)",
@@ -882,7 +882,7 @@ export default function ChuFarmstayPage() {
                       color: "var(--text-muted)",
                       marginTop: 12,
                       lineHeight: 1.75,
-                      fontSize: "0.9rem",
+                      fontSize: "1rem",
                     }}
                   >
                     {item.a}
@@ -906,7 +906,7 @@ export default function ChuFarmstayPage() {
           >
             <p
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 color: "var(--gold)",
@@ -933,7 +933,7 @@ export default function ChuFarmstayPage() {
             <p
               style={{
                 color: "var(--text-muted)",
-                fontSize: "0.92rem",
+                fontSize: "1rem",
                 maxWidth: 460,
                 margin: "0 auto 32px",
                 lineHeight: 1.7,

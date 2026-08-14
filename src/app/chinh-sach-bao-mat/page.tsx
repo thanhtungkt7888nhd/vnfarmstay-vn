@@ -98,7 +98,7 @@ export default function ChinhSachBaoMatPage() {
           >
             Chính sách <em style={{ color: "var(--gold)" }}>bảo mật</em>
           </h1>
-          <p style={{ color: "var(--text-dim)", fontSize: "0.85rem" }}>
+          <p style={{ color: "var(--text-dim)", fontSize: "0.88rem" }}>
             Cập nhật lần cuối: 29/04/2026
           </p>
         </section>
@@ -129,7 +129,7 @@ export default function ChinhSachBaoMatPage() {
                   style={{
                     color: "var(--text-muted)",
                     lineHeight: 1.8,
-                    fontSize: "0.92rem",
+                    fontSize: "1rem",
                   }}
                 >
                   {sec.content}
@@ -144,7 +144,7 @@ export default function ChinhSachBaoMatPage() {
                 background: "var(--bg-card)",
                 borderRadius: "var(--radius)",
                 border: "1px solid var(--gold-border)",
-                fontSize: "0.85rem",
+                fontSize: "0.88rem",
                 color: "var(--text-dim)",
                 lineHeight: 1.7,
               }}

@@ -66,7 +66,7 @@ export default function PhapLyPage() {
               borderRadius: 20,
               background: "var(--gold-dim)",
               border: "1px solid var(--gold-border)",
-              fontSize: "0.75rem",
+              fontSize: "0.8rem",
               fontWeight: 600,
               color: "var(--gold)",
               letterSpacing: "0.08em",
@@ -148,7 +148,7 @@ export default function PhapLyPage() {
                     borderRadius: 20,
                     background: "var(--gold-dim)",
                     border: "1px solid var(--gold-border)",
-                    fontSize: "0.68rem",
+                    fontSize: "0.72rem",
                     fontWeight: 600,
                     color: "var(--gold)",
                     marginBottom: 12,
@@ -230,7 +230,7 @@ export default function PhapLyPage() {
                 background: "var(--gold)",
                 color: "var(--bg-deep)",
                 fontWeight: 700,
-                fontSize: "0.9rem",
+                fontSize: "0.95rem",
                 transition: "var(--transition)",
               }}
             >

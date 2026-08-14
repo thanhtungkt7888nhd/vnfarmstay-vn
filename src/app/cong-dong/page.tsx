@@ -81,7 +81,7 @@ export default function CongDongPage() {
           <p
             style={{
               color: "var(--text-dim)",
-              fontSize: "0.95rem",
+              fontSize: "1rem",
               lineHeight: 1.8,
               textAlign: "center",
               marginTop: 20,

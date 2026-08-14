@@ -144,7 +144,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 style={{
                   padding: "5px 14px",
                   borderRadius: 4,
-                  fontSize: "0.7rem",
+                  fontSize: "0.72rem",
                   fontWeight: 700,
                   letterSpacing: "0.08em",
                   /* Palette Bộ IV: chỉ xanh mạ non + gold, không màu ngoài
@@ -172,7 +172,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
           >
             <p
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.1em",
                 color: "var(--gold)",
@@ -219,7 +219,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 <span
                   style={{
                     color: "rgba(255,255,255,0.6)",
-                    fontSize: "0.85rem",
+                    fontSize: "0.88rem",
                   }}
                 >
                   {farmstay.reviewCount} đánh giá
@@ -234,7 +234,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                     background: "rgba(255,255,255,0.1)",
                     border: "1px solid rgba(255,255,255,0.15)",
                     color: "rgba(255,255,255,0.8)",
-                    fontSize: "0.75rem",
+                    fontSize: "0.8rem",
                   }}
                 >
                   {tag}
@@ -295,7 +295,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   color: "var(--text-muted)",
                   lineHeight: 1.85,
                   marginBottom: 14,
-                  fontSize: "0.95rem",
+                  fontSize: "1rem",
                 }}
               >
                 {farmstay.name} ra đời từ tình yêu với mảnh đất{" "}
@@ -308,7 +308,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 style={{
                   color: "var(--text-muted)",
                   lineHeight: 1.85,
-                  fontSize: "0.95rem",
+                  fontSize: "1rem",
                 }}
               >
                 Mỗi mùa tại đây mang một sắc màu riêng —{" "}
@@ -372,7 +372,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                     />
                     <span
                       style={{
-                        fontSize: "0.85rem",
+                        fontSize: "0.88rem",
                         color: "var(--text-muted)",
                         fontWeight: 500,
                       }}
@@ -478,7 +478,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 >
                   {formatPrice(farmstay.price)}
                 </span>
-                <span style={{ fontSize: "0.85rem", color: "var(--text-dim)" }}>
+                <span style={{ fontSize: "0.88rem", color: "var(--text-dim)" }}>
                   /đêm
                 </span>
               </div>
@@ -491,12 +491,12 @@ export default async function FarmstayDetailPage({ params }: Props) {
                     marginBottom: 24,
                   }}
                 >
-                  <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>
+                  <span style={{ color: "var(--gold)", fontSize: "0.88rem" }}>
                     {"★".repeat(Math.round(farmstay.rating))}
                   </span>
                   {farmstay.reviewCount !== undefined && (
                     <span
-                      style={{ color: "var(--text-dim)", fontSize: "0.78rem" }}
+                      style={{ color: "var(--text-dim)", fontSize: "0.8rem" }}
                     >
                       {farmstay.reviewCount} đánh giá
                     </span>
@@ -529,7 +529,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                       htmlFor={field.id}
                       style={{
                         display: "block",
-                        fontSize: "0.68rem",
+                        fontSize: "0.72rem",
                         fontWeight: 700,
                         color: "var(--text-dim)",
                         letterSpacing: "0.1em",
@@ -545,7 +545,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                         background: "transparent",
                         border: "none",
                         color: "var(--text-primary)",
-                        fontSize: "0.9rem",
+                        fontSize: "0.95rem",
                         outline: "none",
                         width: "100%",
                         cursor: "pointer",
@@ -568,7 +568,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   htmlFor="guests"
                   style={{
                     display: "block",
-                    fontSize: "0.68rem",
+                    fontSize: "0.72rem",
                     fontWeight: 700,
                     color: "var(--text-dim)",
                     letterSpacing: "0.1em",
@@ -583,7 +583,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                     background: "transparent",
                     border: "none",
                     color: "var(--text-primary)",
-                    fontSize: "0.9rem",
+                    fontSize: "0.95rem",
                     outline: "none",
                     width: "100%",
                     cursor: "pointer",
@@ -670,7 +670,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
-                      fontSize: "0.82rem",
+                      fontSize: "0.8rem",
                       color: "var(--text-dim)",
                     }}
                   >
@@ -689,7 +689,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    fontSize: "0.9rem",
+                    fontSize: "0.95rem",
                     fontWeight: 700,
                     color: "var(--text-primary)",
                     paddingTop: 8,
@@ -743,7 +743,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
               <div>
                 <p
                   style={{
-                    fontSize: "0.82rem",
+                    fontSize: "0.8rem",
                     fontWeight: 700,
                     color: "var(--text-primary)",
                     marginBottom: 2,
@@ -753,7 +753,7 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 </p>
                 {/* Dòng "Tỷ lệ phản hồi 98% · Thường trả lời trong 1 giờ" đã GỠ
                     08/08/2026 — số tự chế, web không đo được tốc độ trả lời của chủ farm. */}
-                <p style={{ fontSize: "0.75rem", color: "var(--text-dim)" }}>
+                <p style={{ fontSize: "0.8rem", color: "var(--text-dim)" }}>
                   Liên hệ trực tiếp với chủ farm
                 </p>
               </div>

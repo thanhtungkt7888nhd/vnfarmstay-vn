@@ -65,7 +65,7 @@ export default async function CategoryPage({
             <p
               style={{
                 color: "var(--gold)",
-                fontSize: "0.78rem",
+                fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 marginBottom: 12,
@@ -85,7 +85,7 @@ export default async function CategoryPage({
             >
               {label}
             </h1>
-            <p style={{ color: "var(--text-dim)", fontSize: "0.9rem" }}>
+            <p style={{ color: "var(--text-dim)", fontSize: "0.95rem" }}>
               {livePosts.length} bài viết
             </p>
           </div>

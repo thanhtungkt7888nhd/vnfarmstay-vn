@@ -89,7 +89,7 @@ export function Navbar() {
                   style={{
                     padding: "6px 14px",
                     paddingBottom: "4px",
-                    fontSize: "0.85rem",
+                    fontSize: "0.88rem",
                     fontWeight: active ? 600 : 500,
                     color: active ? "var(--gold)" : "var(--text-muted)",
                     borderBottom: active
@@ -119,7 +119,7 @@ export function Navbar() {
               padding: "7px 18px",
               borderRadius: "20px",
               border: "1px solid rgba(212,168,83,0.45)",
-              fontSize: "0.82rem",
+              fontSize: "0.8rem",
               fontWeight: 600,
               color: "var(--gold)",
               transition: "var(--transition)",
@@ -136,7 +136,7 @@ export function Navbar() {
               borderRadius: "20px",
               background: "var(--gold)",
               color: "var(--bg-deep)",
-              fontSize: "0.82rem",
+              fontSize: "0.8rem",
               fontWeight: 700,
               transition: "var(--transition)",
             }}
@@ -229,7 +229,7 @@ export function Navbar() {
               borderRadius: "var(--radius-sm)",
               color: "var(--gold)",
               fontWeight: 600,
-              fontSize: "0.9rem",
+              fontSize: "0.95rem",
             }}
           >
             Chủ farmstay
@@ -246,7 +246,7 @@ export function Navbar() {
               color: "var(--bg-deep)",
               fontWeight: 700,
               textAlign: "center",
-              fontSize: "0.9rem",
+              fontSize: "0.95rem",
             }}
           >
             + Đăng farmstay

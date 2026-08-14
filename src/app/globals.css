@@ -86,9 +86,29 @@ h3 {
 /* ── K5 Đoạn văn — căn đều 2 bên (sàn BAN-DO-BO-CUC-CHU, lệnh Ông 25/07/2026) ──
    Đoạn văn thân bài phải justify. Khối CỐ Ý căn giữa/phải (hero, CTA, khối
    .text-center) được loại trừ bên dưới để rule này không đè ý đồ bố cục. */
-p {
+p,
+blockquote,
+dd {
   text-align: justify;
   text-justify: inter-word;
+  /* Sàn MEASURE (Bringhurst 45–75 ký tự/dòng, trần Butterick 90): container
+     rộng 720–900px với chữ 16px cho ra 85–95 ký tự/dòng — mắt phải quét quá
+     xa mỗi lần xuống dòng. 52ch ≈ 568px ≈ 69 ký tự với DM Sans (đo thật: 68ch cho ra 90 ký tự — đơn vị ch tính theo bề rộng số 0, rộng hơn ký tự trung bình tiếng Việt) giữ dòng trong khoảng đọc tốt mà không đụng
+     đoạn văn trong thẻ (vốn đã hẹp hơn 68ch nên rule này không tác dụng ở đó). */
+  max-width: 52ch;
+}
+
+/* Mục danh sách chỉ nhận SÀN MEASURE, KHÔNG nhận justify — danh sách gạch
+   đầu dòng thường ngắn, căn đều 2 bên sẽ giãn chữ rời rạc rất xấu. */
+li {
+  max-width: 52ch;
+}
+
+/* Đoạn văn CỐ Ý căn giữa vẫn phải ở giữa sau khi bị giới hạn bề ngang. */
+[style*="text-align:center"] p,
+[style*="text-align: center"] p,
+.text-center p {
+  margin-inline: auto;
 }
 
 [style*="text-align:center"] p,

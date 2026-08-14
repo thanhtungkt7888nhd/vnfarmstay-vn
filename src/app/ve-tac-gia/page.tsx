@@ -73,7 +73,7 @@ export default function VeTacGiaPage() {
           <div style={{ maxWidth: 720, margin: "0 auto" }}>
             <p
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 color: "var(--gold)",
@@ -185,7 +185,7 @@ export default function VeTacGiaPage() {
                 <p
                   style={{
                     color: "var(--gold)",
-                    fontSize: "0.9rem",
+                    fontSize: "1rem",
                     fontWeight: 600,
                     marginBottom: 8,
                   }}
@@ -198,7 +198,7 @@ export default function VeTacGiaPage() {
                   rel="noopener noreferrer"
                   style={{
                     color: "var(--text-dim)",
-                    fontSize: "0.82rem",
+                    fontSize: "0.8rem",
                     textDecoration: "underline",
                     textUnderlineOffset: 3,
                   }}
@@ -221,7 +221,7 @@ export default function VeTacGiaPage() {
               <p
                 style={{
                   color: "var(--text-muted)",
-                  fontSize: "0.95rem",
+                  fontSize: "1rem",
                   lineHeight: 1.8,
                 }}
               >
@@ -235,7 +235,7 @@ export default function VeTacGiaPage() {
               <p
                 style={{
                   color: "var(--text-muted)",
-                  fontSize: "0.95rem",
+                  fontSize: "1rem",
                   lineHeight: 1.8,
                 }}
               >
@@ -262,7 +262,7 @@ export default function VeTacGiaPage() {
                     background: "rgba(212,168,83,0.1)",
                     border: "1px solid var(--gold-border)",
                     color: "var(--gold)",
-                    fontSize: "0.78rem",
+                    fontSize: "0.8rem",
                     fontWeight: 600,
                     padding: "5px 14px",
                     borderRadius: 20,
@@ -291,7 +291,7 @@ export default function VeTacGiaPage() {
             <p
               style={{
                 color: "var(--text-dim)",
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 lineHeight: 1.7,
               }}
             >
@@ -328,7 +328,7 @@ export default function VeTacGiaPage() {
             <p
               style={{
                 color: "var(--text-muted)",
-                fontSize: "0.92rem",
+                fontSize: "1rem",
                 maxWidth: 460,
                 margin: "0 auto 24px",
                 lineHeight: 1.7,
@@ -344,7 +344,7 @@ export default function VeTacGiaPage() {
                 background: "var(--gold)",
                 color: "#0f2318",
                 fontWeight: 700,
-                fontSize: "0.9rem",
+                fontSize: "0.95rem",
                 padding: "12px 28px",
                 borderRadius: "var(--radius-sm)",
                 textDecoration: "none",

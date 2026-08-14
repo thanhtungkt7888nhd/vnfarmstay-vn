@@ -143,7 +143,7 @@ export default function Error({ error, reset }: ErrorProps) {
         <p
           style={{
             marginTop: 48,
-            fontSize: "0.75rem",
+            fontSize: "0.8rem",
             color: "var(--text-dim)",
             opacity: 0.6,
           }}

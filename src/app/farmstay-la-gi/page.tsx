@@ -345,7 +345,7 @@ export default function FarmstayLaGiPage() {
                       <td
                         style={{
                           color: "var(--text-muted)",
-                          fontSize: "0.92rem",
+                          fontSize: "0.95rem",
                         }}
                       >
                         {r.lang}
@@ -353,7 +353,7 @@ export default function FarmstayLaGiPage() {
                       <td
                         style={{
                           color: "var(--text-muted)",
-                          fontSize: "0.92rem",
+                          fontSize: "0.95rem",
                         }}
                       >
                         {r.trongTam}
@@ -441,7 +441,7 @@ export default function FarmstayLaGiPage() {
                   <p
                     style={{
                       color: "var(--text-muted)",
-                      fontSize: "0.9rem",
+                      fontSize: "1rem",
                       lineHeight: 1.75,
                     }}
                   >
@@ -461,7 +461,7 @@ export default function FarmstayLaGiPage() {
                   border: "1px solid var(--gold-border)",
                   color: "var(--gold)",
                   fontWeight: 600,
-                  fontSize: "0.9rem",
+                  fontSize: "0.95rem",
                   transition: "var(--transition)",
                 }}
               >
@@ -523,7 +523,7 @@ export default function FarmstayLaGiPage() {
                       key={t}
                       style={{
                         color: "var(--text-muted)",
-                        fontSize: "0.92rem",
+                        fontSize: "0.95rem",
                         lineHeight: 1.7,
                         paddingLeft: 20,
                         position: "relative",
@@ -569,7 +569,7 @@ export default function FarmstayLaGiPage() {
                       key={t}
                       style={{
                         color: "var(--text-muted)",
-                        fontSize: "0.92rem",
+                        fontSize: "0.95rem",
                         lineHeight: 1.7,
                         paddingLeft: 20,
                         position: "relative",
@@ -650,7 +650,7 @@ export default function FarmstayLaGiPage() {
                     <p
                       style={{
                         color: "var(--text-muted)",
-                        fontSize: "0.92rem",
+                        fontSize: "1rem",
                         lineHeight: 1.75,
                       }}
                     >
@@ -694,7 +694,7 @@ export default function FarmstayLaGiPage() {
                       cursor: "pointer",
                       fontWeight: 600,
                       color: "var(--text-primary)",
-                      fontSize: "0.98rem",
+                      fontSize: "1rem",
                       lineHeight: 1.5,
                     }}
                   >
@@ -704,7 +704,7 @@ export default function FarmstayLaGiPage() {
                     style={{
                       marginTop: 14,
                       color: "var(--text-muted)",
-                      fontSize: "0.93rem",
+                      fontSize: "1rem",
                       lineHeight: 1.8,
                     }}
                   >
@@ -748,7 +748,7 @@ export default function FarmstayLaGiPage() {
                 color: "var(--text-muted)",
                 lineHeight: 1.8,
                 marginBottom: 26,
-                fontSize: "0.95rem",
+                fontSize: "1rem",
               }}
             >
               vnfarmstay.vn giới thiệu farmstay hoàn toàn miễn phí — không phí
@@ -765,7 +765,7 @@ export default function FarmstayLaGiPage() {
                 background: "var(--gold)",
                 color: "var(--bg-deep)",
                 fontWeight: 700,
-                fontSize: "0.9rem",
+                fontSize: "0.95rem",
                 transition: "var(--transition)",
               }}
             >

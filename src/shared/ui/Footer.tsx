@@ -110,7 +110,7 @@ export function Footer() {
       >
         <p
           style={{
-            fontSize: "0.88rem",
+            fontSize: "1rem",
             color: "var(--text-muted)",
             marginBottom: 12,
           }}
@@ -125,7 +125,7 @@ export function Footer() {
             borderRadius: 20,
             border: "1px solid var(--gold-border)",
             color: "var(--gold)",
-            fontSize: "0.82rem",
+            fontSize: "0.8rem",
             fontWeight: 600,
             transition: "var(--transition)",
           }}

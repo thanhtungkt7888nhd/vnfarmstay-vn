@@ -157,7 +157,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
                 border: "none",
                 outline: "none",
                 color: "var(--text-primary)",
-                fontSize: "0.9rem",
+                fontSize: "0.95rem",
               }}
             />
             <button
@@ -184,7 +184,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           <div style={{ maxWidth: 560, margin: "0 auto 60px" }}>
             <p
               style={{
-                fontSize: "0.95rem",
+                fontSize: "1rem",
                 color: "var(--text-muted)",
                 lineHeight: 1.7,
                 marginBottom: 20,
@@ -389,7 +389,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
               border: "1px solid var(--gold-border)",
               color: "var(--gold)",
               fontWeight: 600,
-              fontSize: "0.9rem",
+              fontSize: "0.95rem",
               textDecoration: "none",
               transition: "var(--transition)",
             }}
@@ -432,7 +432,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
                     activeChip === chip.value
                       ? "var(--bg-deep)"
                       : "var(--text-muted)",
-                  fontSize: "0.82rem",
+                  fontSize: "0.8rem",
                   fontWeight: activeChip === chip.value ? 700 : 400,
                   cursor: "pointer",
                   whiteSpace: "nowrap",
@@ -479,7 +479,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
                         region === r.value
                           ? "var(--gold)"
                           : "var(--text-muted)",
-                      fontSize: "0.82rem",
+                      fontSize: "0.8rem",
                       fontWeight: region === r.value ? 600 : 400,
                       cursor: "pointer",
                       transition: "var(--transition)",
@@ -492,7 +492,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
 
               <p
                 style={{
-                  fontSize: "0.85rem",
+                  fontSize: "1rem",
                   color: "var(--text-muted)",
                   marginBottom: 20,
                 }}

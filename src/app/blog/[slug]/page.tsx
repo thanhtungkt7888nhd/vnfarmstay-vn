@@ -176,7 +176,7 @@ export default async function BlogPostPage({
                 display: "inline-block",
                 background: "rgba(196,160,70,0.15)",
                 color: "var(--gold)",
-                fontSize: "0.75rem",
+                fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.08em",
                 padding: "4px 12px",
@@ -211,7 +211,7 @@ export default async function BlogPostPage({
               alignItems: "center",
               gap: 16,
               color: "var(--text-dim)",
-              fontSize: "0.82rem",
+              fontSize: "0.8rem",
               marginBottom: 32,
               paddingBottom: 24,
               borderBottom: "1px solid var(--border)",
@@ -273,7 +273,7 @@ export default async function BlogPostPage({
                     background: "var(--bg-card)",
                     border: "1px solid var(--border)",
                     color: "var(--text-muted)",
-                    fontSize: "0.78rem",
+                    fontSize: "0.8rem",
                     padding: "4px 12px",
                     borderRadius: 20,
                     textDecoration: "none",
@@ -333,7 +333,7 @@ export default async function BlogPostPage({
                         color: "var(--text-muted)",
                         marginTop: 12,
                         lineHeight: 1.7,
-                        fontSize: "0.92rem",
+                        fontSize: "1rem",
                       }}
                     >
                       {item.answer}
