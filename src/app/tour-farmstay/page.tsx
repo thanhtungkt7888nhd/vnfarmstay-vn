@@ -17,6 +17,7 @@ import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
   title: "Tour Farmstay — Bản đồ vùng nông nghiệp Việt Nam theo mùa",
@@ -440,7 +441,7 @@ export default function TourFarmstayPage() {
                       lineHeight: 1.3,
                     }}
                   >
-                    {v.ten}
+                    {giuTuGhep(v.ten)}
                   </h3>
                   <div
                     style={{

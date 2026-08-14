@@ -110,7 +110,7 @@ export function FarmstayCard({ farmstay }: Props) {
             fontWeight: 600,
             color: "var(--text-primary)",
             marginBottom: 8,
-            lineHeight: 1.35,
+            lineHeight: 1.25,
           }}
         >
           {farmstay.name}

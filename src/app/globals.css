@@ -105,9 +105,12 @@ li {
 }
 
 /* Đoạn văn CỐ Ý căn giữa vẫn phải ở giữa sau khi bị giới hạn bề ngang. */
-[style*="text-align:center"] p,
-[style*="text-align: center"] p,
+[style*="center"] p,
 .text-center p {
+  /* Selector rộng ("center" ở bất kỳ đâu trong style tổ tiên) là CỐ Ý: đoạn văn
+     kế thừa căn giữa từ tổ tiên cách 2-3 cấp, khai text-align nằm ở section chứ
+     không ở cha trực tiếp — selector hẹp theo cha bắt trượt, để lại hộp 52ch bám
+     mép trái trong khi chữ căn giữa (thấy ở /chu-farmstay). */
   margin-inline: auto;
 }
 
@@ -246,6 +249,15 @@ img {
   position: relative;
   overflow: hidden;
   display: inline-block;
+}
+
+/* Tiêu đề mang .shine phải CHIẾM DÒNG RIÊNG.
+   inline-block ở trên khiến H1 trôi lên nằm cạnh kicker inline-block đứng
+   trước nó — hero /chu-farmstay từng hiện kicker bên trái, H1 lệch hẳn sang
+   phải. Vệt sáng I5 vẫn chạy bình thường vì chỉ cần position + overflow. */
+h1.shine,
+h2.shine {
+  display: block;
 }
 
 .shine::after {

@@ -16,6 +16,7 @@ import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
   title: "Dành cho Chủ Farmstay — Đưa farm của bạn lên vnfarmstay.vn",
@@ -46,7 +47,7 @@ const steps = [
   },
   {
     num: "02",
-    title: "Chúng tôi viết lại thành câu chuyện",
+    title: "Chúng tôi viết lại thành câu chuyện",
     desc: "Không phải mẩu rao vặt. Là câu chuyện về vùng đất, mùa vụ và con người ở farm bạn — thứ khiến người đọc muốn tới tận nơi.",
   },
   {
@@ -422,7 +423,7 @@ export default function ChuFarmstayPage() {
                       marginBottom: 10,
                     }}
                   >
-                    {step.title}
+                    {giuTuGhep(step.title)}
                   </h3>
                   <p
                     style={{
@@ -473,7 +474,7 @@ export default function ChuFarmstayPage() {
             >
               {benefits.map((b) => (
                 <div
-                  key={b.title}
+                  key={giuTuGhep(b.title)}
                   style={{
                     background: "var(--bg-card)",
                     border: "1px solid var(--border)",
@@ -571,7 +572,7 @@ export default function ChuFarmstayPage() {
                         color: t.mau,
                       }}
                     >
-                      {t.ten}
+                      {giuTuGhep(t.ten)}
                     </span>
                     <span
                       style={{
@@ -685,7 +686,7 @@ export default function ChuFarmstayPage() {
                       marginBottom: 9,
                     }}
                   >
-                    {l.ten}
+                    {giuTuGhep(l.ten)}
                   </h3>
                   <p
                     style={{
@@ -717,7 +718,7 @@ export default function ChuFarmstayPage() {
                 marginBottom: 16,
               }}
             >
-              Một công sức, nhiều lần hiệu quả
+              Một công sức, nhiều lần hiệu&nbsp;quả
             </h2>
             <p
               style={{
@@ -764,7 +765,7 @@ export default function ChuFarmstayPage() {
                       marginBottom: 9,
                     }}
                   >
-                    {c.ten}
+                    {giuTuGhep(c.ten)}
                   </h3>
                   <p
                     style={{
@@ -815,7 +816,7 @@ export default function ChuFarmstayPage() {
                       marginBottom: 6,
                     }}
                   >
-                    {c.ten}
+                    {giuTuGhep(c.ten)}
                   </strong>
                   <span
                     style={{

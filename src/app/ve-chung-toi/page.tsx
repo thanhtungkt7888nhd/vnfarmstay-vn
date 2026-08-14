@@ -29,6 +29,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
   title: "Về vnfarmstay.vn — Hạ tầng chung của cộng đồng Farmstay Việt Nam",
@@ -261,7 +262,7 @@ export default function VeChungToiPage() {
                 marginBottom: 26,
               }}
             >
-              Chúng ta không thua vì thiếu giá trị
+              Chúng ta không thua vì thiếu giá&nbsp;trị
             </h2>
             <div className="prose" style={{ maxWidth: "none" }}>
               <p>
@@ -354,7 +355,7 @@ export default function VeChungToiPage() {
                       marginBottom: 10,
                     }}
                   >
-                    {k.ten}
+                    {giuTuGhep(k.ten)}
                   </h3>
                   <p
                     style={{
@@ -489,7 +490,7 @@ export default function VeChungToiPage() {
                         marginBottom: 9,
                       }}
                     >
-                      {l.ten}
+                      {giuTuGhep(l.ten)}
                     </h3>
                     <p
                       style={{
@@ -647,7 +648,7 @@ export default function VeChungToiPage() {
                       marginBottom: 10,
                     }}
                   >
-                    {k.ten}
+                    {giuTuGhep(k.ten)}
                   </h3>
                   <p
                     style={{

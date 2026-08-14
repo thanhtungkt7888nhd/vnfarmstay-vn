@@ -115,7 +115,7 @@ export function Footer() {
             marginBottom: 12,
           }}
         >
-          Bạn có farmstay muốn chia sẻ với cộng đồng?
+          Bạn có farmstay muốn chia sẻ với cộng&nbsp;đồng?
         </p>
         <Link
           href="/dang-farmstay"

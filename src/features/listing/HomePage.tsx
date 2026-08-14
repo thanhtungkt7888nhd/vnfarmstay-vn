@@ -292,7 +292,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
               fontFamily: "var(--font-display), serif",
               fontSize: "clamp(1.5rem, 3.2vw, 2.3rem)",
               fontWeight: 700,
-              lineHeight: 1.35,
+              lineHeight: 1.25,
               color: "var(--text-primary)",
               marginBottom: 26,
             }}

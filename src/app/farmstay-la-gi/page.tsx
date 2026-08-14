@@ -17,6 +17,7 @@ import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
   title: "Farmstay là gì? Phân biệt farmstay, homestay và resort sinh thái",
@@ -424,7 +425,7 @@ export default function FarmstayLaGiPage() {
                       marginBottom: 6,
                     }}
                   >
-                    {l.ten}
+                    {giuTuGhep(l.ten)}
                   </h3>
                   <div
                     style={{
@@ -645,7 +646,7 @@ export default function FarmstayLaGiPage() {
                         marginBottom: 6,
                       }}
                     >
-                      {c.ten}
+                      {giuTuGhep(c.ten)}
                     </h3>
                     <p
                       style={{
