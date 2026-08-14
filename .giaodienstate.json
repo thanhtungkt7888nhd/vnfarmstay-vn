@@ -1513,5 +1513,85 @@
       "fx-text-clip áp cho H2 /tour-farmstay chạy lúc load, người dùng cuộn tới thì đã xong — vô hại nhưng hiệu quả thấp; cân nhắc đổi sang cơ chế theo cuộn nếu web nhận framer-motion",
       "ĐỀ XUẤT KHO CHUNG (chưa làm, ngoài ô này): 3 lớp CSS vừa viết (fx-hover-scale-img/fx-arrow-slide/fx-ripple) nên đưa vào mục C của effects.css trong 05-TEMPLATE-CHUAN để mọi web CSS-thuần khác dùng được"
     ]
+  },
+  "dot3": {
+    "ngay": "20260811",
+    "lyDo": "Đợt 2 kết luận 378 WARN bố cục chữ là “không vá được / cố ý”. Mổ ra thì phần lớn LÀ LỖI THẬT: thang cỡ chữ 14 nấc rời rạc, đoạn văn 13,6–15,2px dưới sàn iA 16px, cột chữ 85–95 ký tự/dòng.",
+    "nenDauDot": {
+      "checkLuat": "78 PASS · 49 WARN · 5 FAIL",
+      "boCucChu": "1 FAIL · 378 WARN",
+      "canAnh": "0 lỗi/19 ảnh",
+      "matDo": "4/4 đạt sàn"
+    },
+    "vongLap": [
+      {
+        "vong": 1,
+        "muc": "1-dung-chuan",
+        "soLechVa": 3,
+        "chinh": [
+          "thang cỡ chữ 14 nấc → 5 nấc (0.72/0.8/0.88/0.95/1) — 104 chỗ",
+          "41 đoạn văn <p> lên sàn 16px → chữ nhỏ 128→24",
+          "sàn measure 52ch cho p/blockquote/dd + li → vượt trần 90 ký tự: 66→12"
+        ],
+        "doSo": "378→242 WARN"
+      },
+      {
+        "vong": 2,
+        "muc": "2-deu-khap",
+        "soLechVa": 5,
+        "chinh": [
+          "H1 .shine display inline-block nằm CẠNH kicker → hero /chu-farmstay lệch hẳn phải (lỗi có sẵn, chỉ lộ khi nhìn desktop)",
+          "14 tiêu đề nối giuTuGhep — hàm web tự viết nhưng chỉ dùng 1 chỗ, mồ côi",
+          "giãn dòng tiêu đề 1.35→1.25 (2 chỗ)",
+          "hộp đoạn căn giữa bám mép trái do selector căn giữa bắt trượt"
+        ],
+        "doSo": "242→227 WARN"
+      },
+      {
+        "vong": 3,
+        "muc": "3-trang-thai-bien",
+        "soLechVa": 0,
+        "chinh": [
+          "kiểm 375/414/768 sau đổi cỡ chữ + cột chữ: 0 tràn ngang, 0 nút <44px",
+          "THỬ bỏ justify ở <640px cho hết “sông trắng” — mắt thấy đẹp hơn thật nhưng cổng can-deu vọt 1→79 FAIL ⇒ RÚT LẠI"
+        ],
+        "doSo": "giữ 227 WARN · 1 FAIL"
+      },
+      {
+        "vong": 4,
+        "muc": "4-lam-giau",
+        "soLechVa": 7,
+        "chinh": [
+          "viết 3 recipe CSS thuần mới: scrollCue · clipPathHoverReveal · slideUpCurtain",
+          "áp: gợi ý cuộn dưới hero · thẻ danh mục /blog · khối câu chuyện trang chủ",
+          "thêm kicker cho 4 trang phụ thiếu hẳn"
+        ],
+        "doSo": "trang_chu B 4→5, E 5→6"
+      },
+      {
+        "vong": 5,
+        "muc": "5-dinh-hoi-quy",
+        "soLechVa": 2,
+        "chinh": [
+          "HỒI QUY do chính vòng 4: /blog và /ve-tac-gia thành 2 kicker chồng nhau (trang đã có nhãn sẵn không dùng class section-kicker nên grep đếm 0) — đúng lỗi đọc-code-thay-vì-nhìn",
+          "gỡ nhãn trùng + chuyển nhãn sẵn có sang class chuẩn",
+          "đối chiếu 13 route: 13/13 có đúng 1 H1 + I5 shine; kicker phủ 10/13 (3 trang pháp lý không cần)"
+        ]
+      }
+    ],
+    "ketQua": {
+      "boCucChu": "378 → 227 WARN (giảm 151, −40%); FAIL giữ 1 (báo oan khối flex)",
+      "chuNhoDuoiSan": "128 → 24",
+      "vuotTran90KyTu": "66 → 12",
+      "checkLuat": "79 PASS · 49 WARN · 5 FAIL (nền 78/49/5 — KHÔNG cổng nào xấu đi, +1 PASS)",
+      "canAnh": "0 lỗi/19 ảnh",
+      "matDo": "4/4 đạt sàn"
+    },
+    "conSot": [
+      "⚠️ MÂU THUẪN CHUẨN cần nhà máy phán: cổng can-deu đòi text-align justify ở MỌI khổ màn, nhưng ở <640px mỗi dòng chỉ ~40 ký tự nên justify tạo “dòng sông trắng” — mắt thấy xấu rõ. Đã thử bỏ justify dưới 640px: đẹp hơn nhưng cổng vọt 1→79 FAIL nên RÚT LẠI (không tự nới cổng). Đề nghị: cho can-deu miễn trừ dưới ngưỡng bề ngang, hoặc chấp nhận sông trắng trên điện thoại.",
+      "227 WARN còn lại: 149 measure (60 hẹp <40 ở mobile do thẻ hẹp — không sửa được nếu không đổi bố cục thẻ; 12 còn vượt trần 90 nằm ở span/khối không phải p/li), 50 S-1 cắt từ ghép ở ĐOẠN VĂN (từ chối: chính docstring giu-tu-ghep và máy đo đều ghi bằng chứng gốc chỉ đo trên headline), 24 chữ nhỏ (nhãn/kicker cố ý), 4 dna.",
+      "5 FAIL check-luat y nguyên, đều ngoài phạm vi giao diện (sec.1 HSTS · sec.2 CSP · seo.2-head · priv.28 consent gate · content.41 báo oan số thật Ông cấp).",
+      "ĐỀ XUẤT KHO CHUNG (chưa làm, ngoài ô này): 6 lớp CSS đã viết cho web này (fx-hover-scale-img · fx-arrow-slide · fx-ripple · fx-scroll-cue · fx-clip-reveal · fx-curtain-up) nên đưa vào mục C effects.css của 05-TEMPLATE-CHUAN — mọi web CSS-thuần khác đang bị đơn thuốc từ chối vì thiếu đúng những lớp này."
+    ]
   }
 }

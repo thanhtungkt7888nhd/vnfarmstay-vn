@@ -44,18 +44,7 @@ export default async function BlogPage() {
           }}
         >
           <div style={{ maxWidth: 720, margin: "0 auto" }}>
-            <p
-              style={{
-                color: "var(--gold)",
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
-                marginBottom: 12,
-              }}
-            >
-              BLOG & HƯỚNG DẪN
-            </p>
-            <span className="section-kicker reveal">Câu chuyện vùng miền</span>
+            <span className="section-kicker reveal">Blog & Hướng dẫn</span>
             <h1
               className="shine reveal"
               style={{

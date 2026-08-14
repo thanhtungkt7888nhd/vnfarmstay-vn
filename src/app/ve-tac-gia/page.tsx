@@ -71,18 +71,6 @@ export default function VeTacGiaPage() {
           }}
         >
           <div style={{ maxWidth: 720, margin: "0 auto" }}>
-            <p
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
-                color: "var(--gold)",
-                marginBottom: 16,
-                textTransform: "uppercase",
-              }}
-            >
-              Người sáng lập
-            </p>
             <span className="section-kicker reveal">Người sáng lập</span>
             <h1
               className="shine reveal"
