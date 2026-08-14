@@ -763,3 +763,36 @@ time,
 .skip-link:focus-visible {
   top: 8px;
 }
+
+/* ══ Vùng chạm 44px cho liên kết footer + nút mở menu (WCAG 2.5.5) ══════
+   Đo THẬT trên trình duyệt 11/08/2026: /ve-tac-gia có 25 liên kết cao
+   17–40px, riêng footer 15 cái cao 24px. Cổng a11y.26 vẫn PASS vì nó soi
+   MÃ (có khai kích thước không), mù với chiều cao render thật. Footer là
+   thành phần toàn cục nên lỗi này nhân ra MỌI trang.
+   Dùng padding chứ không dùng height cứng để chữ vẫn ăn theo cỡ chữ. */
+footer a,
+footer button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* Liên kết trong thanh điều hướng và đường dẫn (breadcrumb): logo cao 36px,
+   mục breadcrumb cao 24px — đều dưới chuẩn chạm. Link nằm TRONG dòng văn bản
+   thì WCAG 2.5.5 miễn trừ, nên rule này chỉ nhắm nav/header. */
+header a,
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* Nút mở/đóng menu mobile — vùng chạm vuông 44px */
+nav button[aria-expanded],
+header button[aria-expanded] {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

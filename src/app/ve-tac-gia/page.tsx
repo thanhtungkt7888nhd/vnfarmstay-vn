@@ -3,6 +3,7 @@
  * E-E-A-T signal quan trọng: Google cần biết ai đứng sau nội dung.
  */
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
@@ -10,17 +11,21 @@ import { JsonLd } from "@/shared/ui/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import type { WithContext, Person } from "schema-dts";
 
-export const metadata: Metadata = {
-  title: "Về tác giả — Phạm Thanh Tùng | vnfarmstay.vn",
+/* Dùng buildMetadata() thay vì khai tay (quy tắc web #3): bản khai tay
+   trước đây KHÔNG có canonical — đo trên trình duyệt 11/08/2026 thấy trang
+   này là route DUY NHẤT thiếu thẻ canonical trong 13 route. */
+export const metadata: Metadata = buildMetadata({
+  title: "Về tác giả — Phạm Thanh Tùng",
   description:
     "Phạm Thanh Tùng — Nhà Hoạch Định, người sáng lập vnfarmstay.vn. Chuyên gia hoạch định chiến lược nông nghiệp sinh thái và du lịch nông thôn Việt Nam.",
-  openGraph: {
-    title: "Phạm Thanh Tùng — Nhà Hoạch Định | vnfarmstay.vn",
-    description:
-      "Người sáng lập vnfarmstay.vn — nền tảng du lịch nông nghiệp đích thực Việt Nam.",
-    type: "profile",
-  },
-};
+  canonical: "/ve-tac-gia",
+  keywords: [
+    "phạm thanh tùng",
+    "nhà hoạch định",
+    "người sáng lập vnfarmstay",
+    "hoạch định nông nghiệp sinh thái",
+  ],
+});
 
 const founderSchema: WithContext<Person> = {
   "@context": "https://schema.org",
