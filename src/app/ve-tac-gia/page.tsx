@@ -83,6 +83,7 @@ export default function VeTacGiaPage() {
             >
               Người sáng lập
             </p>
+            <span className="section-kicker reveal">Người sáng lập</span>
             <h1
               className="shine reveal"
               style={{

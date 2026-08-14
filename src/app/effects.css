@@ -954,3 +954,109 @@
     animation: none;
   }
 }
+
+/* ══ MỤC E — 3 recipe rút thêm 11/08/2026 (cổng SÀN≠TRẦN, đợt 3) ═══════
+   Cùng cách làm mục D: web không có framer-motion nên viết bản CSS thuần,
+   dùng token Bộ IV, tôn trọng prefers-reduced-motion ở cuối.
+═══════════════════════════════════════════════════════════════════════ */
+
+/* scrollCue — gợi ý cuộn ngay dưới hero. Mũi tên trôi xuống rồi mờ đi,
+   nhịp chậm 2,4s đúng Bộ IV (không giật, không hối). */
+.fx-scroll-cue {
+  display: block;
+  width: 22px;
+  height: 34px;
+  margin: 0 auto;
+  border: 1px solid var(--gold-border, oklch(0.72 0.2 75 / 0.4));
+  border-radius: 12px;
+  position: relative;
+}
+.fx-scroll-cue::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 3px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--gold, oklch(0.72 0.2 75));
+  transform: translateX(-50%);
+  animation: fx-cue-drop 2.4s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94))
+    infinite;
+}
+@keyframes fx-cue-drop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* clipPathHoverReveal — thẻ mở ra một dải sáng chéo khi rê chuột.
+   Khác fx-card-sheen ở chỗ dùng clip-path nên mép cắt sắc, hợp thẻ có viền. */
+.fx-clip-reveal {
+  position: relative;
+  overflow: hidden;
+}
+.fx-clip-reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    var(--gold-dim, oklch(0.72 0.2 75 / 0.14)) 50%,
+    transparent 70%
+  );
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.55s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94));
+  pointer-events: none;
+}
+.fx-clip-reveal:hover::after,
+.fx-clip-reveal:focus-within::after {
+  clip-path: inset(0 0 0 0);
+}
+
+/* slideUpCurtain — khối trồi lên như màn sân khấu khi cuộn tới.
+   Dùng animation-timeline: view() nên KHÔNG tốn JS; trình duyệt chưa hỗ trợ
+   thì khối hiện bình thường (không có trạng thái ẩn vĩnh viễn). */
+@supports (animation-timeline: view()) {
+  .fx-curtain-up {
+    animation: fx-curtain 1s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94))
+      both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+  @keyframes fx-curtain {
+    from {
+      clip-path: inset(100% 0 0 0);
+      transform: translateY(24px);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-scroll-cue::after {
+    animation: none;
+    opacity: 0.8;
+  }
+  .fx-clip-reveal::after {
+    transition: none;
+  }
+  .fx-curtain-up {
+    animation: none;
+  }
+}

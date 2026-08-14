@@ -61,6 +61,9 @@ export default function DangFarmstayPage() {
             ]}
           />
 
+          <span className="section-kicker reveal">
+            Miễn phí, không hoa hồng
+          </span>
           <h1
             className="shine reveal"
             style={{

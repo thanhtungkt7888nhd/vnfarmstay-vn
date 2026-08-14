@@ -55,6 +55,7 @@ export default async function BlogPage() {
             >
               BLOG & HƯỚNG DẪN
             </p>
+            <span className="section-kicker reveal">Câu chuyện vùng miền</span>
             <h1
               className="shine reveal"
               style={{
@@ -119,7 +120,7 @@ export default async function BlogPage() {
                 <a
                   key={slug}
                   href={`/danh-muc/${slug}`}
-                  className="fx-hover-lift"
+                  className="fx-hover-lift fx-clip-reveal"
                   style={{
                     background: "var(--bg-main)",
                     border: "1px solid var(--border)",

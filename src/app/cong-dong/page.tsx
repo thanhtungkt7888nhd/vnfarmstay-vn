@@ -38,6 +38,7 @@ export default function CongDongPage() {
             textAlign: "center",
           }}
         >
+          <span className="section-kicker reveal">Hỏi đáp cùng nhau</span>
           <h1
             className="shine reveal"
             style={{

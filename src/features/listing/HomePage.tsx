@@ -237,6 +237,13 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
             .hero-wave { animation: none !important; }
           }
         `}</style>
+        {/* Gợi ý cuộn (scrollCue) — hero cao 100vh nên người dùng dễ tưởng
+            trang chỉ có bấy nhiêu; chấm gold trôi xuống nói "còn nữa ở dưới". */}
+        <div
+          className="fx-scroll-cue"
+          aria-hidden="true"
+          style={{ marginTop: 8 }}
+        />
         <div className="hero-waves" aria-hidden="true">
           {/* Lớp 1 — xa nhất, đỉnh cao nhất, chậm nhất */}
           <svg
@@ -279,6 +286,7 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           nói ở đây chứ không đợi họ bấm sang /ve-chung-toi. ── */}
       <section
         aria-label="Lẽ sống của vnfarmstay.vn"
+        className="fx-curtain-up"
         style={{
           background: "var(--bg-deep)",
           padding: "84px 24px",
