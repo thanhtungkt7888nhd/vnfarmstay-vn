@@ -104,6 +104,12 @@ li {
   max-width: 52ch;
 }
 
+/* ĐÃ THỬ VÀ RÚT LẠI 11/08/2026 — bỏ căn đều 2 bên ở khổ <640px cho hết
+   "dòng sông trắng" trên điện thoại: mắt thấy đẹp hơn thật, NHƯNG cổng
+   can-deu của máy kiểm đòi justify ở MỌI khổ màn → 1 FAIL vọt lên 79 FAIL.
+   Sàn máy thắng mắt người. Mâu thuẫn này ghi vào sổ bàn giao để nhà máy
+   quyết, KHÔNG tự nới cổng (cấm sửa máy kiểm). */
+
 /* Đoạn văn CỐ Ý căn giữa vẫn phải ở giữa sau khi bị giới hạn bề ngang. */
 [style*="center"] p,
 .text-center p {
