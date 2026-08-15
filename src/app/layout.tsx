@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ConsentGate } from "@/shared/ui/ConsentGate";
 import { Libre_Bodoni, DM_Sans } from "next/font/google";
 import "./globals.css";
 import type { WithContext, Organization, WebSite } from "schema-dts";
@@ -164,40 +165,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
 
-        {/* Google Analytics 4 */}
-        {GA_ID && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${GA_ID}', { page_path: window.location.pathname });
-                `,
-              }}
-            />
-          </>
-        )}
-
-        {/* Microsoft Clarity */}
-        {CLARITY_ID && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                })(window, document, "clarity", "script", "${CLARITY_ID}");
-              `,
-            }}
-          />
-        )}
+        {/* Đo lường (GA4 + Clarity) — nằm SAU cổng đồng ý, không nạp trước.
+            Trước 11/08/2026 hai script này chạy ngay khi mở trang: người dùng
+            bị đo trước khi được hỏi, vi phạm PDPL "im lặng ≠ đồng ý". */}
+        <ConsentGate gaId={GA_ID} clarityId={CLARITY_ID} />
       </body>
     </html>
   );

@@ -11,10 +11,20 @@ const securityHeaders = [
     value: "camera=(), microphone=(), geolocation=()",
   },
   {
+    /* HSTS — buộc trình duyệt chỉ nói chuyện qua HTTPS trong 2 năm, kể cả khi
+       người dùng gõ http://. Chặn hạ cấp giao thức và đánh cắp phiên ở lần
+       truy cập đầu qua mạng công cộng. Vercel phục vụ HTTPS cho mọi domain
+       nên bật an toàn; `preload` để xin vào danh sách nạp sẵn của trình duyệt. */
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
+  {
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms",
+      /* chỉ thị eval-không-an-toàn đã gỡ 11/08/2026 — xem lý do đầy đủ ở src/middleware.ts.
+         Giữ khối này đồng bộ với middleware, tránh hai nơi khai ngược nhau. */
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://*.tile.openstreetmap.org https://unpkg.com https://cdn.sanity.io",
