@@ -94,10 +94,14 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             border: "1px solid var(--gold-border)",
             borderRadius: "var(--radius)",
             boxShadow: "var(--shadow)",
-            padding: "20px 22px",
+            /* Gọn lại ở khổ hẹp: đo trên 375px thấy bản padding 20/22 cao gần
+               1/3 màn và che mất nút hành động chính của hero. Thanh xin phép
+               là lớp phủ tạm nên che phần nào là đánh đổi không tránh được,
+               nhưng không được chiếm chỗ hơn mức cần để đọc và bấm. */
+            padding: "clamp(12px, 3.5vw, 20px) clamp(14px, 4vw, 22px)",
             display: "flex",
             flexWrap: "wrap",
-            gap: 14,
+            gap: "clamp(10px, 2.5vw, 14px)",
             alignItems: "center",
             justifyContent: "space-between",
           }}
@@ -108,13 +112,13 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               margin: 0,
               maxWidth: "none",
               textAlign: "start",
-              fontSize: "0.88rem",
-              lineHeight: 1.7,
+              fontSize: "clamp(0.8rem, 2.6vw, 0.88rem)",
+              lineHeight: 1.6,
               color: "var(--text-muted)",
             }}
           >
-            Chúng tôi muốn đo lượt xem để biết bài nào có ích, nhưng chỉ đo khi
-            bạn đồng ý. Từ chối cũng không ảnh hưởng gì tới việc đọc.{" "}
+            Chúng tôi chỉ đo lượt xem khi bạn đồng ý. Từ chối cũng không ảnh
+            hưởng gì tới việc đọc.{" "}
             <a
               href="/chinh-sach-bao-mat"
               style={{
