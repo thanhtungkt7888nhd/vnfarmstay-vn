@@ -4,6 +4,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
+import { ogRieng } from "@/lib/site";
 import { graph, collectionPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { TRAI_NGHIEM, layVung } from "@/features/kham-pha/data";
 import { VoTrangTong } from "@/features/kham-pha/TrangTong";
@@ -13,6 +14,10 @@ export const metadata = buildMetadata({
   description:
     "Sáu việc nhà nông làm thử được khi đi farmstay — hái chè, mùa cà phê, ruộng bậc thang, vườn cây ăn trái, chăn nuôi, rau hoa ôn đới.",
   canonical: "/trai-nghiem",
+  ogImage: ogRieng(
+    "Trải nghiệm nhà nông",
+    "Sáu việc làm thử được khi đi farmstay"
+  ),
 });
 
 const schemas = graph([

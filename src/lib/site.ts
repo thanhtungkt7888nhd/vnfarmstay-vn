@@ -94,6 +94,18 @@ export const SCHEMA_ID = {
   webPage: (path: string) => `${SITE_URL}${path}#webpage`,
 } as const;
 
+/**
+ * Ảnh mạng xã hội RIÊNG cho một trang.
+ *
+ * ⚠️ Đo 19/08/2026: 22 trang trục (9 vùng + 13 trang khám phá) đều dùng chung đúng
+ * một ảnh ghi "vnfarmstay.vn — Hạ tầng chung...". Chia sẻ trang nào lên mạng xã hội
+ * cũng ra một tấm giống hệt, người xem không biết đang được mời đọc gì. Bản đặt hàng
+ * yêu cầu ảnh "không trùng template vô nghĩa" — hàm này là cách rẻ nhất để tuân.
+ */
+export function ogRieng(tieuDe: string, phu: string): string {
+  return `/api/og?title=${encodeURIComponent(tieuDe)}&subtitle=${encodeURIComponent(phu)}`;
+}
+
 /** Ghép URL tuyệt đối từ đường dẫn tương đối, chịu được cả khi đã là URL đầy đủ. */
 export function absUrl(path: string): string {
   if (path.startsWith("http")) return path;

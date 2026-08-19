@@ -4,6 +4,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
+import { ogRieng } from "@/lib/site";
 import { graph, collectionPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { TUYEN, layVung } from "@/features/kham-pha/data";
 import { VoTrangTong } from "@/features/kham-pha/TrangTong";
@@ -13,6 +14,10 @@ export const metadata = buildMetadata({
   description:
     "Ba cung đường nối các vùng nông nghiệp thành một chuyến — mỗi tuyến nói rõ vì sao các điểm dừng nối được với nhau và nên đi vào quãng nào.",
   canonical: "/tuyen",
+  ogImage: ogRieng(
+    "Tuyến hành trình farmstay",
+    "Ba cung đường nối các vùng nông nghiệp"
+  ),
 });
 
 const schemas = graph([

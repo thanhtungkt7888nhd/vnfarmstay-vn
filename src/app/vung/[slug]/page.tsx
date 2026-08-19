@@ -18,6 +18,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
+import { ogRieng } from "@/lib/site";
 import {
   graph,
   collectionPageSchema,
@@ -68,6 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Farmstay tại ${vung.ten}`,
     description: `${vung.tomTat} Nông sản: ${vung.nongSan}. ${vung.muaDep}.`,
     canonical: `/vung/${vung.slug}`,
+    ogImage: ogRieng(vung.ten, vung.diaDanh),
     updatedAt: NGAY_CAP_NHAT_VUNG,
     keywords: [
       `farmstay ${vung.ten.toLowerCase()}`,

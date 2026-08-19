@@ -14,6 +14,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
+import { ogRieng } from "@/lib/site";
 import { graph, collectionPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { MUA, timMua, layVung, TRAI_NGHIEM } from "@/features/kham-pha/data";
 import { KhamPhaTiep, type MucKhamPha } from "@/features/kham-pha/KhamPhaTiep";
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Đi farmstay ${mua.thang.toLowerCase()}`,
     description: mua.tomTat,
     canonical: `/mua/${slug}`,
+    ogImage: ogRieng(mua.ten, mua.thang),
     keywords: ["lịch mùa farmstay", "du lịch nông nghiệp theo mùa"],
   });
 }

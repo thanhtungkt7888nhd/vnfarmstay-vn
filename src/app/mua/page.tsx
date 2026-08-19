@@ -4,6 +4,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
+import { ogRieng } from "@/lib/site";
 import { graph, collectionPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { MUA, layVung } from "@/features/kham-pha/data";
 import { VoTrangTong } from "@/features/kham-pha/TrangTong";
@@ -13,6 +14,7 @@ export const metadata = buildMetadata({
   description:
     "Bốn quãng mùa theo nhịp canh tác nông nghiệp Việt Nam: mùa hoa, mùa nước đổ, mùa gặt, mùa thu hoạch cà phê — và vùng nào đang vào độ đẹp.",
   canonical: "/mua",
+  ogImage: ogRieng("Lịch mùa farmstay", "Tháng nào đi đâu thì gặp đúng vụ"),
 });
 
 const schemas = graph([

@@ -16,6 +16,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
+import { ogRieng } from "@/lib/site";
 import { graph, collectionPageSchema, breadcrumbSchema } from "@/lib/schema";
 import {
   TUYEN,
@@ -43,6 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${t.ten} — hành trình farmstay`,
     description: t.tomTat,
     canonical: `/tuyen/${slug}`,
+    ogImage: ogRieng(t.ten, `${t.doDai} · hành trình farmstay`),
     keywords: ["tuyến farmstay", "hành trình du lịch nông nghiệp"],
   });
 }

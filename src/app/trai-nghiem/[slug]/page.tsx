@@ -15,6 +15,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
+import { ogRieng } from "@/lib/site";
 import { graph, collectionPageSchema, breadcrumbSchema } from "@/lib/schema";
 import {
   TRAI_NGHIEM,
@@ -43,6 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${tn.ten} tại farmstay Việt Nam`,
     description: tn.tomTat,
     canonical: `/trai-nghiem/${slug}`,
+    ogImage: ogRieng(tn.ten, tn.tomTat),
     keywords: [tn.ten.toLowerCase(), "farmstay", "du lịch nông nghiệp"],
   });
 }

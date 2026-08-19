@@ -53,8 +53,12 @@ export async function GET(req: NextRequest) {
           gap: 8,
         }}
       >
+        {/* ⚠️ "vnfarmstay" chứ không phải "Farmstay" (sửa 19/08/2026). Chân trang đã
+            được sửa cùng ngày, nhưng máy sinh ảnh mạng xã hội bị bỏ sót — nên MỌI
+            lần chia sẻ trang lên mạng đều phát ra tên thương hiệu sai. Chỉ lộ ra khi
+            mở tấm ảnh sinh ra mà NHÌN, đọc mã không thấy. */}
         <span style={{ color: "#e8d5a3", fontSize: 22, fontWeight: 700 }}>
-          Farmstay
+          vnfarmstay
         </span>
         <span style={{ color: "#c4a046", fontSize: 22, fontWeight: 700 }}>
           .vn
