@@ -312,6 +312,27 @@ async function chay() {
   if (duongDan.includes("/tim-kiem"))
     loi.push("/tim-kiem — không được nằm trong sitemap");
 
+  /* llms.txt — tệp các trợ lý AI đọc để hiểu web này là gì.
+     ⚠️ Bản viết tay 01/05/2026 nằm im gần bốn tháng và khai "nền tảng ĐẶT PHÒNG hàng
+     đầu Việt Nam" cùng "500+ farmstay được xác minh tại 63 tỉnh thành" — đúng những
+     tuyên bố Ông đã cho gỡ khỏi web từ 08/08. Không cổng nào canh vì nó là tệp tĩnh.
+     Nay nó sinh bằng máy, và phép này canh để không ai chép tay thứ mâu thuẫn vào lại. */
+  const CUM_CAM = [
+    ["nền tảng đặt phòng", "vnfarmstay.vn không nhận đặt phòng"],
+    ["500+", "con số farmstay chưa được xác minh"],
+    ["63 tỉnh", "con số tỉnh thành chưa được xác minh"],
+    ["hàng đầu", "tuyên bố thứ hạng không kiểm chứng được"],
+  ];
+  const llms = await fetch(`${GOC}/llms.txt`);
+  if (!llms.ok) {
+    loi.push(`/llms.txt — trả mã ${llms.status}`);
+  } else {
+    const chu = (await llms.text()).toLowerCase();
+    for (const [cum, viSao] of CUM_CAM) {
+      if (chu.includes(cum)) loi.push(`/llms.txt — chứa "${cum}": ${viSao}`);
+    }
+  }
+
   /* Trang mồ côi — không trang nào trong sitemap trỏ tới nó. Người dùng chỉ tới được
      bằng cách gõ tay URL, và máy tìm kiếm coi đó là dấu hiệu trang không quan trọng. */
   for (const d of timMoCoi(banDoHtml)) {
