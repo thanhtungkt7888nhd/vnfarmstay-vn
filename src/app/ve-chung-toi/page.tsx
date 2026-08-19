@@ -27,7 +27,14 @@ import Link from "next/link";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
-import { breadcrumbSchema } from "@/lib/schema";
+import {
+  breadcrumbSchema,
+  graph,
+  organizationSchema,
+  websiteSchema,
+  webPageSchema,
+} from "@/lib/schema";
+import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
@@ -46,12 +53,27 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
-const schemas = [
+/**
+ * `@graph` cấp website — cùng bộ `@id` với trang chủ, nên Google hiểu đây là MỘT
+ * thực thể được mô tả ở hai nơi, không phải hai tổ chức trùng tên.
+ * `SearchAction` không khai ở đây: tìm kiếm nội bộ chỉ được hứa từ trang chủ và
+ * chỉ khi danh bạ có dữ liệu thật.
+ */
+const schemas = graph([
+  organizationSchema(),
+  websiteSchema(false),
+  webPageSchema({
+    path: "/ve-chung-toi",
+    name: `Về ${SITE_NAME} — ${SITE_TAGLINE}`,
+    description:
+      "Câu chuyện, phạm vi và nguyên tắc của vnfarmstay.vn — hạ tầng chung của cộng đồng Farmstay Việt Nam.",
+    type: "AboutPage",
+  }),
   breadcrumbSchema([
     { name: "Trang chủ", url: "/" },
     { name: "Về chúng tôi", url: "/ve-chung-toi" },
   ]),
-];
+]);
 
 /** Ba điều thay đổi khi đứng cùng nhau — Phần I.3 tài liệu nền tảng */
 const KHI_DUNG_CUNG = [

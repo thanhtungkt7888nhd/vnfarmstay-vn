@@ -3,12 +3,7 @@
  * Áp dụng defaults từ site, override bằng page-level values.
  */
 import type { Metadata } from "next";
-
-const SITE_URL = "https://vnfarmstay.vn";
-const SITE_NAME = "vnfarmstay.vn";
-/** OG image mặc định — dùng dynamic generator /api/og khi không có ảnh bài */
-const DEFAULT_OG_IMAGE =
-  "/api/og?title=vnfarmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam";
+import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from "./site";
 
 export interface SeoProps {
   title: string;
@@ -25,6 +20,12 @@ export interface SeoProps {
   updatedAt?: string;
   /** Keywords bổ sung */
   keywords?: string[];
+  /**
+   * Loại Open Graph. Mặc định "website" — bản cũ khai "article" cho MỌI trang,
+   * kể cả trang giới thiệu và trang chính sách, khiến mạng xã hội hiểu sai loại nội dung.
+   * Trang có ngày xuất bản tự động được coi là "article".
+   */
+  ogType?: "website" | "article";
 }
 
 /** Tạo Metadata object đầy đủ cho một trang */
@@ -37,8 +38,10 @@ export function buildMetadata({
   publishedAt,
   updatedAt,
   keywords = [],
+  ogType,
 }: SeoProps): Metadata {
   const url = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
+  const resolvedOgType = ogType ?? (publishedAt ? "article" : "website");
 
   return {
     title,
@@ -46,7 +49,7 @@ export function buildMetadata({
     keywords,
     alternates: { canonical: url },
     openGraph: {
-      type: "article",
+      type: resolvedOgType,
       url,
       siteName: SITE_NAME,
       title,
@@ -68,8 +71,11 @@ export function buildMetadata({
       description,
       images: [ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`],
     },
+    // `noindex` LUÔN đi kèm `follow` (sửa 19/08/2026 — trước đó là `nofollow`):
+    // trang không đáng nằm trong chỉ mục vẫn là đường đi hợp lệ để máy tìm kiếm
+    // đọc tiếp sang các trang bên trong. `nofollow` cắt luôn cả đường đi đó.
     robots: noindex
-      ? { index: false, follow: false }
+      ? { index: false, follow: true }
       : { index: true, follow: true },
   };
 }

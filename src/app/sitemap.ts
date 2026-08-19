@@ -5,16 +5,15 @@
 import type { MetadataRoute } from "next";
 import { FARMSTAYS } from "@/features/listing/data";
 import { fetchPostSlugs } from "@/lib/sanity-queries";
-import { MOCK_POSTS } from "@/features/blog/mock-posts";
-
-const SITE_URL = "https://vnfarmstay.vn";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, priority: 1.0, changeFrequency: "daily" },
-    { url: `${SITE_URL}/tim-kiem`, priority: 0.9, changeFrequency: "daily" },
+    // /tim-kiem ĐÃ GỠ 19/08/2026 — trang kết quả tìm kiếm nội bộ nay là `noindex`,
+    // sitemap chỉ được chứa URL indexable (trước đó khai với mức ưu tiên 0.9).
     { url: `${SITE_URL}/blog`, priority: 0.9, changeFrequency: "daily" },
     // Hai trụ nội dung cốt lõi — thêm 08/08/2026
     {
@@ -51,6 +50,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.3,
       changeFrequency: "yearly",
     },
+    // Hai trang niềm tin — thêm 19/08/2026
+    { url: `${SITE_URL}/lien-he`, priority: 0.5, changeFrequency: "monthly" },
+    {
+      url: `${SITE_URL}/chinh-sach-bien-tap`,
+      priority: 0.5,
+      changeFrequency: "monthly",
+    },
   ];
 
   // Farmstay pages từ static data
@@ -61,17 +67,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
   }));
 
-  // Blog pages — ưu tiên Sanity, fallback mock slugs
+  // Blog pages — CHỈ lấy từ Sanity.
+  //
+  // ⚠️ 19/08/2026 gỡ nhánh dự phòng `MOCK_POSTS`: sáu bài mẫu không có thân bài
+  // (render ra "Nội dung đang được cập nhật...") nhưng vẫn được mời Google vào
+  // index qua sitemap. Sitemap chỉ được chứa URL đáng index; bài mẫu nay mang
+  // `noindex` nên càng không có chỗ ở đây. Khi Sanity có bài thật, nhánh này tự sống lại.
   let blogPages: MetadataRoute.Sitemap = [];
   try {
-    const slugs = await fetchPostSlugs();
-    const source =
-      slugs.length > 0
-        ? slugs
-        : MOCK_POSTS.map((p) => ({
-            slug: p.slug.current,
-            publishedAt: p.publishedAt,
-          }));
+    const source = await fetchPostSlugs();
 
     blogPages = source.map((s) => ({
       url: `${SITE_URL}/blog/${s.slug}`,

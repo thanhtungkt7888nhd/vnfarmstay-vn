@@ -31,6 +31,11 @@ export async function generateMetadata({
     title: `${label} — Blog vnfarmstay.vn`,
     description: `Các bài viết về ${label.toLowerCase()} dành cho chủ và khách farmstay Việt Nam.`,
     canonical: `/danh-muc/${slug}`,
+    // ⚠️ 19/08/2026 — trang tập hợp chỉ được index khi nguồn nội dung THẬT (Sanity)
+    // đã đấu dây. Chưa đấu, trang này chỉ gom được các bài mẫu không có thân bài:
+    // đó là nội dung mỏng, và nhiều trang như vậy còn gần trùng nhau. Tự index lại
+    // ngay khi có bài thật, không cần sửa tay.
+    noindex: !isSanityConfigured(),
   });
 }
 

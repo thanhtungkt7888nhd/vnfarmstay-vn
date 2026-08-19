@@ -1,17 +1,187 @@
 /**
- * Các hàm tạo JSON-LD Schema.org cho SEO — Lệnh 17-MEGA.
- * Import và dùng trong từng page/layout để tối ưu rich results.
+ * Xưởng sinh JSON-LD (dữ liệu có cấu trúc cho máy tìm kiếm).
+ *
+ * NGUYÊN TẮC (khắc 19/08/2026):
+ *  1. Mọi giá trị lấy từ `@/lib/site` — không chép cứng tên/URL ở đây nữa.
+ *  2. Mọi `@id` là URL canonical tuyệt đối và ỔN ĐỊNH, để Google nối được các thực thể.
+ *  3. Chỉ khai trường CÓ THẬT. Thiếu dữ liệu ⇒ bỏ hẳn trường đó, không điền chuỗi rỗng.
+ *  4. CẤM `AggregateRating` / `Review` / `Offer` khi không có quy trình đánh giá thật —
+ *     bản cũ nhận `rating`/`reviewCount` rồi khai thẳng cho Google; hôm Ông đưa farmstay
+ *     thật vào, những con số tự chế ấy sẽ đi ra kết quả tìm kiếm. Đã tháo ngòi.
+ *  5. Ghép bằng object có kiểu, KHÔNG nối chuỗi JSON bằng tay.
  */
 import type {
   WithContext,
   Article,
   FAQPage,
   BreadcrumbList,
-  Product,
   LodgingBusiness,
+  Organization,
+  WebSite,
+  WebPage,
+  CollectionPage,
+  Thing,
 } from "schema-dts";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_ALT_NAMES,
+  SITE_DESCRIPTION,
+  SITE_LOGO,
+  SITE_SAME_AS,
+  SITE_CONTACT,
+  SCHEMA_ID,
+  absUrl,
+} from "./site";
 
-const SITE_URL = "https://vnfarmstay.vn";
+// ─── Cấp website: Organization · WebSite · WebPage ───────────────────────────
+
+/**
+ * Tổ chức đứng sau website.
+ * `sameAs`/`email`/`telephone` chỉ xuất hiện khi `site.ts` có dữ liệu thật —
+ * `SITE_SAME_AS` đang cố ý rỗng nên trường này tự biến mất khỏi JSON-LD.
+ */
+export function organizationSchema(): Organization {
+  return {
+    "@type": "Organization",
+    "@id": SCHEMA_ID.organization,
+    name: SITE_NAME,
+    alternateName: [...SITE_ALT_NAMES],
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    logo: absUrl(SITE_LOGO),
+    ...(SITE_SAME_AS.length > 0 ? { sameAs: SITE_SAME_AS } : {}),
+    ...(SITE_CONTACT.email ? { email: SITE_CONTACT.email } : {}),
+    ...(SITE_CONTACT.telephone ? { telephone: SITE_CONTACT.telephone } : {}),
+  };
+}
+
+/**
+ * Chính website.
+ * @param hasWorkingSearch — chỉ khai `SearchAction` khi tìm kiếm nội bộ CHẠY THẬT và
+ * trả về kết quả. Khai khi danh bạ còn rỗng là hứa với Google một thứ không tồn tại.
+ */
+export function websiteSchema(hasWorkingSearch = false): WebSite {
+  return {
+    "@type": "WebSite",
+    "@id": SCHEMA_ID.website,
+    name: SITE_NAME,
+    alternateName: [...SITE_ALT_NAMES],
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    inLanguage: "vi-VN",
+    publisher: { "@id": SCHEMA_ID.organization },
+    ...(hasWorkingSearch
+      ? {
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `${SITE_URL}/tim-kiem?q={search_term_string}`,
+            },
+            // @ts-expect-error — schema-dts chưa có literal "query-input"
+            "query-input": "required name=search_term_string",
+          },
+        }
+      : {}),
+  };
+}
+
+export interface WebPageSchemaProps {
+  /** Đường dẫn canonical, ví dụ "/ve-chung-toi" */
+  path: string;
+  name: string;
+  description: string;
+  /** "WebPage" mặc định; "AboutPage" cho /ve-chung-toi; "ContactPage" cho /lien-he… */
+  type?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage";
+  updatedAt?: string;
+}
+
+/** Một trang cụ thể, đã nối sẵn về WebSite + Organization bằng `@id`. */
+export function webPageSchema({
+  path,
+  name,
+  description,
+  type = "WebPage",
+  updatedAt,
+}: WebPageSchemaProps): WebPage {
+  return {
+    "@type": type,
+    "@id": SCHEMA_ID.webPage(path),
+    url: absUrl(path),
+    name,
+    description,
+    inLanguage: "vi-VN",
+    isPartOf: { "@id": SCHEMA_ID.website },
+    about: { "@id": SCHEMA_ID.organization },
+    ...(updatedAt ? { dateModified: updatedAt } : {}),
+  } as WebPage;
+}
+
+/**
+ * Gói nhiều thực thể vào một `@graph` duy nhất — cách khai đúng khi các thực thể
+ * tham chiếu lẫn nhau, thay vì rải nhiều khối `<script>` rời rạc.
+ */
+export function graph(nodes: Thing[]): Record<string, unknown> {
+  // Gỡ "@context" của từng nút: trong một `@graph` chỉ được có MỘT ngữ cảnh ở gốc.
+  // Cần thiết vì `breadcrumbSchema`/`articleSchema` còn được dùng đứng một mình
+  // ở nơi khác, nên chúng vẫn phải tự mang "@context" khi ra ngoài graph.
+  const stripped = nodes.map((node) => {
+    if (node && typeof node === "object" && "@context" in node) {
+      const rest = { ...(node as Record<string, unknown>) };
+      delete rest["@context"];
+      return rest;
+    }
+    return node;
+  });
+  return { "@context": "https://schema.org", "@graph": stripped };
+}
+
+// ─── CollectionPage + ItemList (danh mục, vùng, chủ đề, tuyến) ───────────────
+
+export interface CollectionItem {
+  name: string;
+  url: string;
+}
+
+/**
+ * Trang tập hợp. `ItemList` chỉ được gắn khi tập hợp CÓ phần tử thật —
+ * một `ItemList` rỗng nói với Google rằng đây là trang mỏng.
+ */
+export function collectionPageSchema({
+  path,
+  name,
+  description,
+  items,
+}: {
+  path: string;
+  name: string;
+  description: string;
+  items: CollectionItem[];
+}): CollectionPage {
+  const base = webPageSchema({
+    path,
+    name,
+    description,
+    type: "CollectionPage",
+  }) as CollectionPage;
+
+  if (items.length === 0) return base;
+
+  return {
+    ...base,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((item, idx) => ({
+        "@type": "ListItem" as const,
+        position: idx + 1,
+        name: item.name,
+        url: absUrl(item.url),
+      })),
+    },
+  } as CollectionPage;
+}
 
 // ─── Article ────────────────────────────────────────────────────────────────
 
@@ -33,7 +203,7 @@ export function articleSchema({
   imageUrl,
   publishedAt,
   updatedAt,
-  authorName = "vnfarmstay.vn Editorial",
+  authorName = "Ban biên tập vnfarmstay.vn",
 }: ArticleSchemaProps): WithContext<Article> {
   return {
     "@context": "https://schema.org",
@@ -42,20 +212,11 @@ export function articleSchema({
     description,
     url,
     image: imageUrl,
+    inLanguage: "vi-VN",
     datePublished: publishedAt,
     dateModified: updatedAt ?? publishedAt,
-    author: {
-      "@type": "Person",
-      name: authorName,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "vnfarmstay.vn",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
-      },
-    },
+    author: { "@type": "Person", name: authorName },
+    publisher: { "@id": SCHEMA_ID.organization },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 }
@@ -67,7 +228,10 @@ export interface FaqItem {
   answer: string;
 }
 
-/** JSON-LD FAQPage — dùng khi trang có phần hỏi & đáp */
+/**
+ * JSON-LD FAQPage — CHỈ dùng khi đúng những câu hỏi/đáp ấy HIỂN THỊ trên trang.
+ * Khai câu hỏi không có trên màn hình là vi phạm điều kiện hợp lệ của Google.
+ */
 export function faqSchema(items: FaqItem[]): WithContext<FAQPage> {
   return {
     "@context": "https://schema.org",
@@ -75,10 +239,7 @@ export function faqSchema(items: FaqItem[]): WithContext<FAQPage> {
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   };
 }
@@ -101,25 +262,32 @@ export function breadcrumbSchema(
       "@type": "ListItem",
       position: idx + 1,
       name: item.name,
-      item: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+      item: absUrl(item.url),
     })),
   };
 }
 
-// ─── LodgingBusiness (Farmstay) ──────────────────────────────────────────────
+// ─── LodgingBusiness (hồ sơ farmstay) ────────────────────────────────────────
 
 export interface FarmstaySchemaProps {
   name: string;
   description: string;
   url: string;
   imageUrl: string;
+  /** Địa danh hiển thị trên trang (huyện/tỉnh) */
   address: string;
-  priceFrom: number;
-  rating?: number;
-  reviewCount?: number;
+  /** Giá thấp nhất do CHỦ FARM cấp; 0 hoặc bỏ trống ⇒ không khai giá */
+  priceFrom?: number;
+  /** Website riêng / kênh đặt trực tiếp của farmstay, nếu chủ farm đã xác nhận */
+  officialUrl?: string;
+  telephone?: string;
 }
 
-/** JSON-LD LodgingBusiness — dùng cho trang chi tiết farmstay */
+/**
+ * JSON-LD LodgingBusiness cho hồ sơ farmstay.
+ * Không có `aggregateRating`, không có `review`, không có `offer` — vnfarmstay.vn
+ * không nhận đặt phòng và không có quy trình chấm sao, nên không có quyền khai.
+ */
 export function farmstaySchema({
   name,
   description,
@@ -127,8 +295,8 @@ export function farmstaySchema({
   imageUrl,
   address,
   priceFrom,
-  rating,
-  reviewCount,
+  officialUrl,
+  telephone,
 }: FarmstaySchemaProps): WithContext<LodgingBusiness> {
   return {
     "@context": "https://schema.org",
@@ -142,43 +310,10 @@ export function farmstaySchema({
       addressLocality: address,
       addressCountry: "VN",
     },
-    priceRange: `Từ ${priceFrom.toLocaleString("vi-VN")}đ/đêm`,
-    ...(rating && reviewCount
-      ? {
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: rating.toString(),
-            reviewCount: reviewCount.toString(),
-            bestRating: "5",
-            worstRating: "1",
-          },
-        }
+    ...(priceFrom && priceFrom > 0
+      ? { priceRange: `Từ ${priceFrom.toLocaleString("vi-VN")}đ/đêm` }
       : {}),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any as WithContext<LodgingBusiness>;
-}
-
-// ─── Product (dùng cho trang giới thiệu nền tảng) ────────────────────────────
-
-/** JSON-LD Product — dùng cho các trang landing có offer */
-export function productSchema({
-  name,
-  description,
-  url,
-}: {
-  name: string;
-  description: string;
-  url: string;
-}): WithContext<Product> {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name,
-    description,
-    url,
-    brand: {
-      "@type": "Brand",
-      name: "vnfarmstay.vn",
-    },
-  };
+    ...(officialUrl ? { sameAs: [officialUrl] } : {}),
+    ...(telephone ? { telephone } : {}),
+  } as WithContext<LodgingBusiness>;
 }

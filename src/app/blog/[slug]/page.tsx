@@ -27,6 +27,22 @@ import { MOCK_POSTS } from "@/features/blog/mock-posts";
 
 export const revalidate = 3600;
 
+/**
+ * Bài viết chỉ được coi là ĐÃ XUẤT BẢN khi có thân bài thật.
+ *
+ * ⚠️ Phát hiện 19/08/2026: sáu bài trong `MOCK_POSTS` không có trường `content`,
+ * nên trang render ra đúng một dòng "Nội dung đang được cập nhật..." — nhưng vẫn
+ * mang thẻ index, vẫn nằm trong sitemap, vẫn phát `Article` + `FAQPage` cho Google,
+ * kèm tên tác giả và ngày xuất bản. Với máy tìm kiếm đó là nội dung mỏng và dữ liệu
+ * có cấu trúc không khớp nội dung hiển thị.
+ *
+ * Bài chưa có thân: `noindex, follow`, không phát `Article`/`FAQPage`, không vào
+ * sitemap. Trang vẫn sống để người có đường dẫn vẫn đọc được — không xoá gì cả.
+ */
+export function coBaiThat(post: { content?: unknown[] } | null): boolean {
+  return Boolean(post?.content && post.content.length > 0);
+}
+
 // ─── Static params ────────────────────────────────────────────────────────────
 
 export async function generateStaticParams() {
@@ -62,6 +78,7 @@ export async function generateMetadata({
     ogImage,
     publishedAt: post.publishedAt,
     updatedAt: post.updatedAt,
+    noindex: !coBaiThat(post),
   });
 }
 
@@ -91,25 +108,36 @@ export default async function BlogPostPage({
 
   const articleUrl = `https://vnfarmstay.vn/blog/${slug}`;
 
-  const schemas = [
-    articleSchema({
-      title: post.title,
-      description: post.excerpt ?? "",
-      url: articleUrl,
-      imageUrl:
-        coverImageUrl ??
-        `https://vnfarmstay.vn/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt ?? "vnfarmstay.vn")}`,
-      publishedAt: post.publishedAt ?? new Date().toISOString(),
-      updatedAt: post.updatedAt,
-      authorName: post.author,
-    }),
-    breadcrumbSchema([
-      { name: "Trang chủ", url: "/" },
-      { name: "Blog", url: "/blog" },
-      { name: post.title, url: `/blog/${slug}` },
-    ]),
-    ...(post.faq && post.faq.length > 0 ? [faqSchema(post.faq)] : []),
-  ];
+  /* Bài chưa có thân bài chỉ giữ breadcrumb — không khai Article/FAQ cho Google. */
+  const daXuatBan = coBaiThat(post);
+
+  const schemas = daXuatBan
+    ? [
+        articleSchema({
+          title: post.title,
+          description: post.excerpt ?? "",
+          url: articleUrl,
+          imageUrl:
+            coverImageUrl ??
+            `https://vnfarmstay.vn/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.excerpt ?? "vnfarmstay.vn")}`,
+          publishedAt: post.publishedAt ?? new Date().toISOString(),
+          updatedAt: post.updatedAt,
+          authorName: post.author,
+        }),
+        breadcrumbSchema([
+          { name: "Trang chủ", url: "/" },
+          { name: "Blog", url: "/blog" },
+          { name: post.title, url: `/blog/${slug}` },
+        ]),
+        ...(post.faq && post.faq.length > 0 ? [faqSchema(post.faq)] : []),
+      ]
+    : [
+        breadcrumbSchema([
+          { name: "Trang chủ", url: "/" },
+          { name: "Blog", url: "/blog" },
+          { name: post.title, url: `/blog/${slug}` },
+        ]),
+      ];
 
   return (
     <>

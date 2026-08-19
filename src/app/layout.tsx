@@ -2,7 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { ConsentGate } from "@/shared/ui/ConsentGate";
 import { Libre_Bodoni, DM_Sans } from "next/font/google";
 import "./globals.css";
-import type { WithContext, Organization, WebSite } from "schema-dts";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_TAGLINE,
+  SITE_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+} from "@/lib/site";
 
 const libreBodoni = Libre_Bodoni({
   subsets: ["latin", "vietnamese"],
@@ -19,16 +25,13 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const SITE_URL = "https://vnfarmstay.vn";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
-    template: "%s | vnfarmstay.vn",
+    default: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Giới thiệu farmstay Việt Nam và những câu chuyện vùng miền — ruộng bậc thang, đồi chè, vườn cà phê, văn hoá bản địa chưa bị thương mại hoá. Cầu nối giữa nông dân Việt và du khách.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "farmstay việt nam",
     "du lịch nông nghiệp",
@@ -37,35 +40,31 @@ export const metadata: Metadata = {
     "du lịch nông trại",
     "trải nghiệm nông nghiệp",
   ],
-  authors: [{ name: "vnfarmstay.vn", url: SITE_URL }],
-  creator: "vnfarmstay.vn",
-  publisher: "vnfarmstay.vn",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   openGraph: {
     type: "website",
     locale: "vi_VN",
     url: SITE_URL,
-    siteName: "vnfarmstay.vn",
-    title: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
-    description:
-      "Giới thiệu farmstay Việt Nam và những câu chuyện vùng miền — ruộng bậc thang, đồi chè, vườn cà phê, văn hoá bản địa chưa bị thương mại hoá.",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
     images: [
       {
-        // Dynamic OG image — Edge function trả về PNG 1200×630 thật
-        url: `${SITE_URL}/api/og?title=vnfarmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
+        // Ảnh mạng xã hội sinh động — Edge function trả về PNG 1200×630 thật
+        url: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
         width: 1200,
         height: 630,
-        alt: "vnfarmstay.vn — Farmstay và câu chuyện vùng miền Việt Nam",
+        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "vnfarmstay.vn – Trải nghiệm nông nghiệp đích thực Việt Nam",
-    description:
-      "Giới thiệu farmstay Việt Nam và những câu chuyện vùng miền — cầu nối giữa nông dân Việt và du khách.",
-    images: [
-      `${SITE_URL}/api/og?title=vnfarmstay.vn&subtitle=Tr%E1%BA%A3i+nghi%E1%BB%87m+n%C3%B4ng+nghi%E1%BB%87p+%C4%91%C3%ADch+th%E1%BB%B1c+Vi%E1%BB%87t+Nam`,
-    ],
+    title: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    images: [`${SITE_URL}${DEFAULT_OG_IMAGE}`],
   },
   robots: {
     index: true,
@@ -80,40 +79,12 @@ export const viewport: Viewport = {
   themeColor: "#0f2318",
 };
 
-/** JSON-LD: Organization + WebSite (dùng chung toàn site) */
-const orgSchema: WithContext<Organization> = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "vnfarmstay.vn",
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
-  // ⚠️ 08/08/2026 — Ông xác nhận facebook.com/farmstayvn và instagram.com/farmstayvn
-  // KHÔNG phải trang của vnfarmstay.vn (tên tay cầm là "farmstayvn" — của thương hiệu
-  // khác), đã gỡ. Khai nhận trang mạng xã hội của thương hiệu khác là chính cái bệnh
-  // đợt này đi chữa. Chỉ thêm lại khi có trang THẬT do Ông xác nhận.
-  sameAs: [
-    // Ecosystem cross-reference — liên kết entity với các site cùng hệ sinh thái
-    "https://nhahoachdinh.vn",
-  ],
-  // `contactPoint` đã gỡ cùng ngày: hotline "+84-1800-6868" là số BỊA (Ông xác nhận),
-  // mà đây là dữ liệu gửi thẳng cho Google nên sai ở đây lan ra mọi kết quả tìm kiếm.
-};
-
-const websiteSchema: WithContext<WebSite> = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "vnfarmstay.vn",
-  url: SITE_URL,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/tim-kiem?q={search_term_string}`,
-    },
-    // @ts-expect-error — schema-dts không có query-input string literal
-    "query-input": "required name=search_term_string",
-  },
-};
+/* JSON-LD Organization + WebSite KHÔNG còn nằm ở đây (19/08/2026).
+   Trước đó hai khối này lặp trên MỌI trang — vừa thừa, vừa khai `sameAs` sang
+   nhahoachdinh.vn (một thực thể KHÁC, không phải cùng một tổ chức), vừa hứa
+   `SearchAction` trong khi danh bạ rỗng nên tìm kiếm không trả về gì.
+   Nay chúng nằm trong `@graph` của trang chủ và /ve-chung-toi, sinh từ
+   `@/lib/schema` với `@id` ổn định. */
 
 /** GA4 measurement ID — điền vào .env.local khi có tài khoản */
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -154,16 +125,6 @@ export default function RootLayout({
           Chuyển đến nội dung chính
         </a>
         {children}
-
-        {/* JSON-LD: Organization + WebSite */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
 
         {/* Đo lường (GA4 + Clarity) — nằm SAU cổng đồng ý, không nạp trước.
             Trước 11/08/2026 hai script này chạy ngay khi mở trang: người dùng

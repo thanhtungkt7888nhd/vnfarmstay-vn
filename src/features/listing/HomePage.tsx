@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import type { Farmstay } from "@/shared/types/farmstay";
 import { FarmstayCard } from "./FarmstayCard";
+import { SITE_BOUNDARY } from "@/lib/site";
 
 const CHIPS = [
   { label: "Tất cả", value: "all" },
@@ -91,26 +92,89 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
             margin: "0 auto 20px",
           }}
         >
-          Trải nghiệm{" "}
+          {/* nbsp giữ từ ghép không bị bẻ đôi ở khổ hẹp (cổng S-1) */}
+          Farmstay Việt&nbsp;Nam, cùng lớn trong một{" "}
           <em className="fx-gradient-text-gold" style={{ fontStyle: "italic" }}>
-            {/* nbsp giữ từ ghép "nông nghiệp" không bị bẻ đôi ở khổ hẹp (cổng S-1) */}
-            nông&nbsp;nghiệp
+            hệ sinh&nbsp;thái
           </em>
-          <br />
-          đích thực Việt Nam
         </h1>
+        {/* Đoạn này phải nói RÕ NGHĨA, không chỉ giàu cảm xúc: người đọc và máy
+            tìm kiếm cần biết ngay trang này là gì, phục vụ ai, và không phải gì. */}
         <p
           style={{
             fontSize: "1.05rem",
             color: "var(--text-muted)",
-            maxWidth: 600,
-            margin: "0 auto 32px",
-            lineHeight: 1.7,
+            maxWidth: 640,
+            margin: "0 auto 16px",
+            lineHeight: 1.75,
           }}
         >
-          Khám phá farmstay từ Hà Giang đến Cà Mau – ruộng bậc thang, đồi chè,
-          vườn cà phê, văn hoá bản địa chưa bị thương mại hoá
+          <strong style={{ color: "var(--text-primary)" }}>
+            vnfarmstay.vn là hạ tầng chung của cộng đồng Farmstay Việt Nam
+          </strong>{" "}
+          — nơi du khách khám phá điểm đến nông nghiệp đích thực, còn các
+          farmstay được chuẩn hoá hồ sơ, kể câu chuyện vùng đất và kết nối theo
+          những hành trình có ý nghĩa.
         </p>
+        <p
+          style={{
+            fontSize: "0.95rem",
+            color: "var(--text-dim)",
+            maxWidth: 640,
+            margin: "0 auto 32px",
+            lineHeight: 1.75,
+          }}
+        >
+          Đây không phải sàn đặt phòng: chúng ta không bán tour, không thu hoa
+          hồng và không giữ tiền của ai. Khách liên hệ và đặt trực tiếp với
+          farmstay mình chọn.
+        </p>
+
+        {/* Hai cửa vào chính — du khách và chủ farmstay. Trước 19/08/2026 trang chủ
+            chỉ có MỘT nút, và nút ấy chỉ hiện khi danh bạ rỗng. */}
+        <div
+          style={{
+            display: "flex",
+            gap: 14,
+            justifyContent: "center",
+            flexWrap: "wrap",
+            marginBottom: 36,
+          }}
+        >
+          <a
+            href="/tour-farmstay"
+            className="fx-gradient-btn fx-glow"
+            style={{
+              display: "inline-block",
+              padding: "13px 28px",
+              borderRadius: 24,
+              background: "var(--gold)",
+              color: "var(--bg-deep)",
+              fontWeight: 700,
+              fontSize: "0.9rem",
+              textDecoration: "none",
+              transition: "var(--transition)",
+            }}
+          >
+            Khám phá farmstay theo vùng →
+          </a>
+          <a
+            href="/chu-farmstay"
+            style={{
+              display: "inline-block",
+              padding: "13px 28px",
+              borderRadius: 24,
+              border: "1px solid var(--gold-border)",
+              color: "var(--gold)",
+              fontWeight: 600,
+              fontSize: "0.9rem",
+              textDecoration: "none",
+              transition: "var(--transition)",
+            }}
+          >
+            Gia nhập hệ sinh thái
+          </a>
+        </div>
 
         {/* Hero search — chỉ hiện khi có farmstay để tìm */}
         {hasFarmstays && (
@@ -181,36 +245,18 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
         {/* Lời mời thay cho bộ số cũ (500+ farmstay · 63 tỉnh · 12K+ lượt đặt · 4.8★
             — Ông xác nhận 08/08/2026 toàn bộ là số tự chế, đã gỡ, KHÔNG thay số khác) */}
         {!hasFarmstays && (
-          <div style={{ maxWidth: 560, margin: "0 auto 60px" }}>
+          <div style={{ maxWidth: 580, margin: "0 auto 60px" }}>
             <p
               style={{
-                fontSize: "1rem",
+                fontSize: "0.95rem",
                 color: "var(--text-muted)",
-                lineHeight: 1.7,
-                marginBottom: 20,
+                lineHeight: 1.75,
               }}
             >
-              Danh bạ farmstay đang được xây dựng. Chúng tôi chỉ đăng những
+              Danh bạ farmstay đang được xây dựng. Chúng ta chỉ đăng những
               farmstay đã đi tới tận nơi — nên trang này còn trống, và sẽ dày
               lên từng cái một.
             </p>
-            <a
-              href="/chu-farmstay"
-              className="fx-gradient-btn fx-glow"
-              style={{
-                display: "inline-block",
-                padding: "12px 28px",
-                borderRadius: 24,
-                background: "var(--gold)",
-                color: "var(--bg-deep)",
-                fontWeight: 700,
-                fontSize: "0.88rem",
-                textDecoration: "none",
-                transition: "var(--transition)",
-              }}
-            >
-              Bạn có farmstay? Giới thiệu với chúng tôi →
-            </a>
           </div>
         )}
 
@@ -404,6 +450,82 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           >
             Đọc trọn câu chuyện của chúng ta →
           </a>
+        </div>
+      </section>
+
+      {/* ── Câu trả lời ngắn: là gì · không phải gì · khách đặt ở đâu ──
+          Ba câu hỏi này người đọc luôn hỏi thầm, và máy tìm kiếm cần thấy câu trả
+          lời bằng chữ trên trang. Nội dung lấy từ `SITE_BOUNDARY` — cùng một nguồn
+          sự thật với schema và meta description, nên không thể lệch nhau. ── */}
+      <section
+        aria-labelledby="ranh-gioi-heading"
+        style={{
+          background: "var(--bg-main)",
+          padding: "72px 24px",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <div style={{ maxWidth: 980, margin: "0 auto" }}>
+          <span className="section-kicker">Nói cho rõ</span>
+          <h2
+            id="ranh-gioi-heading"
+            style={{
+              fontFamily: "var(--font-display), serif",
+              fontSize: "clamp(1.4rem, 3vw, 2rem)",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: "var(--text-primary)",
+              marginBottom: 28,
+            }}
+          >
+            vnfarmstay.vn là gì, và không phải gì
+          </h2>
+          <dl
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+              gap: 20,
+            }}
+          >
+            {[
+              { t: "Đây là", d: SITE_BOUNDARY.la },
+              { t: "Đây không phải", d: SITE_BOUNDARY.khongPhai },
+              { t: "Khách đặt ở đâu", d: SITE_BOUNDARY.khachDatODau },
+            ].map((item) => (
+              <div
+                key={item.t}
+                style={{
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "24px 22px",
+                }}
+              >
+                <dt
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "var(--gold)",
+                    marginBottom: 12,
+                  }}
+                >
+                  {item.t}
+                </dt>
+                <dd
+                  style={{
+                    margin: 0,
+                    color: "var(--text-muted)",
+                    fontSize: "0.95rem",
+                    lineHeight: 1.75,
+                  }}
+                >
+                  {item.d}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

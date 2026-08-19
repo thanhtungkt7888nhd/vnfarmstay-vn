@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_NAME, SITE_TAGLINE, ECOSYSTEM } from "@/lib/site";
 
 const footerLinks = {
   "Khám phá": [
@@ -13,81 +14,29 @@ const footerLinks = {
     { href: "/dang-farmstay", label: "Giới thiệu farmstay" },
   ],
   "Về chúng tôi": [
-    { href: "/ve-chung-toi", label: "Về vnfarmstay.vn" },
+    { href: "/ve-chung-toi", label: `Về ${SITE_NAME}` },
     { href: "/ve-chung-toi#su-menh", label: "Sứ mệnh" },
-    { href: "/ve-chung-toi#lien-he", label: "Liên hệ" },
+    { href: "/chinh-sach-bien-tap", label: "Chính sách biên tập" },
+    { href: "/lien-he", label: "Liên hệ" },
   ],
-  "Hệ sinh thái": [
-    { href: "https://nhahoachdinh.vn", label: "Nhà Hoạch Định" },
-    { href: "https://mastery.vn", label: "Mastery.vn" },
-  ],
+  // Đây là các thương hiệu KHÁC trong hệ sinh thái, không phải cùng một thực thể —
+  // nên chỉ liên kết hiển thị cho người đọc, không khai `sameAs` trong schema.
+  "Hệ sinh thái": ECOSYSTEM.map((e) => ({ href: e.url, label: e.label })),
 };
 
-/* SVG icons cho mạng xã hội */
-const SocialFacebook = () => (
-  <svg
-    width="15"
-    height="15"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-  </svg>
-);
-
-const SocialInstagram = () => (
-  <svg
-    width="15"
-    height="15"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-  </svg>
-);
-
-const SocialYouTube = () => (
-  <svg
-    width="15"
-    height="15"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 00-1.95 1.95A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
-    <polygon
-      points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02"
-      fill="var(--bg-deep)"
-    />
-  </svg>
-);
-
-const SocialTikTok = () => (
-  <svg
-    width="15"
-    height="15"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52V6.74a4.85 4.85 0 01-1-.05z" />
-  </svg>
-);
-
-const socialLinks = [
-  { icon: SocialFacebook, label: "Facebook" },
-  { icon: SocialInstagram, label: "Instagram" },
-  { icon: SocialYouTube, label: "YouTube" },
-  { icon: SocialTikTok, label: "TikTok" },
-];
+/**
+ * Biểu tượng mạng xã hội.
+ *
+ * ⚠️ 19/08/2026 — KHÔNG được render khi chưa có tài khoản THẬT. Trước ngày này,
+ * bốn biểu tượng dưới đây trỏ vào `href="#"`: người dùng bấm thì trang nhảy về đầu,
+ * và máy tìm kiếm đọc được bốn liên kết chết trên MỌI trang của site.
+ *
+ * Cách bật lại: Ông xác nhận URL thật → điền vào `SITE_SAME_AS` trong `src/lib/site.ts`
+ * (nơi ấy đồng thời cấp `sameAs` cho schema Organization) rồi render danh sách đó ở đây.
+ * CẤM điền trang của thương hiệu khác — 08/08/2026 đã một lần khai nhầm
+ * facebook.com/farmstayvn và instagram.com/farmstayvn.
+ */
+/* (Danh sách biểu tượng đã gỡ hẳn — xem ghi chú ngay trên.) */
 
 export function Footer() {
   return (
@@ -146,7 +95,7 @@ export function Footer() {
                 color: "var(--gold)",
               }}
             >
-              Farmstay
+              vnfarmstay
               <span
                 style={{ color: "var(--text-primary)", fontStyle: "italic" }}
               >
@@ -157,33 +106,11 @@ export function Footer() {
               className="mt-3 text-sm"
               style={{ color: "var(--text-dim)", lineHeight: 1.7 }}
             >
-              Nền tảng kết nối du khách với farmstay xác minh khắp Việt Nam.
-              Trải nghiệm nông nghiệp đích thực, văn hoá bản địa chưa bị thương
-              mại hoá.
+              {SITE_TAGLINE}. Nơi du khách khám phá điểm đến nông nghiệp đích
+              thực, còn các farmstay được chuẩn hoá hồ sơ, kể câu chuyện vùng
+              đất và kết nối theo tuyến hành trình. Không phải sàn đặt phòng —
+              khách liên hệ trực tiếp với farmstay.
             </p>
-            <div className="mt-4 flex gap-2">
-              {socialLinks.map(({ icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  style={{
-                    width: 36,
-                    height: 36,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "50%",
-                    background: "rgba(168,197,176,0.08)",
-                    border: "1px solid var(--border)",
-                    color: "var(--text-muted)",
-                    transition: "var(--transition)",
-                  }}
-                >
-                  <Icon />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Link columns */}

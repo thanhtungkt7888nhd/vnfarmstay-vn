@@ -72,8 +72,6 @@ export default async function FarmstayDetailPage({ params }: Props) {
       imageUrl: `https://vnfarmstay.vn/api/og?title=${encodeURIComponent(farmstay.name)}&subtitle=${encodeURIComponent(farmstay.location)}`,
       address: farmstay.location,
       priceFrom: farmstay.price,
-      rating: farmstay.rating,
-      reviewCount: farmstay.reviewCount,
     }),
     breadcrumbSchema([
       { name: "Trang chủ", url: "/" },
