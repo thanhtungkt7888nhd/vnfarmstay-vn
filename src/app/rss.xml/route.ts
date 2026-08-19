@@ -23,7 +23,20 @@ function escapeXml(str: string): string {
 
 export async function GET() {
   const livePosts = await fetchPosts();
-  const posts = isSanityConfigured() ? livePosts : MOCK_POSTS;
+  const nguon = isSanityConfigured() ? livePosts : MOCK_POSTS;
+
+  /**
+   * Chỉ phát bài CÓ THÂN BÀI THẬT (19/08/2026).
+   *
+   * ⚠️ Bắt được trong lượt rà trước khi đưa lên web thật: nguồn tin này đang đẩy
+   * đủ 6 bài mẫu ra ngoài, trong khi chính những bài ấy chỉ hiện một dòng
+   * "Nội dung đang được cập nhật...", đã mang `noindex` và đã bị gỡ khỏi sitemap.
+   * Nguồn tin đi tới trình đọc tin và các dịch vụ tổng hợp — để lọt là phát tán
+   * trang rỗng dưới danh nghĩa bài viết, đúng thứ hai cửa kia vừa chặn.
+   */
+  const posts = nguon.filter(
+    (p) => Array.isArray(p.content) && p.content.length > 0
+  );
 
   const items = posts
     .slice(0, 20)
