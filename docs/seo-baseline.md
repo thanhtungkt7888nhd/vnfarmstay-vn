@@ -57,12 +57,13 @@ URL farmstay nào. Đây là thiết kế có chủ đích, không phải thiế
 | `/phap-ly` · `/dieu-khoan` · `/chinh-sach-bao-mat` · `/ve-tac-gia` | tĩnh | có | Trang pháp lý và niềm tin |
 | `/blog` | tĩnh | có | Danh sách |
 | `/blog/[slug]` | ISR | **tuỳ bài** | Chỉ index khi bài có thân bài thật |
+| `/vung/[slug]` × 9 | tĩnh | có | **mới 19/08** — trang đích vùng đất, `dynamicParams=false` |
 | `/danh-muc/[slug]` · `/tags/[slug]` · `/tac-gia/[slug]` | ISR/động | **không** | `noindex, follow` tới khi Sanity có bài thật |
 | `/tim-kiem` | động | **không** | `noindex, follow`; đã gỡ khỏi sitemap |
 | `/farmstay/[slug]` | tĩnh | — | Chưa có hồ sơ nào (danh sách rỗng) |
 | `/api/*` | — | không | Đã chặn trong `robots.txt` |
 
-**Số URL trong sitemap: 13** — toàn bộ là trang tĩnh trả mã 200 và cho phép index.
+**Số URL trong sitemap: 22** — toàn bộ là trang tĩnh trả mã 200 và cho phép index.
 
 ## 4. Những gì đã sửa ngày 19/08/2026
 
@@ -89,6 +90,34 @@ URL farmstay nào. Đây là thiết kế có chủ đích, không phải thiế
    thật; tự index lại khi Sanity đấu dây, không phải sửa tay.
 10. Loại Open Graph mặc định `website` thay vì `article` cho mọi trang.
 
+## 4b. Đợt hai cùng ngày 19/08/2026
+
+11. **Vá lỗi bố cục toàn site.** `globals.css` khai bộ reset `* { margin:0; padding:0 }`
+    NGOÀI `@layer`. Luật xếp tầng CSS: style không thuộc lớp nào luôn thắng style trong
+    `@layer` — mà Tailwind v4 để toàn bộ tiện ích trong `@layer utilities`. Hậu quả đo
+    được: `px-6` cho `padding: 0px`, `mx-auto` không căn giữa được. Nghĩa là MỌI tiện ích
+    khoảng cách chết trên toàn site từ ngày dựng web. Đã bọc reset vào `@layer base`.
+12. **Mô hình dữ liệu 9 vùng** tách khỏi `/tour-farmstay` ra `src/features/vung/data.ts`;
+    mỗi vùng thêm `slug`, `tomTat`, `cachDi`, `ungXu`. Sinh 9 trang `/vung/[slug]`.
+13. **Chặn 404 mềm** ở `/vung/[slug]` và `/farmstay/[slug]` bằng `dynamicParams = false` —
+    trước đó đường dẫn bịa trả mã **200**, `notFound()` một mình không đủ.
+14. **Trang chủ** thêm 4 khối: khám phá theo vùng · lịch mùa cả năm · đi theo tuyến ·
+    cửa vào chủ farmstay. Nay có 1 h1 và 6 h2, dẫn thẳng tới cả 9 trang vùng.
+15. **Máy kiểm `scripts/kiem-seo.mjs`** — 11 phép, mỗi phép qua đối chứng hai chiều
+    (mẫu đã biết đúng + mẫu đã biết sai) trước khi được phép báo số. Chạy:
+    `npm run kiem-seo -- http://localhost:3117`. Nó đã bắt được: 404 mềm ở `/farmstay`,
+    6 trang thiếu JSON-LD, 4 tiêu đề quá dài, 2 landmark `<main>` ở `/blog`,
+    thứ bậc tiêu đề nhảy cấp ở chân trang · `/blog` · `/phap-ly`.
+16. **Đo lường** gom về một cửa `src/lib/do-luong.ts` + bộ lắng nghe uỷ nhiệm
+    `TheoDoiSuKien.tsx`: trang vẫn dựng ở máy chủ, chỉ gắn nhãn `data-su-kien`.
+    Có hàng đợi cứu sự kiện bắn trước khi `gtag` kịp nạp (giới hạn 20 sự kiện / 15 giây).
+17. **Khả năng tiếp cận** đo trên trình duyệt thật: 0 vùng chạm dưới 44px (trừ liên kết
+    nội dòng — WCAG miễn trừ), 1 `<main>`/1 `<nav>`/1 `<footer>`, 0 ảnh thiếu `alt`,
+    0 nhảy cấp tiêu đề, CLS = 0, không tràn ngang ở khổ 390px.
+
+**Số đo hiệu năng một trang vùng** (bản dựng production, máy nội bộ): tổng tải 63 KB ·
+11 tệp JavaScript · DOM sẵn sàng 95 ms · CLS 0.
+
 ## 5. Rủi ro còn lại và việc đang chờ dữ liệu
 
 | Việc | Chờ gì |
@@ -97,11 +126,14 @@ URL farmstay nào. Đây là thiết kế có chủ đích, không phải thiế
 | Sáu bài mẫu trong `/blog` | Ông quyết: xoá hẳn, hay thay bằng bài thật |
 | `sameAs` của Organization | URL mạng xã hội chính thức do Ông xác nhận |
 | Kênh liên hệ | Thư điện tử hoặc số điện thoại thật |
-| Trang vùng · chủ đề · mùa · tuyến | Nội dung biên tập riêng cho từng vùng (P1) |
+| Trang chủ đề · mùa · tuyến riêng | Nội dung biên tập riêng (9 trang vùng đã xong) |
+| Sự kiện `join_form_submit` | Chưa có biểu mẫu nào — `/dang-farmstay` cố ý không dựng form khi chưa có đường nhận thật |
+| Sự kiện hồ sơ farmstay (xem hồ sơ · bấm liên hệ · bấm đặt phòng) | Chờ có hồ sơ farmstay thật |
 | Trang phương pháp xác minh | Quy trình xác minh có thật, có tiêu chí và chu kỳ |
 | Ảnh bìa bài viết | Ảnh gốc có nguồn/giấy phép |
 
 ## 6. Không đổi URL nào
 
 Đợt này **không đổi, không xoá, không gộp URL nào**, nên không cần chuyển hướng mới.
-Hai đường dẫn duy nhất được thêm là `/lien-he` và `/chinh-sach-bien-tap`.
+Đường dẫn được THÊM: `/lien-he`, `/chinh-sach-bien-tap`, và 9 trang `/vung/[slug]`.
+Không đường dẫn nào bị đổi hay gỡ.
