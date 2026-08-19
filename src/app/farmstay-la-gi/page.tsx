@@ -20,7 +20,7 @@ import { buildMetadata } from "@/lib/seo";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Farmstay là gì? Phân biệt farmstay, homestay và resort sinh thái",
+  title: "Farmstay là gì? Phân biệt với homestay và resort",
   description:
     "Farmstay là hình thức lưu trú ngay trong một nông trại đang canh tác thật. Phân biệt rõ farmstay với homestay và resort sinh thái, các loại hình farmstay ở Việt Nam, ai hợp và ai không hợp.",
   canonical: "/farmstay-la-gi",

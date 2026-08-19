@@ -5,6 +5,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { graph, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { PostCard } from "@/features/blog/ui/PostCard";
 import { MOCK_POSTS } from "@/features/blog/mock-posts";
 import { buildMetadata } from "@/lib/seo";
@@ -26,6 +28,22 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
+/* Dữ liệu có cấu trúc — thêm 19/08/2026 sau khi `scripts/kiem-seo.mjs` phát hiện
+   trang này không phát khối JSON-LD nào, nên máy tìm kiếm không nối được nó vào
+   thực thể vnfarmstay.vn. */
+const pageSchema = graph([
+  webPageSchema({
+    path: "/blog",
+    name: "Câu chuyện & Blog — vnfarmstay.vn",
+    description:
+      "Bài viết về farmstay, du lịch nông nghiệp và câu chuyện vùng đất Việt Nam.",
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: "/" },
+    { name: "Câu chuyện", url: "/blog" },
+  ]),
+]);
+
 export default async function BlogPage() {
   const liveData = await fetchPosts();
   const posts = isSanityConfigured() ? liveData : MOCK_POSTS;
@@ -33,6 +51,7 @@ export default async function BlogPage() {
   return (
     <>
       <Navbar />
+      <JsonLd schema={pageSchema} />
       <main id="main">
         {/* Hero */}
         <section

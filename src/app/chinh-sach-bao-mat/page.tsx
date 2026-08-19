@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { graph, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Chính sách bảo mật – vnfarmstay.vn",
@@ -72,10 +74,27 @@ const SECTIONS = [
   },
 ];
 
+/* Dữ liệu có cấu trúc — thêm 19/08/2026 sau khi `scripts/kiem-seo.mjs` phát hiện
+   trang này không phát khối JSON-LD nào, nên máy tìm kiếm không nối được nó vào
+   thực thể vnfarmstay.vn. */
+const pageSchema = graph([
+  webPageSchema({
+    path: "/chinh-sach-bao-mat",
+    name: "Chính sách bảo mật — vnfarmstay.vn",
+    description:
+      "Cách vnfarmstay.vn thu thập, sử dụng và bảo vệ dữ liệu của người dùng.",
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: "/" },
+    { name: "Chính sách bảo mật", url: "/chinh-sach-bao-mat" },
+  ]),
+]);
+
 export default function ChinhSachBaoMatPage() {
   return (
     <>
       <Navbar />
+      <JsonLd schema={pageSchema} />
       <main
         id="main"
         style={{ background: "var(--bg-deep)", minHeight: "80vh" }}

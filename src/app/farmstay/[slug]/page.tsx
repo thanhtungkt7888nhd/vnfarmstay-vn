@@ -21,6 +21,16 @@ export async function generateStaticParams() {
   return FARMSTAYS.map((f) => ({ slug: f.slug }));
 }
 
+/**
+ * Chỉ các slug farmstay CÓ THẬT được phục vụ; slug khác trả HTTP 404 thật.
+ *
+ * ⚠️ Máy kiểm `scripts/kiem-seo.mjs` bắt được 19/08/2026: `/farmstay/khong-co-that`
+ * trả mã **200**. `notFound()` một mình không đủ — Next vẫn dựng trang theo yêu cầu
+ * rồi trả mã thành công, nên máy tìm kiếm tưởng mọi đường dẫn bịa đều là trang thật.
+ * Danh sách farmstay hiện rỗng, nghĩa là MỌI đường dẫn dưới /farmstay/ đều phải 404.
+ */
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const farmstay = FARMSTAYS.find((f) => f.slug === slug);

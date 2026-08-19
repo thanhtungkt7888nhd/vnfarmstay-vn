@@ -10,7 +10,9 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "check-orphans": "node scripts/check-orphans.mjs",
-    "prepare": "husky"
+    "prepare": "husky",
+    "kiem-seo": "node scripts/kiem-seo.mjs",
+    "kiem-seo:tu-kiem": "node scripts/kiem-seo.mjs --tu-kiem"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

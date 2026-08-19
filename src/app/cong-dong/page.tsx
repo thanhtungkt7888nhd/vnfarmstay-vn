@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { graph, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Cộng đồng Farmstay Việt Nam",
@@ -21,10 +23,27 @@ export const metadata: Metadata = {
  * CẤM đổ bài mẫu/sự kiện mẫu vào đây cho trang đỡ trống.
  */
 
+/* Dữ liệu có cấu trúc — thêm 19/08/2026 sau khi `scripts/kiem-seo.mjs` phát hiện
+   trang này không phát khối JSON-LD nào, nên máy tìm kiếm không nối được nó vào
+   thực thể vnfarmstay.vn. */
+const pageSchema = graph([
+  webPageSchema({
+    path: "/cong-dong",
+    name: "Cộng đồng Farmstay Việt Nam — vnfarmstay.vn",
+    description:
+      "Nơi chủ farmstay và du khách kết nối, hỏi đáp và chia sẻ kinh nghiệm.",
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: "/" },
+    { name: "Cộng đồng", url: "/cong-dong" },
+  ]),
+]);
+
 export default function CongDongPage() {
   return (
     <>
       <Navbar />
+      <JsonLd schema={pageSchema} />
       <main
         id="main"
         style={{ background: "var(--bg-deep)", minHeight: "80vh" }}

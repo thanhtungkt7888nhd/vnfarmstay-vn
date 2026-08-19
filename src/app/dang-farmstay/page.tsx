@@ -17,6 +17,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { graph, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
 
@@ -43,10 +45,27 @@ const CAN_GUI = [
   "Cách khách liên hệ với bạn: website, Zalo hoặc số điện thoại",
 ];
 
+/* Dữ liệu có cấu trúc — thêm 19/08/2026 sau khi `scripts/kiem-seo.mjs` phát hiện
+   trang này không phát khối JSON-LD nào, nên máy tìm kiếm không nối được nó vào
+   thực thể vnfarmstay.vn. */
+const pageSchema = graph([
+  webPageSchema({
+    path: "/dang-farmstay",
+    name: "Giới thiệu farmstay của bạn — vnfarmstay.vn",
+    description:
+      "Gửi thông tin farmstay của bạn để được chúng ta tới tận nơi và viết hồ sơ.",
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: "/" },
+    { name: "Giới thiệu farmstay", url: "/dang-farmstay" },
+  ]),
+]);
+
 export default function DangFarmstayPage() {
   return (
     <>
       <Navbar />
+      <JsonLd schema={pageSchema} />
       <main
         id="main"
         style={{ background: "var(--bg-deep)", minHeight: "80vh" }}

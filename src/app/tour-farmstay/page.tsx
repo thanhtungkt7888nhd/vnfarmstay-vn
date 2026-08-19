@@ -21,7 +21,9 @@ import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 import { VUNG, LICH_MUA } from "@/features/vung/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Tour Farmstay — Bản đồ vùng nông nghiệp Việt Nam theo mùa",
+  // Rút gọn 19/08/2026: khuôn `%s | vnfarmstay.vn` của layout đã nối đuôi thương
+  // hiệu, nên tiêu đề gốc dài quá mức hiển thị trên trang kết quả tìm kiếm.
+  title: "Bản đồ 9 vùng farmstay Việt Nam theo mùa",
   description:
     "Bản đồ 9 vùng nông nghiệp Việt Nam có trải nghiệm farmstay: ruộng bậc thang Tây Bắc, chè Mộc Châu, cà phê Tây Nguyên, miệt vườn ĐBSCL. Mỗi vùng kèm mùa đẹp nhất và việc nhà nông đặc trưng.",
   canonical: "/tour-farmstay",

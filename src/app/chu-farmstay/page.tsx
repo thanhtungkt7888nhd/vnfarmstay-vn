@@ -19,7 +19,7 @@ import { buildMetadata } from "@/lib/seo";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Dành cho Chủ Farmstay — Đưa farm của bạn lên vnfarmstay.vn",
+  title: "Dành cho chủ farmstay",
   description:
     "Giới thiệu farmstay của bạn trên vnfarmstay.vn — miễn phí, kèm liên kết về website riêng của farm. Chúng tôi kể câu chuyện của farm, khách liên hệ thẳng với bạn.",
   canonical: "/chu-farmstay",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { graph, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Thư viện Pháp lý Farmstay",
@@ -42,10 +44,27 @@ const LEGAL_DOCS = [
   },
 ];
 
+/* Dữ liệu có cấu trúc — thêm 19/08/2026 sau khi `scripts/kiem-seo.mjs` phát hiện
+   trang này không phát khối JSON-LD nào, nên máy tìm kiếm không nối được nó vào
+   thực thể vnfarmstay.vn. */
+const pageSchema = graph([
+  webPageSchema({
+    path: "/phap-ly",
+    name: "Thư viện pháp lý farmstay — vnfarmstay.vn",
+    description:
+      "Tập hợp quy định pháp lý liên quan tới mở và vận hành farmstay tại Việt Nam.",
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: "/" },
+    { name: "Pháp lý", url: "/phap-ly" },
+  ]),
+]);
+
 export default function PhapLyPage() {
   return (
     <>
       <Navbar />
+      <JsonLd schema={pageSchema} />
       <main
         id="main"
         style={{ background: "var(--bg-deep)", minHeight: "80vh" }}

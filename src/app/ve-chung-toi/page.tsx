@@ -39,7 +39,7 @@ import { buildMetadata } from "@/lib/seo";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Về vnfarmstay.vn — Hạ tầng chung của cộng đồng Farmstay Việt Nam",
+  title: "Hạ tầng chung của cộng đồng Farmstay Việt Nam",
   description:
     "Một cây đứng riêng thì đổ. Một khu rừng thì có tên trên bản đồ. Câu chuyện và lý do tồn tại của vnfarmstay.vn — hạ tầng chung đưa Việt Nam thành Quốc Gia Du Lịch Nông Nghiệp.",
   canonical: "/ve-chung-toi",

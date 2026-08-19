@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { graph, webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 /**
  * ⚠️ 08/08/2026 — Ông ra lệnh sửa lại cho đúng sự thật. Bản cũ (thừa hưởng từ khung web
@@ -60,10 +62,26 @@ const SECTIONS = [
   },
 ];
 
+/* Dữ liệu có cấu trúc — thêm 19/08/2026 sau khi `scripts/kiem-seo.mjs` phát hiện
+   trang này không phát khối JSON-LD nào, nên máy tìm kiếm không nối được nó vào
+   thực thể vnfarmstay.vn. */
+const pageSchema = graph([
+  webPageSchema({
+    path: "/dieu-khoan",
+    name: "Điều khoản sử dụng — vnfarmstay.vn",
+    description: "Điều khoản sử dụng website vnfarmstay.vn.",
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: "/" },
+    { name: "Điều khoản sử dụng", url: "/dieu-khoan" },
+  ]),
+]);
+
 export default function DieuKhoanPage() {
   return (
     <>
       <Navbar />
+      <JsonLd schema={pageSchema} />
       <main
         id="main"
         style={{ background: "var(--bg-deep)", minHeight: "80vh" }}
