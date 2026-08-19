@@ -4,6 +4,7 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { HomePage } from "@/features/listing/HomePage";
 import { FARMSTAYS } from "@/features/listing/data";
+import { KhamPhaTheoVung } from "@/features/vung/KhamPhaTheoVung";
 import {
   SITE_URL,
   SITE_NAME,
@@ -43,7 +44,7 @@ export default function Home() {
     <>
       <Navbar />
       <JsonLd schema={homeSchema} />
-      <HomePage farmstays={FARMSTAYS} />
+      <HomePage farmstays={FARMSTAYS} khoiMayChu={<KhamPhaTheoVung />} />
       <Footer />
     </>
   );

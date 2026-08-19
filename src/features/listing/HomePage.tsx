@@ -30,9 +30,15 @@ const REGIONS = [
 interface Props {
   farmstays: Farmstay[];
   initialQuery?: string;
+  /**
+   * Các khối nội dung dựng sẵn ở phía máy chủ (khám phá theo vùng, mùa vụ…).
+   * Truyền xuống dưới dạng nội dung con thay vì import thẳng vào tệp này: đây là
+   * client component, import thẳng sẽ đóng gói lại toàn bộ chữ vào tệp JavaScript.
+   */
+  khoiMayChu?: React.ReactNode;
 }
 
-export function HomePage({ farmstays, initialQuery = "" }: Props) {
+export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
   /**
    * Chưa có farmstay THẬT nào ⇒ ẩn toàn bộ bộ máy tìm/lọc/danh sách.
    * Ông ra lệnh 08/08/2026: khung rỗng có tiêu đề còn tệ hơn không có khung.
@@ -452,6 +458,8 @@ export function HomePage({ farmstays, initialQuery = "" }: Props) {
           </a>
         </div>
       </section>
+
+      {khoiMayChu}
 
       {/* ── Câu trả lời ngắn: là gì · không phải gì · khách đặt ở đâu ──
           Ba câu hỏi này người đọc luôn hỏi thầm, và máy tìm kiếm cần thấy câu trả

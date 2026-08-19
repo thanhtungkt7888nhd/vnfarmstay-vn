@@ -6,6 +6,7 @@ import type { MetadataRoute } from "next";
 import { FARMSTAYS } from "@/features/listing/data";
 import { fetchPostSlugs } from "@/lib/sanity-queries";
 import { SITE_URL } from "@/lib/site";
+import { VUNG, NGAY_CAP_NHAT_VUNG } from "@/features/vung/data";
 
 export const revalidate = 3600;
 
@@ -59,6 +60,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // 9 trang vùng — mỗi trang có nội dung biên tập riêng, thêm 19/08/2026.
+  // `lastModified` lấy từ ngày rà soát nội dung THẬT, không phải ngày build:
+  // đổi lastmod mỗi lần dựng lại là nói dối máy tìm kiếm rằng nội dung vừa đổi.
+  const vungPages: MetadataRoute.Sitemap = VUNG.map((v) => ({
+    url: `${SITE_URL}/vung/${v.slug}`,
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+    lastModified: new Date(NGAY_CAP_NHAT_VUNG),
+  }));
+
   // Farmstay pages từ static data
   const farmstayPages: MetadataRoute.Sitemap = FARMSTAYS.map((f) => ({
     url: `${SITE_URL}/farmstay/${f.slug}`,
@@ -92,5 +103,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Không thể fetch — bỏ qua, không crash
   }
 
-  return [...staticPages, ...farmstayPages, ...blogPages];
+  return [...staticPages, ...vungPages, ...farmstayPages, ...blogPages];
 }

@@ -18,6 +18,7 @@ import { JsonLd } from "@/shared/ui/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
+import { VUNG } from "@/features/vung/data";
 
 export const metadata: Metadata = buildMetadata({
   title: "Tour Farmstay — Bản đồ vùng nông nghiệp Việt Nam theo mùa",
@@ -34,154 +35,8 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
-interface Vung {
-  ten: string;
-  diaDanh: string;
-  nongSan: string;
-  dacTrung: string;
-  muaDep: string;
-  viecNhaNong: string[];
-  /** Vị trí gần đúng trên dải Bắc → Nam, dùng cho thanh định vị */
-  bac: number;
-}
-
-/**
- * 9 vùng — sắp theo trục Bắc vào Nam.
- * Mùa vụ ghi theo lịch canh tác phổ biến của vùng; thời tiết từng năm có thể lệch,
- * nên nội dung luôn nhắc người đọc hỏi lại chủ farm trước khi đi.
- */
-const VUNG: Vung[] = [
-  {
-    ten: "Vùng cao Đông Bắc",
-    diaDanh: "Hà Giang · Cao Bằng · Bắc Kạn",
-    nongSan: "Lúa ruộng bậc thang · tam giác mạch · chè Shan tuyết cổ thụ",
-    dacTrung:
-      "Nơi ruộng bậc thang được khắc vào những sườn núi dốc nhất Việt Nam. Chè Shan tuyết ở đây mọc trên cây cổ thụ, phải trèo lên hái chứ không cúi xuống hái như đồi chè dưới xuôi.",
-    muaDep: "Tháng 9–10 lúa chín vàng; tháng 10–11 hoa tam giác mạch nở",
-    viecNhaNong: [
-      "Gặt lúa nương",
-      "Trèo hái chè Shan tuyết",
-      "Nấu rượu ngô men lá",
-    ],
-    bac: 5,
-  },
-  {
-    ten: "Tây Bắc — ruộng bậc thang",
-    diaDanh: "Mù Cang Chải · Sa Pa · Lai Châu",
-    nongSan: "Lúa nước ruộng bậc thang · thảo quả · cá ruộng",
-    dacTrung:
-      "Hệ thống dẫn nước từ đỉnh núi xuống từng bậc ruộng là một kỹ thuật canh tác truyền qua nhiều đời của người Mông và người Dao — thứ đáng xem không kém gì cảnh đẹp.",
-    muaDep:
-      "Tháng 5–6 mùa nước đổ, ruộng loang loáng như gương; tháng 9–10 lúa chín",
-    viecNhaNong: [
-      "Cấy lúa dưới ruộng bậc thang",
-      "Bắt cá ruộng",
-      "Nhuộm chàm, vẽ sáp ong",
-    ],
-    bac: 12,
-  },
-  {
-    ten: "Cao nguyên Mộc Châu",
-    diaDanh: "Sơn La · Mộc Châu · Vân Hồ",
-    nongSan: "Chè · mận hậu · bò sữa · cải trắng",
-    dacTrung:
-      "Một trong ít vùng của Việt Nam có cả đồi chè, vườn mận và trại bò sữa trong bán kính ngắn — nên đi một chuyến thấy được ba nhịp nông nghiệp khác nhau.",
-    muaDep:
-      "Tháng 1–2 hoa mận nở trắng đồi; tháng 5–6 mận chín; tháng 11–12 hoa cải trắng",
-    viecNhaNong: [
-      "Hái chè sáng sớm",
-      "Vắt sữa bò",
-      "Làm sữa chua và phô mai tươi",
-    ],
-    bac: 20,
-  },
-  {
-    ten: "Trung du chè",
-    diaDanh: "Thái Nguyên · Phú Thọ · Tuyên Quang",
-    nongSan: "Chè Tân Cương · cọ · bưởi",
-    dacTrung:
-      "Vùng chè lâu đời và gần Hà Nội nhất — hợp cho chuyến cuối tuần. Ở đây khách xem được trọn quy trình từ búp chè tươi tới chè khô đóng gói trong cùng một ngày.",
-    muaDep: "Tháng 3–5 và tháng 8–10 là hai vụ chè ngon nhất trong năm",
-    viecNhaNong: [
-      "Hái chè hai lá một tôm",
-      "Sao chè bằng chảo gang",
-      "Pha và thử nếm chè",
-    ],
-    bac: 27,
-  },
-  {
-    ten: "Duyên hải miền Trung",
-    diaDanh: "Quảng Nam · Huế · Quảng Ngãi",
-    nongSan: "Rau làng Trà Quế · lúa · sen · thuỷ sản đầm phá",
-    dacTrung:
-      "Nông nghiệp ở đây dính liền với biển và đầm phá — cùng một buổi có thể vừa làm vườn rau vừa theo ghe ra đầm. Làng rau Trà Quế bón rong biển vớt từ sông, một cách canh tác riêng của vùng.",
-    muaDep:
-      "Tháng 2–8 khô ráo dễ đi; tháng 5–6 mùa sen. Tránh tháng 9–11 mùa mưa bão",
-    viecNhaNong: [
-      "Cuốc luống, bón rong biển",
-      "Đi ghe thả lưới đầm phá",
-      "Làm bánh từ gạo mới",
-    ],
-    bac: 42,
-  },
-  {
-    ten: "Tây Nguyên — thủ phủ cà phê",
-    diaDanh: "Đắk Lắk · Gia Lai · Kon Tum · Đắk Nông",
-    nongSan: "Cà phê · hồ tiêu · ca cao · mắc ca",
-    dacTrung:
-      "Vùng cà phê lớn nhất cả nước, trên nền đất đỏ bazan. Hai mùa ở đây khác nhau hoàn toàn: mùa hoa nở trắng xoá cả vườn và thơm nức, mùa quả thì đỏ rực và cả vùng bận rộn thu hái.",
-    muaDep: "Tháng 2–3 hoa cà phê nở trắng; tháng 11–12 mùa thu hoạch quả chín",
-    viecNhaNong: [
-      "Hái cà phê chín",
-      "Xát vỏ, phơi, rang mẻ nhỏ",
-      "Nghe cồng chiêng bên bếp lửa",
-    ],
-    bac: 55,
-  },
-  {
-    ten: "Cao nguyên Lâm Viên",
-    diaDanh: "Đà Lạt · Bảo Lộc · Cầu Đất · Đơn Dương",
-    nongSan: "Rau ôn đới · hoa · dâu tây · chè Cầu Đất · atisô · tơ tằm",
-    dacTrung:
-      "Khí hậu mát quanh năm nên đây là vùng duy nhất trồng được rau và hoa ôn đới quy mô lớn. Bảo Lộc còn giữ nghề ươm tơ dệt lụa — xem tằm ăn dâu tới lúc kéo kén là trải nghiệm riêng của vùng này.",
-    muaDep: "Đi được quanh năm; tháng 10–12 mát và ít mưa nhất",
-    viecNhaNong: [
-      "Thu hoạch rau nhà kính",
-      "Hái dâu tây",
-      "Xem nuôi tằm — ươm tơ",
-    ],
-    bac: 63,
-  },
-  {
-    ten: "Nắng gió Nam Trung Bộ",
-    diaDanh: "Ninh Thuận · Bình Thuận",
-    nongSan: "Nho · táo · muối · thanh long · cừu",
-    dacTrung:
-      "Vùng khô hạn nhất Việt Nam — và chính cái nắng gắt đó làm nên nho, táo và những cánh đồng muối trắng. Nghề muối ở đây nặng nhọc thật, nên khách làm thử một buổi thường nhớ rất lâu.",
-    muaDep:
-      "Tháng 12–4 khô ráo, ít mưa; nho thu hoạch rộ khoảng tháng 4 và tháng 8",
-    viecNhaNong: [
-      "Cắt nho trong giàn",
-      "Cào muối trên ruộng",
-      "Chăn cừu buổi chiều",
-    ],
-    bac: 70,
-  },
-  {
-    ten: "Miệt vườn sông nước",
-    diaDanh: "Bến Tre · Vĩnh Long · Tiền Giang · Cần Thơ",
-    nongSan: "Dừa · cây ăn trái · lúa · cá nước ngọt",
-    dacTrung:
-      "Vườn ở đây được chia bằng mương nước, nên di chuyển trong vườn là chèo xuồng chứ không phải đi bộ. Bến Tre là xứ dừa — từ cơm dừa, nước dừa tới thân và lá đều thành sản phẩm.",
-    muaDep: "Tháng 5–8 rộ trái cây; tháng 9–11 mùa nước nổi ở vùng đầu nguồn",
-    viecNhaNong: [
-      "Chèo xuồng hái trái tại gốc",
-      "Làm kẹo dừa, đan lá dừa",
-      "Tát mương bắt cá",
-    ],
-    bac: 90,
-  },
-];
+/* Dữ liệu 9 vùng đã chuyển sang `src/features/vung/data.ts` (19/08/2026) để
+   `/tour-farmstay`, `/vung/[slug]`, trang chủ và sitemap cùng đọc một nguồn. */
 
 /** Lịch mùa gọn — tra nhanh "tháng này đi đâu" */
 const LICH_MUA = [
@@ -396,7 +251,7 @@ export default function TourFarmstayPage() {
             <div className="vung-grid">
               {VUNG.map((v) => (
                 <article
-                  key={v.ten}
+                  key={v.slug}
                   style={{
                     background: "var(--bg-card)",
                     border: "1px solid var(--border)",
@@ -560,6 +415,26 @@ export default function TourFarmstayPage() {
                       ))}
                     </ul>
                   </div>
+
+                  {/* Lối vào trang riêng của vùng — thêm 19/08/2026. Trước đó bản đồ
+                      này là ngõ cụt: người đọc thấy vùng hay nhưng không đi tiếp được. */}
+                  <a
+                    href={`/vung/${v.slug}`}
+                    style={{
+                      marginTop: 16,
+                      display: "inline-block",
+                      padding: "10px 20px",
+                      borderRadius: 22,
+                      border: "1px solid var(--gold-border)",
+                      color: "var(--gold)",
+                      fontWeight: 600,
+                      fontSize: "0.85rem",
+                      textDecoration: "none",
+                      alignSelf: "flex-start",
+                    }}
+                  >
+                    Tìm hiểu {giuTuGhep(v.ten)} →
+                  </a>
                 </article>
               ))}
             </div>
