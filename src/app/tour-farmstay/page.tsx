@@ -18,7 +18,7 @@ import { JsonLd } from "@/shared/ui/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
-import { VUNG } from "@/features/vung/data";
+import { VUNG, LICH_MUA } from "@/features/vung/data";
 
 export const metadata: Metadata = buildMetadata({
   title: "Tour Farmstay — Bản đồ vùng nông nghiệp Việt Nam theo mùa",
@@ -38,33 +38,8 @@ export const metadata: Metadata = buildMetadata({
 /* Dữ liệu 9 vùng đã chuyển sang `src/features/vung/data.ts` (19/08/2026) để
    `/tour-farmstay`, `/vung/[slug]`, trang chủ và sitemap cùng đọc một nguồn. */
 
-/** Lịch mùa gọn — tra nhanh "tháng này đi đâu" */
-const LICH_MUA = [
-  {
-    thang: "Tháng 1 – 2",
-    diem: "Hoa mận Mộc Châu · hoa cà phê Tây Nguyên chớm nở",
-  },
-  {
-    thang: "Tháng 3 – 4",
-    diem: "Vụ chè xuân trung du · nho Ninh Thuận vào vụ",
-  },
-  {
-    thang: "Tháng 5 – 6",
-    diem: "Mùa nước đổ ruộng bậc thang · mận chín · trái cây miền Tây",
-  },
-  {
-    thang: "Tháng 7 – 8",
-    diem: "Miệt vườn rộ trái · vụ chè hè thu · biển miền Trung êm",
-  },
-  {
-    thang: "Tháng 9 – 10",
-    diem: "Lúa chín vàng Tây Bắc và Đông Bắc · mùa nước nổi ĐBSCL",
-  },
-  {
-    thang: "Tháng 11 – 12",
-    diem: "Thu hoạch cà phê Tây Nguyên · hoa cải Mộc Châu · Đà Lạt khô ráo",
-  },
-];
+/* LICH_MUA đã chuyển sang `src/features/vung/data.ts` (19/08/2026) — trang chủ
+   và bản đồ vùng cùng dùng, không chép hai bản lệch nhau. */
 
 const FAQS = [
   {

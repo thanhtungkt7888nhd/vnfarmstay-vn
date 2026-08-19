@@ -56,7 +56,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!vung) return { title: "Không tìm thấy vùng" };
 
   return buildMetadata({
-    title: `Farmstay tại ${vung.ten} | Trải nghiệm nông nghiệp Việt Nam`,
+    // Không tự nối đuôi thương hiệu vào đây: `layout.tsx` đã có khuôn
+    // `%s | vnfarmstay.vn`, nối thêm sẽ thành hai đuôi chồng nhau và tiêu đề dài
+    // quá mức hiển thị trên trang kết quả tìm kiếm.
+    title: `Farmstay tại ${vung.ten}`,
     description: `${vung.tomTat} Nông sản: ${vung.nongSan}. ${vung.muaDep}.`,
     canonical: `/vung/${vung.slug}`,
     updatedAt: NGAY_CAP_NHAT_VUNG,
@@ -179,10 +182,12 @@ export default async function VungPage({ params }: Props) {
             >
               Cần biết trước khi đi
             </h2>
+            {/* 4 thẻ ⇒ lưới 2 cột. Trước đó `minmax(260px,1fr)` cho ra 3 cột trong
+                khung 880px, nên thẻ thứ tư rơi xuống một mình và để trống hai ô. */}
             <dl
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+                gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))",
                 gap: 16,
               }}
             >

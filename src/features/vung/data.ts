@@ -229,6 +229,34 @@ export const VUNG: Vung[] = [
   },
 ];
 
+/** Lịch mùa gọn — tra nhanh "tháng này đi đâu" */
+export const LICH_MUA = [
+  {
+    thang: "Tháng 1 – 2",
+    diem: "Hoa mận Mộc Châu · hoa cà phê Tây Nguyên chớm nở",
+  },
+  {
+    thang: "Tháng 3 – 4",
+    diem: "Vụ chè xuân trung du · nho Ninh Thuận vào vụ",
+  },
+  {
+    thang: "Tháng 5 – 6",
+    diem: "Mùa nước đổ ruộng bậc thang · mận chín · trái cây miền Tây",
+  },
+  {
+    thang: "Tháng 7 – 8",
+    diem: "Miệt vườn rộ trái · vụ chè hè thu · biển miền Trung êm",
+  },
+  {
+    thang: "Tháng 9 – 10",
+    diem: "Lúa chín vàng Tây Bắc và Đông Bắc · mùa nước nổi ĐBSCL",
+  },
+  {
+    thang: "Tháng 11 – 12",
+    diem: "Thu hoạch cà phê Tây Nguyên · hoa cải Mộc Châu · Đà Lạt khô ráo",
+  },
+];
+
 /** Tra một vùng theo slug; trả về `undefined` nếu không có (để trang gọi `notFound()`). */
 export function timVung(slug: string): Vung | undefined {
   return VUNG.find((v) => v.slug === slug);
