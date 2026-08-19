@@ -108,7 +108,12 @@ export default async function VungPage({ params }: Props) {
     <>
       <Navbar />
       <JsonLd schema={schemas} />
-      <main id="main" style={{ background: "var(--bg-deep)" }}>
+      <main
+        id="main"
+        data-su-kien-tai="route_view"
+        data-sk-vung={vung.slug}
+        style={{ background: "var(--bg-deep)" }}
+      >
         <section
           className="plasma-bg motif-x"
           style={{
@@ -303,6 +308,8 @@ export default async function VungPage({ params }: Props) {
                 </p>
                 <a
                   href="/dang-farmstay"
+                  data-su-kien="join_ecosystem_cta_click"
+                  data-sk-tu={`vung/${vung.slug}`}
                   style={{
                     display: "inline-block",
                     padding: "11px 22px",
@@ -353,6 +360,9 @@ export default async function VungPage({ params }: Props) {
                 <a
                   key={v.slug}
                   href={`/vung/${v.slug}`}
+                  data-su-kien="related_destination_click"
+                  data-sk-tu={vung.slug}
+                  data-sk-den={v.slug}
                   style={{
                     display: "block",
                     background: "var(--bg-card)",

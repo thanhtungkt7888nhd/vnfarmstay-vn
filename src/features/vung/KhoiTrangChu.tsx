@@ -317,6 +317,8 @@ export function KhoiTrangChu() {
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
             <a
               href="/dang-farmstay"
+              data-su-kien="join_ecosystem_cta_click"
+              data-sk-tu="trang-chu-khoi-chu-farm"
               className="fx-gradient-btn fx-glow"
               style={{
                 display: "inline-block",

@@ -217,11 +217,8 @@ export default function DangFarmstayPage() {
               }}
             >
               Ngay khi kênh liên hệ mở, địa chỉ sẽ được đăng tại đây và ở trang{" "}
-              <Link
-                href="/ve-chung-toi#lien-he"
-                style={{ color: "var(--gold)" }}
-              >
-                Về chúng tôi
+              <Link href="/lien-he" style={{ color: "var(--gold)" }}>
+                Liên hệ
               </Link>
               . Bạn cứ chuẩn bị sẵn mấy thứ ở trên, lúc đó gửi một lần là xong.
             </p>

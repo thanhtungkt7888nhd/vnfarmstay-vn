@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ConsentGate } from "@/shared/ui/ConsentGate";
+import { TheoDoiSuKien } from "@/shared/ui/TheoDoiSuKien";
 import { Libre_Bodoni, DM_Sans } from "next/font/google";
 import "./globals.css";
 import {
@@ -130,6 +131,11 @@ export default function RootLayout({
             Trước 11/08/2026 hai script này chạy ngay khi mở trang: người dùng
             bị đo trước khi được hỏi, vi phạm PDPL "im lặng ≠ đồng ý". */}
         <ConsentGate gaId={GA_ID} clarityId={CLARITY_ID} />
+
+        {/* Bộ lắng nghe uỷ nhiệm cho sự kiện đo lường — xem
+            `src/shared/ui/TheoDoiSuKien.tsx`. Nó chỉ đọc nhãn `data-su-kien` và
+            chuyển cho `@/lib/do-luong`, nơi tôn trọng cổng đồng ý ở trên. */}
+        <TheoDoiSuKien />
       </body>
     </html>
   );

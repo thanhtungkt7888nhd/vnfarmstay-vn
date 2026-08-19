@@ -166,6 +166,8 @@ export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
           </a>
           <a
             href="/chu-farmstay"
+            data-su-kien="join_ecosystem_cta_click"
+            data-sk-tu="trang-chu-hero"
             style={{
               display: "inline-block",
               padding: "13px 28px",
