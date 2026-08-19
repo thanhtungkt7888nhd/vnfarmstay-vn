@@ -45,6 +45,18 @@ const nextConfig: NextConfig = {
   /** Redirects 301 — tránh duplicate content */
   async redirects() {
     return [
+      /* www → không-www. Đo thật 19/08/2026 sau khi trỏ tên miền: CẢ HAI bản
+         đều trả 200 và phục vụ cùng nội dung — với công cụ tìm kiếm đó là hai
+         website trùng nhau, chia đôi tín nhiệm. Bản CHÍNH là không-www vì
+         `SITE_URL` và mọi thẻ canonical đều khai như vậy.
+         Điều kiện `has host = www...` khiến luật chỉ bắn khi tên miền vào là
+         bản www, nên KHÔNG có nguy cơ chuyển hướng vòng tròn. */
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: "www.vnfarmstay.vn" }],
+        destination: "https://vnfarmstay.vn/:path*",
+        permanent: true,
+      },
       // /bai-viet/ → /blog/ (URL cũ, giữ SEO juice)
       {
         source: "/bai-viet",
