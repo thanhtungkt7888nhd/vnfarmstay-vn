@@ -12,6 +12,9 @@ const footerLinks = {
   "Chủ farmstay": [
     { href: "/chu-farmstay", label: "Dành cho chủ farmstay" },
     { href: "/dang-farmstay", label: "Giới thiệu farmstay" },
+    // Thêm 19/08/2026: phép kiểm chống mồ côi bắt được /phap-ly nằm trong sitemap
+    // mà KHÔNG trang nào trỏ tới — người dùng chỉ tới được bằng cách gõ tay URL.
+    { href: "/phap-ly", label: "Thư viện pháp lý" },
   ],
   "Về chúng tôi": [
     { href: "/ve-chung-toi", label: `Về ${SITE_NAME}` },

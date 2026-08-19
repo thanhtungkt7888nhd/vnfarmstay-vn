@@ -58,12 +58,15 @@ URL farmstay nào. Đây là thiết kế có chủ đích, không phải thiế
 | `/blog` | tĩnh | có | Danh sách |
 | `/blog/[slug]` | ISR | **tuỳ bài** | Chỉ index khi bài có thân bài thật |
 | `/vung/[slug]` × 9 | tĩnh | có | **mới 19/08** — trang đích vùng đất, `dynamicParams=false` |
+| `/trai-nghiem/[slug]` × 6 | tĩnh | có | **mới 19/08** — trục việc nhà nông |
+| `/mua/[slug]` × 4 | tĩnh | có | **mới 19/08** — trục nhịp canh tác |
+| `/tuyen/[slug]` × 3 | tĩnh | có | **mới 19/08** — trục hành trình |
 | `/danh-muc/[slug]` · `/tags/[slug]` · `/tac-gia/[slug]` | ISR/động | **không** | `noindex, follow` tới khi Sanity có bài thật |
 | `/tim-kiem` | động | **không** | `noindex, follow`; đã gỡ khỏi sitemap |
 | `/farmstay/[slug]` | tĩnh | — | Chưa có hồ sơ nào (danh sách rỗng) |
 | `/api/*` | — | không | Đã chặn trong `robots.txt` |
 
-**Số URL trong sitemap: 22** — toàn bộ là trang tĩnh trả mã 200 và cho phép index.
+**Số URL trong sitemap: 35** — toàn bộ là trang tĩnh trả mã 200 và cho phép index.
 
 ## 4. Những gì đã sửa ngày 19/08/2026
 
@@ -117,6 +120,26 @@ URL farmstay nào. Đây là thiết kế có chủ đích, không phải thiế
 
 **Số đo hiệu năng một trang vùng** (bản dựng production, máy nội bộ): tổng tải 63 KB ·
 11 tệp JavaScript · DOM sẵn sàng 95 ms · CLS 0.
+
+## 4c. Đợt ba cùng ngày 19/08/2026 — trọn bốn trục khám phá
+
+18. **Ba trục còn lại** dựng trên `src/features/kham-pha/data.ts`: 6 trang trải nghiệm,
+    4 trang mùa, 3 tuyến hành trình. Mỗi trang có đoạn mở đầu riêng, việc làm được,
+    điều nên biết trước khi đi — không phải lưới thẻ đổi tên tiêu đề.
+19. **Van chống trang mỏng** `kiemTraDuDay()`: một trang đích chỉ được sinh ra khi gom
+    được ≥2 vùng thật và mọi slug vùng nó khai đều tồn tại. Đã qua đối chứng ba chiều
+    (mẫu đúng · mẫu khai slug bịa · mẫu chỉ gom 1 vùng).
+20. **Mạng liên kết hai chiều** qua khối dùng chung `KhamPhaTiep`. Mỗi liên kết BẮT BUỘC
+    kèm lý do nối, và lý do phải CỤ THỂ tới từng mục — bản đầu dùng chung một câu
+    "làm được ở ít nhất một điểm dừng" cho cả bốn thẻ, đã sửa thành nêu đích danh chặng.
+21. **Trang chủ** thay ví dụ tuyến cứng bằng ba tuyến thật, và nối lịch mùa sang 4 trang mùa.
+22. **Phép kiểm thứ 12 — chống trang mồ côi.** `check-orphans.mjs` bỏ qua mọi route động,
+    nên 13 trang sinh từ dữ liệu không được máy nào canh. Phép mới bắt lỗi thật ngay lần
+    chạy đầu: `/phap-ly` nằm trong sitemap mà không trang nào trỏ tới — đã nối vào chân trang.
+
+**Số đo trang mùa** (bản dựng production, máy nội bộ): tổng tải 64 KB · 11 tệp JavaScript ·
+DOM sẵn sàng 94 ms · LCP 132 ms · CLS 0 · 0 ảnh thiếu `alt` · 0 nhảy cấp tiêu đề ·
+0 vùng chạm dưới 44px · đúng 1 `<main>`.
 
 ## 5. Rủi ro còn lại và việc đang chờ dữ liệu
 

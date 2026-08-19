@@ -118,6 +118,21 @@ const MAU_A11Y_DUNG = `<body><main><h1>Một</h1><h2>Hai</h2><h3>Ba</h3>
 const MAU_A11Y_SAI = `<body><main><h1>Một</h1><h3>Nhảy cấp</h3>
 <img src="a.jpg"/></main><main>Hai landmark</main></body>`;
 
+/* Mẫu đối chứng cho phép "trang mồ côi": trang A có liên kết trỏ tới, trang B không. */
+const MANG_DUNG = { "/a": ['<a href="/b">x</a>'], "/b": [] };
+const MANG_SAI = { "/a": [], "/b": [] };
+
+/** Trả về các đường dẫn KHÔNG được trang nào khác trỏ tới. */
+function timMoCoi(banDo) {
+  const duocTro = new Set();
+  for (const html of Object.values(banDo)) {
+    for (const h of html) {
+      for (const m of h.matchAll(/href="(\/[^"#?]*)"/g)) duocTro.add(m[1]);
+    }
+  }
+  return Object.keys(banDo).filter((d) => d !== "/" && !duocTro.has(d));
+}
+
 function tuKiem() {
   const ca = [
     ["đếm h1", () => demH1(MAU_DUNG) === 1, () => demH1(MAU_SAI) === 2],
@@ -174,6 +189,11 @@ function tuKiem() {
       () => demAnhThieuAlt(MAU_A11Y_SAI) === 1,
     ],
     [
+      "trang mồ côi",
+      () => timMoCoi(MANG_DUNG).length === 1,
+      () => timMoCoi(MANG_SAI).length === 2,
+    ],
+    [
       "nhảy cấp tiêu đề",
       () => timNhayCapTieuDe(MAU_A11Y_DUNG).length === 0,
       () => timNhayCapTieuDe(MAU_A11Y_SAI).length === 1,
@@ -222,8 +242,14 @@ async function chay() {
   const duongDan = await layUrlTrongSitemap();
   console.log(`\nĐo ${duongDan.length} đường dẫn khai trong sitemap tại ${GOC}\n`);
 
+  /* Gom HTML để dò trang mồ côi sau vòng lặp. `check-orphans.mjs` bỏ qua các route
+     động, nên 13 trang sinh từ dữ liệu (vùng · trải nghiệm · mùa · tuyến) không được
+     máy nào canh — đây chính là lỗ hổng phép này bịt. */
+  const banDoHtml = {};
+
   for (const d of duongDan) {
     const { ma, html } = await tai(d);
+    if (ma === 200) banDoHtml[d] = [html];
 
     if (ma !== 200) {
       loi.push(`${d} — sitemap khai nhưng máy chủ trả mã ${ma}`);
@@ -285,6 +311,12 @@ async function chay() {
     loi.push("/tim-kiem — phải mang noindex");
   if (duongDan.includes("/tim-kiem"))
     loi.push("/tim-kiem — không được nằm trong sitemap");
+
+  /* Trang mồ côi — không trang nào trong sitemap trỏ tới nó. Người dùng chỉ tới được
+     bằng cách gõ tay URL, và máy tìm kiếm coi đó là dấu hiệu trang không quan trọng. */
+  for (const d of timMoCoi(banDoHtml)) {
+    loi.push(`${d} — mồ côi: không trang nào trong sitemap có liên kết trỏ tới`);
+  }
 
   console.log(`\n${"─".repeat(60)}`);
   if (canhBao.length) {
