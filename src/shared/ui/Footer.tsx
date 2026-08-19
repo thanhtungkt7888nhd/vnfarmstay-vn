@@ -116,12 +116,16 @@ export function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4
+              {/* h2 chứ không phải h4 (sửa 19/08/2026): đo trên trình duyệt thật
+                  thấy thứ bậc tiêu đề nhảy h2 → h4 ở mọi trang, vì thân trang dừng
+                  ở h2 rồi chân trang nhảy thẳng xuống h4. Trình đọc màn hình dùng
+                  thứ bậc này để dựng mục lục trang — nhảy cấp là mất một tầng. */}
+              <h2
                 className="mb-4 text-sm font-semibold"
                 style={{ color: "var(--text-primary)" }}
               >
                 {title}
-              </h4>
+              </h2>
               <ul className="space-y-2">
                 {links.map((link) => {
                   const isExternal = link.href.startsWith("http");

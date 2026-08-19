@@ -176,7 +176,7 @@ export default function PhapLyPage() {
                 >
                   {doc.tag}
                 </span>
-                <h3
+                <h2
                   style={{
                     fontSize: "1rem",
                     fontWeight: 600,
@@ -186,7 +186,7 @@ export default function PhapLyPage() {
                   }}
                 >
                   {doc.title}
-                </h3>
+                </h2>
                 <p
                   style={{
                     fontSize: "0.83rem",

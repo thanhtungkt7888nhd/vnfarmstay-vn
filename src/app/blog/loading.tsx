@@ -66,7 +66,11 @@ function SkeletonCard() {
 
 export default function BlogLoading() {
   return (
-    <main
+    /* Dùng <div role="status"> chứ KHÔNG dùng <main> (sửa 19/08/2026): màn chờ này
+       được gửi kèm trong cùng luồng HTML với trang thật, nên máy đo bắt được HAI thẻ
+       <main> trên /blog. Trình đọc màn hình chỉ được thấy một landmark chính. */
+    <div
+      role="status"
       style={{ background: "var(--bg-main)", minHeight: "100vh" }}
       aria-label="Đang tải danh sách bài viết"
       aria-busy="true"
@@ -96,6 +100,6 @@ export default function BlogLoading() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

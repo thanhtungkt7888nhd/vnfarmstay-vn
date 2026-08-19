@@ -72,6 +72,31 @@ export function demLienKetNoiBo(html) {
   return (html.match(/<a[^>]+href="\/[^"]*"/g) || []).length;
 }
 
+
+/** Đếm thẻ landmark chính. */
+export function demMain(html) {
+  return (html.match(/<main[\s>]/gi) || []).length;
+}
+
+/** Đếm ảnh thiếu thuộc tính alt. */
+export function demAnhThieuAlt(html) {
+  const anh = html.match(/<img\b[^>]*>/gi) || [];
+  return anh.filter((a) => !/\salt=/i.test(a)).length;
+}
+
+/**
+ * Tìm chỗ thứ bậc tiêu đề nhảy cấp (h2 → h4).
+ * Trình đọc màn hình dựng mục lục trang bằng thứ bậc này; nhảy cấp là mất một tầng.
+ */
+export function timNhayCapTieuDe(html) {
+  const cap = [...html.matchAll(/<h([1-6])[\s>]/gi)].map((m) => +m[1]);
+  const nhay = [];
+  for (let i = 1; i < cap.length; i++) {
+    if (cap[i] - cap[i - 1] > 1) nhay.push(`h${cap[i - 1]}→h${cap[i]}`);
+  }
+  return nhay;
+}
+
 // ─── Bộ tự kiểm: mỗi phép kiểm chạy trên 1 mẫu ĐÚNG và 1 mẫu SAI ─────────────
 
 const MAU_DUNG = `<html><head>
@@ -86,6 +111,12 @@ const MAU_SAI = `<html><head>
 <meta name="robots" content="noindex, follow"/>
 <script type="application/ld+json">{ khong phai json }</script>
 </head><body><h1>Một</h1><h1>Hai</h1><a href="#">Liên kết chết</a></body></html>`;
+
+const MAU_A11Y_DUNG = `<body><main><h1>Một</h1><h2>Hai</h2><h3>Ba</h3>
+<img src="a.jpg" alt="Mô tả thật"/></main></body>`;
+
+const MAU_A11Y_SAI = `<body><main><h1>Một</h1><h3>Nhảy cấp</h3>
+<img src="a.jpg"/></main><main>Hai landmark</main></body>`;
 
 function tuKiem() {
   const ca = [
@@ -131,6 +162,21 @@ function tuKiem() {
       "liên kết nội bộ",
       () => demLienKetNoiBo(MAU_DUNG) === 1,
       () => demLienKetNoiBo(MAU_SAI) === 0,
+    ],
+    [
+      "landmark main",
+      () => demMain(MAU_A11Y_DUNG) === 1,
+      () => demMain(MAU_A11Y_SAI) === 2,
+    ],
+    [
+      "ảnh thiếu alt",
+      () => demAnhThieuAlt(MAU_A11Y_DUNG) === 0,
+      () => demAnhThieuAlt(MAU_A11Y_SAI) === 1,
+    ],
+    [
+      "nhảy cấp tiêu đề",
+      () => timNhayCapTieuDe(MAU_A11Y_DUNG).length === 0,
+      () => timNhayCapTieuDe(MAU_A11Y_SAI).length === 1,
     ],
   ];
 
@@ -215,6 +261,16 @@ async function chay() {
 
     if (demLienKetNoiBo(html) === 0)
       loi.push(`${d} — không có liên kết nội bộ nào máy đi theo được`);
+
+    const soMain = demMain(html);
+    if (soMain !== 1) loi.push(`${d} — có ${soMain} thẻ <main>, phải đúng 1`);
+
+    const thieuAlt = demAnhThieuAlt(html);
+    if (thieuAlt > 0) loi.push(`${d} — ${thieuAlt} ảnh thiếu thuộc tính alt`);
+
+    const nhayCap = timNhayCapTieuDe(html);
+    if (nhayCap.length > 0)
+      loi.push(`${d} — thứ bậc tiêu đề nhảy cấp: ${nhayCap.join(", ")}`);
   }
 
   // Đường dẫn bịa phải trả 404 thật, không phải 200 kèm trang "không tìm thấy"

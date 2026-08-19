@@ -103,7 +103,7 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
         )}
 
         {/* Title */}
-        <h3
+        <h2
           style={{
             fontFamily: "var(--font-display), serif",
             fontSize: "1.05rem",
@@ -114,7 +114,7 @@ export function PostCard({ post, categoryLabel }: PostCardProps) {
           }}
         >
           {post.title}
-        </h3>
+        </h2>
 
         {/* Excerpt */}
         {post.excerpt && (
