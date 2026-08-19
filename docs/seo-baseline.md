@@ -66,7 +66,7 @@ URL farmstay nào. Đây là thiết kế có chủ đích, không phải thiế
 | `/farmstay/[slug]` | tĩnh | — | Chưa có hồ sơ nào (danh sách rỗng) |
 | `/api/*` | — | không | Đã chặn trong `robots.txt` |
 
-**Số URL trong sitemap: 35** — toàn bộ là trang tĩnh trả mã 200 và cho phép index.
+**Số URL trong sitemap: 38** — toàn bộ là trang tĩnh trả mã 200 và cho phép index.
 
 ## 4. Những gì đã sửa ngày 19/08/2026
 
@@ -140,6 +140,25 @@ URL farmstay nào. Đây là thiết kế có chủ đích, không phải thiế
 **Số đo trang mùa** (bản dựng production, máy nội bộ): tổng tải 64 KB · 11 tệp JavaScript ·
 DOM sẵn sàng 94 ms · LCP 132 ms · CLS 0 · 0 ảnh thiếu `alt` · 0 nhảy cấp tiêu đề ·
 0 vùng chạm dưới 44px · đúng 1 `<main>`.
+
+## 4d. Đợt bốn cùng ngày 19/08/2026
+
+23. **Ba trang tổng** `/trai-nghiem` · `/mua` · `/tuyen` — cấp cha thật của ba trục.
+    Trước đó breadcrumb của trang con phải mượn tạm `/tour-farmstay`.
+24. **Ảnh mạng xã hội riêng theo trang.** 22 trang trục trước đó dùng CHUNG đúng một
+    ảnh ghi "vnfarmstay.vn — Hạ tầng chung…": chia sẻ trang nào cũng ra một tấm giống
+    hệt. Nay **26 ảnh khác nhau** trên 38 trang.
+25. **Máy sinh ảnh vẫn ghi sai tên "Farmstay.vn".** Chân trang đã sửa từ đợt một nhưng
+    `/api/og` bị bỏ sót — nghĩa là MỌI lần chia sẻ lên mạng xã hội đều phát ra tên sai.
+    Chỉ lộ ra khi MỞ TẤM ẢNH SINH RA MÀ NHÌN; đọc mã không thấy.
+26. **`llms.txt` sinh bằng máy.** Bản viết tay 01/05/2026 nằm im gần bốn tháng và khai
+    với các trợ lý AI: *"nền tảng ĐẶT PHÒNG hàng đầu Việt Nam"*, *"500+ farmstay được
+    xác minh tại 63 tỉnh thành"* — đúng những tuyên bố Ông đã cho gỡ khỏi web từ 08/08.
+    Không cổng nào canh vì nó là tệp tĩnh trong `/public`. Nay sinh từ `site.ts` +
+    dữ liệu vùng/khám phá qua `npm run sinh-llms`, tự chạy trong `prebuild`.
+27. **Phép kiểm thứ 13** canh `llms.txt` không chứa bốn cụm cấm ("nền tảng đặt phòng",
+    "500+", "63 tỉnh", "hàng đầu"). Qua đối chứng hai chiều: bắt đủ 4/4 ở mẫu đã biết
+    sai, im lặng ở mẫu đã biết đúng.
 
 ## 5. Rủi ro còn lại và việc đang chờ dữ liệu
 
