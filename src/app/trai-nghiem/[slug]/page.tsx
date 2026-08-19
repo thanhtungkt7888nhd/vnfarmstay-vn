@@ -68,7 +68,7 @@ export default async function TraiNghiemPage({ params }: Props) {
     }),
     breadcrumbSchema([
       { name: "Trang chủ", url: "/" },
-      { name: "Trải nghiệm", url: "/tour-farmstay" },
+      { name: "Trải nghiệm", url: "/trai-nghiem" },
       { name: tn.ten, url: `/trai-nghiem/${slug}` },
     ]),
   ]);

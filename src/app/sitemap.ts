@@ -74,6 +74,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   /* Ba trục khám phá còn lại — thêm 19/08/2026. Mỗi trang gom ≥2 vùng thật, có
      nội dung biên tập riêng; van `kiemTraDuDay()` canh không đẻ trang mỏng. */
   const khamPhaPages: MetadataRoute.Sitemap = [
+    /* Ba trang tổng — cấp cha thật của ba trục. Trước khi có chúng, breadcrumb của
+       trang con phải mượn tạm /tour-farmstay làm cấp cha. */
+    {
+      url: `${SITE_URL}/trai-nghiem`,
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      url: `${SITE_URL}/mua`,
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      url: `${SITE_URL}/tuyen`,
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
     ...TRAI_NGHIEM.map((t) => ({
       url: `${SITE_URL}/trai-nghiem/${t.slug}`,
       priority: 0.7,

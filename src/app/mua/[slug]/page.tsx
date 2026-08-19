@@ -61,7 +61,7 @@ export default async function MuaPage({ params }: Props) {
     }),
     breadcrumbSchema([
       { name: "Trang chủ", url: "/" },
-      { name: "Lịch mùa", url: "/tour-farmstay" },
+      { name: "Lịch mùa", url: "/mua" },
       { name: mua.ten, url: `/mua/${slug}` },
     ]),
   ]);

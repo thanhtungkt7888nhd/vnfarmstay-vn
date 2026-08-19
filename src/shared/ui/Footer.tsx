@@ -5,6 +5,9 @@ const footerLinks = {
   "Khám phá": [
     { href: "/", label: "Trang chủ farmstay" },
     { href: "/tour-farmstay", label: "Bản đồ vùng farmstay" },
+    { href: "/trai-nghiem", label: "Trải nghiệm nhà nông" },
+    { href: "/mua", label: "Lịch mùa — tháng nào đi đâu" },
+    { href: "/tuyen", label: "Tuyến hành trình" },
     { href: "/farmstay-la-gi", label: "Farmstay là gì?" },
     { href: "/blog", label: "Câu chuyện & Blog" },
     { href: "/cong-dong", label: "Cộng đồng" },

@@ -66,7 +66,7 @@ export default async function TuyenPage({ params }: Props) {
     }),
     breadcrumbSchema([
       { name: "Trang chủ", url: "/" },
-      { name: "Tuyến hành trình", url: "/tour-farmstay" },
+      { name: "Tuyến hành trình", url: "/tuyen" },
       { name: tuyen.ten, url: `/tuyen/${slug}` },
     ]),
   ]);
