@@ -31,6 +31,12 @@ import {
   NGAY_CAP_NHAT_VUNG,
 } from "@/features/vung/data";
 import { FARMSTAYS } from "@/features/listing/data";
+import {
+  traiNghiemTheoVung,
+  muaTheoVung,
+  tuyenTheoVung,
+} from "@/features/kham-pha/data";
+import { KhamPhaTiep, type MucKhamPha } from "@/features/kham-pha/KhamPhaTiep";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -82,6 +88,29 @@ export default async function VungPage({ params }: Props) {
   ).map((f) => ({ name: f.name, url: `/farmstay/${f.slug}` }));
 
   const lanCan = vungLanCan(vung.slug);
+
+  /* Mạng lưới hai chiều: trang vùng dẫn sang ba trục kia, và ba trục kia dẫn ngược
+     lại đây. Mỗi liên kết kèm lý do nối — không gợi ý ngẫu nhiên để tăng lượt xem. */
+  const khamPhaTiep: MucKhamPha[] = [
+    ...tuyenTheoVung(vung.slug).map((t) => ({
+      href: `/tuyen/${t.slug}`,
+      nhan: t.ten,
+      loai: "Tuyến",
+      vaySao: `${vung.ten} là một điểm dừng trên tuyến này — ${t.doDai.toLowerCase()}.`,
+    })),
+    ...traiNghiemTheoVung(vung.slug).map((t) => ({
+      href: `/trai-nghiem/${t.slug}`,
+      nhan: t.ten,
+      loai: "Trải nghiệm",
+      vaySao: `Làm được ở ${vung.ten}, và ở cả những vùng khác cùng nghề.`,
+    })),
+    ...muaTheoVung(vung.slug).map((m) => ({
+      href: `/mua/${m.slug}`,
+      nhan: m.ten,
+      loai: "Mùa",
+      vaySao: `${m.thang} — quãng ${vung.ten} vào độ đẹp.`,
+    })),
+  ];
 
   const schemas = graph([
     collectionPageSchema({
@@ -396,6 +425,12 @@ export default async function VungPage({ params }: Props) {
                 </a>
               ))}
             </div>
+
+            <KhamPhaTiep
+              tieuDe="Điểm đến tiếp theo trên hành trình"
+              dan="Gợi ý theo tuyến đi, theo việc nhà nông và theo nhịp mùa — mỗi mục nói rõ vì sao nó liên quan tới vùng này."
+              muc={khamPhaTiep}
+            />
 
             <p
               style={{

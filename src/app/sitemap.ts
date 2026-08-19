@@ -6,6 +6,7 @@ import type { MetadataRoute } from "next";
 import { FARMSTAYS } from "@/features/listing/data";
 import { fetchPostSlugs } from "@/lib/sanity-queries";
 import { SITE_URL } from "@/lib/site";
+import { TRAI_NGHIEM, MUA, TUYEN } from "@/features/kham-pha/data";
 import { VUNG, NGAY_CAP_NHAT_VUNG } from "@/features/vung/data";
 
 export const revalidate = 3600;
@@ -70,6 +71,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(NGAY_CAP_NHAT_VUNG),
   }));
 
+  /* Ba trục khám phá còn lại — thêm 19/08/2026. Mỗi trang gom ≥2 vùng thật, có
+     nội dung biên tập riêng; van `kiemTraDuDay()` canh không đẻ trang mỏng. */
+  const khamPhaPages: MetadataRoute.Sitemap = [
+    ...TRAI_NGHIEM.map((t) => ({
+      url: `${SITE_URL}/trai-nghiem/${t.slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    })),
+    ...MUA.map((m) => ({
+      url: `${SITE_URL}/mua/${m.slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    })),
+    ...TUYEN.map((t) => ({
+      url: `${SITE_URL}/tuyen/${t.slug}`,
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    })),
+  ];
+
   // Farmstay pages từ static data
   const farmstayPages: MetadataRoute.Sitemap = FARMSTAYS.map((f) => ({
     url: `${SITE_URL}/farmstay/${f.slug}`,
@@ -103,5 +124,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Không thể fetch — bỏ qua, không crash
   }
 
-  return [...staticPages, ...vungPages, ...farmstayPages, ...blogPages];
+  return [
+    ...staticPages,
+    ...vungPages,
+    ...khamPhaPages,
+    ...farmstayPages,
+    ...blogPages,
+  ];
 }

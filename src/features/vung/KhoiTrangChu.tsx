@@ -10,6 +10,7 @@
  * tắc trung thực về trạng thái cấm. Ngày có bài thật, thêm khối ấy vào đây.
  */
 import { LICH_MUA, VUNG } from "./data";
+import { TUYEN, MUA, layVung } from "@/features/kham-pha/data";
 
 const LOI_ICH_CHU_FARM = [
   {
@@ -31,9 +32,10 @@ const LOI_ICH_CHU_FARM = [
 ];
 
 export function KhoiTrangChu() {
-  /* Ba vùng liền nhau trên trục Bắc–Nam làm ví dụ cho cách nối một tuyến —
-     lấy từ dữ liệu vùng thật, không bịa ra một "tuyến" chưa được biên tập. */
-  const viDuTuyen = [...VUNG].sort((a, b) => a.bac - b.bac).slice(0, 3);
+  /* Trước 19/08 khối này chỉ liệt kê ba vùng đầu trục Bắc–Nam làm "ví dụ về cách nối
+     tuyến", vì lúc ấy chưa có tuyến nào được biên tập. Nay đã có ba tuyến thật, mỗi
+     tuyến giải thích được vì sao các vùng của nó nối được với nhau — dùng thẳng chúng. */
+  void VUNG;
 
   return (
     <>
@@ -116,6 +118,36 @@ export function KhoiTrangChu() {
               </div>
             ))}
           </dl>
+
+          {/* Bốn quãng mùa có trang riêng — nối vào để lịch mùa trên trang chủ
+              không phải ngõ cụt. Đây là trục "chọn mùa trước, chọn vùng sau". */}
+          <div
+            style={{
+              display: "flex",
+              gap: 10,
+              flexWrap: "wrap",
+              marginTop: 24,
+            }}
+          >
+            {MUA.map((m) => (
+              <a
+                key={m.slug}
+                href={`/mua/${m.slug}`}
+                style={{
+                  display: "inline-block",
+                  padding: "11px 20px",
+                  borderRadius: 22,
+                  border: "1px solid var(--gold-border)",
+                  color: "var(--gold)",
+                  fontSize: "0.86rem",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                }}
+              >
+                {m.thang} →
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -153,7 +185,7 @@ export function KhoiTrangChu() {
             Khách đi farmstay thường đi theo cung đường chứ không ở lì một chỗ.
             Vì vậy mỗi trang vùng đều dẫn tiếp sang những vùng gần nó nhất — để
             farm bên cạnh là mắt xích tiếp theo của cùng một chuyến, không phải
-            đối thủ giành một lượt khách. Ví dụ ở phía Bắc:
+            đối thủ giành một lượt khách. Ba tuyến đã được biên tập:
           </p>
 
           <ol
@@ -164,10 +196,10 @@ export function KhoiTrangChu() {
               counterReset: "buoc",
             }}
           >
-            {viDuTuyen.map((v, i) => (
+            {TUYEN.map((v, i) => (
               <li key={v.slug}>
                 <a
-                  href={`/vung/${v.slug}`}
+                  href={`/tuyen/${v.slug}`}
                   style={{
                     display: "flex",
                     gap: 16,
@@ -211,6 +243,16 @@ export function KhoiTrangChu() {
                       }}
                     >
                       {v.tomTat}
+                    </span>
+                    <span
+                      style={{
+                        display: "block",
+                        color: "var(--gold)",
+                        fontSize: "0.78rem",
+                        marginTop: 6,
+                      }}
+                    >
+                      {v.doDai} · {layVung(v.vungSlugs).length} điểm dừng
                     </span>
                   </span>
                 </a>
