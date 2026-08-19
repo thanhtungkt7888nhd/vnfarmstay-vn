@@ -52,16 +52,32 @@
   --transition: all var(--dur-fast) var(--ease);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ⚠️⚠️ BỘ RESET PHẢI NẰM TRONG `@layer base` — sửa 19/08/2026, đừng bao giờ gỡ ra.
 
-html {
-  scroll-behavior: smooth;
+   Trước ngày này khối này viết trần, không thuộc lớp nào. Luật xếp tầng của CSS:
+   style KHÔNG thuộc `@layer` nào LUÔN THẮNG mọi style nằm trong `@layer`, bất kể
+   thứ tự trước sau. Mà Tailwind v4 đặt toàn bộ tiện ích trong `@layer utilities`.
+
+   Hậu quả đo được trên Chrome thật (khổ 1423px, trang chủ): `px-6` cho ra
+   `padding: 0px`, `mx-auto` không căn giữa được khối `max-w-7xl` (nằm ở x=0).
+   Nghĩa là MỌI tiện ích khoảng cách của Tailwind — `px-*` `py-*` `mt-*` `mx-auto`
+   `space-y-*` — CHẾT TRÊN TOÀN SITE, suốt từ ngày dựng web. Chân trang và thanh
+   điều hướng vì thế dính sát mép trái ở màn rộng trên mọi trang.
+
+   Bọc vào `@layer base` là trả reset về đúng tầng của nó: vẫn đè lên mặc định
+   trình duyệt, nhưng thua tiện ích như thiết kế của Tailwind. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
