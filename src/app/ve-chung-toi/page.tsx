@@ -138,8 +138,83 @@ const VON_MOI = [
   { so: "9+", nhan: "năm hoạch định thực địa" },
   { so: "100+", nhan: "dự án đã triển khai" },
   { so: "30+", nhan: "tỉnh thành đi qua" },
+  // Ông xác nhận 19/08/2026 — số kiểm chứng được, lấy từ tài liệu Profile bản 3.
+  { so: "3.000+", nhan: "hecta đất nông nghiệp đã tư vấn chuyển đổi" },
   { so: "5", nhan: "mùa Xuyên Việt Farmstay" },
   { so: "100+", nhan: "điểm đến đã kết nối" },
+];
+
+/**
+ * Nguyên tắc TRUNG THỰC VỀ TRẠNG THÁI — Profile 3.0 Phần III.
+ * Đây là tài sản thương hiệu, không phải lời xin lỗi cho phần còn thiếu:
+ * trong một thị trường đầy nội dung thổi phồng, một trang dám nói mình còn
+ * trống lập tức tách khỏi phần còn lại.
+ */
+const TRUNG_THUC = [
+  {
+    ten: "Không dựng dữ liệu mẫu",
+    mota: "Không farmstay giả, không bài viết giả, không con số ước lượng làm tròn lên. Danh bạ trống thì để trống.",
+  },
+  {
+    ten: "Nói rõ trạng thái ở mọi khu vực chưa xong",
+    mota: "Kèm điều đang chờ và điều sẽ tới — thay vì để người đọc tự đoán hoặc tưởng đã có.",
+  },
+  {
+    ten: "Chỉ công bố con số đã kiểm chứng",
+    mota: "Số thành viên, số bài viết, số vùng đã đi — có bao nhiêu nói bấy nhiêu.",
+  },
+];
+
+/** Năm giá trị cốt lõi — Profile bản 3, mục Đích đến chung. */
+const GIA_TRI = [
+  {
+    ten: "Đi tới tận nơi",
+    mota: "Không đăng thứ chưa kiểm chứng. Mỗi cái tên trên trang này là một chuyến đi thật.",
+  },
+  {
+    ten: "Bản sắc là tài sản",
+    mota: "Chuẩn hoá hạ tầng dữ liệu, không chuẩn hoá linh hồn. Không đồng phục hoá farmstay của ai.",
+  },
+  {
+    ten: "Cộng sinh, không cạnh tranh nội bộ",
+    mota: "Khách đi theo tuyến; thành công của một farm là khách của cả mạng lưới.",
+  },
+  {
+    ten: "Chủ quyền thuộc về chủ farm",
+    mota: "Website, dữ liệu, giá và quyền tự quyết là của thành viên. Đây là liên minh, không phải công ty mẹ.",
+  },
+  {
+    ten: "Chuẩn quốc tế từ gốc",
+    mota: "Dữ liệu sẵn sàng cho thế giới ngay từ hồ sơ đầu tiên, không đợi tới lúc cần mới đi làm lại.",
+  },
+];
+
+/** Lộ trình bốn giai đoạn — Profile bản 3. Mô tả ĐƯỜNG ĐI, không tuyên bố đã đạt. */
+const LO_TRINH = [
+  {
+    ky: "Giai đoạn 1",
+    ten: "Xây nền",
+    mota: "Hoàn thiện lõi; những hồ sơ đầu tiên đến từ mạng lưới Xuyên Việt — mỗi hồ sơ là một chuyến đi thật.",
+    dangO: true,
+  },
+  {
+    ky: "Giai đoạn 2",
+    ten: "Dệt mạng",
+    mota: "Phủ các vùng trọng điểm: Tây Bắc — Đông Bắc, Bắc Trung Bộ, Tây Nguyên — Duyên hải, đồng bằng sông Cửu Long.",
+    dangO: false,
+  },
+  {
+    ky: "Giai đoạn 3",
+    ten: "Vươn tầm",
+    mota: "Dữ liệu song ngữ; hiện diện trên các nền tảng và ấn phẩm du lịch thế giới.",
+    dangO: false,
+  },
+  {
+    ky: "Giai đoạn 4",
+    ten: "Định vị quốc gia",
+    mota: "Trở thành nguồn tham chiếu chính thống về du lịch nông nghiệp Việt Nam cho báo chí, nhà đầu tư và các trợ lý trí tuệ nhân tạo.",
+    dangO: false,
+  },
 ];
 
 /** Hiệu ứng cộng dồn — Phần III.6 */
@@ -771,6 +846,173 @@ export default function VeChungToiPage() {
           </div>
         </section>
 
+        {/* ── Năm giá trị cốt lõi — Profile bản 3 ── */}
+        <section style={{ padding: "84px 24px" }}>
+          <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+            <span className="section-kicker">Chúng ta cầm gì trong tay</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 26,
+              }}
+            >
+              Năm giá trị cốt lõi
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+                gap: 18,
+              }}
+            >
+              {GIA_TRI.map((g, i) => (
+                <div
+                  key={g.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius-lg)",
+                    padding: "26px 24px",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "0.95rem",
+                      color: "var(--gold)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.1rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {g.ten}
+                  </h3>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
+                    {g.mota}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Trung thực về trạng thái — Profile 3.0 Phần III ── */}
+        <section
+          style={{
+            padding: "84px 24px",
+            background: "var(--bg-main)",
+            borderTop: "1px solid var(--border)",
+            borderBottom: "1px solid var(--border)",
+          }}
+        >
+          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+            <span className="section-kicker">Cách chúng ta tự ràng buộc</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 18,
+              }}
+            >
+              Thà nói &ldquo;chúng ta chưa có&rdquo; còn hơn dựng cảnh cho có vẻ
+              đông vui
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                lineHeight: 1.85,
+                maxWidth: 760,
+                marginBottom: 30,
+              }}
+            >
+              Danh bạ còn trống thì trang chủ nói thẳng là còn trống. Cộng đồng
+              chưa mở thì trang cộng đồng nói thẳng là chưa mở — và cũng không
+              dựng sẵn vài bài đăng cho có vẻ đông vui. Đó không phải điểm yếu
+              cần che; đó là bằng chứng đầu tiên rằng nền tảng này đáng tin.
+            </p>
+            <div className="vct-3">
+              {TRUNG_THUC.map((t) => (
+                <div
+                  key={t.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--gold-border)",
+                    borderRadius: "var(--radius-lg)",
+                    padding: "24px 22px",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.05rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {t.ten}
+                  </h3>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
+                    {t.mota}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Chuẩn quốc tế = thủ tục xuất khẩu cho câu chuyện — Phần IV.4 ── */}
+        <section style={{ padding: "84px 24px" }}>
+          <div style={{ maxWidth: 800, margin: "0 auto" }}>
+            <span className="section-kicker">Vì sao phải chuẩn quốc tế</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 22,
+              }}
+            >
+              Thủ tục xuất khẩu cho câu chuyện Việt Nam
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                lineHeight: 1.85,
+                marginBottom: 18,
+              }}
+            >
+              Nông sản Việt muốn ra thế giới thì phải đạt chuẩn xuất khẩu. Dữ
+              liệu Việt muốn ra thế giới cũng vậy.
+            </p>
+            <p style={{ color: "var(--text-muted)", lineHeight: 1.85 }}>
+              Chuẩn hoá dữ liệu — định danh chính xác, nội dung song ngữ, cấu
+              trúc mà máy đọc được — không phải việc kỹ thuật vụn vặt. Đó là
+              điều kiện để dòng khách quốc tế và các trợ lý trí tuệ nhân tạo tìm
+              được đường tới tận cổng farm, thay vì phải đi qua một bên trung
+              gian nào đó.
+            </p>
+          </div>
+        </section>
+
         {/* ── Người khởi xướng + vốn mồi ── */}
         <section
           className="motif-x"
@@ -811,8 +1053,9 @@ export default function VeChungToiPage() {
               cùng cộng đồng{" "}
               <strong style={{ color: "var(--text-primary)" }}>
                 Làng Farmstay Việt Nam
-              </strong>
-              .
+              </strong>{" "}
+              — tác giả cuốn sách về farmstay đầu tiên tại Việt Nam, người sáng
+              lập hành trình Xuyên Việt Farmstay.
             </p>
             <p
               style={{
@@ -865,6 +1108,89 @@ export default function VeChungToiPage() {
                   >
                     {v.nhan}
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Lộ trình bốn giai đoạn — Profile bản 3 ── */}
+        <section style={{ padding: "84px 24px" }}>
+          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+            <span className="section-kicker">Đường còn dài</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem,3vw,2.05rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 26,
+              }}
+            >
+              Lộ trình bốn giai đoạn
+            </h2>
+            <div className="vct-4">
+              {LO_TRINH.map((g) => (
+                <div
+                  key={g.ky}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: g.dangO
+                      ? "1px solid var(--gold-border)"
+                      : "1px solid var(--border)",
+                    borderRadius: "var(--radius-lg)",
+                    padding: "24px 22px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      marginBottom: 10,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "0.72rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                        color: "var(--gold)",
+                      }}
+                    >
+                      {g.ky}
+                    </span>
+                    {g.dangO && (
+                      <span
+                        style={{
+                          fontSize: "0.68rem",
+                          fontWeight: 700,
+                          color: "var(--bg-deep)",
+                          background: "var(--gold)",
+                          borderRadius: 20,
+                          padding: "3px 10px",
+                        }}
+                      >
+                        đang ở đây
+                      </span>
+                    )}
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.15rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {g.ten}
+                  </h3>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
+                    {g.mota}
+                  </p>
                 </div>
               ))}
             </div>

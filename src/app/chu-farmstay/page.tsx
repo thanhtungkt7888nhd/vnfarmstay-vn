@@ -163,6 +163,51 @@ const CO_CHE = [
   },
 ];
 
+/**
+ * Bốn nguồn lực cộng đồng cùng góp — Profile 3.0 Phần V.2.
+ * Trả lời câu hỏi thầm của chủ farm: "góp vào thì góp cái gì, và cái đó đáng bao nhiêu?"
+ */
+const NGUON_LUC = [
+  {
+    ten: "Nguồn lực nội dung",
+    mota: "Câu chuyện thật, hình ảnh thật, mùa vụ thật, khoảnh khắc thật trên đồng ruộng — thứ mà tiền không mua được.",
+  },
+  {
+    ten: "Nguồn lực kênh",
+    mota: "Cộng lại, các thành viên đang sở hữu lượng người theo dõi rải rác khắp nơi. Rời rạc thì nhỏ; đồng loạt thì là một đài phát sóng của cả ngành.",
+  },
+  {
+    ten: "Nguồn lực tín nhiệm",
+    mota: "Mỗi thành viên mang theo uy tín riêng với khách, với địa phương, với báo chí. Liên kết chuẩn khiến các uy tín ấy bảo chứng lẫn nhau.",
+  },
+  {
+    ten: "Nguồn lực quan hệ",
+    mota: "Chính quyền địa phương, hợp tác xã, công ty lữ hành, báo chí, cộng đồng du khách trung thành — mạng lưới quan hệ của hàng trăm thành viên là tài sản không mua được bằng tiền.",
+  },
+];
+
+/**
+ * Ba dòng chảy trong hệ sinh thái — Profile bản 3, mục 06.
+ * Nói rõ giá trị chảy theo hướng nào, để không ai hiểu nhầm đây là quan hệ một chiều.
+ */
+const DONG_CHAY = [
+  {
+    huong: "Chảy xuống",
+    ten: "Tín nhiệm và khách về đúng farm",
+    mota: "Lõi vnfarmstay.vn hút lượng tìm kiếm của cả ngành rồi điều phối về đúng nơi: hồ sơ chuẩn trỏ thẳng về kênh riêng của farm, uy tín chung thành uy tín mặc định của thành viên mới.",
+  },
+  {
+    huong: "Chảy lên",
+    ten: "Câu chuyện nuôi lại cái lõi",
+    mota: "Mỗi farm nuôi lõi bằng chất liệu sống — mùa hoa, vụ thu hoạch, lễ hội. Lõi càng giàu thì dòng khách chảy xuống càng lớn. Dữ liệu farm góp vào không nuôi một bên trung gian nào; nó nuôi tài sản chung mà chính farm đồng sở hữu uy tín.",
+  },
+  {
+    huong: "Chảy ngang",
+    ten: "Tương hỗ theo tuyến hành trình",
+    mota: "Khách du lịch nông nghiệp đi theo tuyến, không ở một chỗ. Khách đang ở Đông Bắc sẽ hỏi đi tiếp Tây Bắc ở đâu — và hồ sơ farm bạn hiện ra. Khách của một thành viên là khách tiềm năng của tất cả.",
+  },
+];
+
 /** Cam kết công bằng của cơ chế — Phần IV.4 */
 const CAM_KET_CONG_BANG = [
   {
@@ -775,6 +820,123 @@ export default function ChuFarmstayPage() {
                     }}
                   >
                     {c.mota}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Bốn nguồn lực + ba dòng chảy — Profile Phần V.2 và mục 06 ── */}
+          <section style={{ padding: "72px 0 0" }}>
+            <span className="section-kicker">Góp gì, nhận gì</span>
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.4rem,3vw,2rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 14,
+              }}
+            >
+              Bốn nguồn lực cả cộng đồng cùng góp
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                lineHeight: 1.85,
+                maxWidth: 760,
+                marginBottom: 26,
+              }}
+            >
+              Một farmstay tự sản xuất nội dung, tự chạy kênh, tự tìm khách —
+              chi phí cao, hiệu quả thấp, và công sức ấy chỉ phục vụ một mình
+              họ. Trong hệ sinh thái, cùng công sức đó được nhân lên nhiều lần
+              vì nó chảy qua toàn mạng lưới.
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit,minmax(270px,1fr))",
+                gap: 16,
+                marginBottom: 56,
+              }}
+            >
+              {NGUON_LUC.map((n) => (
+                <div
+                  key={n.ten}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius-lg)",
+                    padding: "24px 22px",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.05rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {n.ten}
+                  </h3>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
+                    {n.mota}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.4rem,3vw,2rem)",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                marginBottom: 26,
+              }}
+            >
+              Giá trị chảy theo ba hướng, không hướng nào một chiều
+            </h2>
+            <div style={{ display: "grid", gap: 16 }}>
+              {DONG_CHAY.map((d) => (
+                <div
+                  key={d.huong}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--gold-border)",
+                    borderRadius: "var(--radius-lg)",
+                    padding: "26px 24px",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "0.72rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: "var(--gold)",
+                    }}
+                  >
+                    {d.huong}
+                  </span>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.15rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      margin: "10px 0",
+                    }}
+                  >
+                    {d.ten}
+                  </h3>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
+                    {d.mota}
                   </p>
                 </div>
               ))}
