@@ -174,8 +174,18 @@ tĩnh. Rà 16 tệp, bắt được ba lỗi thật:
     `farmstay2026indexnow.txt` (thiếu "vn"). Giao thức IndexNow bắt buộc tồn tại
     `https://<tên miền>/<khoá>.txt` chứa đúng chuỗi khoá — thiếu là từ chối im lặng,
     không báo lỗi ở đâu cả. Đã tạo tệp đúng tên.
-30. **`og-image.svg` chứa "500+ farmstay xác minh"** — số bịa. Tệp mồ côi, không nơi nào
-    dùng, nhưng vẫn truy cập được qua URL. **Chưa xoá, chờ Ông quyết.**
+30. **`og-image.svg` chứa "500+ farmstay xác minh"** — số bịa, tệp mồ côi nhưng vẫn
+    truy cập được qua URL. **Ông duyệt xoá 20/08/2026.**
+31. **Dọn 11 tệp mồ côi trong `/public`** (Ông duyệt): `og-image.svg` ·
+    `farmstay2026indexnow.txt` (khoá cũ) · `logo-stacked.png` (trùng y hệt `logo.png`) ·
+    `logo-horizontal.png` · `logo-horizontal-alt.png` · `logo.svg` · và 5 tệp mặc định
+    của Next (`file` `globe` `next` `vercel` `window`.svg).
+    **17 tệp → 6 tệp · 392 KB → 184 KB.** Nghiệm thu: build pass, 3 logo còn lại đều trả
+    200, trang chủ 0 ảnh vỡ, máy kiểm sạch 38/38.
+
+    Sáu tệp còn lại đều có việc: `llms.txt` + `manifest.json` (sinh bằng máy) ·
+    `logo-x.png` (logo trên thanh điều hướng) · `logo-icon.png` (biểu tượng ứng dụng) ·
+    `logo.png` (logo trong schema Organization) · `vnfarmstay2026indexnow.txt` (khoá).
 
 **Máy kiểm nay 13 ca tự đối chứng** (thêm ca "tuyên bố cấm trong tệp tĩnh"), và canh
 thêm `manifest.json` + tệp khoá IndexNow. Đối chứng hai chiều: bắt đủ 5/5 ở mẫu đã biết
