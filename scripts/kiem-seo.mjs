@@ -118,6 +118,28 @@ const MAU_A11Y_DUNG = `<body><main><h1>Một</h1><h2>Hai</h2><h3>Ba</h3>
 const MAU_A11Y_SAI = `<body><main><h1>Một</h1><h3>Nhảy cấp</h3>
 <img src="a.jpg"/></main><main>Hai landmark</main></body>`;
 
+/**
+ * Bốn tuyên bố CẤM xuất hiện trong tệp tĩnh mô tả website.
+ * Cả bốn đều từng có thật: `llms.txt` và `manifest.json` mang chúng suốt nhiều tháng.
+ */
+const CUM_CAM = [
+  ["nền tảng đặt phòng", "vnfarmstay.vn không nhận đặt phòng"],
+  ["500+", "con số farmstay chưa được xác minh"],
+  ["63 tỉnh", "con số tỉnh thành chưa được xác minh"],
+  ["hàng đầu", "tuyên bố thứ hạng không kiểm chứng được"],
+];
+
+/** Trả về các cụm cấm tìm thấy trong một đoạn chữ. */
+function timCumCam(chu) {
+  const thap = chu.toLowerCase();
+  return CUM_CAM.filter(([cum]) => thap.includes(cum)).map(([cum]) => cum);
+}
+
+/* Mẫu đối chứng cho phép "tuyên bố cấm trong tệp tĩnh" */
+const TEP_TINH_DUNG = "Hạ tầng chung của cộng đồng Farmstay Việt Nam. Không nhận đặt phòng.";
+const TEP_TINH_SAI =
+  "Nền tảng đặt phòng hàng đầu Việt Nam với 500+ farmstay xác minh tại 63 tỉnh thành.";
+
 /* Mẫu đối chứng cho phép "trang mồ côi": trang A có liên kết trỏ tới, trang B không. */
 const MANG_DUNG = { "/a": ['<a href="/b">x</a>'], "/b": [] };
 const MANG_SAI = { "/a": [], "/b": [] };
@@ -187,6 +209,11 @@ function tuKiem() {
       "ảnh thiếu alt",
       () => demAnhThieuAlt(MAU_A11Y_DUNG) === 0,
       () => demAnhThieuAlt(MAU_A11Y_SAI) === 1,
+    ],
+    [
+      "tuyên bố cấm trong tệp tĩnh",
+      () => timCumCam(TEP_TINH_DUNG).length === 0,
+      () => timCumCam(TEP_TINH_SAI).length === 4,
     ],
     [
       "trang mồ côi",
@@ -317,20 +344,45 @@ async function chay() {
      đầu Việt Nam" cùng "500+ farmstay được xác minh tại 63 tỉnh thành" — đúng những
      tuyên bố Ông đã cho gỡ khỏi web từ 08/08. Không cổng nào canh vì nó là tệp tĩnh.
      Nay nó sinh bằng máy, và phép này canh để không ai chép tay thứ mâu thuẫn vào lại. */
-  const CUM_CAM = [
-    ["nền tảng đặt phòng", "vnfarmstay.vn không nhận đặt phòng"],
-    ["500+", "con số farmstay chưa được xác minh"],
-    ["63 tỉnh", "con số tỉnh thành chưa được xác minh"],
-    ["hàng đầu", "tuyên bố thứ hạng không kiểm chứng được"],
-  ];
   const llms = await fetch(`${GOC}/llms.txt`);
   if (!llms.ok) {
     loi.push(`/llms.txt — trả mã ${llms.status}`);
   } else {
-    const chu = (await llms.text()).toLowerCase();
-    for (const [cum, viSao] of CUM_CAM) {
-      if (chu.includes(cum)) loi.push(`/llms.txt — chứa "${cum}": ${viSao}`);
+    for (const cum of timCumCam(await llms.text())) {
+      const viSao = CUM_CAM.find(([c]) => c === cum)[1];
+      loi.push(`/llms.txt — chứa "${cum}": ${viSao}`);
     }
+  }
+
+  /* manifest.json — chữ hiện ra khi người dùng cài web lên màn hình chính điện thoại.
+     ⚠️ Rà 20/08/2026: nó đặt tên ứng dụng là "Farmstay Update" (tên một SỰ KIỆN khác)
+     và mô tả là "nền tảng đặt phòng hàng đầu — 500+ farmstay xác minh". */
+  const mf = await fetch(`${GOC}/manifest.json`);
+  if (!mf.ok) {
+    loi.push(`/manifest.json — trả mã ${mf.status}`);
+  } else {
+    const chu = await mf.text();
+    for (const cum of timCumCam(chu)) {
+      loi.push(`/manifest.json — chứa "${cum}"`);
+    }
+    try {
+      const j = JSON.parse(chu);
+      if (!j.name?.toLowerCase().includes("vnfarmstay"))
+        loi.push(`/manifest.json — tên ứng dụng "${j.name}" không mang tên thương hiệu`);
+    } catch {
+      loi.push("/manifest.json — không phải JSON hợp lệ");
+    }
+  }
+
+  /* Khoá IndexNow phải có tệp `<khoá>.txt` chứa đúng chuỗi khoá, nếu không mọi lần
+     báo URL mới đều bị từ chối im lặng. ⚠️ Rà 20/08/2026: tệp trong /public tên
+     `farmstay2026indexnow.txt` trong khi khoá thật là `vnfarmstay2026indexnow`. */
+  const khoa = "vnfarmstay2026indexnow";
+  const tepKhoa = await fetch(`${GOC}/${khoa}.txt`);
+  if (!tepKhoa.ok) {
+    loi.push(`/${khoa}.txt — trả mã ${tepKhoa.status}, IndexNow sẽ từ chối mọi lần báo`);
+  } else if ((await tepKhoa.text()).trim() !== khoa) {
+    loi.push(`/${khoa}.txt — nội dung không khớp chuỗi khoá`);
   }
 
   /* Trang mồ côi — không trang nào trong sitemap trỏ tới nó. Người dùng chỉ tới được

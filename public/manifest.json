@@ -1,7 +1,7 @@
 {
-  "name": "Farmstay Update",
-  "short_name": "Farmstay",
-  "description": "Nền tảng đặt phòng farmstay hàng đầu Việt Nam — 500+ farmstay xác minh",
+  "name": "vnfarmstay.vn — Hạ tầng chung của cộng đồng Farmstay Việt Nam",
+  "short_name": "vnfarmstay",
+  "description": "Hạ tầng nội dung và dữ liệu của cộng đồng Farmstay Việt Nam — nơi chuẩn hoá hồ sơ điểm đến, kể câu chuyện vùng đất và nối các farmstay theo vùng, mùa, chủ đề và tuyến hành trình.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f2318",
@@ -21,6 +21,9 @@
       "purpose": "maskable"
     }
   ],
-  "categories": ["travel", "food"],
+  "categories": [
+    "travel",
+    "education"
+  ],
   "scope": "/"
 }

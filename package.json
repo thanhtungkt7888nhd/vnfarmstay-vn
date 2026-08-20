@@ -13,8 +13,8 @@
     "prepare": "husky",
     "kiem-seo": "node scripts/kiem-seo.mjs",
     "kiem-seo:tu-kiem": "node scripts/kiem-seo.mjs --tu-kiem",
-    "sinh-llms": "node scripts/sinh-llms.mjs",
-    "prebuild": "node scripts/sinh-llms.mjs"
+    "prebuild": "node scripts/sinh-tep-tinh.mjs",
+    "sinh-tep-tinh": "node scripts/sinh-tep-tinh.mjs"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

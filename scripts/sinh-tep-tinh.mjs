@@ -1,10 +1,15 @@
 /**
- * Sinh `public/llms.txt` TỪ DỮ LIỆU THẬT, chạy tự động trước mỗi lần dựng.
+ * Sinh các TỆP TĨNH trong `/public` TỪ DỮ LIỆU THẬT — chạy tự động trước mỗi lần dựng.
+ * Hiện sinh: `llms.txt` và `manifest.json`.
  *
- * ⚠️ Vì sao phải sinh bằng máy thay vì viết tay: bản viết tay ngày 01/05/2026 nằm im
- * suốt gần bốn tháng và nói dối các trợ lý AI đúng những điều Ông đã cho gỡ khỏi web
- * từ 08/08 — "nền tảng ĐẶT PHÒNG hàng đầu Việt Nam", "500+ farmstay được xác minh tại
- * 63 tỉnh thành". Không cổng nào canh tệp này vì nó là tệp tĩnh trong /public.
+ * ⚠️ Vì sao phải sinh bằng máy thay vì viết tay: `/public` là ĐIỂM MÙ CÓ HỆ THỐNG —
+ * mọi máy kiểm đều chỉ đo route, không ai ngó tệp tĩnh. Rà ngày 20/08/2026 bắt được:
+ *
+ *  · `llms.txt` (bản viết tay 01/05) khai với các trợ lý AI "nền tảng ĐẶT PHÒNG hàng đầu
+ *    Việt Nam" và "500+ farmstay được xác minh tại 63 tỉnh thành" — nằm im gần 4 tháng.
+ *  · `manifest.json` đặt tên ứng dụng là "Farmstay Update" (tên một SỰ KIỆN khác, không
+ *    phải web này) và mô tả cũng là "nền tảng đặt phòng hàng đầu — 500+ farmstay xác
+ *    minh". Đây là chữ hiện ra khi người dùng cài web lên màn hình chính điện thoại.
  *
  * Nay nó sinh từ `src/lib/site.ts` và dữ liệu vùng/khám phá — sai một chỗ là sai cả
  * web, nên không thể lệch riêng ở đây nữa.
@@ -97,6 +102,27 @@ Trang tổng: [${U}/tuyen](${U}/tuyen)
 `;
 
 writeFileSync("public/llms.txt", noiDung, "utf8");
+
+/* manifest.json — mô tả ứng dụng khi người dùng cài web lên màn hình chính.
+   Tên và mô tả lấy từ cùng nguồn với mọi nơi khác, nên không lệch riêng ở đây được. */
+const manifest = {
+  name: `${d.SITE_NAME} — ${d.SITE_TAGLINE}`,
+  short_name: "vnfarmstay",
+  description: d.SITE_BOUNDARY.la,
+  start_url: "/",
+  display: "standalone",
+  background_color: "#0f2318",
+  theme_color: "#0f2318",
+  lang: "vi",
+  icons: [
+    { src: "/logo-icon.png", sizes: "192x192", type: "image/png", purpose: "any" },
+    { src: "/logo-icon.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+  ],
+  categories: ["travel", "education"],
+  scope: "/",
+};
+writeFileSync("public/manifest.json", JSON.stringify(manifest, null, 2) + "\n", "utf8");
+
 console.log(
-  `✓ llms.txt sinh lại: ${d.VUNG.length} vùng · ${d.TRAI_NGHIEM.length} trải nghiệm · ${d.MUA.length} mùa · ${d.TUYEN.length} tuyến`
+  `✓ Tệp tĩnh sinh lại: llms.txt (${d.VUNG.length} vùng · ${d.TRAI_NGHIEM.length} trải nghiệm · ${d.MUA.length} mùa · ${d.TUYEN.length} tuyến) + manifest.json`
 );
