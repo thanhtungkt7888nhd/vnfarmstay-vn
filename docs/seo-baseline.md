@@ -160,6 +160,30 @@ DOM sẵn sàng 94 ms · LCP 132 ms · CLS 0 · 0 ảnh thiếu `alt` · 0 nhả
     "500+", "63 tỉnh", "hàng đầu"). Qua đối chứng hai chiều: bắt đủ 4/4 ở mẫu đã biết
     sai, im lặng ở mẫu đã biết đúng.
 
+## 4e. Rà `/public` — 20/08/2026
+
+`/public` là **điểm mù có hệ thống**: mọi máy kiểm đều chỉ đo route, không ai ngó tệp
+tĩnh. Rà 16 tệp, bắt được ba lỗi thật:
+
+28. **`manifest.json` mang tên một thực thể KHÁC.** Tên ứng dụng khai là *"Farmstay
+    Update"* — đó là tên một SỰ KIỆN, không phải website này. Mô tả cũng ghi *"Nền tảng
+    đặt phòng farmstay hàng đầu Việt Nam — 500+ farmstay xác minh"*. Đây chính là chữ
+    hiện ra khi người dùng cài web lên màn hình chính điện thoại. Nay sinh bằng máy.
+29. **Khoá IndexNow lệch tên tệp ⇒ mọi lần báo URL mới đều bị từ chối.** `.env` khai
+    `INDEXNOW_KEY=vnfarmstay2026indexnow`, nhưng tệp trong `/public` tên
+    `farmstay2026indexnow.txt` (thiếu "vn"). Giao thức IndexNow bắt buộc tồn tại
+    `https://<tên miền>/<khoá>.txt` chứa đúng chuỗi khoá — thiếu là từ chối im lặng,
+    không báo lỗi ở đâu cả. Đã tạo tệp đúng tên.
+30. **`og-image.svg` chứa "500+ farmstay xác minh"** — số bịa. Tệp mồ côi, không nơi nào
+    dùng, nhưng vẫn truy cập được qua URL. **Chưa xoá, chờ Ông quyết.**
+
+**Máy kiểm nay 13 ca tự đối chứng** (thêm ca "tuyên bố cấm trong tệp tĩnh"), và canh
+thêm `manifest.json` + tệp khoá IndexNow. Đối chứng hai chiều: bắt đủ 5/5 ở mẫu đã biết
+sai, im lặng ở mẫu đã biết đúng.
+
+`scripts/sinh-llms.mjs` đổi tên thành `scripts/sinh-tep-tinh.mjs`, nay sinh cả
+`llms.txt` và `manifest.json`. Chạy: `npm run sinh-tep-tinh`, tự chạy trong `prebuild`.
+
 ## 5. Rủi ro còn lại và việc đang chờ dữ liệu
 
 | Việc | Chờ gì |
