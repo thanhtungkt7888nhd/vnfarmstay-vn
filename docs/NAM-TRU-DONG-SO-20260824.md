@@ -14,8 +14,28 @@
 | B | `6b803f0` | Cửa nhận hồ sơ chủ farm: biểu mẫu thật + bảng tính + chuông Telegram |
 | C | `c981ce4` | Nối bản đồ mồ côi · nút liên hệ có đích · đo click bắn thật |
 | D | `9562cf5` | `/phuong-phap-xac-minh` · nút báo sai · huy hiệu nhúng **thu hồi được** |
+| — | `e621cf1` | Hồ sơ bàn giao này |
+| **+** | `f2f9621` | **Cổng hiến pháp** — máy thi hành cho Điều I/VI/VIII + 3 điều cấm; gỡ link chân trang toàn site |
 
 **CHƯA DEPLOY.** Toàn bộ nằm ở máy, chờ lệnh Ông.
+
+### Đợt bổ sung 24/08 — cổng hiến pháp (`f2f9621`)
+
+Master Prompt v2 §4 tự khai **bốn Điều I · III · VI · VIII chưa có máy thi hành**, và hiến pháp
+ghi dưới Điều VI: *"đây là điều đáng dựng máy nhất trong cả hiến pháp này"*. Đã dựng
+`scripts/kiem-hien-phap.mjs` — 6 phép, quét 39 trang bằng trình duyệt thật, tự kiểm 10 ca đối
+chứng hai chiều trước khi đo. Điều có máy canh: **5/9 → 7/9** (Điều III vẫn là mắt Ông).
+
+**Bắt được một vi phạm THẬT đang sống:** `Footer.tsx` rải liên kết sang 3 web anh em ở chân trang
+**cả 39 trang** — đúng điều cấm tuyệt đối số 5. Đã gỡ; hệ sinh thái vẫn được giới thiệu **theo
+ngữ cảnh** ở `/lien-he`, nơi mỗi web kèm một câu nói rõ vai trò.
+
+**Hai lỗ hổng trong chính cổng, bắt được nhờ soi lại:**
+- Báo oan `/blog`: thẻ bài viết bọc trong `<a>` nên tên khả truy cập chứa chữ "đặt phòng". Sửa
+  bằng **cách nhận biết** (nhãn CTA thì ngắn, văn xuôi thì dài), không bằng nới cổng — và ca
+  chống-báo-oan này có ca đối chứng đi kèm để không ai nới trần cho qua.
+- Bỏ lọt: `<button>` không khai `type` thì HTML mặc định là `submit`, nên bản đầu bỏ qua **mọi**
+  nút không khai `type`, kể cả nút chết. Sửa: chỉ miễn nút **nằm trong biểu mẫu**.
 
 ---
 
@@ -67,14 +87,18 @@ Khai ở **cả `.env.local` lẫn Vercel**, rồi **deploy lại** (trạng th�
 ## 4. BỐN MÁY ĐO — chạy khi đụng vào phần tương ứng
 
 ```bash
-npm run kiem-ho-so         # van hồ sơ · 12 ca đối chứng 2 chiều (tự chạy trong prebuild)
-npm run kiem-seo           # 39 trang — CHẠY TRÊN `next start`, KHÔNG trên dev
-npm run thu-cua-nhan       # cửa nhận hồ sơ · 14 phép
-npm run thu-vong-du-khach  # vòng du khách · 33 phép, trình duyệt thật
-npm run thu-uy-tin         # xác minh + huy hiệu thu hồi · 27 phép
+npm run kiem-ho-so                            # van hồ sơ · 12 ca (tự chạy trong prebuild)
+npm run kiem-seo       http://localhost:3017  # 13 phép · 39 trang
+npm run kiem-hien-phap http://localhost:3017  # 6 phép hiến pháp · 39 trang · 10 ca tự kiểm
+npm run thu-cua-nhan                          # cửa nhận hồ sơ · 14 phép
+npm run thu-vong-du-khach                     # vòng du khách · 33 phép, trình duyệt thật
+npm run thu-uy-tin                            # xác minh + huy hiệu thu hồi · 27 phép
 ```
 
-Cả bốn máy đều đã qua **đối chứng hai chiều**: gỡ đúng cái vá → máy báo đỏ lại.
+⚠️ `kiem-seo` và `kiem-hien-phap` **phải đo trên `next start`**, không đo trên `npm run dev` —
+bản dev trả 404 mềm, cho kết quả báo oan.
+
+Cả năm máy đều đã qua **đối chứng hai chiều**: gỡ đúng cái vá → máy báo đỏ lại.
 
 ⚠️ `thu-vong-du-khach` và `thu-uy-tin` **mượn tạm** hồ sơ đối chứng rồi hoàn nguyên qua `finally`.
 Mẫu nằm ở `scripts/doi-chung-ho-so.ts` — **ngoài `src/`** để Next.js không có đường gói vào trang.
