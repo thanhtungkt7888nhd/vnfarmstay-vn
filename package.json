@@ -15,6 +15,7 @@
     "kiem-seo:tu-kiem": "node scripts/kiem-seo.mjs --tu-kiem",
     "prebuild": "node scripts/kiem-ho-so.mjs && node scripts/sinh-tep-tinh.mjs",
     "kiem-ho-so": "node scripts/kiem-ho-so.mjs",
+    "thu-cua-nhan": "node scripts/thu-cua-nhan-ho-so.mjs",
     "sinh-tep-tinh": "node scripts/sinh-tep-tinh.mjs"
   },
   "lint-staged": {

@@ -10,11 +10,22 @@
  * phòng lên 3×" · "mạng lưới 500+ chủ farmstay" · lời chứng thực tự chế của
  * "Chị Nguyễn Hương" (khối đó còn được chú thích nhầm là "quote từ chủ farmstay thật").
  *
- * CẤM dựng lại form ở đây cho tới khi có đường nhận THẬT (API/email/CRM) đã chạy được
- * và Ông xác nhận. Không có đường nhận thì mời liên hệ thẳng — thà ít bước mà tới nơi.
+ * ✅ 24/08/2026 (Trụ B) — đã dựng lại biểu mẫu, lần này có đường nhận thật:
+ * `/api/dang-farmstay` → `src/lib/nhan-ho-so.ts` → bảng tính + chuông Telegram.
+ * Máy chủ chỉ trả `ok: true` khi bảng tính XÁC NHẬN đã nhận, và biểu mẫu chỉ hiện
+ * màn hình cảm ơn khi nhận được `ok: true`. Không còn khoảng trống nào để "báo
+ * thành công mà không lưu" chui vào.
+ *
+ * ⚠️ Biểu mẫu CHỈ HIỆN khi biến `VNFARMSTAY_SHEET_URL` đã khai — chưa khai thì trang
+ * tự quay về nói thẳng "kênh nhận chưa mở". Trạng thái đọc lúc DỰNG, nên khai biến
+ * xong phải dựng lại web (deploy) thì biểu mẫu mới xuất hiện.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BieuMauHoSo } from "./BieuMauHoSo";
+import { TRAI_NGHIEM } from "@/features/kham-pha/data";
+import { VUNG } from "@/features/vung/data";
+import { daMoKenhNhan } from "@/lib/nhan-ho-so";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
@@ -23,10 +34,10 @@ import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { buildMetadata } from "@/lib/seo";
 
 /**
- * ⚠️ CHƯA CÓ KÊNH NHẬN THẬT. Ông xác nhận 08/08/2026: hòm thư hello@vnfarmstay.vn,
- * hotline 1800 6868 và Zalo "vnfarmstay.vn Official" — cả ba đều KHÔNG tồn tại.
- * Nên trang này nói thẳng là chưa nhận thư được, thay vì đưa ra một địa chỉ chết.
- * Khi Ông cấp kênh thật: khai vào đây rồi mở lại nút gửi ở khối cuối trang.
+ * ⚠️ Ghi lại để không ai khôi phục nhầm: hòm thư hello@vnfarmstay.vn, hotline
+ * 1800 6868 và Zalo "vnfarmstay.vn Official" từng in trên trang này đều KHÔNG
+ * tồn tại (Ông xác nhận 08/08/2026). Cửa nhận hồ sơ nay đi qua biểu mẫu bên
+ * dưới, không qua ba địa chỉ chết ấy.
  */
 export const metadata: Metadata = buildMetadata({
   title: "Giới thiệu farmstay của bạn lên vnfarmstay.vn",
@@ -178,6 +189,10 @@ export default function DangFarmstayPage() {
 
           <section
             aria-label="Cách gửi cho chúng tôi"
+            /* `khoi-bieu-mau` để nới lề ở khổ hẹp — xem khối <style> cuối tệp.
+               Đo 24/08/2026: lề khối cha 24px chồng lề khối này 28px ⇒ trên máy
+               375px biểu mẫu 20 ô chỉ còn 269px, nhãn và dòng gợi ý bị bóp. */
+            className="khoi-bieu-mau"
             style={{
               background: "var(--bg-card)",
               border: "1px solid var(--gold-border)",
@@ -194,34 +209,69 @@ export default function DangFarmstayPage() {
                 color: "var(--text-primary)",
               }}
             >
-              Gửi cho chúng tôi bằng cách nào?
+              Gửi hồ sơ farm của bạn
             </h2>
-            <p
-              style={{
-                color: "var(--text-muted)",
-                fontSize: "1rem",
-                lineHeight: 1.75,
-              }}
-            >
-              Nói thật với bạn: <strong>kênh nhận của chúng tôi chưa mở</strong>
-              . vnfarmstay.vn còn đang dựng, chưa có hòm thư hay số điện thoại
-              nào trực được — nên chúng tôi không đặt sẵn một địa chỉ ở đây để
-              rồi bạn gửi vào chỗ không ai đọc.
-            </p>
-            <p
-              style={{
-                color: "var(--text-muted)",
-                fontSize: "1rem",
-                lineHeight: 1.75,
-                marginTop: 16,
-              }}
-            >
-              Ngay khi kênh liên hệ mở, địa chỉ sẽ được đăng tại đây và ở trang{" "}
-              <Link href="/lien-he" style={{ color: "var(--gold)" }}>
-                Liên hệ
-              </Link>
-              . Bạn cứ chuẩn bị sẵn mấy thứ ở trên, lúc đó gửi một lần là xong.
-            </p>
+
+            {/* ⛔ CỐ Ý rẽ hai nhánh theo trạng thái THẬT của kênh nhận.
+                Biểu mẫu chỉ xuất hiện khi bảng tính đã đấu dây; chưa đấu thì trang
+                nói thẳng là chưa nhận được, thay vì mời người ta điền vào hư không.
+                Đây chính là lỗi đã khiến biểu mẫu cũ bị gỡ 08/08/2026 — không lặp lại.
+                Khai `VNFARMSTAY_SHEET_URL` là biểu mẫu tự hiện, không phải sửa mã. */}
+            {daMoKenhNhan() ? (
+              <>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "1rem",
+                    lineHeight: 1.75,
+                    marginBottom: 28,
+                  }}
+                >
+                  Điền một lần là xong. Phần bắt buộc chỉ gồm những thứ không có
+                  thì chúng tôi không dựng nổi hồ sơ cho bạn — còn lại cứ bỏ
+                  trống, chúng tôi sẽ gọi hỏi.
+                </p>
+                <BieuMauHoSo
+                  vung={VUNG.map((v) => ({ slug: v.slug, ten: v.ten }))}
+                  traiNghiem={TRAI_NGHIEM.map((t) => ({
+                    slug: t.slug,
+                    ten: t.ten,
+                  }))}
+                />
+              </>
+            ) : (
+              <>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "1rem",
+                    lineHeight: 1.75,
+                  }}
+                >
+                  Nói thật với bạn:{" "}
+                  <strong>kênh nhận của chúng tôi chưa mở</strong>. Biểu mẫu đã
+                  dựng xong và chờ sẵn, nhưng chỗ lưu hồ sơ thì chưa đấu dây —
+                  nên chúng tôi không mời bạn điền để rồi hồ sơ rơi vào chỗ
+                  không ai đọc.
+                </p>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "1rem",
+                    lineHeight: 1.75,
+                    marginTop: 16,
+                  }}
+                >
+                  Ngay khi kênh nhận mở, biểu mẫu sẽ hiện ngay tại đây. Bạn cứ
+                  chuẩn bị sẵn mấy thứ ở trên, lúc đó gửi một lần là xong. Cần
+                  liên hệ sớm hơn thì xem trang{" "}
+                  <Link href="/lien-he" style={{ color: "var(--gold)" }}>
+                    Liên hệ
+                  </Link>
+                  .
+                </p>
+              </>
+            )}
           </section>
 
           <p
@@ -240,6 +290,12 @@ export default function DangFarmstayPage() {
           </p>
         </div>
       </main>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .khoi-bieu-mau { padding: 24px 16px !important; }
+        }
+      `}</style>
       <Footer />
     </>
   );
