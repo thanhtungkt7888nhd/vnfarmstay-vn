@@ -8,12 +8,19 @@ import type { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
+/** Trần độ dài — chặn kẻ lạ truyền chữ hàng vạn ký tự để đốt tài nguyên dựng ảnh (Trụ 0, việc 0.2) */
+const MAX_TITLE = 120;
+const MAX_SUBTITLE = 200;
+
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const title = searchParams.get("title") ?? "vnfarmstay.vn";
-  const subtitle =
-    searchParams.get("subtitle") ??
-    "Trải nghiệm nông nghiệp đích thực Việt Nam";
+  const title = (searchParams.get("title") ?? "vnfarmstay.vn").slice(
+    0,
+    MAX_TITLE
+  );
+  const subtitle = (
+    searchParams.get("subtitle") ?? "Trải nghiệm nông nghiệp đích thực Việt Nam"
+  ).slice(0, MAX_SUBTITLE);
 
   return new ImageResponse(
     <div

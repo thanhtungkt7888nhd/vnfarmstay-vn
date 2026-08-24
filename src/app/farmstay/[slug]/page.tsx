@@ -605,6 +605,12 @@ export default async function FarmstayDetailPage({ params }: Props) {
                 </select>
               </div>
 
+              {/* ⛔ TRỤ C PHẢI SỬA (ghi dấu ở Trụ 0, 24/08/2026): nút này vi phạm
+                  Điều I (web KHÔNG nhận đặt phòng) + Điều VI (vỏ rỗng — không có
+                  onClick/href). Trụ C thay bằng nút LIÊN HỆ TRỰC TIẾP chủ farm
+                  (Zalo/điện thoại/web riêng) khi Trụ A đã có trường kênh liên hệ.
+                  Trang này hiện chưa ai vào được (FARMSTAYS rỗng ⇒ mọi slug 404)
+                  nên chưa gây hại — nhưng PHẢI sửa trước khi có hồ sơ thật. */}
               <button
                 style={{
                   width: "100%",
