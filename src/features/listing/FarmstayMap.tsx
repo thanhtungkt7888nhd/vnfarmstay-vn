@@ -2,11 +2,26 @@
 
 import { useEffect, useRef } from "react";
 import type { Map as LeafletMap, Marker } from "leaflet";
+import { timVung } from "@/features/vung/data";
 import type { Farmstay } from "@/shared/types/farmstay";
-import { formatPrice } from "@/shared/utils/format";
 
 interface Props {
   farmstays: Farmstay[];
+}
+
+/**
+ * Chặn chữ trong hồ sơ chui vào HTML của bong bóng bản đồ.
+ * Bong bóng Leaflet nhận CHUỖI HTML, không phải phần tử React — nên React không
+ * thoát ký tự hộ ở đây. Từ Trụ B trở đi, tên farm là chữ CHỦ FARM GỬI LÊN, nên
+ * dán thẳng vào là mở đường cho mã lạ chạy trên trang.
+ */
+function thoatHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 /** Leaflet map — tích hợp từ roi-calculator.html của nhahoachdinh.vn */
@@ -70,10 +85,17 @@ export function FarmstayMap({ farmstays }: Props) {
       });
 
       farmstays.forEach((f) => {
-        const marker = L.marker([f.lat, f.lng], { icon: goldIcon })
+        /* Bong bóng chở dữ kiện định vị + đường vào hồ sơ — KHÔNG giá, KHÔNG sao.
+           Web là hạ tầng dữ liệu, bản đồ dẫn người ta tới hồ sơ chứ không chào giá. */
+        const tenVung = timVung(f.vungSlug)?.ten ?? "";
+        const marker = L.marker([f.toaDo.viDo, f.toaDo.kinhDo], {
+          icon: goldIcon,
+        })
           .addTo(mapInstanceRef.current!)
           .bindPopup(
-            `<strong style="font-size:0.9rem">${f.name}</strong><br/>${formatPrice(f.price)}/đêm &nbsp; ${f.rating}★`,
+            `<strong style="font-size:0.9rem">${thoatHtml(f.ten)}</strong>` +
+              `<br/><span style="font-size:0.78rem">${thoatHtml(tenVung)}</span>` +
+              `<br/><a href="/farmstay/${encodeURIComponent(f.slug)}">Xem hồ sơ farm →</a>`,
             { maxWidth: 220 }
           );
         markersRef.current.push(marker);

@@ -1,30 +1,30 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { TRAI_NGHIEM } from "@/features/kham-pha/data";
+import { VUNG } from "@/features/vung/data";
 import type { Farmstay } from "@/shared/types/farmstay";
 import { FarmstayCard } from "./FarmstayCard";
 import { SITE_BOUNDARY } from "@/lib/site";
 
-const CHIPS = [
+/**
+ * Lọc theo TRẢI NGHIỆM — sinh từ 6 trải nghiệm CÓ THẬT.
+ *
+ * ⚠️ Thay bộ thẻ cũ 24/08/2026 (Trụ A). Bộ cũ có 11 thẻ ("Miền núi", "Ven biển",
+ * "Dược liệu", "Cắm trại"…) mà KHÔNG thẻ nào tồn tại trong dữ liệu — chỉ mỗi thẻ
+ * "Mới mở" đấu được dây, và nó lọc theo `badges` vốn đã bị bỏ. Tức là 10/11 thẻ
+ * bấm vào không đổi gì: nút trang trí. Sinh từ kho thật thì thẻ nào cũng lọc thật,
+ * và thêm trải nghiệm mới vào kho là thẻ tự có.
+ */
+const THE_TRAI_NGHIEM = [
   { label: "Tất cả", value: "all" },
-  { label: "Miền núi", value: "mien-nui" },
-  { label: "Ven biển", value: "ven-bien" },
-  { label: "Đồng bằng", value: "dong-bang" },
-  { label: "Trà & cà phê", value: "tra-ca-phe" },
-  { label: "Chăn nuôi", value: "chan-nuoi" },
-  { label: "Hoa & cây cảnh", value: "hoa-cay-canh" },
-  { label: "Vườn cây ăn quả", value: "vuon-cay" },
-  { label: "Dược liệu", value: "duoc-lieu" },
-  { label: "Cắm trại", value: "cam-trai" },
-  { label: "Mới mở", value: "new" },
+  ...TRAI_NGHIEM.map((t) => ({ label: t.ten, value: t.slug })),
 ];
 
-/** Số đếm mỗi khu vực tính từ dữ liệu THẬT — không khai số cứng. */
-const REGIONS = [
+/** Lọc theo 9 VÙNG trải nghiệm nông nghiệp — hệ phân vùng DUY NHẤT của web */
+const THE_VUNG = [
   { label: "Toàn quốc", value: "all" },
-  { label: "Miền Bắc", value: "north" },
-  { label: "Miền Trung", value: "central" },
-  { label: "Miền Nam", value: "south" },
+  ...VUNG.map((v) => ({ label: v.ten, value: v.slug })),
 ];
 
 interface Props {
@@ -52,11 +52,12 @@ export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
     return farmstays.filter((f) => {
-      if (region !== "all" && f.region !== region) return false;
-      if (activeChip === "new" && !f.badges?.includes("new")) return false;
+      if (region !== "all" && f.vungSlug !== region) return false;
+      if (activeChip !== "all" && !f.traiNghiemSlugs.includes(activeChip))
+        return false;
       if (q) {
         const hay =
-          `${f.name} ${f.location} ${f.province} ${f.tags.join(" ")}`.toLowerCase();
+          `${f.ten} ${f.diaChi} ${f.tinh} ${(f.the ?? []).join(" ")}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
@@ -555,7 +556,7 @@ export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
               borderBottom: "1px solid var(--border)",
             }}
           >
-            {CHIPS.map((chip) => (
+            {THE_TRAI_NGHIEM.map((chip) => (
               <button
                 key={chip.value}
                 aria-pressed={activeChip === chip.value}
@@ -603,7 +604,7 @@ export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
                   flexWrap: "wrap",
                 }}
               >
-                {REGIONS.map((r) => (
+                {THE_VUNG.map((r) => (
                   <button
                     key={r.value}
                     onClick={() => setRegion(r.value)}

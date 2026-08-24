@@ -276,8 +276,22 @@ export interface FarmstaySchemaProps {
   imageUrl: string;
   /** Địa danh hiển thị trên trang (huyện/tỉnh) */
   address: string;
-  /** Giá thấp nhất do CHỦ FARM cấp; 0 hoặc bỏ trống ⇒ không khai giá */
-  priceFrom?: number;
+  /**
+   * Mã định danh CỐ ĐỊNH của farm, dạng `<url>#place` — Master Prompt mục 7.
+   * Đây là thứ khiến mỗi farm là một THỰC THỂ máy nhận ra được qua thời gian,
+   * không phải một dòng trong danh sách. Cố định, không đổi kể cả khi đổi giao diện.
+   */
+  id: string;
+  /** Tỉnh — tách riêng khỏi `address` để máy đọc được cấp hành chính */
+  province?: string;
+  /** Toạ độ thật; thiếu thì không khai `geo` chứ không điền số gần đúng */
+  geo?: { viDo: number; kinhDo: number };
+  /**
+   * Khoảng giá THAM KHẢO do chủ farm cấp.
+   * ⚠️ Là một KHOẢNG, không phải một con số: giá đổi liên tục nên con số cứng
+   * sẽ nói dối, mà dữ liệu có cấu trúc thì máy tìm kiếm đọc thẳng.
+   */
+  khoangGia?: { tuVND: number; denVND: number };
   /** Website riêng / kênh đặt trực tiếp của farmstay, nếu chủ farm đã xác nhận */
   officialUrl?: string;
   telephone?: string;
@@ -294,13 +308,19 @@ export function farmstaySchema({
   url,
   imageUrl,
   address,
-  priceFrom,
+  id,
+  province,
+  geo,
+  khoangGia,
   officialUrl,
   telephone,
 }: FarmstaySchemaProps): WithContext<LodgingBusiness> {
   return {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
+    /* Mã định danh cố định — thiếu nó thì mỗi lần dựng lại, máy tìm kiếm coi đây
+       là một thực thể mới. Bài học `lesson_schema_vo_danh_nhan_ban_thuc_the`. */
+    "@id": id,
     name,
     description,
     url,
@@ -308,11 +328,26 @@ export function farmstaySchema({
     address: {
       "@type": "PostalAddress",
       addressLocality: address,
+      ...(province ? { addressRegion: province } : {}),
       addressCountry: "VN",
     },
-    ...(priceFrom && priceFrom > 0
-      ? { priceRange: `Từ ${priceFrom.toLocaleString("vi-VN")}đ/đêm` }
+    ...(geo
+      ? {
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: geo.viDo,
+            longitude: geo.kinhDo,
+          },
+        }
       : {}),
+    ...(khoangGia
+      ? {
+          priceRange: `${khoangGia.tuVND.toLocaleString("vi-VN")}–${khoangGia.denVND.toLocaleString("vi-VN")}đ`,
+        }
+      : {}),
+    /* ⛔ CẤM thêm `aggregateRating`: web không có chức năng nhận đánh giá, nên
+       không tồn tại nguồn thật nào cấp điểm. Khai điểm bịa vào dữ liệu có cấu
+       trúc còn nặng hơn hiện trên trang — máy tìm kiếm đem nó đi phát tán. */
     ...(officialUrl ? { sameAs: [officialUrl] } : {}),
     ...(telephone ? { telephone } : {}),
   } as WithContext<LodgingBusiness>;

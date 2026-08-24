@@ -84,10 +84,14 @@ export default async function VungPage({ params }: Props) {
   const vung = timVung(slug);
   if (!vung) notFound();
 
-  /* Farmstay thuộc vùng này — chưa có hồ sơ nào, nên mảng rỗng và khối tự ẩn. */
-  const farmstayCuaVung: CollectionItem[] = FARMSTAYS.filter((f) =>
-    vung.diaDanh.toLowerCase().includes(f.province.toLowerCase())
-  ).map((f) => ({ name: f.name, url: `/farmstay/${f.slug}` }));
+  /* Farmstay thuộc vùng này — nối bằng `vungSlug`, khớp thẳng mã với mã.
+     ⚠️ Bản cũ so CHUỖI địa danh với tên tỉnh (`vung.diaDanh.includes(f.province)`):
+     farm ở "Lâm Đồng" chỉ lọt vào vùng nào có chữ "Lâm Đồng" trong địa danh, sai
+     một dấu là rơi khỏi mọi vùng mà build vẫn xanh. Chưa có hồ sơ nào nên mảng
+     rỗng và khối tự ẩn — đó là hành vi đúng. */
+  const farmstayCuaVung: CollectionItem[] = FARMSTAYS.filter(
+    (f) => f.vungSlug === vung.slug
+  ).map((f) => ({ name: f.ten, url: `/farmstay/${f.slug}` }));
 
   const lanCan = vungLanCan(vung.slug);
 
