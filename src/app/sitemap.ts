@@ -59,6 +59,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
       changeFrequency: "monthly",
     },
+    /* Trang trả lời "vì sao tin được dữ liệu ở đây" — thêm 24/08/2026 (Trụ D).
+       Ưu tiên cao vì mọi nhãn cấp xác minh trên hồ sơ farm đều dẫn về đây; thiếu
+       nó thì bốn cấp chỉ là nhãn dán vô nghĩa. */
+    {
+      url: `${SITE_URL}/phuong-phap-xac-minh`,
+      priority: 0.8,
+      changeFrequency: "monthly",
+    },
   ];
 
   // 9 trang vùng — mỗi trang có nội dung biên tập riêng, thêm 19/08/2026.

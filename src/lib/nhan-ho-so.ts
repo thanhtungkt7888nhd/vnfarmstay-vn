@@ -184,3 +184,83 @@ export async function nhanHoSo(h: HoSoGuiLen): Promise<KetQuaNhan> {
   if (ketQua.trangThai === "da-luu") await rungChuong(h);
   return ketQua;
 }
+
+/** Một lời báo sai thông tin từ người đọc — cơ chế tự sửa của cả hệ thống */
+export interface BaoSaiGuiLen {
+  /** Hồ sơ farm nào đang sai */
+  farmSlug: string;
+  /** Sai chỗ nào — người báo tự mô tả */
+  saiChoNao: string;
+  /** Người báo để lại cách liên hệ nếu muốn; KHÔNG bắt buộc */
+  lienHeNguoiBao?: string;
+}
+
+/**
+ * Nhận một lời báo sai. Đi đúng đường ống của hồ sơ farmstay — cùng bảng tính,
+ * cùng chuông — để người trực chỉ phải mở một chỗ.
+ *
+ * ⛔ Trả `da-luu` chỉ khi bảng tính xác nhận. Nút báo sai mà không ai nhận được
+ * còn TỆ HƠN không có nút: nó tạo cảm giác an toàn giả, người đọc tưởng đã báo rồi
+ * nên không tìm cách khác, còn thông tin sai thì cứ nằm nguyên trên web.
+ */
+export async function nhanBaoSai(b: BaoSaiGuiLen): Promise<KetQuaNhan> {
+  if (!daMoKenhNhan()) return { trangThai: "chua-cau-hinh" };
+
+  const chiTiet = [
+    `BÁO SAI THÔNG TIN`,
+    `Hồ sơ: /farmstay/${b.farmSlug}`,
+    `Sai chỗ nào: ${b.saiChoNao}`,
+    b.lienHeNguoiBao
+      ? `Người báo: ${b.lienHeNguoiBao}`
+      : "Người báo: không để lại liên hệ",
+  ].join("\n");
+
+  try {
+    const res = await fetch(SHEET_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "bao-sai-thong-tin",
+        tenFarm: b.farmSlug,
+        soDienThoai: b.lienHeNguoiBao ?? "",
+        chiTiet,
+      }),
+      redirect: "manual",
+    });
+    const daNhan = res.status === 302 || res.status === 303 || res.ok;
+    if (!daNhan) {
+      console.error(
+        `[báo sai] Bảng tính trả ${res.status} — lời báo KHÔNG được lưu`
+      );
+      return { trangThai: "loi", chiTiet: `bảng tính trả ${res.status}` };
+    }
+  } catch (err) {
+    console.error(
+      "[báo sai] Không gọi được bảng tính — lời báo KHÔNG được lưu:",
+      err
+    );
+    return { trangThai: "loi", chiTiet: String(err) };
+  }
+
+  if (daCoChuong()) {
+    try {
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: `⚠️ BÁO SAI THÔNG TIN\n\n${chiTiet}`,
+          disable_web_page_preview: true,
+        }),
+      });
+    } catch (err) {
+      console.error("[báo sai] Không rung được chuông:", err);
+    }
+  } else {
+    console.warn(
+      "[báo sai] Chưa đấu chuông Telegram — có lời báo mà không ai được báo"
+    );
+  }
+
+  return { trangThai: "da-luu" };
+}

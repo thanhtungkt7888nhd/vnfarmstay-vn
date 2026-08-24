@@ -24,7 +24,9 @@ import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
 import { BanDoFarmstay } from "@/features/listing/BanDoFarmstay";
+import { NutBaoSai } from "@/features/listing/NutBaoSai";
 import { FARMSTAYS } from "@/features/listing/data";
+import { daMoKenhNhan } from "@/lib/nhan-ho-so";
 import { timMua, timTraiNghiem } from "@/features/kham-pha/data";
 import { timVung } from "@/features/vung/data";
 import type { KenhLienHe } from "@/shared/types/farmstay";
@@ -177,12 +179,20 @@ export default async function FarmstayDetailPage({ params }: Props) {
             }}
           />
 
-          {/* Cấp xác minh — thay huy hiệu nhị phân "✓ XÁC MINH" cũ */}
-          <span
+          {/* Cấp xác minh — thay huy hiệu nhị phân "✓ XÁC MINH" cũ.
+              Bấm được, dẫn tới trang giải thích: nhãn không giải thích được thì
+              chỉ là chữ dán, khách không biết ta kiểm kỹ tới đâu. */}
+          <Link
+            href="/phuong-phap-xac-minh"
+            title={cap.nhanDay}
             style={{
               position: "absolute",
               top: 24,
               left: 24,
+              display: "inline-flex",
+              alignItems: "center",
+              /* ≥44px — vùng chạm đủ lớn trên điện thoại */
+              minHeight: 44,
               padding: "5px 14px",
               borderRadius: 4,
               fontSize: "0.72rem",
@@ -190,10 +200,11 @@ export default async function FarmstayDetailPage({ params }: Props) {
               letterSpacing: "0.08em",
               background: "var(--gold)",
               color: "var(--bg-deep)",
+              textDecoration: "none",
             }}
           >
             {cap.nhanNgan}
-          </span>
+          </Link>
 
           <div
             style={{ position: "absolute", bottom: 32, left: 32, right: 32 }}
@@ -297,6 +308,11 @@ export default async function FarmstayDetailPage({ params }: Props) {
                       <Link
                         href={`/mua/${m.muaSlug}`}
                         style={{
+                          /* ≥44px — đây là liên kết đứng riêng, không phải chữ
+                             lẫn trong câu, nên phải đủ rộng để ngón tay chạm */
+                          display: "inline-flex",
+                          alignItems: "center",
+                          minHeight: 44,
                           fontSize: "0.8rem",
                           fontWeight: 700,
                           letterSpacing: "0.06em",
@@ -626,7 +642,14 @@ export default async function FarmstayDetailPage({ params }: Props) {
                   <dd style={{ display: "inline", margin: 0 }}>
                     <Link
                       href="/phuong-phap-xac-minh"
-                      style={{ color: "var(--gold)" }}
+                      style={{
+                        /* ≥44px — liên kết duy nhất trong khối này, khách sẽ nhắm
+                           tay vào nó để hiểu nhãn cấp nghĩa là gì */
+                        display: "inline-flex",
+                        alignItems: "center",
+                        minHeight: 44,
+                        color: "var(--gold)",
+                      }}
                     >
                       {cap.nhanDay}
                     </Link>
@@ -670,20 +693,105 @@ export default async function FarmstayDetailPage({ params }: Props) {
               >
                 Cấp này <strong>không</strong> bảo đảm: {cap.khongBaoDam}
               </p>
-              <p style={{ marginTop: 10 }}>
-                <Link
-                  href={`/lien-he?ve=${encodeURIComponent(farmstay.slug)}`}
-                  style={{ fontSize: "0.78rem", color: "var(--gold)" }}
-                >
-                  Thấy thông tin sai? Báo cho chúng tôi →
-                </Link>
-              </p>
+              {/* Cơ chế tự sửa — chỉ hiện khi có người NHẬN được lời báo.
+                  Chưa mở kênh thì chỉ ra trang liên hệ, không dựng nút giả. */}
+              {daMoKenhNhan() ? (
+                <NutBaoSai farmSlug={farmstay.slug} />
+              ) : (
+                <p style={{ margin: "10px 0 0" }}>
+                  <Link
+                    href="/lien-he"
+                    style={{
+                      /* ≥44px — liên kết đứng riêng, phải chạm được bằng ngón tay */
+                      display: "inline-flex",
+                      alignItems: "center",
+                      minHeight: 44,
+                      fontSize: "0.78rem",
+                      color: "var(--gold)",
+                    }}
+                  >
+                    Thấy thông tin sai? Xem cách liên hệ →
+                  </Link>
+                </p>
+              )}
             </div>
+
+            {/* Huy hiệu nhúng — CHỈ farm đã khảo sát thực địa (cấp 3+) mới có.
+                Cấp 1–2 không thấy khối này, và đường dẫn huy hiệu cũng trả 404. */}
+            {farmstay.capXacMinh >= 3 && (
+              <div
+                style={{
+                  marginTop: 16,
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--radius-sm)",
+                  padding: "20px 24px",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    color: "var(--text-dim)",
+                    marginBottom: 10,
+                  }}
+                >
+                  HUY HIỆU CHO WEB CỦA FARM
+                </p>
+                {/* Dùng <img> thường, KHÔNG next/image: đây là ảnh sinh động đọc
+                    trạng thái sống, cho tối ưu hoá đệm lại vào là hỏng tính thu hồi. */}
+                <img
+                  src={`/api/huy-hieu/${farmstay.slug}`}
+                  alt={`Huy hiệu ${cap.nhanDay} của ${farmstay.ten}`}
+                  width={260}
+                  height={72}
+                  style={{ maxWidth: "100%", height: "auto", marginBottom: 12 }}
+                />
+                <p
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "var(--text-dim)",
+                    lineHeight: 1.6,
+                    marginBottom: 8,
+                  }}
+                >
+                  Chép đoạn dưới đây dán vào web riêng của farm. Huy hiệu đọc
+                  trạng thái thật mỗi lần hiện — cấp đổi thì huy hiệu đổi theo.
+                </p>
+                {/* ⚠️ `minWidth: 0` là bắt buộc, không phải trang trí. Đây là con
+                    của một ô lưới, mà ô lưới mặc định KHÔNG co nhỏ hơn nội dung
+                    (`min-width: auto`) — nên dòng mã nhúng dài 1 dòng đẩy cả trang
+                    rộng ra 1681px trên máy 375px. Đo thật 24/08/2026. */}
+                <code
+                  style={{
+                    display: "block",
+                    minWidth: 0,
+                    maxWidth: "100%",
+                    background: "var(--bg-deep)",
+                    border: "1px solid var(--border)",
+                    borderRadius: 6,
+                    padding: "10px 12px",
+                    fontSize: "0.72rem",
+                    color: "var(--text-muted)",
+                    lineHeight: 1.6,
+                    overflowX: "auto",
+                    whiteSpace: "pre",
+                  }}
+                >
+                  {`<a href="${url}"><img src="${SITE_URL}/api/huy-hieu/${farmstay.slug}" alt="${cap.nhanDay} — vnfarmstay.vn" width="260" height="72"></a>`}
+                </code>
+              </div>
+            )}
           </div>
         </div>
       </main>
 
       <style>{`
+        /* Ô lưới mặc định min-width:auto ⇒ không co nhỏ hơn nội dung dài nhất bên
+           trong. Đặt 0 để khối mã nhúng tự cuộn ngang trong khung của nó thay vì
+           đẩy cả trang rộng ra. */
+        .detail-grid > * { min-width: 0; }
         @media (max-width: 768px) {
           .detail-grid { grid-template-columns: 1fr !important; }
         }
