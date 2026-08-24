@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE_NAME, SITE_TAGLINE, ECOSYSTEM } from "@/lib/site";
+import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 const footerLinks = {
   "Khám phá": [
@@ -25,9 +25,23 @@ const footerLinks = {
     { href: "/chinh-sach-bien-tap", label: "Chính sách biên tập" },
     { href: "/lien-he", label: "Liên hệ" },
   ],
-  // Đây là các thương hiệu KHÁC trong hệ sinh thái, không phải cùng một thực thể —
-  // nên chỉ liên kết hiển thị cho người đọc, không khai `sameAs` trong schema.
-  "Hệ sinh thái": ECOSYSTEM.map((e) => ({ href: e.url, label: e.label })),
+  /**
+   * ⛔ CỘT "HỆ SINH THÁI" ĐÃ GỠ 24/08/2026 — CẤM DỰNG LẠI Ở ĐÂY.
+   *
+   * Cột cũ rải liên kết sang 3 web anh em (nhahoachdinh.vn · hoachdinhmastery.vn ·
+   * xuyenvietfarmstay.vn) ở chân trang, tức là trên **cả 39 trang**. Đó đúng là
+   * **điều cấm tuyệt đối số 5** của Master Prompt: *"Cấm liên kết chân trang toàn
+   * site giữa sáu web"* — vì liên kết chéo toàn site, hai chiều, giữa các web cùng
+   * một chủ là dạng mạng liên kết thao túng điển hình, và hình phạt rơi vào **cả
+   * sáu web**, không riêng web này.
+   *
+   * Bắt được bằng `scripts/kiem-hien-phap.mjs` (phép HP.5), không phải bằng mắt.
+   *
+   * Hệ sinh thái vẫn được giới thiệu — nhưng **theo ngữ cảnh**, ở `/lien-he`, nơi
+   * mỗi web đi kèm một câu nói rõ vai trò của nó. Đó là "liên kết trong câu chữ có
+   * lý do nối" mà Master Prompt cho phép. Danh sách `ECOSYSTEM` vẫn sống ở
+   * `src/lib/site.ts` và vẫn được trang ấy dùng.
+   */
 };
 
 /**
