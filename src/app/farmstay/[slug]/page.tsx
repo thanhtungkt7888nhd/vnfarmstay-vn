@@ -23,6 +23,7 @@ import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { BreadcrumbNav } from "@/shared/ui/BreadcrumbNav";
+import { BanDoFarmstay } from "@/features/listing/BanDoFarmstay";
 import { FARMSTAYS } from "@/features/listing/data";
 import { timMua, timTraiNghiem } from "@/features/kham-pha/data";
 import { timVung } from "@/features/vung/data";
@@ -390,6 +391,13 @@ export default async function FarmstayDetailPage({ params }: Props) {
               >
                 {farmstay.duongDi}
               </p>
+              {/* Bản đồ chỉ đúng farm này — nối vào khối đường đi vì đó là chỗ
+                  người đọc đang cần biết "nó nằm đâu", không phải cuối trang. */}
+              <BanDoFarmstay
+                farmstays={[farmstay]}
+                tieuDe={`Vị trí ${farmstay.ten} trên bản đồ`}
+                moTa={`Toạ độ ${farmstay.toaDo.viDo}, ${farmstay.toaDo.kinhDo}. Hỏi lại chủ farm trước khi đi — đường nông thôn đổi theo mùa.`}
+              />
             </section>
 
             <section style={kieuKhoi}>

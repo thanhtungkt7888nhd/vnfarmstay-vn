@@ -134,3 +134,36 @@ export const KHO_TRUNG_SLUG: Farmstay[] = [
   HO_SO_DUNG,
   sua({ id: "doi-chung-02" }),
 ];
+
+/**
+ * Hồ sơ ĐẦY ĐỦ cho phép thử VÒNG DU KHÁCH (`scripts/thu-vong-du-khach.mjs`).
+ *
+ * Khác `HO_SO_DUNG` ở hai chỗ, đều có lý do đo lường:
+ * - **Đủ 3 loại kênh** (điện thoại · Zalo · web riêng) để thử được cả nút gọi trong
+ *   web lẫn nút bật tab mới ra ngoài — hai loại này gắn hai tên sự kiện khác nhau.
+ * - **Ảnh trỏ vào tệp CÓ THẬT** trong `public/`, vì phép thử này mở trang bằng
+ *   trình duyệt thật; ảnh 404 sẽ làm hỏng phép đo bố cục.
+ *
+ * ⛔ Vẫn nằm ngoài `src/` — Next.js không có đường nào gói nó vào trang.
+ */
+export const HO_SO_DAY_DU: Farmstay = {
+  ...HO_SO_DUNG,
+  id: "doi-chung-vong",
+  slug: "doi-chung-vong-du-khach",
+  ten: "Farm đối chứng vòng du khách",
+  anh: [
+    {
+      url: "/logo.png",
+      moTa: "Ảnh đối chứng 1 — dùng cho phép thử",
+      nguoiChup: "Máy đo",
+    },
+    { url: "/logo-icon.png", moTa: "Ảnh đối chứng 2 — dùng cho phép thử" },
+  ],
+  lienHe: [
+    { loai: "dien-thoai", giaTri: "0901234567" },
+    { loai: "zalo", giaTri: "0901234567" },
+    { loai: "web-rieng", giaTri: "https://vi.dụ-đối-chứng.test/farm" },
+  ],
+  traiNghiemSlugs: ["chan-nuoi-va-sua", "rau-hoa-on-doi"],
+  giaThamKhao: { tuVND: 400000, denVND: 800000, ngayCapNhat: "2026-08-24" },
+};

@@ -1,5 +1,14 @@
 /**
- * Skeleton loading state cho trang /farmstay/[slug] — hiện khi ISR revalidate.
+ * Khung xương lúc chờ cho trang /farmstay/[slug] — hiện khi ISR dựng lại trang.
+ *
+ * ⚠️ Sửa 24/08/2026: khung này khai `1fr 340px` mà KHÔNG có ngắt khổ, trong khi
+ * trang thật có. Trên máy 375px, cột phải 340px đẩy mép trang ra 404px ⇒ **người
+ * dùng điện thoại bị trang trượt ngang trong lúc chờ**. Lỗi chỉ hiện trong khoảnh
+ * khắc chờ nên không máy đo nào ngó tới — đúng bệnh "vá một nhánh, nhánh song sinh
+ * vẫn hở": trang thật được vá, bản khung xương bị bỏ quên.
+ *
+ * Ngắt khổ dưới đây phải GIỮ TRÙNG với ngắt khổ `.detail-grid` ở trang thật; lệch
+ * nhau thì lúc chờ và lúc xong nhảy bố cục.
  */
 
 export default function FarmstayLoading() {
@@ -18,6 +27,7 @@ export default function FarmstayLoading() {
 
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "40px 24px" }}>
         <div
+          className="khung-cho-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 340px",
@@ -74,6 +84,12 @@ export default function FarmstayLoading() {
           />
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .khung-cho-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </main>
   );
 }

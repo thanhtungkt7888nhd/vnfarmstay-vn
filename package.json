@@ -16,6 +16,7 @@
     "prebuild": "node scripts/kiem-ho-so.mjs && node scripts/sinh-tep-tinh.mjs",
     "kiem-ho-so": "node scripts/kiem-ho-so.mjs",
     "thu-cua-nhan": "node scripts/thu-cua-nhan-ho-so.mjs",
+    "thu-vong-du-khach": "node scripts/thu-vong-du-khach.mjs",
     "sinh-tep-tinh": "node scripts/sinh-tep-tinh.mjs"
   },
   "lint-staged": {

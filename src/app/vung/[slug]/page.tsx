@@ -13,6 +13,7 @@
  */
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { BanDoFarmstay } from "@/features/listing/BanDoFarmstay";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
@@ -89,9 +90,11 @@ export default async function VungPage({ params }: Props) {
      farm ở "Lâm Đồng" chỉ lọt vào vùng nào có chữ "Lâm Đồng" trong địa danh, sai
      một dấu là rơi khỏi mọi vùng mà build vẫn xanh. Chưa có hồ sơ nào nên mảng
      rỗng và khối tự ẩn — đó là hành vi đúng. */
-  const farmstayCuaVung: CollectionItem[] = FARMSTAYS.filter(
-    (f) => f.vungSlug === vung.slug
-  ).map((f) => ({ name: f.ten, url: `/farmstay/${f.slug}` }));
+  const farmTrongVung = FARMSTAYS.filter((f) => f.vungSlug === vung.slug);
+  const farmstayCuaVung: CollectionItem[] = farmTrongVung.map((f) => ({
+    name: f.ten,
+    url: `/farmstay/${f.slug}`,
+  }));
 
   const lanCan = vungLanCan(vung.slug);
 
@@ -319,15 +322,13 @@ export default async function VungPage({ params }: Props) {
               Farmstay ở {vung.ten}
             </h2>
             {farmstayCuaVung.length > 0 ? (
-              <ul style={{ display: "grid", gap: 10 }}>
-                {farmstayCuaVung.map((f) => (
-                  <li key={f.url}>
-                    <a href={f.url} style={{ color: "var(--gold)" }}>
-                      {f.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              /* Bản đồ + danh sách liên kết đi kèm. Khối tự ẩn khi vùng chưa có
+                 farm nào, nên nhánh này chỉ chạy khi thật sự có gì để chỉ. */
+              <BanDoFarmstay
+                farmstays={farmTrongVung}
+                tieuDe={`Farmstay trên bản đồ ${vung.ten}`}
+                moTa="Bấm một điểm trên bản đồ để mở hồ sơ farm. Danh sách bên dưới đi tới đúng những nơi ấy."
+              />
             ) : (
               <>
                 <p
