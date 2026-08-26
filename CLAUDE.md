@@ -1,5 +1,36 @@
 # VNFARMSTAY.VN — HƯỚNG DẪN CHO CLAUDE CODE
 
+## ⚖️ ĐỌC TRƯỚC KHI ĐỘNG VÀO WEB NÀY — HIẾN PHÁP (Ông chốt 24/08/2026)
+
+**`docs/HIEN-PHAP.md`** — 9 Điều, thẩm quyền cao nhất với riêng web này. Khi Master Prompt, skill,
+kho luật hay một quyết định kỹ thuật mâu thuẫn nhau về web này → **hiến pháp phân xử**.
+
+Năm câu tự vấn TRƯỚC KHI viết một dòng mã:
+1. Việc này có phá Điều nào trong hiến pháp không?
+2. Có phá điều nào trong **tám điều cấm tuyệt đối** (Master Prompt mục 5) không?
+3. Thứ sắp dựng có **chạy thật** không, hay lại là vỏ rỗng? *(Điều VI)*
+4. Con số sắp đăng có **đo được hôm nay** không? *(Điều II)*
+5. Việc này làm web **gần hơn** hay **xa hơn** với "hạ tầng dữ liệu"? *(Điều I)*
+
+Có nghi ngờ ⇒ **dừng, trình Ông.**
+
+⚠️ **Điều III là Điều DUY NHẤT không có máy canh** — Ông chốt giữ nguyên như vậy. Bảy Điều còn lại
+có máy (đủ hoặc một phần); bảng đầy đủ ở đầu `docs/HIEN-PHAP.md`.
+
+**Máy thi hành — chạy trước mỗi lần deploy:**
+```bash
+npm run build                                 # prebuild tự chạy van hồ sơ + tự kiểm cổng hiến pháp
+npx next start -p 3017 &                      # hai cổng dưới PHẢI đo trên bản dựng thật, KHÔNG trên dev
+npm run kiem-hien-phap http://localhost:3017  # 6 phép hiến pháp
+npm run kiem-seo       http://localhost:3017
+npm run thu-cua-nhan && npm run thu-vong-du-khach && npm run thu-uy-tin
+```
+
+Hồ sơ đi kèm: `docs/NAM-TRU-DONG-SO-20260824.md` (bàn giao năm trụ) ·
+`docs/QUY-TRINH-DUYET-HO-SO.md` (5 bước duyệt hồ sơ chủ farm).
+
+---
+
 ## DỰ ÁN
 
 **Loại:** Standalone Next.js website (không phải HUB)  
