@@ -265,7 +265,16 @@ export default function DangFarmstayPage() {
                   Ngay khi kênh nhận mở, biểu mẫu sẽ hiện ngay tại đây. Bạn cứ
                   chuẩn bị sẵn mấy thứ ở trên, lúc đó gửi một lần là xong. Cần
                   liên hệ sớm hơn thì xem trang{" "}
-                  <Link href="/lien-he" style={{ color: "var(--gold)" }}>
+                  <Link
+                    href="/lien-he"
+                    style={{
+                      /* ≥44px — lời kêu gọi hành động cuối đoạn, khách sẽ nhắm tay vào */
+                      display: "inline-flex",
+                      alignItems: "center",
+                      minHeight: 44,
+                      color: "var(--gold)",
+                    }}
+                  >
                     Liên hệ
                   </Link>
                   .
@@ -284,7 +293,16 @@ export default function DangFarmstayPage() {
             }}
           >
             Chưa rõ chúng tôi làm gì cho farm của bạn?{" "}
-            <Link href="/chu-farmstay" style={{ color: "var(--gold)" }}>
+            <Link
+              href="/chu-farmstay"
+              style={{
+                /* ≥44px — lời kêu gọi hành động cuối đoạn, khách sẽ nhắm tay vào */
+                display: "inline-flex",
+                alignItems: "center",
+                minHeight: 44,
+                color: "var(--gold)",
+              }}
+            >
               Xem trang dành cho chủ farmstay
             </Link>
           </p>

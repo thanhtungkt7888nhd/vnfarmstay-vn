@@ -449,7 +449,17 @@ export default async function VungPage({ params }: Props) {
               Nội dung vùng rà soát lần cuối 19/08/2026. Lịch mùa là nhịp chung
               của vùng — thời tiết mỗi năm mỗi khác, nên hãy hỏi lại chủ farm
               trước khi đặt vé.{" "}
-              <a href="/tour-farmstay" style={{ color: "var(--gold)" }}>
+              <a
+                href="/tour-farmstay"
+                style={{
+                  /* ≥44px — đo 26/08/2026 chỉ được 41px. Nằm cuối một đoạn văn
+                     nên dùng inline-flex để không đẩy lệch dòng chữ quanh nó. */
+                  display: "inline-flex",
+                  alignItems: "center",
+                  minHeight: 44,
+                  color: "var(--gold)",
+                }}
+              >
                 Xem bản đồ đủ 9 vùng →
               </a>
             </p>

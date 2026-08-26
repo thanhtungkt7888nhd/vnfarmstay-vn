@@ -376,7 +376,16 @@ export default function PhuongPhapXacMinhPage() {
             }}
           >
             Bạn là chủ farm và muốn có hồ sơ ở đây?{" "}
-            <Link href="/dang-farmstay" style={{ color: "var(--gold)" }}>
+            <Link
+              href="/dang-farmstay"
+              style={{
+                /* ≥44px — lời kêu gọi hành động cuối đoạn, khách sẽ nhắm tay vào */
+                display: "inline-flex",
+                alignItems: "center",
+                minHeight: 44,
+                color: "var(--gold)",
+              }}
+            >
               Gửi hồ sơ farm của bạn
             </Link>
           </p>

@@ -130,6 +130,12 @@ export default async function BlogPage() {
                   href={`/danh-muc/${slug}`}
                   className="fx-hover-lift fx-clip-reveal"
                   style={{
+                    /* ≥44px — đây là HÀNG NÚT LỌC đứng riêng, không phải chữ lẫn
+                       trong câu, nên phải đủ lớn để ngón tay chạm. Đo 26/08/2026:
+                       trước đó chỉ cao 30px. */
+                    display: "inline-flex",
+                    alignItems: "center",
+                    minHeight: 44,
                     background: "var(--bg-main)",
                     border: "1px solid var(--border)",
                     color: "var(--text-muted)",

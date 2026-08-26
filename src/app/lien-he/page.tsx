@@ -189,7 +189,15 @@ export default function LienHePage() {
                     href={e.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: "var(--gold)", fontWeight: 600 }}
+                    style={{
+                      /* ≥44px — liên kết đứng riêng đầu mỗi mục, ngón tay phải
+                         chạm được. Đo 26/08/2026: trước đó chỉ cao 21px. */
+                      display: "inline-flex",
+                      alignItems: "center",
+                      minHeight: 44,
+                      color: "var(--gold)",
+                      fontWeight: 600,
+                    }}
                   >
                     {e.label}
                   </a>{" "}
