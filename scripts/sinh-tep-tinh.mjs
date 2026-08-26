@@ -66,6 +66,7 @@ hành trình — xem các mục dưới đây.
 - [Giới thiệu farmstay của bạn](${U}/dang-farmstay)
 - [Chính sách biên tập](${U}/chinh-sach-bien-tap)
 - [Phương pháp xác minh farmstay — bốn cấp và giới hạn từng cấp](${U}/phuong-phap-xac-minh)
+- [Người kiến tạo — chuyên gia đứng sau ngành farmstay](${U}/nguoi-kien-tao)
 - [Liên hệ](${U}/lien-he)
 - [Thư viện pháp lý farmstay](${U}/phap-ly)
 - [Bản đồ 9 vùng và lịch mùa](${U}/tour-farmstay)

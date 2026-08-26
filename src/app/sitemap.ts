@@ -4,6 +4,7 @@
  */
 import type { MetadataRoute } from "next";
 import { FARMSTAYS } from "@/features/listing/data";
+import { NGUOI_KIEN_TAO } from "@/features/nguoi-kien-tao/data";
 import { fetchPostSlugs } from "@/lib/sanity-queries";
 import { SITE_URL } from "@/lib/site";
 import { TRAI_NGHIEM, MUA, TUYEN } from "@/features/kham-pha/data";
@@ -67,6 +68,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
       changeFrequency: "monthly",
     },
+    /* Người kiến tạo — Master Prompt §9 Trục 7. Trang tổng + hồ sơ từng chuyên gia. */
+    {
+      url: `${SITE_URL}/nguoi-kien-tao`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
+    ...NGUOI_KIEN_TAO.map((n) => ({
+      url: `${SITE_URL}/nguoi-kien-tao/${n.slug}`,
+      priority: 0.6,
+      changeFrequency: "monthly" as const,
+    })),
   ];
 
   // 9 trang vùng — mỗi trang có nội dung biên tập riêng, thêm 19/08/2026.

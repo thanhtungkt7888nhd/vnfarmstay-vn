@@ -23,6 +23,8 @@ const footerLinks = {
     { href: "/ve-chung-toi", label: `Về ${SITE_NAME}` },
     { href: "/ve-chung-toi#su-menh", label: "Sứ mệnh" },
     { href: "/chinh-sach-bien-tap", label: "Chính sách biên tập" },
+    { href: "/nguoi-kien-tao", label: "Người kiến tạo" },
+    { href: "/phuong-phap-xac-minh", label: "Phương pháp xác minh" },
     { href: "/lien-he", label: "Liên hệ" },
   ],
   /**
