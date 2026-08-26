@@ -24,8 +24,16 @@
  *
  * Chạy:  node scripts/kiem-hien-phap.mjs [http://localhost:3017]
  *        node scripts/kiem-hien-phap.mjs --tu-kiem     (chỉ chấm bộ đối chứng)
+ *
+ * ⚠️ KHÔNG `import playwright` ở đầu tệp — nạp LƯỜI, chỉ khi thật sự đi đo web.
+ * Vì sao: `--tu-kiem` chạy trong `prebuild`, mà `prebuild` cũng chạy TRÊN VERCEL,
+ * nơi KHÔNG có playwright (nó là thứ cài tay ở máy, không nằm trong `package.json`).
+ * Bản đầu import tĩnh ⇒ **build trên Vercel chết ngay** với `ERR_MODULE_NOT_FOUND`,
+ * trong khi build ở máy vẫn xanh — đúng loại lỗi im lặng chỉ lộ ra khi lên web thật
+ * (đo 26/08/2026: deploy đầu tiên của đợt năm trụ hỏng đúng vì dòng import ấy).
+ * Phần tự kiểm là HÀM THUẦN, không cần trình duyệt — nên nó phải chạy được ở nơi
+ * không có trình duyệt.
  */
-import { chromium } from "playwright";
 
 const CHI_TU_KIEM = process.argv.includes("--tu-kiem");
 const GOC =
@@ -464,7 +472,8 @@ async function main() {
   console.log(`✓ Tự kiểm: ${soCa}/${soCa} ca đối chứng hai chiều qua.`);
   if (CHI_TU_KIEM) return;
 
-  // ② Đo web thật
+  // ② Đo web thật — tới đây mới cần trình duyệt, nạp lười
+  const { chromium } = await import("playwright");
   const duongDan = await layDuongDan();
   const tr = await chromium.launch();
   const trang = await tr.newPage({ viewport: { width: 1280, height: 900 } });
