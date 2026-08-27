@@ -173,6 +173,28 @@ export default async function HoSoNguoiKienTao({ params }: Props) {
             </div>
           </div>
 
+          {/* Nói thẳng quan hệ TRƯỚC khi người đọc đọc lời tự khai — Điều II */}
+          {n.laNguoiKhoiXuong && (
+            <p
+              style={{
+                background: "var(--gold-dim)",
+                border: "1px solid var(--gold-border)",
+                borderRadius: "var(--radius-sm)",
+                padding: "12px 16px",
+                fontSize: "0.88rem",
+                color: "var(--text-muted)",
+                lineHeight: 1.7,
+                margin: "0 0 20px",
+              }}
+            >
+              <strong style={{ color: "var(--text-primary)" }}>
+                Người khởi xướng vnfarmstay.vn.
+              </strong>{" "}
+              Hồ sơ này nằm trên chính trang do ông khởi xướng — không phải đánh
+              giá của bên thứ ba. Chúng tôi nói rõ để bạn tự cân nhắc.
+            </p>
+          )}
+
           {/* ── Giọng 1: LỜI CỦA HỌ, nguyên văn ── */}
           <section style={{ ...kieuKhoi, borderTop: "none", paddingTop: 12 }}>
             <h2 style={kieuH2}>Họ tự giới thiệu</h2>

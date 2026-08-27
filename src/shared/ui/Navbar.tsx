@@ -11,6 +11,10 @@ const navLinks = [
   { href: "/farmstay-la-gi", label: "Farmstay là gì" },
   { href: "/blog", label: "Câu chuyện" },
   { href: "/cong-dong", label: "Cộng đồng" },
+  /* Thêm 27/08/2026 theo lệnh Ông — trước đó chỉ vào được qua chân trang.
+     Đặt SAU "Cộng đồng", KHÔNG đưa lên trang chủ: Điều VIII giữ trang chủ cho
+     chủ farm, còn menu là điều hướng chung nên hợp lệ. */
+  { href: "/nguoi-kien-tao", label: "Người kiến tạo" },
 ];
 
 export function Navbar() {

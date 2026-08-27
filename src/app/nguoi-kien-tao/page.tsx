@@ -126,7 +126,7 @@ export default function NguoiKienTaoPage() {
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {NGUOI_KIEN_TAO.map((n) => (
+            {NGUOI_KIEN_TAO.filter((n) => !n.laNguoiKhoiXuong).map((n) => (
               <Link
                 key={n.slug}
                 href={`/nguoi-kien-tao/${n.slug}`}
@@ -211,6 +211,114 @@ export default function NguoiKienTaoPage() {
               </Link>
             ))}
           </div>
+
+          {/* ── Người khởi xướng — khối RIÊNG, đặt cuối, nói thẳng quan hệ ──
+              Không xếp chung hàng với bốn chuyên gia bên trên: người khởi xướng
+              đứng lẫn vào danh sách mà không nói rõ thì người đọc tưởng đây là
+              bảng do bên thứ ba bình chọn (Điều II). Và hệ thống không được thành
+              bệ đỡ cho cá nhân (Điều VIII). */}
+          {NGUOI_KIEN_TAO.filter((n) => n.laNguoiKhoiXuong).map((n) => (
+            <section
+              key={n.slug}
+              aria-label="Người khởi xướng"
+              style={{
+                marginTop: 40,
+                paddingTop: 32,
+                borderTop: "1px solid var(--ke, var(--border))",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "0.74rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "var(--text-dim)",
+                  marginBottom: 16,
+                }}
+              >
+                Người khởi xướng vnfarmstay.vn
+              </h2>
+              <Link
+                href={`/nguoi-kien-tao/${n.slug}`}
+                style={{
+                  display: "flex",
+                  gap: 20,
+                  alignItems: "flex-start",
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--gold-border)",
+                  borderRadius: "var(--radius)",
+                  padding: "24px 26px",
+                  textDecoration: "none",
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  style={{
+                    width: 52,
+                    height: 52,
+                    flexShrink: 0,
+                    borderRadius: "50%",
+                    background: "var(--gold-dim)",
+                    border: "1px solid var(--gold-border)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: "var(--font-display), serif",
+                    fontSize: "1.4rem",
+                    fontWeight: 700,
+                    color: "var(--gold)",
+                  }}
+                >
+                  {n.ten.trim().split(" ").at(-1)?.charAt(0).toUpperCase()}
+                </span>
+                <div style={{ minWidth: 0 }}>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display),serif",
+                      fontSize: "1.2rem",
+                      fontWeight: 700,
+                      color: "var(--text-primary)",
+                      margin: "0 0 4px",
+                    }}
+                  >
+                    {n.ten}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.82rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.03em",
+                      color: "var(--gold)",
+                      margin: "0 0 10px",
+                    }}
+                  >
+                    {n.chucDanh}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.94rem",
+                      color: "var(--text-muted)",
+                      lineHeight: 1.7,
+                      margin: 0,
+                    }}
+                  >
+                    {n.vaiTroVoiNganh}
+                  </p>
+                  <p
+                    style={{
+                      marginTop: 12,
+                      fontSize: "0.82rem",
+                      fontWeight: 600,
+                      color: "var(--gold)",
+                    }}
+                  >
+                    Xem hồ sơ →
+                  </p>
+                </div>
+              </Link>
+            </section>
+          ))}
 
           <p
             style={{

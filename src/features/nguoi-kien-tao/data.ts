@@ -46,6 +46,18 @@ export interface NguoiKienTao {
   anh?: string;
   /** Ngày đọc dữ kiện, dạng YYYY-MM-DD — Điều IV */
   ngayDo: string;
+  /**
+   * Người này có phải NGƯỜI KHỞI XƯỚNG chính vnfarmstay.vn không.
+   *
+   * ⚠️ Có trường này vì Điều II — trung thực về trạng thái. Người khởi xướng đứng
+   * lẫn trong danh sách chuyên gia mà không nói rõ thì người đọc tưởng đây là một
+   * bảng do bên thứ ba bình chọn. Nói thẳng quan hệ LÀM TĂNG độ tin, không giảm —
+   * cùng lối với việc mỗi cấp xác minh phải nói cả thứ nó KHÔNG bảo đảm.
+   *
+   * Trang tổng tách người này ra một khối RIÊNG ở cuối, không xếp chung hàng —
+   * để hệ thống không thành bệ đỡ cho cá nhân (Điều VIII).
+   */
+  laNguoiKhoiXuong?: boolean;
 }
 
 export const NGUOI_KIEN_TAO: NguoiKienTao[] = [
@@ -137,6 +149,38 @@ export const NGUOI_KIEN_TAO: NguoiKienTao[] = [
     web: "https://dophuongquyen.vn",
     anh: "https://dophuongquyen.vn/assets/do-phuong-quyen-portrait-1.jpg",
     ngayDo: "2026-08-26",
+  },
+  {
+    /* ⚠️ Đặt CUỐI mảng là cố ý — xem `laNguoiKhoiXuong`. Dữ kiện lấy nguyên văn từ
+       schema `Person` trên nhahoachdinh.vn, đọc 27/08/2026.
+       ⚠️⚠️ Mô tả tự khai ghi ĐÚNG "Người biên dịch" — KHÔNG phải tác giả. Giữ nguyên
+       chữ ấy; sửa thành "tác giả" là khai sai danh tính, đã từng phải đính chính bằng
+       PR ở web khác. Web này cũng KHÔNG khai năm sinh, nên không có nguy cơ lẫn với
+       người trùng tên nổi tiếng hơn. */
+    slug: "pham-thanh-tung",
+    ten: "Phạm Thanh Tùng",
+    chucDanh: "Nhà Hoạch Định Farmstay & Du Lịch Nông Nghiệp",
+    chucDanhNgan: "Nhà Hoạch Định Farmstay",
+    tuKhai:
+      "Chuyên gia hoạch định farmstay hàng đầu Việt Nam với hơn 9 năm kinh nghiệm, tư vấn 100+ dự án trải khắp 30+ tỉnh thành, dẫn 5 mùa Xuyên Việt Farmstay. Sáng lập DEFARM, Xuyên Việt Farmstay, Farmstay Update. Người biên dịch và đưa sách Hướng Dẫn Thiết Lập Farmstay về Việt Nam (NXB Hồng Đức, 2021).",
+    vaiTroVoiNganh:
+      "Người khởi xướng chính vnfarmstay.vn — nên nói rõ ngay: hồ sơ này không phải do bên thứ ba bình chọn. Việc ông làm với ngành là dựng phương pháp: đưa cuốn cẩm nang thiết lập farmstay về tiếng Việt, và đi thực địa cùng chủ farm qua nhiều mùa Xuyên Việt để phương pháp ấy chạm đất thật chứ không nằm trên giấy.",
+    linhVuc: [
+      /* Lọc bỏ "Phạm Thanh Tùng" và "Nhà Hoạch Định" khỏi `knowsAbout` gốc: đó là
+         tên riêng và danh xưng, không phải lĩnh vực chuyên môn. */
+      "Quy hoạch vùng đất nông nghiệp",
+      "Thiết kế farmstay bền vững",
+      "Pháp lý farmstay",
+      "Luật Đất đai 2024",
+      "Chuyển mục đích sử dụng đất",
+      "Vận hành farmstay",
+      "Đào tạo chủ farmstay",
+      "Tư vấn đầu tư farmstay",
+    ],
+    toChuc: "DEFARM",
+    web: "https://nhahoachdinh.vn",
+    ngayDo: "2026-08-27",
+    laNguoiKhoiXuong: true,
   },
 ];
 
