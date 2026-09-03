@@ -173,6 +173,18 @@ export default async function HoSoNguoiKienTao({ params }: Props) {
             </div>
           </div>
 
+          {/* Một dòng nói NGHỀ, đọc trước mọi thứ khác — lời của ta, dựng từ dữ kiện họ đăng */}
+          <p
+            style={{
+              fontSize: "1.08rem",
+              lineHeight: 1.75,
+              color: "var(--text-primary)",
+              margin: "0 0 24px",
+            }}
+          >
+            {n.motDong}
+          </p>
+
           {/* Nói thẳng quan hệ TRƯỚC khi người đọc đọc lời tự khai — Điều II */}
           {n.laNguoiKhoiXuong && (
             <p
@@ -221,6 +233,96 @@ export default async function HoSoNguoiKienTao({ params }: Props) {
               Nguyên văn từ {new URL(n.web).hostname}, đọc ngày {n.ngayDo}.
             </p>
           </section>
+
+          {/* ── Dấu mốc: trả lời "họ làm được gì" bằng DỮ KIỆN, không bằng lời khen ──
+              Mọi con số ở đây do chính họ đăng trên web của họ. Ta không đếm hộ, không
+              ước lượng, không quy đổi — Điều II (số phải đo được) + Điều IV (truy được nguồn). */}
+          <section style={kieuKhoi}>
+            <h2 style={kieuH2}>Việc họ đã làm</h2>
+            <dl
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                gap: 18,
+                margin: 0,
+              }}
+            >
+              {n.dauMoc.map((m) => (
+                <div
+                  key={m.so + m.y}
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius-sm)",
+                    padding: "16px 18px",
+                  }}
+                >
+                  <dt
+                    style={{
+                      fontFamily: "var(--font-display), serif",
+                      fontSize: "1.3rem",
+                      fontWeight: 700,
+                      color: "var(--gold)",
+                      lineHeight: 1.25,
+                      marginBottom: 6,
+                    }}
+                  >
+                    {m.so}
+                  </dt>
+                  <dd
+                    style={{
+                      margin: 0,
+                      fontSize: "0.9rem",
+                      lineHeight: 1.65,
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    {m.y}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p
+              style={{
+                marginTop: 14,
+                fontSize: "0.8rem",
+                color: "var(--text-dim)",
+                fontStyle: "italic",
+              }}
+            >
+              Số liệu do chính họ công bố trên {new URL(n.web).hostname}, đọc
+              ngày {n.ngayDocMoc}. Chúng tôi không kiểm chứng độc lập từng con
+              số.
+            </p>
+          </section>
+
+          {/* ── Một câu của chính họ — để hồ sơ có hơi người, không phải bản khai ── */}
+          {n.loiHo && (
+            <section style={kieuKhoi}>
+              <h2 style={kieuH2}>Họ nói</h2>
+              <blockquote
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-display), serif",
+                  fontSize: "clamp(1.1rem, 2.2vw, 1.35rem)",
+                  lineHeight: 1.6,
+                  color: "var(--text-primary)",
+                }}
+              >
+                “{n.loiHo}”
+              </blockquote>
+              <p
+                style={{
+                  marginTop: 12,
+                  fontSize: "0.8rem",
+                  color: "var(--text-dim)",
+                  fontStyle: "italic",
+                }}
+              >
+                Nguyên văn — {n.loiHoNguon ?? new URL(n.web).hostname}.
+              </p>
+            </section>
+          )}
 
           {/* ── Giọng 2: LỜI CỦA TA ── */}
           <section style={kieuKhoi}>

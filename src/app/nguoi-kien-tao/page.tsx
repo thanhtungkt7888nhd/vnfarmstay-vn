@@ -189,6 +189,16 @@ export default function NguoiKienTaoPage() {
                   </p>
                   <p
                     style={{
+                      fontSize: "0.97rem",
+                      color: "var(--text-primary)",
+                      lineHeight: 1.7,
+                      margin: "0 0 10px",
+                    }}
+                  >
+                    {n.motDong}
+                  </p>
+                  <p
+                    style={{
                       fontSize: "0.94rem",
                       color: "var(--text-muted)",
                       lineHeight: 1.7,
@@ -197,6 +207,31 @@ export default function NguoiKienTaoPage() {
                   >
                     {n.vaiTroVoiNganh}
                   </p>
+                  {/* Dải con số họ tự công bố — thứ phân biệt hồ sơ này với một lời khen */}
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "6px 16px",
+                      padding: 0,
+                      margin: "12px 0 0",
+                    }}
+                  >
+                    {n.dauMoc.slice(0, 3).map((m) => (
+                      <li
+                        key={m.so + m.y}
+                        style={{
+                          fontSize: "0.82rem",
+                          fontWeight: 600,
+                          color: "var(--gold)",
+                          letterSpacing: "0.01em",
+                        }}
+                      >
+                        {m.so}
+                      </li>
+                    ))}
+                  </ul>
                   <p
                     style={{
                       marginTop: 12,
@@ -297,6 +332,16 @@ export default function NguoiKienTaoPage() {
                   </p>
                   <p
                     style={{
+                      fontSize: "0.97rem",
+                      color: "var(--text-primary)",
+                      lineHeight: 1.7,
+                      margin: "0 0 10px",
+                    }}
+                  >
+                    {n.motDong}
+                  </p>
+                  <p
+                    style={{
                       fontSize: "0.94rem",
                       color: "var(--text-muted)",
                       lineHeight: 1.7,
@@ -305,6 +350,31 @@ export default function NguoiKienTaoPage() {
                   >
                     {n.vaiTroVoiNganh}
                   </p>
+                  {/* Dải con số họ tự công bố — thứ phân biệt hồ sơ này với một lời khen */}
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "6px 16px",
+                      padding: 0,
+                      margin: "12px 0 0",
+                    }}
+                  >
+                    {n.dauMoc.slice(0, 3).map((m) => (
+                      <li
+                        key={m.so + m.y}
+                        style={{
+                          fontSize: "0.82rem",
+                          fontWeight: 600,
+                          color: "var(--gold)",
+                          letterSpacing: "0.01em",
+                        }}
+                      >
+                        {m.so}
+                      </li>
+                    ))}
+                  </ul>
                   <p
                     style={{
                       marginTop: 12,

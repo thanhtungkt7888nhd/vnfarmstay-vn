@@ -1,0 +1,52 @@
+{
+  "web": "vnfarmstay.vn",
+  "nhanh": "bai-viet/nang-cap-20260903",
+  "capNhat": "2026-09-03",
+  "ghiChu": "Ông gõ /nang-cap-bai-viet với URL /nguoi-kien-tao. Trang ấy KHÔNG phải bài viết mà là cụm hồ sơ 5 người THẬT — skill dừng ở cổng B3, Ông ra lệnh riêng: 'tóm lược thông tin đủ và hấp dẫn về mỗi người'. Đây là việc đã làm theo lệnh ấy, không phải lượt nâng bài thường.",
+
+  "daLam": [
+    {
+      "muc": ".giong-web.json",
+      "viec": "khắc hồ sơ giọng web (trước đó CHƯA CÓ) — Ông chốt bản rút từ chữ thật đang chạy trên trang",
+      "commit": "e78c7b0"
+    },
+    {
+      "muc": "/nguoi-kien-tao/[slug]",
+      "viec": "5 hồ sơ: thêm dòng dẫn nghề + khối 'Việc họ đã làm' (dữ kiện họ tự công bố) + khối 'Họ nói' (câu nguyên văn của họ)",
+      "nguonDuKien": "web công khai của từng người, đọc 2026-09-03",
+      "soDo": "chữ mới có mặt 5/5 · chữ cũ còn nguyên 5/5 (máy đếm HTML bản dựng, đã thử răng)"
+    },
+    {
+      "muc": "/nguoi-kien-tao",
+      "viec": "thẻ danh sách: thêm dòng dẫn + dải 3 con số; giữ nguyên mọi chữ cũ"
+    },
+    {
+      "muc": "van kiemNguoiKienTao",
+      "viec": "mở rộng canh trường mới — dauMoc rỗng/thiếu vế, ngayDocMoc sai dạng, nguồn treo không gắn câu",
+      "doiChung": "6/6 phép hai chiều qua"
+    }
+  ],
+
+  "choOng": [
+    {
+      "viec": "NỢ HẠ TẦNG — 4 máy canh của web CHẾT vì thiếu gói playwright",
+      "chiTiet": "kiem-hien-phap · thu-cua-nhan · thu-vong-du-khach · thu-uy-tin đều ERR_MODULE_NOT_FOUND. package.json KHÔNG khai playwright dù scripts cần. Nghĩa là cổng hiến pháp của web đang KHÔNG chạy được — không phải do đợt này.",
+      "de": "Ông cho phép thì cài `npm i -D playwright` + `npx playwright install chromium` để 4 cổng sống lại."
+    },
+    {
+      "viec": "NỢ CÓ SẴN — content.41-khong-so-lieu-bia FAIL ở /ve-chung-toi",
+      "chiTiet": "số '30+ tỉnh' khai không kèm nguồn, có từ commit 00a01c1 ngày 19/08/2026. Ngoài phạm vi lệnh của Ông nên con KHÔNG tự sửa.",
+      "de": "cùng bộ số ấy ở hồ sơ /nguoi-kien-tao/pham-thanh-tung đã có nguồn + ngày đọc; /ve-chung-toi làm theo lối đó là hết FAIL."
+    },
+    {
+      "viec": "17 trang title dài quá 60 ký tự · 39 trang mô tả ngoài khoảng 120–160",
+      "chiTiet": "WARN cổng seo.30 + seo.31, phần lớn ở /blog. Không thuộc cụm hồ sơ người kiến tạo.",
+      "de": "việc của /seo-toan-dien, không phải skill này."
+    }
+  ],
+
+  "chuaLam": {
+    "khoBaiThat": "3 bài nhóm THƯỜNG-nâng của web (tour-farmstay 580 từ · farmstay-la-gi 1.305 · chu-farmstay 1.505) — cả ba đang 0 đề mục H2, 0 liên kết nội. Chưa đụng vì Ông chuyển hướng sang cụm hồ sơ.",
+    "goiTiep": "tiếp tục nâng bài vnfarmstay"
+  }
+}
