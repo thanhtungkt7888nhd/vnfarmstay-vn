@@ -16,10 +16,17 @@
  * ⛔ DỮ KIỆN: lấy từ ENTITY-GRAPH.json (nguồn sự thật chung, có ngày Ông xác nhận) và
  * từ chính web của họ, đọc 03/09/2026. Không thêm thành tích không ai công bố.
  *
- * ⛔ CHỈ DẪN SANG NƠI CÒN SỐNG VÀ CÓ NỘI DUNG THẬT. Đo 03/09/2026: `phanmemhoachdinh.vn`
- * và `hungdinhfarm.vn` không truy cập được; `nongnghiepdisan.vn` + `thevietnamtea.com`
- * trả về trang không có nội dung (tiêu đề chỉ là tên miền). Bốn nơi ấy CHƯA đưa vào —
+ * ⛔ CHỈ DẪN SANG NƠI CÒN SỐNG VÀ CÓ NỘI DUNG THẬT. Đo 03/09/2026: `hungdinhfarm.vn`
+ * không truy cập được (cả 4 biến thể tên miền); `nongnghiepdisan.vn` + `thevietnamtea.com`
+ * trả về trang không có nội dung (tiêu đề chỉ là tên miền). Ba nơi ấy CHƯA đưa vào —
  * dẫn khách sang trang chết là tự hạ uy tín mình, trái Điều II.
+ *
+ * ⚠️⚠️ BÀI HỌC ĐẮT — SUY TÊN MIỀN TỪ TÊN KHOÁ SỔ HỘ KHẨU LÀ SAI:
+ * bản đo đầu xếp Phần mềm Hoạch Định vào nhóm "chết" vì tra `phanmemhoachdinh.vn`
+ * (đúng tên khoá trong ENTITY-GRAPH). Ông hỏi lại mới lộ: tên miền THẬT là
+ * **hoachdinh.vn**, đang sống, và `phanmemhoachdinh.vn` chỉ là tên miền chưa trỏ.
+ * Sổ hộ khẩu đã được vá kèm `domainSaiTranh`. Cùng họ bẫy `defarm-vn` →
+ * `defarm.com.vn` — khác ở chỗ defarm có ghi chú sẵn nên tránh được, còn cái này thì không.
  */
 
 /** Quan hệ thật giữa vnfarmstay và nơi ấy — nói thẳng, không gộp chung thành "đối tác" */
@@ -72,6 +79,17 @@ export const CUM_HE_SINH_THAI: CumTrongHe[] = [
         laGi: "Đơn vị tư vấn, thiết kế và quản trị farmstay — tự công bố 10 năm thực chiến, hơn 50 dự án và trên 3.000 hecta.",
         viSaoDan:
           "Ai đang ở bước bản vẽ, chưa biết bắt đầu từ đâu, thì đây là nơi làm đúng nghề đó.",
+        quanHe: "truc-thuoc",
+      },
+      {
+        /* ⚠️ TÊN MIỀN LÀ hoachdinh.vn — KHÔNG phải phanmemhoachdinh.vn (tên khoá
+           trong sổ hộ khẩu). Ông hỏi lại 03/09/2026 mới lộ ra: bản đo đầu xếp nhầm
+           web này vào nhóm "chết" vì suy domain từ tên khoá. Cùng họ bẫy defarm. */
+        ten: "Phần mềm Hoạch Định",
+        url: "https://hoachdinh.vn",
+        laGi: "Công cụ nhập dữ liệu dự án rồi trả về hạng đầu tư A/B/C/D, ma trận rủi ro, tài chính 5 năm và lộ trình triển khai.",
+        viSaoDan:
+          "Trước khi đổ tiền xuống đất, thử chạy con số ra giấy đã — chỗ này làm đúng việc đó.",
         quanHe: "truc-thuoc",
       },
       {
