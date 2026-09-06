@@ -3,6 +3,11 @@ import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import { graph, webPageSchema, breadcrumbSchema } from "@/lib/schema";
+import {
+  CUM_HE_SINH_THAI,
+  NHAN_QUAN_HE,
+  NGAY_DOC,
+} from "@/features/he-sinh-thai/data";
 
 export const metadata: Metadata = {
   title: "Cộng đồng Farmstay Việt Nam",
@@ -112,6 +117,191 @@ export default function CongDongPage() {
             đây.
           </p>
         </div>
+
+        {/* ── Hệ sinh thái — xem chú thích đầu `features/he-sinh-thai/data.ts`:
+            khối này CỐ Ý nằm trong <main> của ĐÚNG MỘT trang, không phải chân trang
+            toàn site (điều cấm tuyệt đối số 5, đã có vi phạm thật bị gỡ 24/08/2026). */}
+        <section
+          aria-labelledby="he-sinh-thai"
+          style={{
+            maxWidth: 900,
+            margin: "0 auto",
+            padding: "0 24px 88px",
+          }}
+        >
+          <div
+            style={{
+              borderTop: "1px solid var(--border)",
+              paddingTop: 56,
+            }}
+          >
+            <h2
+              id="he-sinh-thai"
+              style={{
+                fontFamily: "var(--font-display), serif",
+                fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                fontWeight: 700,
+                marginBottom: 16,
+              }}
+            >
+              Trong khi chờ, đây là những nơi đã có người
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                fontSize: "1rem",
+                lineHeight: 1.8,
+                marginBottom: 12,
+              }}
+            >
+              Cộng đồng chưa mở, nhưng mạng lưới thì đã sống. Dưới đây là những
+              nơi làm nghề thật quanh farmstay — nơi tìm đầu ra, nơi làm nông
+              sản bản địa, và những farm đã mở cửa đón khách.
+            </p>
+            <p
+              style={{
+                color: "var(--text-dim)",
+                fontSize: "0.92rem",
+                lineHeight: 1.75,
+                marginBottom: 40,
+              }}
+            >
+              Chúng tôi ghi rõ quan hệ với từng nơi, kể cả khi nơi đó{" "}
+              <strong style={{ color: "var(--text-muted)" }}>
+                không thuộc sở hữu của chúng tôi
+              </strong>
+              . Không nơi nào trả tiền để có mặt ở đây, và bạn liên hệ thẳng với
+              họ. Dữ kiện đọc từ web của chính họ ngày {NGAY_DOC}.
+            </p>
+
+            {CUM_HE_SINH_THAI.map((cum) => (
+              <div key={cum.ma} style={{ marginBottom: 48 }}>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display), serif",
+                    fontSize: "1.15rem",
+                    fontWeight: 700,
+                    color: "var(--gold)",
+                    marginBottom: 8,
+                  }}
+                >
+                  {cum.ten}
+                </h3>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "0.95rem",
+                    lineHeight: 1.75,
+                    marginBottom: 20,
+                  }}
+                >
+                  {cum.dan}
+                </p>
+
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    display: "grid",
+                    /* HAI CỘT ở khổ rộng — KHÔNG phải để nhồi thêm chữ, mà vì
+                       `globals.css` có luật `li { max-width: 52ch }` (sàn measure,
+                       giữ dòng chữ đủ ngắn để đọc). Một cột thì thẻ bó lại 569px
+                       giữa khung 852px, nhìn như hỏng. Hai cột giữ nguyên luật ấy
+                       mà vẫn lấp đầy khung. Đo trên trình duyệt thật 03/09/2026. */
+                    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                    gap: 14,
+                  }}
+                >
+                  {cum.noi.map((n) => (
+                    <li
+                      key={n.url}
+                      style={{
+                        background: "var(--bg-card)",
+                        border: "1px solid var(--border)",
+                        borderRadius: "var(--radius)",
+                        padding: "20px 22px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          alignItems: "baseline",
+                          gap: "6px 12px",
+                          marginBottom: 8,
+                        }}
+                      >
+                        <strong
+                          style={{
+                            fontFamily: "var(--font-display), serif",
+                            fontSize: "1.08rem",
+                            color: "var(--text-primary)",
+                          }}
+                        >
+                          {n.ten}
+                        </strong>
+                        {/* Nói thẳng quan hệ — Điều II, trung thực về trạng thái */}
+                        <span
+                          style={{
+                            fontSize: "0.74rem",
+                            fontWeight: 600,
+                            letterSpacing: "0.04em",
+                            textTransform: "uppercase",
+                            color: "var(--text-dim)",
+                            border: "1px solid var(--border)",
+                            borderRadius: 20,
+                            padding: "3px 10px",
+                          }}
+                        >
+                          {NHAN_QUAN_HE[n.quanHe]}
+                        </span>
+                      </div>
+
+                      <p
+                        style={{
+                          color: "var(--text-muted)",
+                          fontSize: "0.94rem",
+                          lineHeight: 1.7,
+                          margin: "0 0 8px",
+                        }}
+                      >
+                        {n.laGi}
+                      </p>
+                      <p
+                        style={{
+                          color: "var(--text-dim)",
+                          fontSize: "0.92rem",
+                          lineHeight: 1.7,
+                          margin: "0 0 14px",
+                        }}
+                      >
+                        {n.viSaoDan}
+                      </p>
+
+                      <a
+                        href={n.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-su-kien="related_destination_click"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          minHeight: 44,
+                          fontSize: "0.9rem",
+                          fontWeight: 600,
+                          color: "var(--gold)",
+                        }}
+                      >
+                        Mở {new URL(n.url).hostname.replace(/^www\./, "")} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </>
