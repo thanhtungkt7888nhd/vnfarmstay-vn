@@ -19,6 +19,7 @@ import { kiemHoSoFarmstay, kiemKhoFarmstay } from "./src/features/listing/van-ki
 import { FARMSTAYS } from "./src/features/listing/data";
 import { kiemTraDuDay } from "./src/features/kham-pha/data";
 import { kiemNguoiKienTao } from "./src/features/nguoi-kien-tao/data";
+import { kiemHeSinhThai } from "./src/features/he-sinh-thai/data";
 
 const loiTuKiem = [];
 
@@ -57,7 +58,7 @@ if (loiTuKiem.length > 0) {
   console.log("TU_KIEM_DAT " + (CAC_CA_DOI_CHUNG.length + 1));
 
   // ── Kiểm DỮ LIỆU THẬT, chỉ khi công cụ đã đáng tin ──
-  const loiThat = [...kiemKhoFarmstay(FARMSTAYS), ...kiemTraDuDay(), ...kiemNguoiKienTao()];
+  const loiThat = [...kiemKhoFarmstay(FARMSTAYS), ...kiemTraDuDay(), ...kiemNguoiKienTao(), ...kiemHeSinhThai()];
   if (loiThat.length > 0) {
     console.error("DU_LIEU_HONG");
     loiThat.forEach((l) => console.error("  · " + l));

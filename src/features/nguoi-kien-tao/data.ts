@@ -34,6 +34,25 @@ export interface NguoiKienTao {
   tuKhai: string;
   /** Vì sao vnfarmstay dẫn sang họ — phần này là LỜI CỦA TA, phải nói được lý do thật */
   vaiTroVoiNganh: string;
+  /**
+   * MỘT DÒNG nói họ làm nghề gì — lời của ta, dựng từ dữ kiện họ tự đăng.
+   * Đây là thứ người đọc thấy trước tiên, nên nó phải nói được VIỆC THẬT chứ không
+   * phải tính từ khen ngợi: "mở 6 thị trường châu Âu" đọc ra nghề, "chuyên gia hàng
+   * đầu" thì không. Giọng web (`.giong-web.json`): cụ thể, không hoa mỹ.
+   */
+  motDong: string;
+  /**
+   * Các mốc/con số họ TỰ ĐĂNG trên web của họ — không phải ta đếm hộ, không phải ta
+   * ước lượng. Đây là phần trả lời câu "người này làm được gì" bằng dữ kiện thay vì
+   * bằng lời khen (Điều II + Điều IV).
+   */
+  dauMoc: { so: string; y: string }[];
+  /** Ngày đọc riêng cho `dauMoc` — khối này lấy sau `tuKhai` nên có ngày riêng (Điều IV) */
+  ngayDocMoc: string;
+  /** Một câu NGUYÊN VĂN của chính họ — có thì hồ sơ có hơi người, không có thì bỏ trống */
+  loiHo?: string;
+  /** Nguồn của `loiHo` khi câu ấy nói ở nơi khác web họ (hội thảo, bài báo) */
+  loiHoNguon?: string;
   /** Lĩnh vực họ khai `knowsAbout` — nguyên văn */
   linhVuc: string[];
   /** Tổ chức họ khai `worksFor`; không khai thì bỏ trống */
@@ -80,6 +99,23 @@ export const NGUOI_KIEN_TAO: NguoiKienTao[] = [
       "Global G.A.P.",
       "Nông nghiệp bền vững",
     ],
+    motDong:
+      "Người đưa nông sản Việt vào sáu thị trường châu Âu, rồi quay về Tây Nguyên dựng mô hình canh tác tám tầng.",
+    dauMoc: [
+      { so: "18 năm", y: "thực chiến trong nông nghiệp" },
+      {
+        so: "6 thị trường EU",
+        y: "đã mở cho nông sản Việt — Đức, Pháp, Hà Lan, Thụy Sĩ (2008–2015)",
+      },
+      { so: "200+ ha", y: "quản lý theo chuẩn Global G.A.P." },
+      {
+        so: "5 tỉnh",
+        y: "thực địa: Đắk Lắk, Lâm Đồng, Khánh Hòa, Gia Lai, Quảng Ngãi",
+      },
+    ],
+    ngayDocMoc: "2026-09-03",
+    loiHo:
+      "Người nhìn thấy được cấu trúc đó không phải là người làm nhiều nhất, mà là người nhìn hệ thống rõ nhất.",
     toChuc: "Hệ Sinh Thái Nông Nghiệp Di Sản",
     web: "https://trandanhmanh.com",
     anh: "https://trandanhmanh.com/images/portrait-vetoi.jpg",
@@ -101,6 +137,22 @@ export const NGUOI_KIEN_TAO: NguoiKienTao[] = [
       "Chứng nhận Halal",
       "Văn hóa Raglai Ê Đê",
     ],
+    motDong:
+      "Chủ một trang trại 130 hecta ở Khánh Hòa — vừa canh tác, vừa giữ rừng, vừa mở cửa đón khách.",
+    dauMoc: [
+      {
+        so: "130 ha",
+        y: "Sản Việt Farm tại Suối Sâu, Nam Ninh Hòa, Khánh Hòa",
+      },
+      {
+        so: "60 · 30 · 10",
+        y: "tỉ lệ đất: sản xuất · rừng tái sinh · du lịch",
+      },
+      { so: "40+", y: "việc làm cho lao động địa phương" },
+      { so: "2025–2027", y: "lộ trình chứng nhận Halal để xuất khẩu" },
+    ],
+    ngayDocMoc: "2026-09-03",
+    loiHo: "Đất tử tế trả công cho người tử tế. Tôi không vội.",
     toChuc: "Sản Việt Farm",
     diaBan: "Ninh Hòa, Khánh Hòa",
     web: "https://nguyenminhthanh.com",
@@ -123,6 +175,23 @@ export const NGUOI_KIEN_TAO: NguoiKienTao[] = [
       "Du lịch nông nghiệp",
       "Quy hoạch đất",
     ],
+    motDong:
+      "Người đứng giữa nhà đầu tư, chính quyền và nông dân — ở đúng khúc khó nhất: pháp lý của mảnh đất.",
+    dauMoc: [
+      { so: "20+ năm", y: "quy hoạch và khai thác đất bền vững" },
+      {
+        so: "5 khúc nghề",
+        y: "quy hoạch · pháp lý · đầu tư · đào tạo · truyền thông",
+      },
+      {
+        so: "Luật Đất đai 2024",
+        y: "cùng các nghị định liên quan — đọc bản đồ quy hoạch, dựng mô hình tài chính dự án",
+      },
+    ],
+    ngayDocMoc: "2026-09-03",
+    loiHo:
+      "Farmstay phải trước hết là farm — nông trại thật. Rồi mới đến stay — dịch vụ lưu trú.",
+    loiHoNguon: "Hội thảo 19/8/2025",
     web: "https://trancongthuy.vn",
     ngayDo: "2026-08-26",
   },
@@ -144,6 +213,22 @@ export const NGUOI_KIEN_TAO: NguoiKienTao[] = [
       "Quy hoạch du lịch",
       "Du lịch địa phương (Khánh Hòa)",
     ],
+    motDong:
+      "Người dạy nghề đón khách — hơn hai mươi năm, cả trên giảng đường lẫn ngoài hiện trường.",
+    dauMoc: [
+      { so: "20+ năm", y: "giảng dạy và hành nghề du lịch" },
+      { so: "26", y: "công bố khoa học giai đoạn 2016–2025" },
+      {
+        so: "1 giáo trình",
+        y: "chủ biên — Nghiệp vụ thiết kế và điều hành tour (NXB Giáo dục, 2023)",
+      },
+      {
+        so: "18 · 12",
+        y: "đề tài đã hướng dẫn · khóa luận tốt nghiệp của sinh viên",
+      },
+    ],
+    ngayDocMoc: "2026-09-03",
+    loiHo: "Người truyền nghề du lịch — từ giảng đường đến thực địa.",
     toChuc: "Trường Đại học Khánh Hòa",
     diaBan: "Nha Trang, Khánh Hòa",
     web: "https://dophuongquyen.vn",
@@ -177,6 +262,22 @@ export const NGUOI_KIEN_TAO: NguoiKienTao[] = [
       "Đào tạo chủ farmstay",
       "Tư vấn đầu tư farmstay",
     ],
+    /* ⚠️⚠️ "đưa … về tiếng Việt" = BIÊN DỊCH. Tuyệt đối không rút gọn thành "viết"
+       hay "tác giả" — xem chú thích danh tính ở đầu hồ sơ này. */
+    motDong:
+      "Người đưa cuốn cẩm nang thiết lập farmstay đầu tiên về tiếng Việt, rồi đi hơn ba mươi tỉnh để phương pháp ấy chạm đất thật.",
+    dauMoc: [
+      { so: "100+", y: "dự án farmstay và du lịch đã tư vấn" },
+      { so: "3.000+ ha", y: "đất nông nghiệp đã hoạch định" },
+      { so: "30+ tỉnh thành", y: "địa bàn đã đi qua" },
+      {
+        so: "5 mùa",
+        y: "Xuyên Việt Farmstay (2021–2026) — đi thực địa cùng chủ farm",
+      },
+    ],
+    ngayDocMoc: "2026-09-03",
+    loiHo:
+      "Trước khi xây dựng, phải nhìn thấy. Trước khi nhìn thấy, phải hiểu đất.",
     toChuc: "DEFARM",
     web: "https://nhahoachdinh.vn",
     ngayDo: "2026-08-27",
@@ -210,8 +311,10 @@ export function kiemNguoiKienTao(): string[] {
       "chucDanhNgan",
       "tuKhai",
       "vaiTroVoiNganh",
+      "motDong",
       "web",
       "ngayDo",
+      "ngayDocMoc",
     ] as const) {
       if (typeof n[truong] !== "string" || n[truong].trim() === "") {
         bao(`thiếu trường bắt buộc \`${truong}\``);
@@ -221,12 +324,31 @@ export function kiemNguoiKienTao(): string[] {
     if (n.linhVuc.length === 0)
       bao("thiếu `linhVuc` — không nói được họ giỏi việc gì");
 
+    /* Dấu mốc là phần trả lời "người này làm được gì" bằng dữ kiện. Rỗng thì hồ sơ
+       quay về chỗ cũ: chỉ có lời khen, không có việc thật. */
+    if (n.dauMoc.length === 0)
+      bao("thiếu `dauMoc` — hồ sơ không có dữ kiện nào chứng minh việc họ làm");
+    for (const m of n.dauMoc) {
+      if (!m.so?.trim() || !m.y?.trim())
+        bao("`dauMoc` có mục để trống — mỗi mốc phải đủ cả con số lẫn ý nghĩa");
+    }
+
+    /* Nguồn treo lơ lửng không gắn với câu nào là dữ kiện mồ côi */
+    if (n.loiHoNguon && !n.loiHo)
+      bao(
+        "có `loiHoNguon` nhưng không có `loiHo` — nguồn không gắn vào câu nào"
+      );
+
     /* Web riêng phải là địa chỉ đầy đủ — thiếu giao thức là liên kết chết */
     if (!/^https?:\/\/.+/.test(n.web))
       bao(`\`web\` không phải địa chỉ đầy đủ — "${n.web}"`);
 
     if (!/^\d{4}-\d{2}-\d{2}$/.test(n.ngayDo)) {
       bao(`\`ngayDo\` sai dạng, phải là YYYY-MM-DD — "${n.ngayDo}"`);
+    }
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(n.ngayDocMoc)) {
+      bao(`\`ngayDocMoc\` sai dạng, phải là YYYY-MM-DD — "${n.ngayDocMoc}"`);
     }
 
     if (daThay.has(n.slug)) bao("trùng mã với một hồ sơ khác");
