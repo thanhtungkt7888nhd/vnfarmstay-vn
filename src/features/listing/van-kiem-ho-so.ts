@@ -21,6 +21,61 @@ const CAP_XAC_MINH_HOP_LE = [1, 2, 3, 4];
 /** Ngày phải dạng YYYY-MM-DD — ngày mờ ("mùa hè 2026") thì không tính tuổi hồ sơ được */
 const DANG_NGAY = /^\d{4}-\d{2}-\d{2}$/;
 
+/**
+ * Toàn bộ khoá hợp lệ của một hồ sơ — phải khớp `interface Farmstay`.
+ * Van cũ chỉ bắt THIẾU trường; Điều VII đòi cả chiều ngược lại: mỗi trường phải trả lời
+ * được "phục vụ Điều nào?", không trả lời được thì nó là di sản của một web khác.
+ */
+const KHOA_HOP_LE = new Set([
+  "id",
+  "slug",
+  "ten",
+  "tinh",
+  "diaChi",
+  "vungSlug",
+  "toaDo",
+  "traiNghiemSlugs",
+  "muaSlugs",
+  "cauChuyen",
+  "lichMuaVu",
+  "duongDi",
+  "ungXu",
+  "anh",
+  "lienHe",
+  "capXacMinh",
+  "nguon",
+  "ngayDo",
+  "ngayRaSoat",
+  "the",
+  "giaThamKhao",
+]);
+
+/**
+ * Trường mang HÌNH DẠNG SÀN ĐẶT PHÒNG — mọc lại cái nào là web đổi danh tính cái đó,
+ * bất kể trang giới thiệu viết gì (Điều VII). Sáu tên đầu chính là bộ trường đã bị gỡ
+ * ngày 24/08/2026; các tên sau là biến thể tiếng Việt cùng nghĩa, chặn luôn đường vòng.
+ */
+const TRUONG_KIEU_SAN = new Set([
+  "price",
+  "rating",
+  "reviewcount",
+  "badges",
+  "emoji",
+  "region",
+  "gia",
+  "giaphong",
+  "sosao",
+  "danhgia",
+  "sodanhgia",
+  "huyhieu",
+  "mien",
+  "bookingurl",
+  "datphong",
+  "hoahong",
+  "commission",
+  "giohang",
+]);
+
 /** Trường chữ bắt buộc: tên trường → giá trị. Rỗng hoặc toàn khoảng trắng đều là thiếu. */
 function truongChuBatBuoc(f: Farmstay): Record<string, unknown> {
   return {
@@ -146,6 +201,28 @@ export function kiemHoSoFarmstay(f: Farmstay, nhan?: string): string[] {
       bao(`\`${truong}\` sai dạng, phải là YYYY-MM-DD — "${gt}"`);
     }
   });
+
+  // ⑩ TRƯỜNG LẠ — chiều ngược của ①, Điều VII đòi đủ cả hai chiều.
+  //    Kiểm tra kiểu của TypeScript không thay được phép này: nó chỉ soi được chữ viết
+  //    thẳng trong mã, còn hồ sơ về từ JSON, Sanity hay phép trải `...` thì lọt hết.
+  if (f !== null && typeof f === "object") {
+    for (const khoa of Object.keys(f)) {
+      /* ⚠️ Soi trường kiểu sàn TRƯỚC, và cố ý KHÔNG cho `KHOA_HOP_LE` miễn trừ nó.
+         Nếu xét danh sách hợp lệ trước thì cổng tự vô hiệu hoá được bằng một dòng sửa:
+         ai bị chặn chỉ cần thêm "rating" vào `KHOA_HOP_LE` là xanh ngay — mà "sửa cho
+         xanh" đúng là phản xạ tự nhiên nhất khi cổng báo đỏ. Cổng nào gỡ được bằng
+         chính cái nó canh thì không phải cổng. */
+      if (TRUONG_KIEU_SAN.has(khoa.toLowerCase())) {
+        bao(
+          `\`${khoa}\` là TRƯỜNG KIỂU SÀN ĐẶT PHÒNG mọc lại — trái Điều VII (hình dạng dữ liệu là danh tính) và Điều I (ta là hạ tầng, không phải sàn). Gỡ khỏi hồ sơ, đừng chỉ ẩn khỏi giao diện`
+        );
+      } else if (!KHOA_HOP_LE.has(khoa)) {
+        bao(
+          `\`${khoa}\` là trường lạ, không có trong hộ chiếu số. Điều VII: trường nào không trả lời được "phục vụ Điều nào trong hiến pháp?" thì là di sản của một web khác, phải gỡ`
+        );
+      }
+    }
+  }
 
   return loi;
 }

@@ -59,8 +59,42 @@ export interface CaDoiChung {
   chuoiPhaiCo?: string;
 }
 
+/**
+ * Gắn thêm một khoá KHÔNG có trong `Farmstay` để thử phép ⑩ (bắt trường lạ).
+ * Phải ép kiểu vì đây đúng là thứ kiểu dữ liệu cấm — mà van tồn tại chính để canh
+ * những đường vào mà TypeScript không soi được: JSON, Sanity, phép trải `...`.
+ */
+function themKhoaLa(khoa: string, giaTri: unknown): Farmstay {
+  return { ...HO_SO_DUNG, [khoa]: giaTri } as Farmstay;
+}
+
 export const CAC_CA_DOI_CHUNG: CaDoiChung[] = [
   { ten: "hồ sơ đủ mọi trường bắt buộc", hoSo: HO_SO_DUNG, phaiDat: true },
+
+  // ── Phép ⑩ — trường lạ. Chiều xanh là ca đầu bảng: hồ sơ đúng không thừa khoá nào ──
+  {
+    ten: "trường kiểu sàn `rating` mọc lại",
+    hoSo: themKhoaLa("rating", 4.8),
+    phaiDat: false,
+    chuoiPhaiCo: "TRƯỜNG KIỂU SÀN",
+  },
+  {
+    ten: "trường kiểu sàn `giaPhong` — biến thể tiếng Việt, chặn đường vòng",
+    hoSo: themKhoaLa("giaPhong", 500000),
+    phaiDat: false,
+    chuoiPhaiCo: "TRƯỜNG KIỂU SÀN",
+  },
+  {
+    ten: "trường lạ vô hại `ghiChuNoiBo` — vẫn phải chặn, không có trong hộ chiếu số",
+    hoSo: themKhoaLa("ghiChuNoiBo", "nhắc gọi lại tháng sau"),
+    phaiDat: false,
+    chuoiPhaiCo: "ghiChuNoiBo",
+  },
+  {
+    ten: "trường TUỲ CHỌN `the` — có trong hộ chiếu số, van phải IM LẶNG",
+    hoSo: sua({ the: ["gan-suoi", "co-tre-em"] }),
+    phaiDat: true,
+  },
 
   {
     ten: "thiếu câu chuyện chủ farm",

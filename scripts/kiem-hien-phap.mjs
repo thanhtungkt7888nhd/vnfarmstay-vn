@@ -481,12 +481,29 @@ async function main() {
 
   for (const dd of duongDan) {
     await trang.goto(`${GOC}${dd}`, { waitUntil: "load" });
-    /* Chờ React gắn xong người nghe — đo sớm là kết luận nhầm mọi nút đều chết */
+    /* Chờ React gắn xong người nghe — đo sớm là kết luận nhầm mọi nút đều chết.
+       ⚠️ Bản đầu chỉ chờ `document.body` có khoá `__react`. Body có gốc React KHÔNG
+       chứng minh tầng NÚT đã hydrate xong. Đo 13/09/2026 trên bản dựng thật: trang chủ
+       — trang nặng nhất vì có bản đồ Leaflet nạp động — báo oan nút "Mở menu" là vỏ rỗng,
+       trong khi bấm tay thì menu mở ra đủ mục; 44 trang nhẹ hơn kịp hydrate nên im lặng.
+       Cổng báo oan nguy ngang cổng rỗng: người ta mất tin rồi bỏ qua cả lỗi thật.
+       Nay chờ tới khi CHÍNH các nút có `__reactProps$`. Nút chết thật thì không bao giờ
+       có khoá ấy, hết giờ vẫn đo — cổng KHÔNG mất khả năng bắt lỗi thật, chỉ chờ lâu hơn. */
     await trang.waitForFunction(
-      () =>
-        !document.querySelector("[aria-busy='true']") &&
-        Object.keys(document.body).some((k) => k.startsWith("__react")),
-      { timeout: 15000 }
+      () => {
+        if (document.querySelector("[aria-busy='true']")) return false;
+        const daHydrate = (e) =>
+          Object.keys(e).some(
+            (k) =>
+              k.startsWith("__reactProps$") || k.startsWith("__reactEventHandlers$")
+          );
+        const nut = [...document.querySelectorAll("button")];
+        if (nut.length === 0) {
+          return Object.keys(document.body).some((k) => k.startsWith("__react"));
+        }
+        return nut.every(daHydrate);
+      },
+      { timeout: 8000 }
     ).catch(() => {});
     const hs = await docHoSo(trang, dd);
     for (const [ten, ham] of PHEP) {
