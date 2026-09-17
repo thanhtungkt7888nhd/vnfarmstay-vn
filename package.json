@@ -19,7 +19,8 @@
     "thu-cua-nhan": "node scripts/thu-cua-nhan-ho-so.mjs",
     "thu-vong-du-khach": "node scripts/thu-vong-du-khach.mjs",
     "thu-uy-tin": "node scripts/thu-uy-tin.mjs",
-    "sinh-tep-tinh": "node scripts/sinh-tep-tinh.mjs"
+    "sinh-tep-tinh": "node scripts/sinh-tep-tinh.mjs",
+    "check:luat": "node SO-TAY/snapshot-routes.mjs . && node SO-TAY/check-luat.mjs .kiem-snapshot"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

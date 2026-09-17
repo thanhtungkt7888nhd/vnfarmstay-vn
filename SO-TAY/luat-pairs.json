@@ -1,0 +1,9 @@
+[
+  ["--fg",       "--bg",       "body text on background", "AAA"],
+  ["--fg-muted", "--bg",       "muted text on background"],
+  ["--accent",   "--bg",       "accent link on background"],
+  ["--fg",       "--bg-card",  "text on card", "AAA"],
+  ["--fg",       "--bg-subtle","text on subtle bg"],
+  ["--on-accent","--accent",   "text on accent button"],
+  ["--fg",       "--bg-main",  "text on main content area"]
+]
