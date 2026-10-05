@@ -1,3 +1,3 @@
-![vnfarmstay.vn — 140 cổng luật VN v5.2 (đo 05/10/2026)](vnfarmstay-140-cong.svg)
+![vnfarmstay.vn — 140 cổng luật qua 3 mốc trong ngày 05/10/2026](vnfarmstay-vong1-truoc-sau.svg)
 
-**Nhìn ra gì:** Cả 2 cổng lỗi chặn đều là báo oan sau đối chiếu mã thật, nên web không có lỗi chặn nào; nguy cơ thật nằm ngoài bảng này — CI đỏ 40 ngày khiến không lượt nào dựng được web.
+**Nhìn ra gì:** Mỗi mốc gỡ được đúng một cảnh báo thành cổng đạt, nên đường đi tuy ngắn nhưng toàn bộ là thật; cột lỗi chặn đứng yên ở 2 không phải vì vá hỏng mà vì cả hai đều là báo oan của máy đo, không gỡ bằng cách sửa web được.

@@ -1,0 +1,78 @@
+<svg width="900" height="520" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 900 520">
+<rect width="900" height="520" x="0" y="0" fill="#fcfcfb"></rect>
+<path d="M52.2 433.5L872 433.5" fill="none" pointer-events="visible" stroke="#e6e5e0" class="zr0-cls-0"></path>
+<path d="M52.2 367.5L872 367.5" fill="none" pointer-events="visible" stroke="#e6e5e0" class="zr0-cls-0"></path>
+<path d="M52.2 300.5L872 300.5" fill="none" pointer-events="visible" stroke="#e6e5e0" class="zr0-cls-0"></path>
+<path d="M52.2 234.5L872 234.5" fill="none" pointer-events="visible" stroke="#e6e5e0" class="zr0-cls-0"></path>
+<path d="M52.2 168.5L872 168.5" fill="none" pointer-events="visible" stroke="#e6e5e0" class="zr0-cls-0"></path>
+<path d="M52.2 102.5L872 102.5" fill="none" pointer-events="visible" stroke="#e6e5e0" class="zr0-cls-0"></path>
+<path d="M52.2 433.5L872 433.5" fill="none" pointer-events="visible" stroke="#e6e5e0" stroke-linecap="round" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" transform="translate(44.16 433)" fill="#52514e">0</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" transform="translate(44.16 366.8)" fill="#52514e">20</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" transform="translate(44.16 300.6)" fill="#52514e">40</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" transform="translate(44.16 234.4)" fill="#52514e">60</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" transform="translate(44.16 168.2)" fill="#52514e">80</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" transform="translate(44.16 102)" fill="#52514e">100</text>
+<path d="M-32.8 0l65.5 0l0 15l-65.5 0Z" transform="translate(188.8 441)" fill="none" pointer-events="visible" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" xml:space="preserve" y="7.5" transform="translate(188.8 441)" fill="#52514e">Đầu vòng</text>
+<path d="M-57.9 0l115.8 0l0 15l-115.8 0Z" transform="translate(462.08 441)" fill="none" pointer-events="visible" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" xml:space="preserve" y="7.5" transform="translate(462.08 441)" fill="#52514e">Sau vòng tự động</text>
+<path d="M-50.6 0l101.2 0l0 15l-101.2 0Z" transform="translate(735.36 441)" fill="none" pointer-events="visible" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" xml:space="preserve" y="7.5" transform="translate(735.36 441)" fill="#52514e">Sau khi vá seo.24</text>
+<path d="M152 141.7L168 141.7A4 4 0 0 1 172 145.7L172 433L148 433L148 145.7A4 4 0 0 1 152 141.7" fill="#2a78d6" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr0-cls-1"></path>
+<path d="M425.3 138.4L441.3 138.4A4 4 0 0 1 445.3 142.4L445.3 433L421.3 433L421.3 142.4A4 4 0 0 1 425.3 138.4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr0-cls-1"></path>
+<path d="M698.6 135.1L714.6 135.1A4 4 0 0 1 718.6 139.1L718.6 433L694.6 433L694.6 139.1A4 4 0 0 1 698.6 135.1" fill="#2a78d6" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr0-cls-1"></path>
+<path d="M180.8 267.5L196.8 267.5A4 4 0 0 1 200.8 271.5L200.8 433L176.8 433L176.8 271.5A4 4 0 0 1 180.8 267.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr0-cls-2"></path>
+<path d="M454.1 270.8L470.1 270.8A4 4 0 0 1 474.1 274.8L474.1 433L450.1 433L450.1 274.8A4 4 0 0 1 454.1 270.8" fill="#eb6834" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr0-cls-2"></path>
+<path d="M727.4 274.1L743.4 274.1A4 4 0 0 1 747.4 278.1L747.4 433L723.4 433L723.4 278.1A4 4 0 0 1 727.4 274.1" fill="#eb6834" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr0-cls-2"></path>
+<path d="M209.6 426.4L225.6 426.4A4 4 0 0 1 229.6 430.4L229.6 433L205.6 433L205.6 430.4A4 4 0 0 1 209.6 426.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr0-cls-3"></path>
+<path d="M482.9 426.4L498.9 426.4A4 4 0 0 1 502.9 430.4L502.9 433L478.9 433L478.9 430.4A4 4 0 0 1 482.9 426.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr0-cls-3"></path>
+<path d="M756.2 426.4L772.2 426.4A4 4 0 0 1 776.2 430.4L776.2 433L752.2 433L752.2 430.4A4 4 0 0 1 756.2 426.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr0-cls-3"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(160 135.72)" fill="#0b0b0b">88 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(433.28 132.41)" fill="#0b0b0b">89 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(706.56 129.1)" fill="#0b0b0b">90 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(188.8 261.5)" fill="#0b0b0b">50 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(462.08 264.81)" fill="#0b0b0b">49 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(735.36 268.12)" fill="#0b0b0b">48 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(217.6 420.38)" fill="#0b0b0b">2 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(490.88 420.38)" fill="#0b0b0b">2 cổng</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="-6" transform="translate(764.16 420.38)" fill="#0b0b0b">2 cổng</text>
+<path d="M-5 -5l249.5 0l0 22.5l-249.5 0Z" transform="translate(27 55)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr0-cls-0"></path>
+<path d="M3 0L9 0A3 3 0 0 1 12 3L12 9A3 3 0 0 1 9 12L3 12A3 3 0 0 1 0 9L0 3A3 3 0 0 1 3 0" transform="translate(27 55.25)" fill="#2a78d6" stroke="#fcfcfb" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12.5px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" x="17" y="6" transform="translate(27 55.25)" fill="#52514e">Đạt</text>
+<path d="M0 -0.2l45.5 0l0 12.5l-45.5 0Z" transform="translate(27 55.25)" fill="none" pointer-events="visible" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="legend" class="zr0-cls-4"></path>
+<path d="M3 0L9 0A3 3 0 0 1 12 3L12 9A3 3 0 0 1 9 12L3 12A3 3 0 0 1 0 9L0 3A3 3 0 0 1 3 0" transform="translate(90.5 55.25)" fill="#eb6834" stroke="#fcfcfb" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12.5px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" xml:space="preserve" x="17" y="6" transform="translate(90.5 55.25)" fill="#52514e">Cảnh báo</text>
+<path d="M0 -0.2l82.5 0l0 12.5l-82.5 0Z" transform="translate(90.5 55.25)" fill="none" pointer-events="visible" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="legend" class="zr0-cls-4"></path>
+<path d="M3 0L9 0A3 3 0 0 1 12 3L12 9A3 3 0 0 1 9 12L3 12A3 3 0 0 1 0 9L0 3A3 3 0 0 1 3 0" transform="translate(191 55.25)" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0" stroke-linecap="butt" stroke-miterlimit="10" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" ecmeta_silent="true" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12.5px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;" xml:space="preserve" x="17" y="6" transform="translate(191 55.25)" fill="#52514e">Lỗi chặn</text>
+<path d="M0 -0.2l75.5 0l0 12.5l-75.5 0Z" transform="translate(191 55.25)" fill="none" pointer-events="visible" ecmeta_series_index="2" ecmeta_data_index="2" ecmeta_ssr_type="legend" class="zr0-cls-4"></path>
+<path d="M-5 -5l535.6 0l0 27l-535.6 0Z" transform="translate(29 23)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr0-cls-0"></path>
+<path d="M-5 -5l356.1 0l0 21l-356.1 0Z" transform="translate(29 494)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:17px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;" xml:space="preserve" y="8.5" transform="translate(29 23)" fill="#0b0b0b">vnfarmstay.vn — 140 cổng luật qua 3 mốc trong ngày 05/10/2026</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:11px;font-family:'Be Vietnam Pro','Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:400;" xml:space="preserve" y="5.5" transform="translate(29 494)" fill="#77756e">Nguồn: wf cham vnfarmstay.vn --day-du, đo 3 lần ngày 05/10/2026</text>
+<style ><![CDATA[
+.zr0-cls-0:hover {
+pointer-events:none;
+}
+.zr0-cls-1:hover {
+cursor:pointer;
+fill:rgba(46,132,235,1);
+}
+.zr0-cls-2:hover {
+cursor:pointer;
+fill:rgba(255,114,57,1);
+}
+.zr0-cls-3:hover {
+cursor:pointer;
+fill:rgba(29,192,134,1);
+}
+.zr0-cls-4:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+
+]]>
+
+</style>
+</svg>
