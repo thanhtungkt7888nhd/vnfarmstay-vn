@@ -68,7 +68,20 @@ Cài `npx playwright install chromium` xong, chạy trên bản dựng thật c�
 - `thu-uy-tin` → **27/27 phép đạt** (huy hiệu thu hồi được)
 
 Tức vòng này **đã chứng minh được cổng hiến pháp SỐNG vẫn đạt sau khi sửa** — điều sổ trên còn
-bỏ ngỏ. Chỉ `thu-cua-nhan` vẫn chưa chạy được (cổng 3099 mồ côi, xem dưới).
+bỏ ngỏ.
+
+**Cập nhật cuối ngày: `thu-cua-nhan` cũng đã chạy — 14/14 phép qua đối chứng hai chiều** ("nhận
+được thật, và KHÔNG báo thành công khi bên nhận hỏng"). Tiến trình mồ côi chiếm cổng 3099 đã chết,
+cổng trống trở lại. ⇒ **Toàn bộ 6 phép máy riêng của web đều đã chạy và ĐẠT, không còn phép nào mù:**
+
+| Phép | Kết quả |
+|---|---|
+| `kiem-hien-phap` (6 phép hiến pháp) | 45 trang · 0 vi phạm |
+| `kiem-seo` | 45/45 trang sạch · 13/13 tự kiểm |
+| `thu-cua-nhan` | **14/14** |
+| `thu-vong-du-khach` | 33/33 trên trình duyệt thật |
+| `thu-uy-tin` | 27/27, huy hiệu thu hồi được |
+| `kiem-ho-so` (trong prebuild) | 16/16 ca đối chứng |
 
 ### Vá thêm `seo.24` — và vì sao KHÔNG làm theo lời khuyên của cổng
 Cổng bảo "thêm URL các trang `/danh-muc` vào `sitemap.ts`". Làm nguyên văn là **sai**: `blogPages`

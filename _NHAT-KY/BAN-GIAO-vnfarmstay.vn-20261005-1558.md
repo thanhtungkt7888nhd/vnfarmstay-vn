@@ -56,10 +56,12 @@ lại ở dạng việc giao diện) **cộng thêm `seo.24` ngoài kế hoạch
 2. **`sec.7`** — `.github/workflows/ci.yml` thiếu bước `npm audit` chặn HIGH/CRITICAL. Vùng của Ông.
 3. **CI chưa xác minh xanh trở lại** — đã vá script nhưng **chưa push** nên chưa có lượt chạy mới.
    Lượt cuối máy đọc được vẫn là 17/09 → cổng ④ vẫn hạ 4 cổng CI.
-4. **Cổng 3099 bị `next-server` v16.2.4 MỒ CÔI chiếm từ 28/09 15:22** (PID 35460 lúc đo, 7 ngày).
-   `scripts/thu-cua-nhan-ho-so.mjs:20` hardcode `CONG_WEB = 3099`, không đọc biến môi trường ⇒
-   `thu-cua-nhan` là phép DUY NHẤT trong 6 phép chưa chạy được. Chưa tự tắt vì chưa chắc tiến
-   trình thuộc web nào. Lệnh: `lsof -ti:3099 | xargs kill`
+4. ~~Cổng 3099 mồ côi~~ → **ĐÃ XONG cuối ngày.** Tiến trình `next-server` chiếm cổng từ 28/09
+   15:22 nay đã chết, cổng trống trở lại. Chạy `thu-cua-nhan` → **14/14 phép qua đối chứng hai
+   chiều**. ⇒ **Cả 6 phép máy riêng của web đều đã chạy và ĐẠT, không còn phép nào mù.**
+   Ghi nhận cho sau: `scripts/thu-cua-nhan-ho-so.mjs:20` **hardcode** `CONG_WEB = 3099`, không
+   đọc biến môi trường — bất kỳ tiến trình lạ nào chiếm cổng đó đều làm phép thử trả kết quả vô
+   nghĩa mà vẫn tự khai "đạt". Nên cho máy đọc biến môi trường, hoặc tự chọn cổng trống.
 5. **`culori`** chưa từng được khai ở `package.json` của web lẫn CODEWEB ⇒ `a11y.25` FAIL vĩnh viễn
    và lời chữa của máy ("chạy `npm ci`") dẫn sai đường. Sửa engine ⇒ `/bao-tri-luat`, chờ Ông.
 6. Next.js **16.2.4 dưới mốc vá 16.3.3** — việc Ông.
