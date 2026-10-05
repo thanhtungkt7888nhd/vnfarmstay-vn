@@ -32,8 +32,34 @@ Không có cổng luật nào FAIL thật. Nhưng ba khoản dưới là **lỗi
 | # | Khoản | Chứng cứ | Mức |
 |---|---|---|---|
 | 1 | **CI chết 40 ngày** — `npm run lint` gọi `next lint`, lệnh đã bị gỡ khỏi Next.js 16 nên nó hiểu `lint` là tên thư mục | log lượt 35203841237: `Invalid project directory provided, no such directory: …/lint` → job Lint hỏng → **job Build bị skip** → 5/5 lượt gần nhất (26/08 → 17/09) đều `failure` | NẶNG |
-| 2 | **5 route POST không có giới hạn tần suất** — `bao-sai`, `dang-farmstay`, `gsc-ping`, `indexnow`, `revalidate` | không có `src/lib/rate-limit.ts`; grep cả `checkRateLimit` lẫn `rateLimitResponse` trong `src/` đều 0 kết quả — **không phải báo oan kiểu bẫy #4** | VỪA |
+| 2 | ~~**5 route POST không có giới hạn tần suất**~~ → **ĐÍNH CHÍNH 05/10: chỉ 3 route, và cả 3 đều có mật khẩu** | xem khối đính chính ngay dưới bảng | NHẸ (hạ từ VỪA) |
 | 3 | **9 lỗi HTML W3C** trên trang chủ | `aria-label` đặt trên `<div>` không có `role`; `<style>` trong `<body>` không phải con đầu tiên; 3 rule CSS + `@keyframes` ngoài `@scope` | NHẸ |
+
+### ĐÍNH CHÍNH khoản 2 — ghi thêm cùng ngày 05/10, sau vòng `/dong-kin-vong`
+
+**Phiếu này đã khai sai, và sai theo hướng phóng đại.** Dòng gốc viết "5 route POST không có giới
+hạn tần suất" kèm câu "/dang-farmstay là cửa nhận hồ sơ công khai, không có chặn là mời gọi gửi
+rác". Đọc mã thật cho thấy **hai cửa công khai nhất đã có chặn theo IP từ trước**:
+
+| Route | Trạng thái THẬT trước khi vá | Bằng chứng |
+|---|---|---|
+| `bao-sai` | **đã có** — 10 lượt/24h/IP, trả HTTP 429 | `main:src/app/api/bao-sai/route.ts:20-56` — hàm `quaTran(ip)` + Map `soLanBao` |
+| `dang-farmstay` | **đã có** — 5 lượt/24h/IP, trả HTTP 429 | cùng kiểu, 7 dòng khớp dấu hiệu chặn |
+| `gsc-ping` · `indexnow` · `revalidate` | **thật sự chưa có** | 0 dòng khớp — nhưng cả ba đều chặn bằng mật khẩu, trả 401 |
+
+**Vì sao phiếu sai:** con grep đúng hai tên `checkRateLimit` và `rateLimitResponse` rồi kết luận
+"không có rate-limit nào". Hai route kia đặt tên **tiếng Việt** (`quaTran` · `soLanBao` ·
+`soLanGui`) nên lọt lưới. Bẫy #4 của `CHUNG.md` mô tả hẹp hơn thực tế: không chỉ
+`rateLimitResponse` lọt, mà **mọi tên tự đặt đều lọt**. Chính con vừa dẫn bẫy #4 ra để nói
+"không phải báo oan" — tức đọc bẫy mà vẫn sập đúng bẫy đó ở dạng rộng hơn.
+
+**Hệ quả với mức nghiêm trọng:** khoản này hạ từ VỪA xuống NHẸ. Không có cửa công khai nào từng
+bị bỏ ngỏ. Vòng `/dong-kin-vong` đã gom cả 5 route về một `src/lib/rate-limit.ts` dùng chung
+(giữ nguyên trần cũ của hai route công khai, chỉ rút trùng lặp), nên cổng `sec.3` nay PASS.
+
+**Đề xuất cho `/bao-tri-luat`** (chờ Ông, không tự làm): nới mẫu dò của cổng `sec.3`, hoặc đổi
+thông điệp thành *"không thấy TÊN CHUẨN `checkRateLimit` — đọc mã trước khi kết luận"* thay vì
+khẳng định route thiếu chặn.
 
 ## Dương tính giả đã loại
 
