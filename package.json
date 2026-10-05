@@ -7,7 +7,7 @@
     "dev:host": "next dev -p 3007 -H 0.0.0.0",
     "build": "next build",
     "start": "next start -p 3007",
-    "lint": "next lint",
+    "lint": "eslint src/ --ext .ts,.tsx",
     "type-check": "tsc --noEmit",
     "check-orphans": "node scripts/check-orphans.mjs",
     "prepare": "husky",
