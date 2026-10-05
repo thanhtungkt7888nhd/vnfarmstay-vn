@@ -1,6 +1,6 @@
 # BÀN GIAO — vnfarmstay.vn — 2026-10-05 13:37
 
-TRẠNG THÁI: CHỜ
+TRẠNG THÁI: XONG 2026-10-05
 Phiên tạo: d53cc8a7-de94-471b-8767-a7cb7a4ac170
 
 ## MỤC TIÊU
