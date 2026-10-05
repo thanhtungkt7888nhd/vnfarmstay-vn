@@ -13,6 +13,7 @@ import { NextResponse } from "next/server";
 import { VUNG } from "@/features/vung/data";
 import { TRAI_NGHIEM } from "@/features/kham-pha/data";
 import { daMoKenhNhan, nhanHoSo, type HoSoGuiLen } from "@/lib/nhan-ho-so";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 /**
  * TRẦN GỬI — ghi rõ ra đây để không ai phải mò.
@@ -28,20 +29,6 @@ import { daMoKenhNhan, nhanHoSo, type HoSoGuiLen } from "@/lib/nhan-ho-so";
 const TRAN_MOI_NGAY = 5;
 const CUA_SO_MS = 24 * 60 * 60 * 1000;
 
-const soLanGui = new Map<string, number[]>();
-
-function quaTran(ip: string): boolean {
-  const gio = Date.now();
-  const cu = soLanGui.get(ip) ?? [];
-  const conHan = cu.filter((t) => gio - t < CUA_SO_MS);
-  if (conHan.length >= TRAN_MOI_NGAY) {
-    soLanGui.set(ip, conHan);
-    return true;
-  }
-  conHan.push(gio);
-  soLanGui.set(ip, conHan);
-  return false;
-}
 
 /** Trần độ dài từng trường — chặn gửi cả quyển sách làm nghẽn bảng tính */
 const TRAN_CHU: Record<string, number> = {
@@ -151,11 +138,13 @@ export async function POST(req: Request) {
   }
 
   // ② Trần gửi
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    req.headers.get("x-real-ip") ??
-    "khong-ro";
-  if (quaTran(ip)) {
+  const ip = getClientIp(req);
+  if (
+    !(await checkRateLimit(`dang-farmstay:${ip}`, {
+      tran: TRAN_MOI_NGAY,
+      cuaSoMs: CUA_SO_MS,
+    }))
+  ) {
     return NextResponse.json(
       {
         ok: false,

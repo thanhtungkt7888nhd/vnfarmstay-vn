@@ -9,8 +9,21 @@
  * có quyền "Owner" trên Google Search Console property vnfarmstay.vn.
  */
 import { NextRequest, NextResponse } from "next/server";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET ?? "";
+
+/**
+ * Trần dò mật khẩu: 10 lần SAI / 10 phút / IP. Chỉ đếm lần sai, nên lệnh submit
+ * thật (có đúng x-secret) không bao giờ bị chặn.
+ */
+const TRAN_SAI = { tran: 10, cuaSoMs: 10 * 60 * 1000 };
+
+/** Trả 429 khi một IP đã gõ sai mật khẩu quá trần; `null` = còn được phép thử */
+async function chanDoMatKhau(req: NextRequest): Promise<NextResponse | null> {
+  if (await checkRateLimit(`gsc-ping-sai:${getClientIp(req)}`, TRAN_SAI)) return null;
+  return NextResponse.json({ error: "Too Many Requests" }, { status: 429 });
+}
 
 /** Validate và gọi Google Indexing API cho 1 URL */
 async function requestGoogleIndex(url: string): Promise<{ status: number }> {
@@ -121,7 +134,7 @@ export async function POST(req: NextRequest) {
   // Auth check
   const secret = req.headers.get("x-secret");
   if (!REVALIDATE_SECRET || secret !== REVALIDATE_SECRET) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return (await chanDoMatKhau(req)) ?? NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const body = (await req.json()) as { url?: string; urls?: string[] };
@@ -153,7 +166,7 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
   const secret = req.headers.get("x-secret");
   if (!REVALIDATE_SECRET || secret !== REVALIDATE_SECRET) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return (await chanDoMatKhau(req)) ?? NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const configured = !!process.env.GSC_SERVICE_ACCOUNT_JSON;

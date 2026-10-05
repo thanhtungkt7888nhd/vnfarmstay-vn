@@ -5,6 +5,7 @@
  */
 import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET ?? "";
 /** Sanity webhook signing secret — lấy từ Sanity dashboard > API > Webhooks */
@@ -68,6 +69,16 @@ export async function POST(req: NextRequest) {
   const secretValid = REVALIDATE_SECRET && secret === REVALIDATE_SECRET;
 
   if (!signatureValid && !secretValid) {
+    // Trần CHỈ đếm lần SAI (10 lần / 10 phút / IP): webhook Sanity thật gửi dồn bao
+    // nhiêu cũng không bị chặn, nên không có nguy cơ rơi lệnh xoá cache.
+    if (
+      !(await checkRateLimit(`revalidate-sai:${getClientIp(req)}`, {
+        tran: 10,
+        cuaSoMs: 10 * 60 * 1000,
+      }))
+    ) {
+      return NextResponse.json({ error: "Too Many Requests" }, { status: 429 });
+    }
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
