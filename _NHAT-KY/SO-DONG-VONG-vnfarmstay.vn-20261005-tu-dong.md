@@ -44,4 +44,59 @@ git switch main && git merge --no-ff vong-kin/tu-dong-202610050820
 ```
 Không gộp: `git branch -D vong-kin/tu-dong-202610050820` (bỏ cả vòng).
 
+---
+
+## BỔ SUNG SAU KHI GỘP — ghi cùng ngày 05/10, phiên chính
+
+Sổ trên viết lúc vòng còn nằm trên nhánh riêng và 3 phép nghiệm thu còn mù. Sau khi Ông vá CI và
+gộp nhánh, phiên chính làm tiếp và **đo lại đủ**. Số dưới là số đo được sau cùng.
+
+### Số đo đủ 140 cổng — cập nhật
+| Mốc | PASS | WARN | FAIL |
+|---|---|---|---|
+| Đầu vòng (phiếu kiểm thử) | 88 | 50 | 2 |
+| Sau vòng tự động (sổ trên) | 89 | 49 | 2 |
+| **Sau khi vá thêm `seo.24`** | **90** | **48** | **2** |
+
+Hai FAIL còn lại vẫn là hai dương tính giả đã chốt (`a11y.25` thiếu `culori` của máy đo ·
+`content.41` số "30+ tỉnh" là số THẬT Ông cấp). **Không có lỗi chặn thật nào.**
+
+### Ba phép nghiệm thu từng mù — nay ĐÃ CHẠY VÀ ĐẠT
+Cài `npx playwright install chromium` xong, chạy trên bản dựng thật cổng 3017:
+- `kiem-hien-phap` → **45 trang · 0 vi phạm · 6/6 phép** (10/10 ca đối chứng hai chiều)
+- `thu-vong-du-khach` → **33/33 phép đạt trên trình duyệt thật**
+- `thu-uy-tin` → **27/27 phép đạt** (huy hiệu thu hồi được)
+
+Tức vòng này **đã chứng minh được cổng hiến pháp SỐNG vẫn đạt sau khi sửa** — điều sổ trên còn
+bỏ ngỏ. Chỉ `thu-cua-nhan` vẫn chưa chạy được (cổng 3099 mồ côi, xem dưới).
+
+### Vá thêm `seo.24` — và vì sao KHÔNG làm theo lời khuyên của cổng
+Cổng bảo "thêm URL các trang `/danh-muc` vào `sitemap.ts`". Làm nguyên văn là **sai**: `blogPages`
+chỉ lấy bài từ Sanity, mà Sanity chưa cấu hình nên kho bài đang rỗng ⇒ đổ 8 danh mục vào sitemap
+là mời Google vào 8 trang trống, lặp đúng sai lầm 19/08/2026 mà chú thích `blogPages` vừa cảnh báo.
+Vá đúng: lọc theo bài thật, danh mục có bài thì vào, kho rỗng thì không URL nào.
+
+Nghiệm thu **hai chiều** trên bản dựng thật: cổng `seo.24` WARN → PASS, **và** sitemap thật vẫn
+đúng **45 URL, 0 dòng `/danh-muc`**. Cổng xanh mà hành vi cũng đúng, không phải xanh suông.
+Commit `0e2481e`.
+
+### Đính chính phiếu kiểm thử — lỗi của phiên chính
+Phiếu sáng nay khai "5 route POST không có giới hạn tần suất" là **sai, theo hướng phóng đại**:
+`bao-sai` và `dang-farmstay` đã có trần theo IP từ trước, trả 429, chỉ vì đặt tên tiếng Việt
+(`quaTran`/`soLanBao`) nên phép grep không thấy. Đã đính chính vào phiếu, commit `4ad7ab5`.
+
+### Commit của phần bổ sung
+`f707b50` gộp vòng · `ee4d50e` vá CI (Ông tự tay) · `0e2481e` vá `seo.24` · `4ad7ab5` đính chính
+
+### Còn lại, chờ Ông
+1. **9 lỗi W3C** — ngoài khoa máy, thuộc `/nang-cap-giao-dien`; gốc ở `HomePage.tsx:275` và `:546`,
+   còn 8 tệp khác cùng kiểu `<style>` trong JSX nên phải sửa cả hệ.
+2. **`sec.7`** — thiếu bước `npm audit` chặn HIGH/CRITICAL trong `.github/workflows/ci.yml` (vùng Ông).
+3. **Cổng 3099 mồ côi** — `next-server` v16.2.4 chạy từ **28/09 15:22**, PID 35460 lúc đo. Máy
+   `thu-cua-nhan` hardcode cổng này nên chưa chạy được. Lệnh: `lsof -ti:3099 | xargs kill`.
+   Chưa tự tắt vì chưa chắc tiến trình của web nào.
+4. **`culori`** chưa từng được khai ở đâu ⇒ `a11y.25` FAIL vĩnh viễn, cần `/bao-tri-luat`.
+5. **CI chưa xác minh xanh trở lại** — vá rồi nhưng chưa push nên chưa có lượt chạy mới.
+6. Next.js 16.2.4 dưới mốc vá 16.3.3.
+
 SKILL KẾ: /kiem-thu-web (đo đủ sau build trên Mac) → /deploy-web khi Ông ra lệnh.
