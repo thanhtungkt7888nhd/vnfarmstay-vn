@@ -10,27 +10,13 @@
 import { NextResponse } from "next/server";
 import { FARMSTAYS } from "@/features/listing/data";
 import { daMoKenhNhan, nhanBaoSai } from "@/lib/nhan-ho-so";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 /** Trần báo sai — rộng hơn trần gửi hồ sơ vì một người có thể thấy nhiều chỗ sai */
 const TRAN_MOI_NGAY = 10;
 const CUA_SO_MS = 24 * 60 * 60 * 1000;
 const TRAN_CHU_SAI = 2000;
 const TRAN_CHU_LIEN_HE = 200;
-
-const soLanBao = new Map<string, number[]>();
-
-/** Gờ giảm tốc trong bộ nhớ tiến trình — KHÔNG phải tường chống tấn công */
-function quaTran(ip: string): boolean {
-  const gio = Date.now();
-  const conHan = (soLanBao.get(ip) ?? []).filter((t) => gio - t < CUA_SO_MS);
-  if (conHan.length >= TRAN_MOI_NGAY) {
-    soLanBao.set(ip, conHan);
-    return true;
-  }
-  conHan.push(gio);
-  soLanBao.set(ip, conHan);
-  return false;
-}
 
 export async function POST(req: Request) {
   if (!daMoKenhNhan()) {
@@ -43,11 +29,8 @@ export async function POST(req: Request) {
     );
   }
 
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    req.headers.get("x-real-ip") ??
-    "khong-ro";
-  if (quaTran(ip)) {
+  const ip = getClientIp(req);
+  if (!(await checkRateLimit(`bao-sai:${ip}`, { tran: TRAN_MOI_NGAY, cuaSoMs: CUA_SO_MS }))) {
     return NextResponse.json(
       {
         ok: false,

@@ -4,14 +4,24 @@
  * Bảo vệ bằng REVALIDATE_SECRET để tránh lạm dụng.
  */
 import { NextRequest, NextResponse } from "next/server";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const SITE = "https://vnfarmstay.vn";
+
+/**
+ * Trần dò mật khẩu: 10 lần SAI / 10 phút / IP. Chỉ đếm lần sai, nên lệnh ping thật
+ * (có đúng x-secret) không bao giờ bị chặn dù gọi dồn.
+ */
+const TRAN_SAI = { tran: 10, cuaSoMs: 10 * 60 * 1000 };
 
 export async function POST(req: NextRequest) {
   const secret = req.headers.get("x-secret");
   const expectedSecret = process.env.REVALIDATE_SECRET ?? "";
 
   if (!expectedSecret || secret !== expectedSecret) {
+    if (!(await checkRateLimit(`indexnow-sai:${getClientIp(req)}`, TRAN_SAI))) {
+      return NextResponse.json({ error: "Too Many Requests" }, { status: 429 });
+    }
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
