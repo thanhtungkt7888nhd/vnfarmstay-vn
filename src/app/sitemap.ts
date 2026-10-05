@@ -5,7 +5,12 @@
 import type { MetadataRoute } from "next";
 import { FARMSTAYS } from "@/features/listing/data";
 import { NGUOI_KIEN_TAO } from "@/features/nguoi-kien-tao/data";
-import { fetchPostSlugs } from "@/lib/sanity-queries";
+import {
+  fetchPostSlugs,
+  fetchPostsByCategory,
+  isSanityConfigured,
+} from "@/lib/sanity-queries";
+import { CATEGORY_LABELS, type PostCategory } from "@/features/blog/types";
 import { SITE_URL } from "@/lib/site";
 import { TRAI_NGHIEM, MUA, TUYEN } from "@/features/kham-pha/data";
 import { VUNG, NGAY_CAP_NHAT_VUNG } from "@/features/vung/data";
@@ -161,11 +166,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Không thể fetch — bỏ qua, không crash
   }
 
+  // Trang danh mục /danh-muc/[slug] — CHỈ danh mục CÓ bài thật.
+  //
+  // ⚠️ Cổng seo.24 (đo 05/10/2026) bắt đúng: route này có `generateStaticParams`
+  // mà sitemap không hề nhắc tới. Nhưng lời khuyên của cổng — "thêm URL các trang
+  // này vào sitemap.ts" — làm nguyên văn là SAI: `blogPages` ngay trên chỉ lấy bài
+  // từ Sanity, mà Sanity chưa cấu hình nên kho bài đang RỖNG. Đổ cả 8 danh mục vào
+  // sitemap lúc này là mời Google vào 8 trang trống, lặp đúng sai lầm 19/08/2026 mà
+  // chú thích `blogPages` phía trên vừa cảnh báo. Nên lọc theo bài thật: danh mục
+  // nào có bài thì vào, kho rỗng thì không URL nào — khi Sanity có bài, nhánh này
+  // tự sống lại y như `blogPages`.
+  const danhMucPages: MetadataRoute.Sitemap = [];
+  if (isSanityConfigured()) {
+    const cacDanhMuc = Object.keys(CATEGORY_LABELS) as PostCategory[];
+    const ketQua = await Promise.all(
+      cacDanhMuc.map(async (cat) => {
+        try {
+          return { cat, soBai: (await fetchPostsByCategory(cat)).length };
+        } catch {
+          return { cat, soBai: 0 };
+        }
+      })
+    );
+    for (const { cat, soBai } of ketQua) {
+      if (soBai > 0) {
+        danhMucPages.push({
+          url: `${SITE_URL}/danh-muc/${cat}`,
+          priority: 0.6,
+          changeFrequency: "weekly" as const,
+          lastModified: new Date(),
+        });
+      }
+    }
+  }
+
   return [
     ...staticPages,
     ...vungPages,
     ...khamPhaPages,
     ...farmstayPages,
     ...blogPages,
+    ...danhMucPages,
   ];
 }
