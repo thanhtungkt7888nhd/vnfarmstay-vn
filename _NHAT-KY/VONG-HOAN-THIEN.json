@@ -1,0 +1,12 @@
+{"version":1,"domain":"vnfarmstay.vn","web":"/Users/phamthanhtung/ThoiKhong/Web/vnfarmstay-vn","goc":"main","base":"6176f5f51a1ddd07bb22406da63e290326f72f20","nhanh":"vong-hoan-thien/20261026","trang_thai":"DANG","thi_truong":"chua-xac-dinh (HO-KHAU khong khai) - giu pha VN/QT cho","lich":[
+{"pha":0,"skill":"dong-bo-doi-web","trang_thai":"BO","ly_do":"check-luat md5 795db617 trung goc, mot ban SO-TAY"},
+{"pha":1,"skill":"kiem-thu-web","trang_thai":"CHO","phieu":null,"phu_thuoc":[]},
+{"pha":2,"skill":"bao-mat-web","trang_thai":"CHO","phu_thuoc":[1]},
+{"pha":3,"skill":"nang-tc-vn|qt","trang_thai":"CHO","ly_do":"thi truong chua xac dinh","phu_thuoc":[1]},
+{"pha":4,"skill":"seo-toan-dien|quoc-te","trang_thai":"CHO","ly_do":"thi truong chua xac dinh; DON-SEO 6 viec","phu_thuoc":[1]},
+{"pha":5,"skill":"nang-cap-bai-viet","trang_thai":"CHO","phu_thuoc":[1]},
+{"pha":6,"skill":"nang-cap-giao-dien","trang_thai":"CHO","phu_thuoc":[1]},
+{"pha":7,"skill":"bo-cuc-web","trang_thai":"CHO","phu_thuoc":[1]},
+{"pha":8,"skill":"lam-giau-hieu-ung","trang_thai":"CHO","phu_thuoc":[1]},
+{"pha":9,"skill":"kiem-thu-web","trang_thai":"CHO","ly_do":"do SAU","phu_thuoc":[1]}],
+"buoc_ke":"giao agent con pha 1 kiem-thu-web (do nen)"}
