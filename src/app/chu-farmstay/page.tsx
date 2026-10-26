@@ -21,7 +21,7 @@ import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 export const metadata: Metadata = buildMetadata({
   title: "Dành cho chủ farmstay",
   description:
-    "Giới thiệu farmstay của bạn trên vnfarmstay.vn — miễn phí, kèm liên kết về website riêng của farm. Chúng tôi kể câu chuyện của farm, khách liên hệ thẳng với bạn.",
+    "Giới thiệu farmstay của bạn trên vnfarmstay.vn — miễn phí, có liên kết về website riêng của farm. Chúng tôi kể câu chuyện của farm, khách liên hệ thẳng với bạn.",
   canonical: "/chu-farmstay",
   keywords: [
     "chủ farmstay",
@@ -256,14 +256,6 @@ export default function ChuFarmstayPage() {
     <>
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
-
-      <style>{`
-        .owner-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-        @media (min-width: 640px) { .owner-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .benefits-grid { grid-template-columns: repeat(3, 1fr) !important; } }
-        .step-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
-        @media (min-width: 768px) { .step-grid { grid-template-columns: repeat(3, 1fr); } }
-      `}</style>
 
       <main
         id="main"

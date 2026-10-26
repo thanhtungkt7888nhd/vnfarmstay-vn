@@ -13,7 +13,8 @@ import { FARMSTAYS } from "@/features/listing/data";
  */
 export const metadata: Metadata = {
   title: "Tìm kiếm farmstay",
-  description: "Tìm farmstay theo vùng đất và trải nghiệm trên vnfarmstay.vn.",
+  description:
+    "Tìm farmstay theo vùng đất và trải nghiệm nông trại trên vnfarmstay.vn, nền tảng kết nối du khách với farmstay Việt Nam.",
   alternates: { canonical: "https://vnfarmstay.vn/tim-kiem" },
   robots: { index: false, follow: true },
 };

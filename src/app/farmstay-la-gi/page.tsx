@@ -20,9 +20,9 @@ import { buildMetadata } from "@/lib/seo";
 import { giuTuGhep } from "@/shared/utils/giu-tu-ghep";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Farmstay là gì? Phân biệt với homestay và resort",
+  title: "Farmstay là gì? Khác homestay, resort ở đâu",
   description:
-    "Farmstay là hình thức lưu trú ngay trong một nông trại đang canh tác thật. Phân biệt rõ farmstay với homestay và resort sinh thái, các loại hình farmstay ở Việt Nam, ai hợp và ai không hợp.",
+    "Farmstay là hình thức lưu trú ngay trong nông trại đang canh tác thật. Phân biệt farmstay với homestay và resort sinh thái, các loại hình, ai hợp và ai không.",
   canonical: "/farmstay-la-gi",
   keywords: [
     "farmstay là gì",
@@ -148,7 +148,7 @@ const CHUAN_BI = [
 const FAQS = [
   {
     q: "Farmstay và homestay khác nhau thế nào?",
-    a: "Farmstay là lưu trú trong một nông trại đang canh tác thật — trọng tâm là mùa vụ và công việc nhà nông. Homestay là ở trong nhà dân, trọng tâm là nếp sống của gia đình chủ nhà và có thể hoàn toàn không có nông trại nào. Một farmstay có thể mang tính chất homestay nếu bạn ở chung nhà với chủ, nhưng một homestay giữa phố cổ thì không bao giờ là farmstay.",
+    a: "Farmstay là lưu trú trong nông trại đang canh tác thật, trọng tâm là mùa vụ và công việc nhà nông. Homestay là ở nhà dân, trọng tâm là nếp sống của gia đình chủ nhà và có thể không có nông trại nào. Homestay giữa phố cổ thì không bao giờ là farmstay.",
   },
   {
     q: "Đi farmstay có phải làm việc đồng áng không?",
@@ -160,7 +160,7 @@ const FAQS = [
   },
   {
     q: "Nên đi farmstay vào mùa nào?",
-    a: "Không có mùa đẹp chung cho cả nước — mỗi vùng có nhịp riêng. Ruộng bậc thang Tây Bắc đẹp nhất mùa nước đổ và mùa lúa chín; vườn cà phê Tây Nguyên có hai mùa hoàn toàn khác nhau là mùa hoa và mùa quả chín; miệt vườn miền Tây thì mùa nào trái nấy. Hãy chọn theo thứ bạn muốn thấy, đừng chọn theo lịch nghỉ.",
+    a: "Không có mùa đẹp chung cho cả nước, mỗi vùng có nhịp riêng. Ruộng bậc thang Tây Bắc đẹp nhất mùa nước đổ và mùa lúa chín; cà phê Tây Nguyên có mùa hoa và mùa quả chín; miệt vườn miền Tây mùa nào trái nấy. Hãy chọn theo thứ bạn muốn thấy.",
   },
   {
     q: "Farmstay có đắt không?",
@@ -185,21 +185,6 @@ export default function FarmstayLaGiPage() {
     <>
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
-
-      <style>{`
-        .kt-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-        @media (min-width: 640px) { .kt-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .kt-grid { grid-template-columns: repeat(4, 1fr); } }
-        .kt-grid-2 { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 900px) { .kt-grid-2 { grid-template-columns: repeat(2, 1fr); } }
-        .kt-sosanh { width: 100%; border-collapse: collapse; }
-        .kt-sosanh th, .kt-sosanh td {
-          text-align: left; padding: 14px 16px;
-          border-bottom: 1px solid var(--border); vertical-align: top;
-        }
-        .kt-sosanh th { color: var(--gold); font-size: .78rem;
-          letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
-      `}</style>
 
       <main id="main" style={{ background: "var(--bg-deep)" }}>
         {/* ── Hero ── */}

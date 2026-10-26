@@ -1,0 +1,108 @@
+{
+ "version": 1,
+ "domain": "vnfarmstay.vn",
+ "web": "/Users/phamthanhtung/ThoiKhong/Web/vnfarmstay-vn",
+ "goc": "main",
+ "base": "6176f5f51a1ddd07bb22406da63e290326f72f20",
+ "nhanh": "vong-hoan-thien/20261026",
+ "trang_thai": "CHUA-XONG",
+ "thi_truong": "chua-xac-dinh (HO-KHAU khong khai) - giu pha VN/QT cho",
+ "lich": [
+  {
+   "pha": 0,
+   "skill": "dong-bo-doi-web",
+   "trang_thai": "BO",
+   "ly_do": "check-luat md5 795db617 trung goc, mot ban SO-TAY"
+  },
+  {
+   "pha": 1,
+   "skill": "kiem-thu-web",
+   "trang_thai": "DAT",
+   "phieu": "_NHAT-KY/PHIEU-KHOA-KIEM-THU-vnfarmstay.vn-20261026.md",
+   "phu_thuoc": [],
+   "commit": "6f7906f..b7283b1",
+   "tong": "92P/47W/3F (142 cong)"
+  },
+  {
+   "pha": 2,
+   "skill": "bao-mat-web",
+   "trang_thai": "BO",
+   "phu_thuoc": [
+    1
+   ],
+   "ly_do": "viec bao mat con lai deu vung cua Ong: nang Next 16.2.4->16.3.3 (package.json), them npm audit vao .github CI (sec.7)"
+  },
+  {
+   "pha": 3,
+   "skill": "nang-tc-vn|qt",
+   "trang_thai": "HOAN",
+   "ly_do": "thi truong chua xac dinh",
+   "phu_thuoc": [
+    1
+   ]
+  },
+  {
+   "pha": 4,
+   "skill": "seo-toan-dien|quoc-te",
+   "trang_thai": "HOAN",
+   "ly_do": "thi truong chua xac dinh; DON-SEO 6 viec",
+   "phu_thuoc": [
+    1
+   ]
+  },
+  {
+   "pha": 5,
+   "skill": "nang-cap-bai-viet",
+   "trang_thai": "DAT",
+   "phu_thuoc": [
+    1
+   ],
+   "phieu": "_NHAT-KY/BAI-VIET-vnfarmstay.vn-20261026.md",
+   "commit": "ebe656b..2417129"
+  },
+  {
+   "pha": 6,
+   "skill": "nang-cap-giao-dien",
+   "trang_thai": "KET",
+   "phu_thuoc": [
+    1
+   ],
+   "phieu": "_NHAT-KY/BAO-CAO-GIAO-DIEN-vnfarmstay.vn-20261026.md",
+   "commit": "a9b37de..33dbad5",
+   "ly_do": "gac-pha ma 1: 3 duong dan loading.tsx bien mat do DOI TEN thanh khung-cho*.tsx (noi dung con, +1 dong, lui bang git revert f12c3f2); can Ong duyet. Ket qua: seo.47 het khoi an 44/44 URL; 92/47/3 -> 94/46/2 (snapshot)"
+  },
+  {
+   "pha": 7,
+   "skill": "bo-cuc-web",
+   "trang_thai": "HOAN",
+   "phu_thuoc": [
+    1
+   ],
+   "ly_do": "Chrome that chi mo 768px, chua cham duoc bo cuc kho rong (Web/CLAUDE.md muc 4); khong sua bo cuc khi khong nhin duoc. Viec may: layout.18/20/23, ux.18 nav>7 link"
+  },
+  {
+   "pha": 8,
+   "skill": "lam-giau-hieu-ung",
+   "trang_thai": "BO",
+   "phu_thuoc": [
+    1
+   ],
+   "phieu": "_NHAT-KY/BAO-CAO-GIAO-DIEN-vnfarmstay.vn-20261026-hieu-ung.md",
+   "commit": "bf205a8",
+   "ly_do": "mot.1 la linear cua vong lap vo han (khong doi duoc), khong cho dan hop le de lam giau"
+  },
+  {
+   "pha": 9,
+   "skill": "kiem-thu-web",
+   "trang_thai": "DAT",
+   "ly_do": "do SAU",
+   "phu_thuoc": [
+    1
+   ],
+   "phieu": "_NHAT-KY/PHIEU-KHOA-KIEM-THU-vnfarmstay.vn-20261026-sau.md",
+   "commit": "433399a..1e673dd"
+  }
+ ],
+ "buoc_ke": "Ong: duyet doi ten loading.tsx; chon thi truong VN/QT roi chay /seo-toan-dien (DON-SEO 6 viec); mo Chrome kho rong de /bo-cuc-web; deploy khi muon",
+ "ghi_chu_gac": "gac-pha pha 1 ma 1: 4 tep .kiem-snapshot/{chinh-sach-bao-mat,chinh-sach-bien-tap,dieu-khoan,phap-ly} la anh chup tu dong do wf cham sinh lai, KHONG phai sua trang phap ly -> duong tinh gia, Ong xem lai"
+}

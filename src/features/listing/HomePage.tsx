@@ -272,26 +272,6 @@ export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
         {/* Địa hình 3 lớp — xa-gần, cao-thấp, tốc độ / chiều khác nhau
             width:300% + translateX(-33.333%) = cuộn 1 container-width → tile liền mạch
             Y giống nhau ở X=0 và X=1200 để không giật khi lặp */}
-        <style>{`
-          .hero-waves {
-            position: absolute; left: 0; right: 0; bottom: 0;
-            height: 160px; overflow: hidden; pointer-events: none;
-          }
-          .hero-wave {
-            position: absolute; left: 0; bottom: 0;
-            width: 300%; height: 100%;
-          }
-          @keyframes wave-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-33.333%); }
-          }
-          .hero-wave-1 { animation: wave-scroll 32s linear infinite; }
-          .hero-wave-2 { animation: wave-scroll 20s linear infinite reverse; }
-          .hero-wave-3 { animation: wave-scroll 14s linear infinite; }
-          @media (prefers-reduced-motion: reduce) {
-            .hero-wave { animation: none !important; }
-          }
-        `}</style>
         {/* Gợi ý cuộn (scrollCue) — hero cao 100vh nên người dùng dễ tưởng
             trang chỉ có bấy nhiêu; chấm gold trôi xuống nói "còn nữa ở dưới". */}
         <div

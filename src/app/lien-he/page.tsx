@@ -16,7 +16,7 @@ import { SITE_CONTACT, ECOSYSTEM } from "@/lib/site";
  * `SITE_CONTACT` là trang này và schema Organization cùng hiện lên một lượt.
  */
 export const metadata = buildMetadata({
-  title: "Liên hệ",
+  title: "Liên hệ và báo thông tin chưa đúng",
   description:
     "Các cửa liên hệ đang hoạt động của vnfarmstay.vn — giới thiệu farmstay của bạn, hoặc báo một thông tin chưa chính xác trên trang.",
   canonical: "/lien-he",

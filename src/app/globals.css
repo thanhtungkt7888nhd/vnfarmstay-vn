@@ -812,3 +812,202 @@ header button[aria-expanded] {
   align-items: center;
   justify-content: center;
 }
+
+/* ── Lưới và hero của từng trang ──
+   Trước 26/10/2026 nằm trong khối <style> giữa thân trang (W3C: <style> trong
+   <body> phải là con đầu của thân). Tên lớp riêng từng trang nên không đụng nhau. */
+
+/* Trang chủ — địa hình 3 lớp dưới hero. width:300% + translateX(-33.333%) = cuộn
+   đúng 1 bề rộng khung, tile liền mạch. */
+.hero-waves {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-wave {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 300%;
+  height: 100%;
+}
+@keyframes wave-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+.hero-wave-1 {
+  animation: wave-scroll 32s linear infinite;
+}
+.hero-wave-2 {
+  animation: wave-scroll 20s linear infinite reverse;
+}
+.hero-wave-3 {
+  animation: wave-scroll 14s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-wave {
+    animation: none !important;
+  }
+}
+
+/* /dang-farmstay */
+@media (max-width: 480px) {
+  .khoi-bieu-mau {
+    padding: 24px 16px !important;
+  }
+}
+
+/* /farmstay-la-gi */
+.kt-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .kt-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .kt-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.kt-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 900px) {
+  .kt-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.kt-sosanh {
+  width: 100%;
+  border-collapse: collapse;
+}
+.kt-sosanh th,
+.kt-sosanh td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.kt-sosanh th {
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* /tour-farmstay */
+.vung-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 760px) {
+  .vung-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1180px) {
+  .vung-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.mua-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 700px) {
+  .mua-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1040px) {
+  .mua-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* /ve-chung-toi */
+.vct-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 860px) {
+  .vct-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.vct-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 700px) {
+  .vct-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.vct-von {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (min-width: 820px) {
+  .vct-von {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* /chu-farmstay */
+.owner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .owner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+.step-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+@media (min-width: 768px) {
+  .step-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* /farmstay/[slug] — ô lưới mặc định min-width:auto nên không co nhỏ hơn nội
+   dung dài nhất bên trong; đặt 0 để khối mã nhúng tự cuộn ngang trong khung. */
+.detail-grid > * {
+  min-width: 0;
+}
+@media (max-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

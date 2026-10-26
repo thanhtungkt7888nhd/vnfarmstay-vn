@@ -26,7 +26,7 @@ import { NGUOI_KIEN_TAO } from "@/features/nguoi-kien-tao/data";
 export const metadata: Metadata = buildMetadata({
   title: "Người kiến tạo — chuyên gia ngành farmstay",
   description:
-    "Đàm phán thị trường nông sản, quản trị đất đai, vận hành trang trại, đào tạo nghề đón khách — bốn khúc nghề mà một farmstay cần, và những người làm nghề ấy thật.",
+    "Đàm phán thị trường nông sản, quản trị đất đai, vận hành trang trại, đào tạo nghề đón khách — bốn khúc nghề một farmstay cần, và những người làm nghề thật.",
   canonical: "/nguoi-kien-tao",
   keywords: [
     "chuyên gia farmstay",

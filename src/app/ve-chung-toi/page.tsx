@@ -242,15 +242,6 @@ export default function VeChungToiPage() {
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
 
-      <style>{`
-        .vct-3 { display: grid; grid-template-columns: 1fr; gap: 18px; }
-        @media (min-width: 860px) { .vct-3 { grid-template-columns: repeat(3, 1fr); } }
-        .vct-4 { display: grid; grid-template-columns: 1fr; gap: 18px; }
-        @media (min-width: 700px) { .vct-4 { grid-template-columns: repeat(2, 1fr); } }
-        .vct-von { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-        @media (min-width: 820px) { .vct-von { grid-template-columns: repeat(5, 1fr); } }
-      `}</style>
-
       <main id="main" style={{ background: "var(--bg-deep)" }}>
         {/* ── Hero — tuyên ngôn lõi ── */}
         <section
