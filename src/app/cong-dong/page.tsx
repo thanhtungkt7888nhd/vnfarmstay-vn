@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Navbar } from "@/shared/ui/Navbar";
 import { Footer } from "@/shared/ui/Footer";
 import { JsonLd } from "@/shared/ui/JsonLd";
@@ -12,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Cộng đồng Farmstay Việt Nam",
   description:
-    "Kết nối với cộng đồng chủ farmstay và du khách — chia sẻ kinh nghiệm, hỏi đáp, sự kiện.",
+    "Cộng đồng chủ farmstay và du khách trên vnfarmstay.vn: chỗ hỏi đáp về mùa đi, giống cây, vận hành farm. Hiện chưa mở; khi mở thật sẽ báo tại đây.",
   alternates: { canonical: "https://vnfarmstay.vn/cong-dong" },
 };
 
@@ -115,6 +116,25 @@ export default function CongDongPage() {
             Chúng tôi <strong>chưa mở</strong> — và cũng không dựng sẵn vài bài
             đăng cho có vẻ đông vui. Khi nào cộng đồng mở thật, bạn sẽ thấy nó ở
             đây.
+          </p>
+          <p
+            style={{
+              color: "var(--text-dim)",
+              fontSize: "1rem",
+              lineHeight: 1.8,
+              textAlign: "center",
+              marginTop: 20,
+            }}
+          >
+            Trong lúc chờ, bạn có thể đọc{" "}
+            <Link href="/farmstay-la-gi" style={{ color: "var(--gold)" }}>
+              farmstay là gì và khác homestay ra sao
+            </Link>
+            , hoặc xem{" "}
+            <Link href="/blog" style={{ color: "var(--gold)" }}>
+              blog hướng dẫn dành cho chủ farmstay
+            </Link>
+            .
           </p>
         </div>
 

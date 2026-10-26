@@ -3,7 +3,6 @@
   "nhanh": "bai-viet/nang-cap-20260903",
   "capNhat": "2026-09-03",
   "ghiChu": "Ông gõ /nang-cap-bai-viet với URL /nguoi-kien-tao. Trang ấy KHÔNG phải bài viết mà là cụm hồ sơ 5 người THẬT — skill dừng ở cổng B3, Ông ra lệnh riêng: 'tóm lược thông tin đủ và hấp dẫn về mỗi người'. Đây là việc đã làm theo lệnh ấy, không phải lượt nâng bài thường.",
-
   "daLam": [
     {
       "muc": ".giong-web.json",
@@ -24,9 +23,13 @@
       "muc": "van kiemNguoiKienTao",
       "viec": "mở rộng canh trường mới — dauMoc rỗng/thiếu vế, ngayDocMoc sai dạng, nguồn treo không gắn câu",
       "doiChung": "6/6 phép hai chiều qua"
+    },
+    {
+      "muc": "vong-hoan-thien pha 5 (26/10/2026)",
+      "viec": "meta/title 8 trang + 2 câu trả lời FAQ farmstay-la-gi + 2 liên kết nội cong-dong",
+      "commit": "xem phiếu BAI-VIET-vnfarmstay.vn-20261026"
     }
   ],
-
   "choOng": [
     {
       "viec": "NỢ HẠ TẦNG — 4 máy canh của web CHẾT vì thiếu gói playwright",
@@ -44,7 +47,6 @@
       "de": "việc của /seo-toan-dien, không phải skill này."
     }
   ],
-
   "chuaLam": {
     "khoBaiThat": "3 bài nhóm THƯỜNG-nâng của web (tour-farmstay 580 từ · farmstay-la-gi 1.305 · chu-farmstay 1.505) — cả ba đang 0 đề mục H2, 0 liên kết nội. Chưa đụng vì Ông chuyển hướng sang cụm hồ sơ.",
     "goiTiep": "tiếp tục nâng bài vnfarmstay"

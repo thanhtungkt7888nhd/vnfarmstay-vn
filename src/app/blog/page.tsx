@@ -18,7 +18,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = buildMetadata({
   title: "Blog & Hướng dẫn Farmstay",
   description:
-    "Kinh nghiệm vận hành farmstay, hướng dẫn pháp lý, review địa điểm và tin tức nông nghiệp du lịch Việt Nam.",
+    "Kinh nghiệm vận hành farmstay, hướng dẫn pháp lý, review địa điểm và tin tức nông nghiệp du lịch Việt Nam, dành cho chủ farmstay và du khách.",
   canonical: "/blog",
   keywords: [
     "blog farmstay",

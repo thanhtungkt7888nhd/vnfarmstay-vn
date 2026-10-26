@@ -25,7 +25,7 @@ export const metadata: Metadata = buildMetadata({
   // hiệu, nên tiêu đề gốc dài quá mức hiển thị trên trang kết quả tìm kiếm.
   title: "Bản đồ 9 vùng farmstay Việt Nam theo mùa",
   description:
-    "Bản đồ 9 vùng nông nghiệp Việt Nam có trải nghiệm farmstay: ruộng bậc thang Tây Bắc, chè Mộc Châu, cà phê Tây Nguyên, miệt vườn ĐBSCL. Mỗi vùng kèm mùa đẹp nhất và việc nhà nông đặc trưng.",
+    "Bản đồ 9 vùng nông nghiệp Việt Nam có farmstay: ruộng bậc thang Tây Bắc, chè Mộc Châu, cà phê Tây Nguyên, miệt vườn ĐBSCL. Mỗi vùng kèm mùa đẹp nhất.",
   canonical: "/tour-farmstay",
   keywords: [
     "tour farmstay",

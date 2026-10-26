@@ -1,8 +1,8 @@
 {
  "phienBan": 1,
- "luc": "2026-10-26T11:23:35.423Z",
- "head": "6f7906f1c270f992897a233529eda0beb54d78d3",
- "cay": "6bc5f4a68c7628de0b8bdc5f3008dc9508751e24",
+ "luc": "2026-10-26T11:35:18.035Z",
+ "head": "ebe656b147bda683714584cd12a1c753edcc882e",
+ "cay": "74442e9b0d64f3544839e7d9ec59c81226a489ee",
  "ngoai": [
   ":(exclude).kiem-snapshot",
   ":(exclude)_NHAT-KY",
@@ -11,6 +11,6 @@
   ":(exclude,glob)*.md",
   ":(exclude).van-tay-bo-cuc.json"
  ],
- "build": "2026-10-26T11:22:44.803Z",
+ "build": "2026-10-26T11:34:53.571Z",
  "trang": 20
 }
