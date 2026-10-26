@@ -63,23 +63,27 @@
   {
    "pha": 6,
    "skill": "nang-cap-giao-dien",
-   "trang_thai": "DANG",
+   "trang_thai": "KET",
    "phu_thuoc": [
     1
-   ]
+   ],
+   "phieu": "_NHAT-KY/BAO-CAO-GIAO-DIEN-vnfarmstay.vn-20261026.md",
+   "commit": "a9b37de..33dbad5",
+   "ly_do": "gac-pha ma 1: 3 duong dan loading.tsx bien mat do DOI TEN thanh khung-cho*.tsx (noi dung con, +1 dong, lui bang git revert f12c3f2); can Ong duyet. Ket qua: seo.47 het khoi an 44/44 URL; 92/47/3 -> 94/46/2 (snapshot)"
   },
   {
    "pha": 7,
    "skill": "bo-cuc-web",
-   "trang_thai": "CHO",
+   "trang_thai": "HOAN",
    "phu_thuoc": [
     1
-   ]
+   ],
+   "ly_do": "Chrome that chi mo 768px, chua cham duoc bo cuc kho rong (Web/CLAUDE.md muc 4); khong sua bo cuc khi khong nhin duoc. Viec may: layout.18/20/23, ux.18 nav>7 link"
   },
   {
    "pha": 8,
    "skill": "lam-giau-hieu-ung",
-   "trang_thai": "CHO",
+   "trang_thai": "DANG",
    "phu_thuoc": [
     1
    ]
@@ -94,6 +98,6 @@
    ]
   }
  ],
- "buoc_ke": "pha 6 nang-cap-giao-dien (kem seo.47 loading.tsx, W3C, aria-hidden-focus)",
+ "buoc_ke": "pha 8 lam-giau-hieu-ung (mot.1 linear easing)",
  "ghi_chu_gac": "gac-pha pha 1 ma 1: 4 tep .kiem-snapshot/{chinh-sach-bao-mat,chinh-sach-bien-tap,dieu-khoan,phap-ly} la anh chup tu dong do wf cham sinh lai, KHONG phai sua trang phap ly -> duong tinh gia, Ong xem lai"
 }
