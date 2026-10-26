@@ -5,7 +5,7 @@
  "goc": "main",
  "base": "6176f5f51a1ddd07bb22406da63e290326f72f20",
  "nhanh": "vong-hoan-thien/20261026",
- "trang_thai": "DANG",
+ "trang_thai": "CHUA-XONG",
  "thi_truong": "chua-xac-dinh (HO-KHAU khong khai) - giu pha VN/QT cho",
  "lich": [
   {
@@ -35,7 +35,7 @@
   {
    "pha": 3,
    "skill": "nang-tc-vn|qt",
-   "trang_thai": "CHO",
+   "trang_thai": "HOAN",
    "ly_do": "thi truong chua xac dinh",
    "phu_thuoc": [
     1
@@ -44,7 +44,7 @@
   {
    "pha": 4,
    "skill": "seo-toan-dien|quoc-te",
-   "trang_thai": "CHO",
+   "trang_thai": "HOAN",
    "ly_do": "thi truong chua xac dinh; DON-SEO 6 viec",
    "phu_thuoc": [
     1
@@ -94,13 +94,15 @@
   {
    "pha": 9,
    "skill": "kiem-thu-web",
-   "trang_thai": "DANG",
+   "trang_thai": "DAT",
    "ly_do": "do SAU",
    "phu_thuoc": [
     1
-   ]
+   ],
+   "phieu": "_NHAT-KY/PHIEU-KHOA-KIEM-THU-vnfarmstay.vn-20261026-sau.md",
+   "commit": "433399a..1e673dd"
   }
  ],
- "buoc_ke": "pha 9 kiem-thu-web do SAU",
+ "buoc_ke": "Ong: duyet doi ten loading.tsx; chon thi truong VN/QT roi chay /seo-toan-dien (DON-SEO 6 viec); mo Chrome kho rong de /bo-cuc-web; deploy khi muon",
  "ghi_chu_gac": "gac-pha pha 1 ma 1: 4 tep .kiem-snapshot/{chinh-sach-bao-mat,chinh-sach-bien-tap,dieu-khoan,phap-ly} la anh chup tu dong do wf cham sinh lai, KHONG phai sua trang phap ly -> duong tinh gia, Ong xem lai"
 }
