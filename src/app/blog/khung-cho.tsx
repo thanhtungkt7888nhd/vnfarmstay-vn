@@ -1,3 +1,4 @@
+/* Tắt từ 26/10/2026: tên loading.tsx làm Next bọc trang trong Suspense, <main>/<h1> rơi vào khối ẩn chờ JS (seo.47). Muốn bật lại phải đo lại HTML máy chủ. */
 /**
  * Skeleton loading state cho trang /blog — hiện trong khi ISR revalidate.
  * Next.js tự dùng file này khi data chưa sẵn.
