@@ -26,10 +26,11 @@
   {
    "pha": 2,
    "skill": "bao-mat-web",
-   "trang_thai": "CHO",
+   "trang_thai": "BO",
    "phu_thuoc": [
     1
-   ]
+   ],
+   "ly_do": "viec bao mat con lai deu vung cua Ong: nang Next 16.2.4->16.3.3 (package.json), them npm audit vao .github CI (sec.7)"
   },
   {
    "pha": 3,
@@ -52,7 +53,7 @@
   {
    "pha": 5,
    "skill": "nang-cap-bai-viet",
-   "trang_thai": "CHO",
+   "trang_thai": "DANG",
    "phu_thuoc": [
     1
    ]
@@ -91,5 +92,6 @@
    ]
   }
  ],
- "buoc_ke": "pha 2 bao-mat-web"
+ "buoc_ke": "pha 5 nang-cap-bai-viet",
+ "ghi_chu_gac": "gac-pha pha 1 ma 1: 4 tep .kiem-snapshot/{chinh-sach-bao-mat,chinh-sach-bien-tap,dieu-khoan,phap-ly} la anh chup tu dong do wf cham sinh lai, KHONG phai sua trang phap ly -> duong tinh gia, Ong xem lai"
 }
