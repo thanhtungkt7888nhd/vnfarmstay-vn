@@ -1,0 +1,16 @@
+{
+ "phienBan": 1,
+ "luc": "2026-10-26T11:23:35.423Z",
+ "head": "6f7906f1c270f992897a233529eda0beb54d78d3",
+ "cay": "6bc5f4a68c7628de0b8bdc5f3008dc9508751e24",
+ "ngoai": [
+  ":(exclude).kiem-snapshot",
+  ":(exclude)_NHAT-KY",
+  ":(exclude).claude",
+  ":(exclude)docs",
+  ":(exclude,glob)*.md",
+  ":(exclude).van-tay-bo-cuc.json"
+ ],
+ "build": "2026-10-26T11:22:44.803Z",
+ "trang": 20
+}
