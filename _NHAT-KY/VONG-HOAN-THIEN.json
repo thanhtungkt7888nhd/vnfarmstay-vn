@@ -83,21 +83,24 @@
   {
    "pha": 8,
    "skill": "lam-giau-hieu-ung",
-   "trang_thai": "DANG",
+   "trang_thai": "BO",
    "phu_thuoc": [
     1
-   ]
+   ],
+   "phieu": "_NHAT-KY/BAO-CAO-GIAO-DIEN-vnfarmstay.vn-20261026-hieu-ung.md",
+   "commit": "bf205a8",
+   "ly_do": "mot.1 la linear cua vong lap vo han (khong doi duoc), khong cho dan hop le de lam giau"
   },
   {
    "pha": 9,
    "skill": "kiem-thu-web",
-   "trang_thai": "CHO",
+   "trang_thai": "DANG",
    "ly_do": "do SAU",
    "phu_thuoc": [
     1
    ]
   }
  ],
- "buoc_ke": "pha 8 lam-giau-hieu-ung (mot.1 linear easing)",
+ "buoc_ke": "pha 9 kiem-thu-web do SAU",
  "ghi_chu_gac": "gac-pha pha 1 ma 1: 4 tep .kiem-snapshot/{chinh-sach-bao-mat,chinh-sach-bien-tap,dieu-khoan,phap-ly} la anh chup tu dong do wf cham sinh lai, KHONG phai sua trang phap ly -> duong tinh gia, Ong xem lai"
 }
