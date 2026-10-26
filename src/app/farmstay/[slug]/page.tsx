@@ -787,16 +787,6 @@ export default async function FarmstayDetailPage({ params }: Props) {
         </div>
       </main>
 
-      <style>{`
-        /* Ô lưới mặc định min-width:auto ⇒ không co nhỏ hơn nội dung dài nhất bên
-           trong. Đặt 0 để khối mã nhúng tự cuộn ngang trong khung của nó thay vì
-           đẩy cả trang rộng ra. */
-        .detail-grid > * { min-width: 0; }
-        @media (max-width: 768px) {
-          .detail-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
-
       <Footer />
     </>
   );

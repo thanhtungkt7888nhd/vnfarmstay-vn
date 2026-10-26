@@ -76,15 +76,6 @@ export default function TourFarmstayPage() {
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
 
-      <style>{`
-        .vung-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 760px) { .vung-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1180px) { .vung-grid { grid-template-columns: repeat(3, 1fr); } }
-        .mua-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        @media (min-width: 700px) { .mua-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1040px) { .mua-grid { grid-template-columns: repeat(3, 1fr); } }
-      `}</style>
-
       <main id="main" style={{ background: "var(--bg-deep)" }}>
         {/* ── Hero ── */}
         <section

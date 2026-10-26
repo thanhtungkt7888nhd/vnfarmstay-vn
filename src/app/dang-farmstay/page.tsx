@@ -189,7 +189,7 @@ export default function DangFarmstayPage() {
 
           <section
             aria-label="Cách gửi cho chúng tôi"
-            /* `khoi-bieu-mau` để nới lề ở khổ hẹp — xem khối <style> cuối tệp.
+            /* `khoi-bieu-mau` để nới lề ở khổ hẹp — xem `.khoi-bieu-mau` trong globals.css.
                Đo 24/08/2026: lề khối cha 24px chồng lề khối này 28px ⇒ trên máy
                375px biểu mẫu 20 ô chỉ còn 269px, nhãn và dòng gợi ý bị bóp. */
             className="khoi-bieu-mau"
@@ -309,11 +309,6 @@ export default function DangFarmstayPage() {
         </div>
       </main>
 
-      <style>{`
-        @media (max-width: 480px) {
-          .khoi-bieu-mau { padding: 24px 16px !important; }
-        }
-      `}</style>
       <Footer />
     </>
   );

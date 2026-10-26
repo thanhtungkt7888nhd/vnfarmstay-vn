@@ -40,7 +40,7 @@ export default function TuyenTongPage() {
       <JsonLd schema={schemas} />
       <main id="main" style={{ background: "var(--bg-deep)" }}>
         <VoTrangTong
-          kicker="Một hành trình không chỉ có một điểm dừng"
+          kicker="Hành trình không chỉ một điểm dừng"
           tieuDe="Tuyến hành trình"
           dan="Ba cung đường đã được biên tập, mỗi cung giải thích được vì sao các nơi trên đó nối được với nhau."
           moDau="Khách đi farmstay thường đi theo cung đường chứ không ở lì một chỗ: khách đang ở Đông Bắc sẽ hỏi đi tiếp Tây Bắc ở đâu. Vì vậy farm bên cạnh không phải đối thủ giành một lượt khách, mà là mắt xích tiếp theo của cùng một chuyến. Một tuyến chỉ có mặt ở đây khi nói được rõ vì sao các vùng của nó đi liền được với nhau — đường bộ nối tới đâu, mùa vụ có trùng quãng không. Danh sách địa danh ghép đại không phải là tuyến."

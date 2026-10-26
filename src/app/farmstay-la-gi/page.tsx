@@ -186,21 +186,6 @@ export default function FarmstayLaGiPage() {
       <Navbar />
       <JsonLd schema={schemas as unknown as Record<string, unknown>[]} />
 
-      <style>{`
-        .kt-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-        @media (min-width: 640px) { .kt-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .kt-grid { grid-template-columns: repeat(4, 1fr); } }
-        .kt-grid-2 { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 900px) { .kt-grid-2 { grid-template-columns: repeat(2, 1fr); } }
-        .kt-sosanh { width: 100%; border-collapse: collapse; }
-        .kt-sosanh th, .kt-sosanh td {
-          text-align: left; padding: 14px 16px;
-          border-bottom: 1px solid var(--border); vertical-align: top;
-        }
-        .kt-sosanh th { color: var(--gold); font-size: .78rem;
-          letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
-      `}</style>
-
       <main id="main" style={{ background: "var(--bg-deep)" }}>
         {/* ── Hero ── */}
         <section

@@ -201,6 +201,7 @@ export function Navbar() {
           borderBottom: open ? "1px solid var(--border)" : "none",
         }}
         aria-hidden={!open}
+        inert={!open}
       >
         <div className="flex flex-col gap-1 p-4">
           {navLinks.map((link) => (
