@@ -1,4 +1,3 @@
-/* Tắt từ 26/10/2026: tên loading.tsx làm Next bọc trang trong Suspense, <main>/<h1> rơi vào khối ẩn chờ JS (seo.47). Muốn bật lại phải đo lại HTML máy chủ. */
 /**
  * Khung xương lúc chờ cho trang /farmstay/[slug] — hiện khi ISR dựng lại trang.
  *
