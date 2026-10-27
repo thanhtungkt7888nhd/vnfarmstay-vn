@@ -543,6 +543,7 @@ export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
                 onClick={() => setActiveChip(chip.value)}
                 style={{
                   padding: "8px 18px",
+                  minHeight: 44,
                   borderRadius: 20,
                   border: "1px solid",
                   borderColor:
@@ -590,6 +591,7 @@ export function HomePage({ farmstays, initialQuery = "", khoiMayChu }: Props) {
                     onClick={() => setRegion(r.value)}
                     style={{
                       padding: "6px 14px",
+                      minHeight: 44,
                       borderRadius: 20,
                       border: "1px solid",
                       borderColor:
